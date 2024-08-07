@@ -1,0 +1,14 @@
+﻿.swiper-button-next, .swiper-button-prev {
+    @apply text-teal-500 text-opacity-25 hidden md:block
+}
+
+.thumbs .swiper-slide {
+    @apply opacity-25 pt-0 justify-center items-center
+}
+
+.thumbs .swiper-slide-thumb-active {
+    @apply opacity-100
+}
+.swiper-wrapper {
+    @apply items-center
+}
