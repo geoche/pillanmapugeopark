@@ -1,7 +1,5 @@
-﻿// pages/api/gallery/videos/route.js
-
-import { connectToDatabase } from '@utils/database';
-import Video from '@models/Video';
+﻿import { connectToDatabase } from '@utils/database';
+import Video from '../../../../models/video';
 
 export const POST = async (request) => {
     const { videoLink, description } = await request.json();

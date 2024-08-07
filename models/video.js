@@ -1,5 +1,4 @@
-﻿// models/Video.js
-import { Schema, model, models } from 'mongoose';
+﻿import {Schema, model, models} from 'mongoose';
 
 const VideoSchema = new Schema({
     videoLink: {
