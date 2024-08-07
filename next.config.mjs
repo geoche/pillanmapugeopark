@@ -7,6 +7,11 @@ export default {
     ...nextConfig,
     ...withVideos(),
     images: {
-        domains: ['geovilluercas.org'],
-    },
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'geovilluercas.org',
+            },
+        ],
+    }
 };
