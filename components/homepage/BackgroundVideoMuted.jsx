@@ -11,7 +11,7 @@ const BackgroundVideoMuted = () => {
                 <Image src={pilMapLogo} alt="pilMapLogo" className="py-4 max-w-[50%]"/>
                 <p>MANAGING HERITAGE – SUSTAINING TERRITORIES</p>
             </div>
-            <video src={require("../../public/bgvideo.mp4")} autoPlay muted loop className={`w-full h-full`}/>
+            <video src={process.env.BG_VIDEO} autoPlay muted loop className={`w-full h-full`}/>
         </div>
     );
 };
