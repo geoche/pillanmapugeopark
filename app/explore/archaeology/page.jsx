@@ -8,6 +8,8 @@ import GeoparkInfo from "@components/geopark/GeoparkInfo";
 import WhatWeDo from "@components/geopark/WhatWeDo";
 import GetToKnowGeopark from "@components/geopark/GetToKnowGeopark";
 import GeoparkFriends from "@components/geopark/GeoparkFriends";
+import PageUnderConstruction from "@components/PageUnderConstruction";
+import React from "@node_modules/react";
 
 
 const Archaeology = () => {
@@ -16,11 +18,10 @@ const Archaeology = () => {
             className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
             <Navbar/>
-            <div className={`mx-auto bg-default-opacity w-full h-80`}/>
-            <RoundedSeparator top={true}/>
-            <RoundedSeparator top={false}/>
+            <PageUnderConstruction/>
             <Footer classNameExternal={"relative w-full"}/>
-        </section>);
+        </section>
+    );
 };
 
 export default Archaeology;
