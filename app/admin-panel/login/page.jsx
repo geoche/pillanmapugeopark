@@ -4,6 +4,7 @@ import Footer from "@components/Footer";
 import VideoForm from "@components/admin-panel/login/VideoForm";
 import ImageForm from "@components/admin-panel/login/ImageForm";
 import EventForm from "@components/admin-panel/login/EventForm";
+import BlobUpload from "@components/BlobUpload";
 
 
 const LoginPage = () => {
@@ -24,6 +25,8 @@ const LoginPage = () => {
                         <ImageForm/>
                         <div className={`py-4`}/>
                         <EventForm/>
+                        <div className={`py-4`}/>
+                        <BlobUpload/>
                     </div>
                 </div>
             ) : (
