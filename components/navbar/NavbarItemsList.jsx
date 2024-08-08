@@ -11,13 +11,13 @@ import NavbarItem from "@components/navbar/NavBarItem";
 
 const NavbarItemsList = () => {
     return (
-        <>
+        <div className={`flex-col flex lg:flex-row justify-center h-auto z-20`}>
             <NavbarItem navItemsList={geoparkLinks}/>
             <NavbarItem navItemsList={exploreGeoparkLinks}/>
             <NavbarItem navItemsList={interactiveMapLinks}/>
             <NavbarItem navItemsList={visitUsLinks}/>
             <NavbarItem navItemsList={blogLinks}/>
-        </>
+        </div>
     );
 };
 

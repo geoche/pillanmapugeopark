@@ -1,5 +1,8 @@
-﻿import "@styles/globals.css";
-import Provider from "@components/Provider";
+﻿import Provider from "@components/Provider";
+import Navbar from "@components/navbar/Navbar";
+
+import "@styles/globals.css";
+import Footer from "@components/Footer";
 
 export const metadata = {
     title: "Geopark",
@@ -11,11 +14,11 @@ const RootLayout = ({children}) => {
         <html lang="en">
         <Provider>
             <body>
-            <div className="main h-screen bg-default"/>
-
-            <main className="app">
+            <Navbar/>
+            <main>
                 {children}
             </main>
+            <Footer/>
             </body>
         </Provider>
         </html>

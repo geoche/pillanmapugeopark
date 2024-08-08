@@ -5,6 +5,9 @@
 .swiper-slide {
     @apply text-center text-xl bg-white rounded-2xl flex justify-center items-center pt-4
 }
+.swiper-wrapper {
+    @apply items-center
+}
 
 .swiper-button-next, .swiper-button-prev {
     @apply text-teal-500 text-opacity-25 hidden xl:block

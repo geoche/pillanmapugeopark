@@ -1,6 +1,10 @@
 ﻿import {Schema, model, models} from 'mongoose';
 
 const ImageSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        auto: true,
+    },
     imageSrc: {
         type: String,
         required: true,

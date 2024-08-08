@@ -14,7 +14,7 @@ const FAQ = () => {
     };
 
     return (
-        <div className="mx-auto p-4 bg-default w-full pb-32 py-12 text-white">
+        <div className="mx-auto p-4 bg-default w-full pb-32 py-12">
             <h1 className="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h1>
             <h2 className="mb-12 text-center">Resolve your doubts here</h2>
             <div className="space-y-4 max-w-2xl flex flex-col justify-center items-center mx-auto">
@@ -24,7 +24,7 @@ const FAQ = () => {
                             onClick={() => toggleFAQ(index)}
                             className="w-full flex justify-between items-center text-left"
                         >
-                            <h2 className="text-xl font-medium">{faq.question}</h2>
+                            <h2 className="text-xl">{faq.question}</h2>
                             <IoIosArrowDown
                                 className={`transform transition-transform duration-300 ${
                                     openIndex === index ? 'rotate-180' : ''

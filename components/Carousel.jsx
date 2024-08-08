@@ -24,7 +24,7 @@ const Carousel = () => {
     ];
 
     return (
-        <div className="relative flex items-center h-1/3 max-w-screen-xl mx-auto sm:py-4 sm:px-12 px-5">
+        <div className="relative flex flex-center min-h-[20rem] max-w-screen-xl mx-auto sm:py-4 sm:px-12 px-5">
             <Swiper
                 slidesPerView={3}
                 width={1280}
@@ -85,7 +85,7 @@ const Carousel = () => {
                         autoplay: false
                     },
                     820: {
-                        width: 707,
+                        width: 768,
                         slidesPerView: 1,
                         autoplay: false
                     },
@@ -115,10 +115,12 @@ const Carousel = () => {
                 }
             >
                 {images.map((image, index) => (
-                    <SwiperSlide key={index}>
-                        <Image src={image} alt={"logo"} fill
-                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                               className="sm:p-4 p-2 object-contain"/>
+                    <SwiperSlide key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3`}>
+                        <Image src={image}
+                               alt={"logo"}
+                               width={300}
+                               height={300}
+                               className="sm:p-4 p-2"/>
                     </SwiperSlide>
                 ))}
             </Swiper>

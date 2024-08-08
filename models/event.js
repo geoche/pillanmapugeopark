@@ -1,6 +1,10 @@
 ﻿import {Schema, model, models} from 'mongoose';
 
 const EventSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        auto: true,
+    },
     eventShortDesc: {
         type: String,
         required: true,

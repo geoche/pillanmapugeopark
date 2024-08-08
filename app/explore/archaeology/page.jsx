@@ -1,25 +1,11 @@
-﻿"use client"
-
-import Footer from "@components/Footer";
-import Navbar from "@components/navbar/Navbar";
-import RoundedSeparator from "@components/RoundedSeparator";
-import Documentary from "@components/geopark/Documentary";
-import GeoparkInfo from "@components/geopark/GeoparkInfo";
-import WhatWeDo from "@components/geopark/WhatWeDo";
-import GetToKnowGeopark from "@components/geopark/GetToKnowGeopark";
-import GeoparkFriends from "@components/geopark/GeoparkFriends";
-import PageUnderConstruction from "@components/PageUnderConstruction";
-import React from "@node_modules/react";
-
+﻿import PageUnderConstruction from "@components/PageUnderConstruction";
 
 const Archaeology = () => {
     return (
         <section
             className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <Navbar/>
             <PageUnderConstruction/>
-            <Footer classNameExternal={"relative w-full"}/>
         </section>
     );
 };

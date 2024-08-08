@@ -38,10 +38,9 @@ const EventsCalendar = () => {
     };
 
     return (
-        <div className={`mx-auto p-4 bg-default w-full pb-32 py-12 text-white`}>
-            <h1 className="text-white pt-12 md:pt-0 text-3xl text-center px-4">EVENTS CALENDAR</h1>
-            <h1 className="text-white pt-4 text-lg text-center">See our latest events</h1>
-            <Separator/>
+        <div className={`mx-auto p-4 bg-default w-full pb-32 py-12 `}>
+            <h1 className=" pt-12 md:pt-0 text-3xl text-center px-4">EVENTS CALENDAR</h1>
+            <h1 className=" pt-4 text-lg text-center">See our latest events</h1>
             <div className={`max-w-7xl flex flex-col justify-center items-center mx-auto py-4 `}>
 
                 {loading ? (
@@ -57,8 +56,8 @@ const EventsCalendar = () => {
                                 <div
                                     className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center">
                                     <div id="DATE" className="w-full md:w-[20%] flex flex-row items-center px-4">
-                                        <p className="text-white text-8xl min-w-[5rem] text-end">{new Date(event.eventDate).getDate()}</p>
-                                        <div className="flex flex-col items-start text-white text-lg pl-4">
+                                        <p className=" text-8xl min-w-[5rem] text-end">{new Date(event.eventDate).getDate()}</p>
+                                        <div className="flex flex-col items-start  text-lg pl-4">
                                             <p>{new Date(event.eventDate).toLocaleString('default', {month: 'long'})}</p>
                                             <p>{new Date(event.eventDate).toLocaleString('default', {weekday: 'long'})}</p>
                                             <p>{new Date(event.eventDate).getFullYear()}</p>
@@ -99,7 +98,6 @@ const EventsCalendar = () => {
                     ))
                 )}
             </div>
-            <Separator/>
         </div>
     );
 };

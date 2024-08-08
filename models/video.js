@@ -1,6 +1,10 @@
 ﻿import {Schema, model, models} from 'mongoose';
 
 const VideoSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        auto: true,
+    },
     videoLink: {
         type: String,
         required: true,

@@ -5,7 +5,7 @@ import Image from "next/image"
 const Avatars = ({header, teamName, team = []}) => {
     return (
         <div className="bg-default">
-            <div className="w-full lg:w-1/2 md:mx-auto text-white py-4 ">
+            <div className="w-full lg:w-1/2 md:mx-auto py-4 ">
                 {header ? (
                     <h1 className="text-center text-3xl">{header}</h1>
                 ) : null}

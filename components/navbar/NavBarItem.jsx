@@ -13,10 +13,10 @@ const NavbarItem = ({ navItemsList = [], isInMobileView}) => {
                         <>
                             <button aria-haspopup="true" aria-controls="menu"
                                     className="outline-none focus:outline-none px-3 rounded-xl flex items-center">
-                                <span className="pr-1 font-semibold flex-1 text-white">{item.label}</span>
+                                <span className="pr-1 font-bold flex-1">{item.label}</span>
                                 <span>
                                     <svg
-                                        className="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out text-white"
+                                        className="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                                     </svg>
@@ -36,7 +36,7 @@ const NavbarItem = ({ navItemsList = [], isInMobileView}) => {
                     ) : (
                         <div >
                             <Link href={item.link} key={index}>
-                                <p className={`text-white font-semibold px-3`}>{item.label}</p></Link>
+                                <p className={`font-bold px-3`}>{item.label}</p></Link>
                         </div>
                     )}
                 </div>

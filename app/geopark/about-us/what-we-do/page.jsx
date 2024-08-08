@@ -10,12 +10,9 @@ const WhatWeDo = () => {
         <section
             className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg bg-[#6a9a8d] bg-opacity-70"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <Navbar/>
             <div className={`mx-auto bg-[#6a9a8d] bg-opacity-50 w-full h-80`}/>
             {whatWeDoList.map((item, index) => (
-                
                 <div key={`wrapper-${index}`} className={index % 2 === 0 ? `bg-default` : `bg-default-opacity py-12`}>
-                    {index % 2 === 0 && <RoundedSeparator top={true}/>}
                     <TextWithImageAligned
                         key={`TWIA-${index}`}
                         imageSrc={item.imageSource}
@@ -24,11 +21,9 @@ const WhatWeDo = () => {
                         displayText={item.text}
                         index={index}
                     />
-                    {index % 2 === 0 && <RoundedSeparator top={false}/>}
                 </div>
 
             ))}
-            <Footer classNameExternal={"relative w-full"}/>
         </section>
     );
 };

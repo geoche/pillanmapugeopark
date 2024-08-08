@@ -1,15 +1,15 @@
 ﻿import Image from "next/image";
-import logo from "@public/assets/images/home-logo.png";
+import logo from "@public/assets/images/home-logo-bck.png";
 import Link from "next/link";
 
 const NavbarHomeLogo = () => {
     return (
-        <Link href="/" className="flex-shrink-0 max-w-16 max-h-16 lg:max-w-48 lg:max-h-44 md:max-w-28 md:max-h-28 sm:max-w-16 sm:max-h-16">
-            <div className="relative">
+        <Link href="/" className="p-2 w-[15%] max-w-24">
+            <div className="relative ">
                 <Image
                     src={logo}
                     alt="logo"
-                    className="w-16 md:w-28 lg:w-full"/>
+                    className={`opacity-75 w-full h-full`}/>
             </div>
         </Link>
     );

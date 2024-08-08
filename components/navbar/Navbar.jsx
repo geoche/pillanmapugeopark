@@ -1,5 +1,5 @@
 ﻿"use client"
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import NavbarHomeLogo from './NavbarHomeLogo';
 import "@/styles/navbar.css"
 
@@ -15,13 +15,14 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className="mx-auto flex w-full h-[55%] md:h-1/2 lg:h-1/3 min-h-72 max-w-7xl xl justify-between px-2 py-5 absolute top-0.5 left-1/2 transform -translate-x-1/2 lg:mt-0 z-10">
-            <NavbarHomeLogo />
-            <div className={`hidden lg:flex pr-0 md:pr-12 flex-row mt-0 lg:mt-12 xl:mt-20 max-h-16`}>
+        <nav
+            className={`sticky justify-between space-x-14 lg:justify-center items-center w-full flex top-0 z-10 bg-white`}>
+            <NavbarHomeLogo/>
+            <div className={`hidden lg:flex`}>
                 <NavbarItemsList/>
             </div>
             <NavbarMobile/>
-        </div>
+        </nav>
     );
 };
 

@@ -60,7 +60,7 @@ const AccommodationsItem = ({item = {}, index}) => {
     ];
 
     return (
-        <div key={index} className="p-2 w-full sm:w-1/2 lg:w-1/3 relative">
+        <div key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3 relative`}>
             <button onClick={() => setShowModalSm(true)} type="button" className={`w-full`}>
                 <div>
                     <Image
@@ -88,15 +88,15 @@ const AccommodationsItem = ({item = {}, index}) => {
                     theme={{
                         show: "transform-none",
                         static: "!scale-[1.02]",
-                        staticProperties: "transition-scale duration-300 ease-in-out",
+                        staticProperties: "transition-scale duration-300 ease-in-out ",
                         wrapper:
                             "fixed left-0 top-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-default-opacity-modal",
                     }}
                 >
-                    <TEModalDialog size="xl">
-                        <TEModalContent>
+                    <TEModalDialog size="xl" >
+                        <TEModalContent className={`!bg-white `}>
                             <TEModalHeader>
-                                <h1 className="text-lg font-bold leading-normal text-white px-4">
+                                <h1 className="text-2xl leading-normal px-4">
                                     {item.title}
                                 </h1>
                                 <button
@@ -105,7 +105,7 @@ const AccommodationsItem = ({item = {}, index}) => {
                                     onClick={() => setShowModalSm(false)}
                                     aria-label="Close"
                                 >
-                                    <GrClose className="w-6 h-6 text-white text-opacity-70"/>
+                                    <GrClose className="w-6 h-6 text-opacity-70"/>
                                 </button>
                             </TEModalHeader>
                             <TEModalBody>
@@ -113,8 +113,8 @@ const AccommodationsItem = ({item = {}, index}) => {
                                     className={`w-full h-full flex flex-wrap items-center flex-center max-w-screen-xl py-4`}
                                 >
                                     <AccommodationImgSwiper images={item.imagesSrc}/>
-                                    <div className={`py-4 text-white text-center mx-auto sm:px-6`}>
-                                        <h3 className={`text-3xl`}>
+                                    <div className={`py-4 text-center mx-auto sm:px-6`}>
+                                        <h3 className={`text-xl`}>
                                             {`ABOUT ${item.title}`}
                                         </h3>
                                         <div className={`text-justify`}>
@@ -122,11 +122,11 @@ const AccommodationsItem = ({item = {}, index}) => {
                                         </div>
                                     </div>
 
-                                    <div className={`flex-wrap flex-center items-baseline text-white text-center text-sm mx-4`}>
+                                    <div className={`flex flex-wrap flex-center items-baseline text-center text-sm mx-4`}>
                                         {itemDetails.map((detail = {}, index) => (
                                             <div key={index}
                                                  className={`flex-col w-1/2 md:w-1/3 xl:w-1/5 flex-center items-center pt-4`}>
-                                                <detail.icon className={`w-11 h-11 text-white`}/>
+                                                <detail.icon className={`w-11 h-11 `}/>
                                                 <span className={`min-h-24 w-auto md:min-w-44 ${detail.text ? "pt-8" : "pt-4"}`}>
                                                 {detail.text ? detail.text : detail.element}
                                                 </span>

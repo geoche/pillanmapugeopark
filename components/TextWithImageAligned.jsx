@@ -10,7 +10,7 @@ const TextWithImageAligned = ({headerText, displayText, imageSrc, buttonText, re
             className={`relative flex flex-col items-center max-w-screen-xl px-4 py-12 mx-auto ${flexDirection} sm:px-6`}
         key={index ? `TWIA-section-${index}` : `TWIA-section`}>
             <div className={`flex items-center md:w-1/2 md:pb-20 md:pt-10 ${padding}`}>
-                <div className="text-justify text-white">
+                <div className="text-justify ">
                     {headerText && <h2 className="text-xl font-bold mb-4">{headerText}</h2>}
                     {displayText.map((text, index) => (
                         <div key={`dp-text-${index}`} className={`align-bottom`}>

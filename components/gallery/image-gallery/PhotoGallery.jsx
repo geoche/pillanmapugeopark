@@ -34,13 +34,13 @@ const PhotoGallery = () => {
     }, []);
 
     return (<div className="bg-default py-12">
-            <div className="text-center text-white w-full">
-                <h2 className="text-3xl font-bold mb-8 md:mb-10">IMAGE GALLERY</h2>
-                <Separator/>
-                {loading ? (<Spinner/>) : (<div className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}><ImageGallery images={images}/></div>)}
-                <Separator/>
-            </div>
-        </div>);
+        <div className="text-center w-full">
+            <h2 className="text-3xl font-bold mb-8 md:mb-10">IMAGE GALLERY</h2>
+            {loading ? (<Spinner/>) : (
+                <div className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                    <ImageGallery images={images}/></div>)}
+        </div>
+    </div>);
 };
 
 export default PhotoGallery;

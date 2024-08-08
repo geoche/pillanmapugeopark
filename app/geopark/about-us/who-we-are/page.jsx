@@ -11,27 +11,19 @@ const WhoWeAre = () => {
         <section
             className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <Navbar/>
             <div className={`mx-auto bg-default-opacity w-full h-80`}/>
-            <RoundedSeparator top={true}/>
             <div className={`flex flex-col py-12 bg-default`}>
-                <div className={`text-white text-center space-y-2 mx-4 md:mx-24 `}>
+                <div className={`text-center space-y-2 mx-4 md:mx-24 `}>
                     <h1 className={`text-3xl`}>WE ARE A TEAM</h1>
                     <p className={`text-lg`}>Who loves working in the service of nature, culture and the people who
                         inhabit the magical territories of the Maule mountain range.</p>
                 </div>
-                <div className={`py-4`}>
-                    <Separator/>
-                </div>
+
             </div>
             <div className={`bg-default pb-24`}>
                 <PermanentTeam/>
-                <Separator/>
                 <TeamByProject/>
             </div>
-            <RoundedSeparator top={false}/>
-
-            <Footer classNameExternal={"relative w-full"}/>
         </section>
     );
 };
