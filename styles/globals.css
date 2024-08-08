@@ -22,8 +22,12 @@ body {
     @apply bg-white
 }
 
-.bg-green-pm {
+.bg-button {
     @apply bg-[#6a9a8d]
+}
+
+.bg-button-hover {
+    @apply bg-[#547b70]
 }
 
 .bg-default-opacity {

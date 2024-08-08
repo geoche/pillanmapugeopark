@@ -15,17 +15,17 @@ export const Footer = ({classNameExternal}) => {
         <div className={`${classNameExternal} relative bg-white`}>
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="grid gap-16 mb-8 lg:grid-cols-6">
-                    <div className="lg:col-span-2 flex items-center">
-                        <Link href="/" className="flex-shrink-0">
-                            <div className="relative w-16 md:w-28 lg:w-1/2">
+                    <div className="grid-cols-1 col-span-2 flex flex-between">
+                        <Link href="/">
+                            <div className="relative w-1/2 lg:w-[80%]">
                                 <Image
                                     src={footerLogo}
                                     alt="logo"
-                                    className="max-w-44 "
+                                    className={`w-full h-full max-w-44`}
                                 />
                             </div>
                         </Link>
-                        <div className="ml-auto px-4">
+                        <div className=" px-4">
                             <p className="font-semibold mb-2 text-center">Social Media</p>
                             <div className="flex space-x-4 text-center">
                                 <Link href={"https://www.facebook.com/GeoparquePillanmapu"}
@@ -49,8 +49,8 @@ export const Footer = ({classNameExternal}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-32 lg:col-span-4 md:grid-cols-3">
-                    <div>
+                    <div className="grid grid-cols-3 gap-32 lg:col-span-4 md:grid-cols-3">
+                        <div>
                             <p className="font-semibold tracking-wide text-teal-accent-400">
                                 The Geopark
                             </p>
@@ -89,7 +89,7 @@ export const Footer = ({classNameExternal}) => {
                     </div>
                 </div>
                 <div
-                    className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 lg:flex-row ">
+                    className="flex flex-col justify-between p-4 border-t border-deep-purple-accent-200 lg:flex-row ">
                     <p className="text-sm text-black">
                         Copyright © 2024 Geoparque Pillanmapu Powered by Geoparque Pillanmapu
                     </p>
@@ -104,10 +104,10 @@ export const Footer = ({classNameExternal}) => {
                                     alt="SoftwareHut Logo"
                                     width={150}
                                     height={100}
-                                />                            
+                                />
                             </a>
                         </Link>
-                        
+
                     </div>
                 </div>
             </div>
