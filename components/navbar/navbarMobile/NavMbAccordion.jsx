@@ -2,9 +2,11 @@
 import { useState } from "react";
 import NavMbAccordionItem from "@components/navbar/navbarMobile/NavMbAccordionItem";
 
-import { visitUsLinks } from "@components/navbar/navbarLinks/visitUsLinks";
-import { interactiveMapLinks } from "@components/navbar/navbarLinks/iteractiveMapLinks";
-import { geoparkLinks } from "@components/navbar/navbarLinks/geoparkLinks";
+import {geoparkLinks} from "@components/navbar/navbarLinks/geoparkLinks";
+import {exploreGeoparkLinks} from "@components/navbar/navbarLinks/exploreGeoparkLinks";
+import {interactiveMapLinks} from "@components/navbar/navbarLinks/iteractiveMapLinks";
+import {visitUsLinks} from "@components/navbar/navbarLinks/visitUsLinks";
+import {blogLinks} from "@components/navbar/navbarLinks/blogLinks";
 
 const NavMbAccordion = () => {
     const [openIndex, setOpenIndex] = useState(null);
@@ -14,13 +16,15 @@ const NavMbAccordion = () => {
     };
 
     const links = [
-        { title: "Visit Us", links: visitUsLinks },
         { title: "The Geopark", links: geoparkLinks },
+        { title: "Explore the Geopark", links: exploreGeoparkLinks },
         { title: "Interactive Map", links: interactiveMapLinks },
+        { title: "Visit Us", links: visitUsLinks },
+        { title: "Blog", links: blogLinks },
     ];
 
     return (
-        <div className="space-y-4 bg-transparent">
+        <div className="bg-transparent z-20">
             {links.map((group, index) => (
                 <div key={index}>
                     <NavMbAccordionItem

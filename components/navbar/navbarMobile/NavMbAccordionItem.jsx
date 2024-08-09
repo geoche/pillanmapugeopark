@@ -3,13 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Link from "next/link";
 
-const NavMbAccordionItem = ({
-                                item,
-                                isOpen,
-                                onToggle,
-                                isParentOpen,
-                                setOpenIndex,
-                            }) => {
+const NavMbAccordionItem = ({ item, isOpen, onToggle, isParentOpen, setOpenIndex }) => {
     const [isChildOpen, setIsChildOpen] = useState(null);
     const contentRef = useRef(null);
     const hasChildren = item.children && item.children.length > 0;
@@ -35,23 +29,26 @@ const NavMbAccordionItem = ({
     }, [setOpenIndex]);
 
     return (
-        <div className="space-y-2">
-            <div
-                className="flex justify-between items-center cursor-pointer"
-                onClick={() => {
+        <div className="pt-4">
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => {
+                if (hasChildren) {
                     onToggle();
-                    setIsChildOpen(null); // Close all children when parent is toggled
-                }}
-            >
-                <Link href={item.link}>
-                    <p className="">{item.label}</p>
-                </Link>
-                {hasChildren && (
-                    <MdKeyboardArrowDown
-                        className={`transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : "rotate-0"
-                        }`}
-                    />
+                    setIsChildOpen(null);
+                }
+            }}>
+                {hasChildren ? (
+                    <button className="flex items-center w-full justify-between">
+                        <p>{item.label}</p>
+                        <MdKeyboardArrowDown
+                            className={`transition-transform duration-300 ${
+                                isOpen ? "rotate-180" : "rotate-0"
+                            }`}
+                        />
+                    </button>
+                ) : (
+                    <Link href={item.link}>
+                        <p className="">{item.label}</p>
+                    </Link>
                 )}
             </div>
             {hasChildren && (
@@ -60,7 +57,6 @@ const NavMbAccordionItem = ({
                     className={`transition-all duration-300 ease-in-out overflow-hidden ${
                         isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                     }`}
-
                 >
                     <div className="pl-4">
                         {item.children.map((child, index) => (

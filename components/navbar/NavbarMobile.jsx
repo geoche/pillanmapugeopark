@@ -62,7 +62,7 @@ const NavbarMobile = () => {
                             </button>
                         </TEModalHeader>
                         {/* <!--Modal body--> */}
-                        <TEModalBody>
+                        <TEModalBody className={`!py-0 !pb-4 !px-4`}>
                             <NavMbAccordion/>
                         </TEModalBody>
                     </TEModalContent>
