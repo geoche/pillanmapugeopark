@@ -11,7 +11,7 @@ import {
 } from "tw-elements-react";
 import { GrClose, GrMenu } from "react-icons/gr";
 
-import NavbarItemsList from "@components/navbar/NavbarItemsList";
+import NavMbAccordion from "@components/navbar/navbarMobile/NavMbAccordion";
 
 const NavbarMobile = () => {
     const [showModalSm, setShowModalSm] = useState(false);
@@ -63,7 +63,7 @@ const NavbarMobile = () => {
                         </TEModalHeader>
                         {/* <!--Modal body--> */}
                         <TEModalBody>
-                            <NavbarItemsList/>
+                            <NavMbAccordion/>
                         </TEModalBody>
                     </TEModalContent>
                 </TEModalDialog>
