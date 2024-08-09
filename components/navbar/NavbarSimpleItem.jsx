@@ -1,6 +1,4 @@
-﻿"use client"
-
-import Link from "next/link";
+﻿import Link from "next/link";
 
 const NavbarSimpleItem = ({refLink, label, index}) => {
     return (

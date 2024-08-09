@@ -1,9 +1,9 @@
 ﻿const Documentary = () => {
     return (
-        <div className={`flex items-center justify-center bg-default`}>
-            <div className="text-center w-screen">
-                <h2 className="text-3xl font-bold">PILLANMAPU DOCUMENTARY</h2>
-                <div className="max-w-2xl h-56 md:h-96 md:mx-auto">
+        <div className={`flex items-center justify-center bg-default py-12`}>
+            <div className="text-center w-full">
+                <h2 className="text-3xl">PILLANMAPU DOCUMENTARY</h2>
+                <div className="max-w-2xl aspect-video mx-auto p-4">
                     <iframe
                         className="w-full h-full"
                         src="https://www.youtube-nocookie.com/embed/VEXeD46jHnA?si=rs7clQB1lP3L4nYi"

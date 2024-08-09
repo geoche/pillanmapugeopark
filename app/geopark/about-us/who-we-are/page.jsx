@@ -9,7 +9,7 @@ import Separator from "@components/Separator";
 const WhoWeAre = () => {
     return (
         <section
-            className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
+            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
             <div className={`mx-auto bg-default-opacity w-full h-80`}/>
             <div className={`flex flex-col py-12 bg-default`}>

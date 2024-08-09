@@ -8,7 +8,7 @@ import TextWithImageAligned from "@components/TextWithImageAligned";
 const WhatWeDo = () => {
     return (
         <section
-            className="relative h-screen w-screen overflow-x-hidden flex-col overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg bg-[#6a9a8d] bg-opacity-70"
+            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
             style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
             <div className={`mx-auto bg-[#6a9a8d] bg-opacity-50 w-full h-80`}/>
             {whatWeDoList.map((item, index) => (
