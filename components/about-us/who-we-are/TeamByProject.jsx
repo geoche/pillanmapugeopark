@@ -7,12 +7,19 @@ import Separator from "@components/Separator";
 
 const TeamByProject = () => {
     return (
-        <div className={`bg-white mx-auto`}>
-            <Avatars header={`TEAM BY PROJECT`.toUpperCase()} teamName={`INVESTIGATION`.toUpperCase()}
-                     team={teamByProjects}/>
-            <Avatars teamName={`INFRASTRUCTURE`.toUpperCase()} team={infrastructure}/>
-            <Avatars teamName={`MONITORING`.toUpperCase()} team={monitoring}/>
-        </div>
+        <>
+            <div className={`bg-default-opacity`}>
+                <Avatars header={`TEAM BY PROJECT`.toUpperCase()} teamName={`INVESTIGATION`.toUpperCase()}
+                         team={teamByProjects} whiteText={true}/>
+            </div>
+            <div className={`bg-white mx-auto`}>
+                <Avatars teamName={`INFRASTRUCTURE`.toUpperCase()} team={infrastructure}/>
+            </div>
+            <div className={`bg-default-opacity`}>
+                <Avatars teamName={`MONITORING`.toUpperCase()} team={monitoring} whiteText={true}/>
+            </div>
+        </>
+
     );
 };
 

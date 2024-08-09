@@ -2,9 +2,9 @@
 
 import {useState, useEffect} from 'react';
 import {IoIosArrowDown} from "react-icons/io";
-import Separator from "@components/Separator";
 import Image from "next/image";
 import Spinner from "@components/Spinner";
+import Separator from "@components/Separator";
 
 const EventsCalendar = () => {
     const [events, setEvents] = useState([]);
@@ -30,7 +30,7 @@ const EventsCalendar = () => {
             }
         };
 
-        fetchEvents();
+        fetchEvents().then(() => {});
     }, []);
 
     const toggleEvent = (index) => {
@@ -38,11 +38,10 @@ const EventsCalendar = () => {
     };
 
     return (
-        <div className={`mx-auto p-4 bg-default w-full pb-32 py-12 `}>
-            <h1 className=" pt-12 md:pt-0 text-3xl text-center px-4">EVENTS CALENDAR</h1>
-            <h1 className=" pt-4 text-lg text-center">See our latest events</h1>
-            <div className={`max-w-7xl flex flex-col justify-center items-center mx-auto py-4 `}>
-
+        <div className="mx-auto p-4 bg-default w-full py-12">
+            <h2 className={`text-h-secondary`}>See our latest events</h2>
+            <Separator/>
+            <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
                 {loading ? (
                     <Spinner/>
                 ) : (
@@ -65,32 +64,32 @@ const EventsCalendar = () => {
                                     </div>
 
                                     <div id="DESCRIPTION"
-                                         className={`w-full md:w-[50%] flex h-full text-justify transition-all duration-150 md:duration-500 px-4 md:px-0 ${openIndex === index ? 'text-lg md:text-2xl pt-4 md:pt-0' : ''}`}>
+                                         className={`w-full md:w-[50%] flex h-full text-justify transition-all duration-150 md:duration-300 px-4 md:px-0 ${openIndex === index ? 'text-lg md:text-2xl pt-4 md:pt-0' : ''}`}>
                                         {event.eventShortDesc}
                                     </div>
 
                                     <div id="IMAGE"
-                                         className={`transition-all duration-300 md:duration-500 ${openIndex === index ? 'max-w-0 max-h-0' : 'lg:max-w-[13%] w-full h-full'} px-4`}>
-                                        <Image src={event.eventImgSrc} alt="event image" width={0} height={0} className="rounded-2xl shadow-2xl transition-all duration-300 my-4 md:my-0 w-full h-full" />
+                                         className={`transition-all duration-300 md:duration-300 ${openIndex === index ? 'max-w-0 max-h-0' : 'lg:max-w-[13%] w-full h-full'} px-4`}>
+                                        <Image src={event.eventImgSrc} alt="event image" width={0} height={0} className="transition-all duration-300 my-4 md:my-0 w-full h-full" />
 
                                     </div>
 
                                     <div className="w-full sm:w-auto flex justify-center sm:block mt-4 sm:mt-0">
                                         <IoIosArrowDown
-                                            className={`text-3xl transform transition-transform duration-300 md:duration-500 ${openIndex === index ? 'rotate-180' : ''}`}/>
+                                            className={`text-3xl transform transition-transform duration-300 md:duration-300 ${openIndex === index ? 'rotate-180' : ''}`}/>
                                     </div>
                                 </div>
                             </button>
                             <div
-                                className={`mt-4 px-4 md:px-12 transition-all duration-300 md:duration-500 overflow-hidden ${openIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
+                                className={`p-4 transition-all duration-300 md:duration-300 overflow-hidden ${openIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
                                 <div
                                     className="flex flex-col md:flex-row justify-between p-0 md:p-4 items-center space-x-0 md:space-x-6">
                                     <div className="w-full md:w-1/2">
                                         <p className="text-justify">{event.eventFullDesc}</p>
                                     </div>
-                                    <div className="w-full md:w-1/2 pl-0">
+                                    <div className="w-full md:w-[70%]">
                                         <Image src={event.eventImgSrc} alt="event image" width={0} height={0}
-                                               className="rounded-2xl my-4 md:my-0 w-full h-full"/>
+                                               className="w-full h-full py-4"/>
                                     </div>
                                 </div>
                             </div>

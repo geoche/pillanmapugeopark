@@ -2,9 +2,7 @@
 
 const InteractiveMap = () => {
     return (
-        <section
-            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
-            style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
+        <section className={`component-section`}>
             <PageUnderConstruction/>
         </section>
     );

@@ -3,9 +3,7 @@ import ManagementPublicSector from "@app/geopark/management/public-sector/page";
 
 const Associates = () => {
     return (<div>
-        <section
-            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
-            style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
+        <section className={`component-section`}>
             <ManagementAcademy/>
             <ManagementPublicSector/>
         </section>

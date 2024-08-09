@@ -17,8 +17,8 @@
 
 const TerritoryMission = () => {
     return (
-        <div className={`flex items-center justify-center py-32 mx-auto bg-[#6a9a8d] bg-opacity-50`}>
-            <div className="text-center text-white lg:px-32 w-screen 2xl:mx-72 my-14">
+        <div className={`flex items-center justify-center mx-auto bg-default-opacity py-12`}>
+            <div className="text-center text-white w-screen  max-w-7xl">
                 <div className="flex flex-wrap">
                     {missionVisionValues.map((text, index) => (
                         <div key={index} className="w-full md:w-1/3 p-4">

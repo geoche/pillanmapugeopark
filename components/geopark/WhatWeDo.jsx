@@ -1,32 +1,24 @@
 ﻿import Separator from "@components/Separator";
 import ReusableButton from "@components/ReusableButton";
 import Image from "next/image";
-
-const wwdImages = [{
-    imageSource: '/assets/images/geopark/doctor.png', buttonText: 'investigation'
-}, {
-    imageSource: '/assets/images/geopark/knight.png', buttonText: 'conservation'
-}, {
-    imageSource: '/assets/images/geopark/turista.png', buttonText: 'geotourism'
-}, {
-    imageSource: '/assets/images/geopark/teacher.png', buttonText: 'education'
-}]
+import {whatWeDoSources} from "@components/homepage/sources/whatWeDoSources";
 const WhatWeDo = () => {
     return (
-        <div className={`flex items-center justify-center mx-auto bg-default `}>
-            <div className="text-center text-white w-screen lg:px-32 xl:px-72">
+        <div className={`flex items-center justify-center mx-auto bg-default`}>
+            <div className="w-screen">
                 <div className={`py-12`}>
-                    <h2 className="text-3xl font-bold mb-8 md:mb-10 px-8">WHAT DO WE DO?</h2>
-                    <div className={`flex flex-col md:flex-row justify-center`}>
+                    <h2 className={`text-h-secondary`}>WHAT DO WE DO?</h2>
+                    <Separator/>
+                    <div className={`flex flex-col md:flex-row flex-center py-4`}>
                         <div className={`flex flex-col lg:flex-row`}>
-                            {wwdImages.map((image, index) => (
-                                <div key={index} className={`mx-auto my-8 md:mx-10`}>
+                            {whatWeDoSources.map((image, index) => (
+                                <div key={index} className={`flex flex-col flex-center mx-4`}>
                                     <Image src={image.imageSource}
                                            key={index}
                                            alt={"imgContent"}
                                            width={200}
                                            height={250}
-                                           className={`mb-4`}
+                                           className={`m-4`}
                                     />
                                     <ReusableButton buttonText={image.buttonText}
                                                     refLink={"/geopark/about-us/what-we-do"}/>

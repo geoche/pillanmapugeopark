@@ -8,7 +8,7 @@ const PublicSector = () => {
             imageSources={publicSectorLogos}
             contentAlignedRight={true}
             displayText={publicSectorText}
-            headerText={`public sector`}
+            headerText={`Public sector`}
         />
     );
 };

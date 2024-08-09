@@ -1,10 +1,10 @@
-﻿import {partnershipLogos} from "@components/partnership/partnershipLogos";
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
+import {partnershipLogos} from "@components/partnership/partnershipLogos";
 
 const PartnersLogos = () => {
     return (
-        <div className={`flex flex-wrap bg-white rounded-xl 2xl:mx-auto 2xl:w-1/2 p-4 justify-center flex-center mx-4 my-12`}>
+        <div className={`flex flex-wrap w-screen max-w-7xl flex-center mx-auto py-12`}>
             {partnershipLogos.map((item, index) => (
                 <div key={index} className={`w-full md:w-1/3 lg:w-1/4 p-2`}>
                     <Link href={item.link}

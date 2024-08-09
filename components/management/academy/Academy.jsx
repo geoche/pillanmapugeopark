@@ -9,7 +9,7 @@ const Academy = () => {
                 imageSources={academyLogos}
                 contentAlignedRight={false}
                 displayText={academyText}
-                headerText={`public sector`}
+                headerText={`Academy`}
             />
         </>
     );

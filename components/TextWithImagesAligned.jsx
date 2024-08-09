@@ -13,7 +13,7 @@ const TextWithImagesAligned = ({
             className={`relative flex flex-col items-center max-w-screen-xl px-4 py-12 mx-auto ${flexDirection} sm:px-6`}>
             <div className={`flex items-center md:w-1/2 md:pb-20 md:pt-10 ${padding}`}>
                 <div className="text-justify ">
-                    {headerText && <h2 className="text-xl font-bold mb-4 ">{headerText}</h2>}
+                    {headerText && <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
                     {displayText.map((text, index) => (<div className={`align-bottom`} key={index}>
                         <p className="pt-4">
                             {text}
@@ -25,7 +25,7 @@ const TextWithImagesAligned = ({
                 </div>
             </div>
             <div className="flex items-center md:w-1/2 flex-wrap py-12">
-                <div className="relative bg-white rounded-2xl p-4">
+                <div className="relative">
                     {imageSources.map((item, index) => (
                         <div className={`flex flex-col flex-center justify-center`} key={`div-${index}`}>
                             <Link href={item.link}

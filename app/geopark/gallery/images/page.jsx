@@ -1,14 +1,11 @@
 ﻿"use client"
-
 import PhotoGallery from "@components/gallery/image-gallery/PhotoGallery";
-
+import HeaderOpacity from "@components/HeaderOpacity";
 
 const Photos = () => {
     return (
-        <section
-            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
-            style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <div className={`mx-auto bg-default-opacity w-full h-80`}/>
+        <section className={`component-section`}>
+            <HeaderOpacity title={`Photo gallery`}/>
             <PhotoGallery/>
         </section>);
 };

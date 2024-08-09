@@ -14,17 +14,20 @@ const CollaborationInfo = () => {
     };
 
     return (
-        <div className="mx-auto p-4 bg-default-opacity w-full pb-32 py-20 text-white">
-            <h1 className="text-3xl font-bold mb-6 text-center">Strengthening collaborative work in Maule</h1>
-            <Separator/>
+        <div className="mx-auto p-4 bg-default w-full py-12">
+            <div className={`py-4`}>
+                <h2 className="text-h-secondary py-4">Strengthening collaborative work in Maule</h2>
+                <Separator/>
+                <h3 className={`text-center py-4`}>Resolve your doubts here</h3>
+            </div>
             <div className="space-y-4 max-w-2xl flex flex-col justify-center items-center mx-auto">
-                {colabInfo.map((faq, index) => (
+            {colabInfo.map((colab, index) => (
                     <div key={index} className="w-full">
                         <button
                             onClick={() => toggleColabInfo(index)}
                             className="w-full flex justify-between items-center text-left"
                         >
-                            <h2 className="text-xl font-bold text-center">{faq.question}</h2>
+                            <h3 className={`text-xl`}>{colab.question}</h3>
                             <IoIosArrowDown
                                 className={`transform transition-transform duration-300 ${
                                     openIndex === index ? 'rotate-180' : ''
@@ -32,12 +35,12 @@ const CollaborationInfo = () => {
                             />
                         </button>
                         <div
-                            className={`mt-4 transition-all duration-300 overflow-hidden bg-neutral-500 bg-opacity-50 rounded-xl 
+                            className={`mt-4 transition-all duration-300 overflow-hidden
                             ${
-                                openIndex === index ? 'max-h-screen p-4' : 'max-h-0 p-0'
+                                openIndex === index ? 'max-h-screen' : 'max-h-0 p-0'
                             }`}
                         >
-                            <p>{faq.answer}</p>
+                            <p>{colab.answer}</p>
                         </div>
                     </div>
                 ))}

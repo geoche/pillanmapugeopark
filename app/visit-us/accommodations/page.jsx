@@ -1,11 +1,10 @@
 ﻿import AccommodationsGridWModal from "@components/visit-us/accommodations/AccommodationsGridWModal";
+import HeaderOpacity from "@components/HeaderOpacity";
 
 const Accommodations = () => {
     return (
-        <section
-            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
-            style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <div className={`mx-auto bg-default-opacity w-full h-80`}/>
+        <section className={`component-section`}>
+            <HeaderOpacity title={`Accommodations`}/>
             <AccommodationsGridWModal/>
         </section>
     );

@@ -35,7 +35,6 @@ const VideoGallery = () => {
 
     return (<div className={`bg-default py-12`}>
             <div className="text-center w-full">
-                <h2 className="text-3xl font-bold mb-8 md:mb-10">VIDEO GALLERY</h2>
                 {loading ? (<Spinner/>) : (<div
                         className={`w-full flex flex-wrap flex-center items-center px-4 2xl:px-72 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                         {videos.map((item, index) => (

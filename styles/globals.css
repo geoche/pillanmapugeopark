@@ -18,6 +18,14 @@ body {
     @apply relative flex justify-center items-center flex-col max-w-7xl mx-auto;
 }
 
+.text-h-main {
+    @apply text-3xl md:text-5xl text-center
+
+}
+.text-h-secondary {
+    @apply text-3xl text-center py-4
+}
+
 .bg-default {
     @apply bg-white
 }
@@ -40,6 +48,14 @@ body {
 
 .bg-default-gradient {
     @apply bg-gradient-to-b from-[#6a9a8d] to-[#2c7a65]
+}
+
+.component-section {
+    @apply relative flex-col bg-cover bg-fixed bg-center bg-no-repeat bg-[url('/assets/images/banner.jpg')]
+}
+
+.text-default {
+    @apply text-[#6a9a8d]
 }
 
 .flex-between {

@@ -2,11 +2,11 @@
 
 const TextWithImgAndButton = ({textToMap =[], label, buttonText, buttonRefLink}) => {
     return (
-        <div className={`flex items-center justify-center py-32 mx-auto bg-default-opacity`}>
-            <div className="text-center text-white w-screen lg:px-32 xl:px-72">
-                <h2 className="text-3xl font-bold mb-8 md:mb-10">{label}</h2>
+        <div className={`flex items-center justify-center py-12 mx-auto bg-default-opacity`}>
+            <div className="text-center text-white w-screen max-w-7xl">
+                <h2 className="text-3xl font-bold py-8 ">{label}</h2>
                 {textToMap.map((text, index) => (
-                    <p key={index} className="w-full py-4 px-8 xl:px-72 2xl:px-96">
+                    <p key={index} className="w-full py-4">
                         {text}
                     </p>))}
                 <div className={`my-14`}></div>

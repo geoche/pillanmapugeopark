@@ -1,29 +1,22 @@
-﻿import Navbar from "@components/navbar/Navbar";
-import RoundedSeparator from "@components/RoundedSeparator";
-import Footer from "@components/Footer";
-import PermanentTeam from "@components/about-us/who-we-are/PermanentTeam";
+﻿import PermanentTeam from "@components/about-us/who-we-are/PermanentTeam";
 import TeamByProject from "@components/about-us/who-we-are/TeamByProject";
+import HeaderOpacity from "@components/HeaderOpacity";
 import Separator from "@components/Separator";
-
 
 const WhoWeAre = () => {
     return (
-        <section
-            className="relative flex-col bg-cover bg-fixed bg-center bg-no-repeat"
-            style={{backgroundImage: `url(/assets/images/banner.jpg)`}}>
-            <div className={`mx-auto bg-default-opacity w-full h-80`}/>
-            <div className={`flex flex-col py-12 bg-default`}>
-                <div className={`text-center space-y-2 mx-4 md:mx-24 `}>
-                    <h1 className={`text-3xl`}>WE ARE A TEAM</h1>
-                    <p className={`text-lg`}>Who loves working in the service of nature, culture and the people who
-                        inhabit the magical territories of the Maule mountain range.</p>
+        <section className={`component-section`}>
+            <HeaderOpacity title={`Who we are`}/>
+            <div className={`flex flex-col bg-default py-12`}>
+                <div className={`text-center`}>
+                    <h2 className={`text-h-secondary`}>WE ARE A TEAM</h2>
+                    <h3 className={`text-xl py-4`}>Who loves working in the service of nature, culture and the people who
+                        inhabit the magical territories of the Maule mountain range.</h3>
+                    <Separator/>
                 </div>
-
             </div>
-            <div className={`bg-default pb-24`}>
-                <PermanentTeam/>
-                <TeamByProject/>
-            </div>
+            <PermanentTeam/>
+            <TeamByProject/>
         </section>
     );
 };

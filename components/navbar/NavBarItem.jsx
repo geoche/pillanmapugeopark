@@ -7,7 +7,7 @@ import Link from "next/link";
 import {MdKeyboardArrowDown} from "react-icons/md";
 
 
-const NavbarItem = ({navItemsList = [], isInMobileView}) => {
+const NavbarItem = ({navItemsList = {}}) => {
     return (
         <>
             {navItemsList && navItemsList.map((item, index) => (

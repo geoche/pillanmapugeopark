@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {IoIosArrowDown} from "react-icons/io";
 
 import {questionsList} from "@components/territory/questionsList";
+import Separator from "@components/Separator";
 
 
 const FAQ = () => {
@@ -14,9 +15,12 @@ const FAQ = () => {
     };
 
     return (
-        <div className="mx-auto p-4 bg-default w-full pb-32 py-12">
-            <h1 className="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h1>
-            <h2 className="mb-12 text-center">Resolve your doubts here</h2>
+        <div className="mx-auto p-4 bg-default w-full py-12">
+            <div className={`py-4`}>
+                <h2 className={`text-h-secondary`}>Frequently Asked Questions</h2>
+                <Separator/>
+                <h3 className={`text-center py-4`}>Resolve your doubts here</h3>
+            </div>
             <div className="space-y-4 max-w-2xl flex flex-col justify-center items-center mx-auto">
                 {questionsList.map((faq, index) => (
                     <div key={index} className="w-full">
@@ -24,7 +28,7 @@ const FAQ = () => {
                             onClick={() => toggleFAQ(index)}
                             className="w-full flex justify-between items-center text-left"
                         >
-                            <h2 className="text-xl">{faq.question}</h2>
+                            <h4 className={`text-xl`}>{faq.question}</h4>
                             <IoIosArrowDown
                                 className={`transform transition-transform duration-300 ${
                                     openIndex === index ? 'rotate-180' : ''

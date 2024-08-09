@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const ImageGallery = ({images}) => {
     return (
-        <div className="relative flex items-center max-w-screen-xl mx-auto sm:py-4 sm:px-12 md:pr-12">
+        <div className="relative flex items-center max-w-screen-xl mx-auto py-4">
             <Gallery withCaption>
                 <div className="flex flex-wrap justify-center items-center">
                     {images.map((image, index) => (
@@ -18,13 +18,13 @@ const ImageGallery = ({images}) => {
                             caption={`<h1 class="text-lg md:text-2xl text-center pb-10">${image.caption}</h1>`}
                         >
                             {({ref, open}) => (
-                                <div ref={ref} onClick={open} className={`rounded-2xl`}>
+                                <div ref={ref} onClick={open}>
                                     <Image
                                         src={image.imageSrc}
                                         alt={`image`}
                                         width={369}
                                         height={247}
-                                        className={`m-2 rounded-xl`}
+                                        className={`m-2`}
                                     />
                                 </div>
                             )}
