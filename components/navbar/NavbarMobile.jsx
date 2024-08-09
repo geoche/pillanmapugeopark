@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {
     TERipple,
     TEModal,
@@ -13,10 +13,23 @@ import { GrClose, GrMenu } from "react-icons/gr";
 
 import NavbarItemsList from "@components/navbar/NavbarItemsList";
 
-
 const NavbarMobile = () => {
     const [showModalSm, setShowModalSm] = useState(false);
 
+    useEffect(() => {
+        const handleLinkClick = (event) => {
+            const linkElement = event.target.closest('a');
+            if (linkElement && linkElement.tagName === 'A') {
+                setShowModalSm(false);
+            }
+        };
+
+        document.addEventListener('click', handleLinkClick);
+
+        return () => {
+            document.removeEventListener('click', handleLinkClick);
+        };
+    }, []);
     return (
         <div className={`block lg:hidden p-2 l:pr-14 flex-row`}>
             <TERipple rippleColor="white">
