@@ -20,7 +20,6 @@ const Home = () => {
             <Accommodations/>
             <Separator/>
             <AssosiatedInstitutions/>
-            <Separator/>
         </div>
     );
 };
