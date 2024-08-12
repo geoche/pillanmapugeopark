@@ -4,6 +4,7 @@ import VideoForm from "@components/admin-panel/login/VideoForm";
 import ImageForm from "@components/admin-panel/login/ImageForm";
 import EventForm from "@components/admin-panel/login/EventForm";
 import ReusableButton from "@components/ReusableButton";
+import AccommodationForm from "@components/admin-panel/login/AccommodationForm";
 
 
 const LoginPage = () => {
@@ -20,6 +21,8 @@ const LoginPage = () => {
                         <ImageForm/>
                         <div className={`py-4`}/>
                         <EventForm/>
+                        <div className={`py-4`}/>
+                        <AccommodationForm/>
                     </div>
                 </div>
             ) : (
