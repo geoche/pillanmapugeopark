@@ -31,7 +31,7 @@ body {
 }
 
 .bg-button {
-    @apply bg-[#6a9a8d]
+    @apply bg-[#6a9a8d] hover:bg-[#547b70]
 }
 
 .bg-button-hover {

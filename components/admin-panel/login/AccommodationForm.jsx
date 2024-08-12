@@ -252,7 +252,7 @@ const AccommodationForm = () => {
                     />
                 </div>
             </div>
-            <button type="submit" className="bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500">
+            <button type="submit" className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}>
                 Submit
             </button>
             {message && <p className="mt-4 text-center text-green-500">{message}</p>}

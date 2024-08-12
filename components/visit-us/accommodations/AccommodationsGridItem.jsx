@@ -41,7 +41,7 @@ function parsePhones(phones) {
     });
 }
 
-const AccommodationsItem = ({item = {}, index}) => {
+const AccommodationsGridItem = ({item = {}, index}) => {
     const [showModalSm, setShowModalSm] = useState(false);
 
     useEffect(() => {
@@ -143,4 +143,4 @@ const AccommodationsItem = ({item = {}, index}) => {
     );
 };
 
-export default AccommodationsItem;
+export default AccommodationsGridItem;
