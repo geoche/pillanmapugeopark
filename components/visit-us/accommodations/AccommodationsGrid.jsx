@@ -1,6 +1,7 @@
 ﻿"use client"
 import { useEffect, useState } from 'react';
 import AccommodationsGridItem from "@components/visit-us/accommodations/AccommodationsGridItem";
+import Spinner from "@components/Spinner";
 
 const AccommodationsGrid = () => {
     const [accommodations, setAccommodations] = useState([]);
@@ -27,7 +28,12 @@ const AccommodationsGrid = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading accommodations...</p>;
+        
+        return (
+            <div className={`flex flex-row flex-center bg-default-opacity w-screen h-[90%]`}>
+                <Spinner/>
+            </div>
+        )
     }
 
     if (error) {
