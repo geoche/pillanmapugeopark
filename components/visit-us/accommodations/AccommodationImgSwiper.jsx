@@ -17,7 +17,7 @@ const AccommodationImgSwiper = ({images = {}}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
     return (
-        <section className='max-w-2xl xl:max-w-4xl h-full '>
+        <section className='max-w-4xl h-full '>
             <div className='container'>
                 <Swiper
                     loop={true}
@@ -29,7 +29,6 @@ const AccommodationImgSwiper = ({images = {}}) => {
                     }}
                     modules={[FreeMode, Navigation, Thumbs]}
                 >
-                    <Separator/>
                     {images.map((image, index) => (
                         <SwiperSlide key={index}>
                             <div className='flex h-full w-full items-center justify-center'>
@@ -38,7 +37,7 @@ const AccommodationImgSwiper = ({images = {}}) => {
                                     width={800}
                                     height={600}
                                     alt={`imageswp-${index}`}
-                                    className='h-full w-full rounded-2xl aspect-video'
+                                    className='h-full w-full'
                                 />
                             </div>
                         </SwiperSlide>
@@ -58,13 +57,13 @@ const AccommodationImgSwiper = ({images = {}}) => {
                 >
                     {images.map((image, index) => (
                         <SwiperSlide key={index}>
-                            <button className='flex h-full w-full items-center justify-center'>
+                            <button className='flex h-full w-full items-center justify-center pt-4'>
                                 <Image
                                     src={image}
                                     width={800}
                                     height={600}
                                     alt={`imageswp-${index}`}
-                                    className={`rounded-2xl aspect-video xl:max-h-44 xl:max-w-[18.5rem]`}
+                                    className={`aspect-video `}
                                 />
                             </button>
                         </SwiperSlide>

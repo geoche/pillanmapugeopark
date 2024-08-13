@@ -28,33 +28,28 @@ const AccommodationDetails = ({item = {}, index}) => {
     }, []);
 
     const itemDetails = [
-        { icon: ImHome3, text: item.facilities },
-        { icon: ImAddressBook, text: item.contact.address },
-        { icon: ImPhone, text: parsePhones(item.contact.phone), isNested: true },
-        { icon: ImMail4, text: item.contact.email },
-        { icon: ImLink, element: <ReusableButton buttonText={`Website`} refLink={item.contact.link}/> }
+        {icon: ImHome3, text: item.facilities},
+        {icon: ImAddressBook, text: item.contact.address},
+        {icon: ImPhone, text: parsePhones(item.contact.phone), isNested: true},
+        {icon: ImMail4, text: item.contact.email},
+        {icon: ImLink, element: <ReusableButton buttonText={`Website`} refLink={item.contact.link}/>}
     ];
 
     return (
-        <div
-            className={`w-full h-full flex flex-wrap items-center flex-center max-w-screen-xl py-4`}
-        >
+        <div className={`w-full h-full flex flex-col flex-center max-w-screen-7xl py-12 px-4 bg-default`}>
             <AccommodationImgSwiper images={item.imagesSrc}/>
-            <div className={`py-4 text-center mx-auto sm:px-6`}>
+            <div className={`py-4 text-center mx-auto max-w-screen-xl`}>
                 <h3 className={`text-xl`}>
                     {`ABOUT ${item.title}`}
                 </h3>
-                <div className={`text-justify`}>
-                    {parseDescription(item.description)}
-                </div>
+                {parseDescription(item.description)}
             </div>
 
-            <div className={`flex flex-wrap flex-center items-baseline text-center text-sm mx-4`}>
+            <div className={`flex flex-wrap flex-between text-sm max-w-screen-7xl mx-auto`}>
                 {itemDetails.map((detail = {}, index) => (
-                    <div key={index}
-                         className={`flex-col w-1/2 md:w-1/3 xl:w-1/5 flex-center items-center pt-4`}>
+                    <div key={index} className={`flex flex-col ${index > 2 ? "w-full" : "w-1/3"} xl:w-1/5 flex-center p-4`}>
                         <detail.icon className={`w-11 h-11 `}/>
-                        <span className={`min-h-24 w-auto md:min-w-44 ${detail.text ? "pt-8" : "pt-4"}`}>
+                        <span className={`${index === 3 ? "min-h-2 xl:min-h-32" : "min-h-32"} mt-4 text-center`}>
                                                 {detail.text ? detail.text : detail.element}
                                                 </span>
                     </div>

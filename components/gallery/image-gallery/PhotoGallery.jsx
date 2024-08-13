@@ -1,6 +1,5 @@
 ﻿import {useEffect, useState} from 'react';
 import ImageGallery from "@components/ImageGallery";
-import Separator from "@components/Separator";
 import Spinner from "@components/Spinner";
 
 const PhotoGallery = () => {
