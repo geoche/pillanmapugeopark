@@ -1,4 +1,3 @@
-"use client"
 import {useState, useRef} from 'react';
 import Spinner from "@components/Spinner";
 
@@ -21,7 +20,9 @@ const AccommodationForm = () => {
     });
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const fileInputRef = useRef(null);
+
+    const mainImgInputRef = useRef(null);
+    const imagesInputRef = useRef(null);
 
     const handleMainImageChange = (e) => {
         const file = e.target.files[0];
@@ -110,7 +111,8 @@ const AccommodationForm = () => {
                     type: 'Point',
                     coordinates: [0, 0],
                 });
-                fileInputRef.current.value = '';
+                mainImgInputRef.current.value = '';
+                imagesInputRef.current.value = '';
             } else {
                 setMessage('Failed to save accommodation');
             }
@@ -130,7 +132,7 @@ const AccommodationForm = () => {
                     id="mainImgSrc"
                     accept="image/*"
                     onChange={handleMainImageChange}
-                    ref={fileInputRef}
+                    ref={mainImgInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                     disabled={loading}
@@ -144,7 +146,7 @@ const AccommodationForm = () => {
                     accept="image/*"
                     multiple
                     onChange={handleImagesChange}
-                    ref={fileInputRef}
+                    ref={imagesInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                     disabled={loading}
