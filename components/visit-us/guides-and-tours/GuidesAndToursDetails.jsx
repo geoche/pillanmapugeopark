@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 
 import {ImSearch, ImAddressBook, ImPhone, ImMail4, ImLink, } from "react-icons/im";
 import ReusableButton from "@components/ReusableButton";
@@ -22,15 +22,16 @@ function parseTypes(types) {
     });
 }
 
-const GuidesAndToursDetails = ({item = {}, index}) => {
-    const [showModalSm, setShowModalSm] = useState(false);
-
+const GuidesAndToursDetails = ({item = {}}) => {
     useEffect(() => {
         // This code will run only on the client side
         if (typeof window !== "undefined") {
             // Any client side specific code can be added here
         }
     }, []);
+
+    const allImages = [item.mainImgSrc, ...item.imagesSrc];
+
 
     const itemDetails = [
         {icon: ImSearch, text: parseTypes(item.type)},
@@ -42,7 +43,7 @@ const GuidesAndToursDetails = ({item = {}, index}) => {
 
     return (
         <div className={`w-full h-full flex flex-col flex-center max-w-screen-7xl py-12 px-4 bg-default`}>
-            <GuidesAndToursImgSwiper images={item.imagesSrc}/>
+            <GuidesAndToursImgSwiper images={allImages}/>
             <div className={`py-4 text-center mx-auto max-w-screen-xl`}>
                 <h3 className={`text-xl`}>
                     {`ABOUT ${item.title}`}

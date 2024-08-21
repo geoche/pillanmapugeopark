@@ -22,7 +22,7 @@ function parseTypes(types) {
     });
 }
 
-const AccommodationDetails = ({item = {}, index}) => {
+const AccommodationDetails = ({item = {}}) => {
     useEffect(() => {
         if (typeof window !== "undefined") {
         }
