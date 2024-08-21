@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import AccommodationsGridItem from "@components/visit-us/accommodations/AccommodationsGridItem";
 import Spinner from "@components/Spinner";
 import Separator from "@components/Separator";
@@ -40,7 +40,8 @@ const AccommodationsGrid = () => {
             }
         };
 
-        fetchAccommodations().then(() => {});
+        fetchAccommodations().then(() => {
+        });
     }, []);
 
     const handleCityChange = (e) => {
@@ -69,29 +70,31 @@ const AccommodationsGrid = () => {
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
             <h2 className={`text-h-secondary`}>Find an accommodation</h2>
-            <Separator />
+            <Separator/>
             <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
-                {loading ? (<Spinner />) : (
+                {loading ? (<Spinner/>) : (
                     <>
-                        {accommodations.length > 0 ? (<div className={`flex flex-row flex-center w-full py-4`}>
-                            <select value={selectedCity} onChange={handleCityChange}
-                                    className={`p-2 mx-4 border rounded`}>
-                                {cities.map((city, index) => (
-                                    <option key={index} value={city} className={`font-bold`}>
-                                        {city}
-                                    </option>
-                                ))}
-                            </select>
+                        {accommodations.length > 0 ? (
+                            <div
+                                className={`flex flex-row flex-center w-full py-4 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                <select value={selectedCity} onChange={handleCityChange}
+                                        className={`p-2 mx-4 border rounded`}>
+                                    {cities.map((city, index) => (
+                                        <option key={index} value={city} className={`font-bold`}>
+                                            {city}
+                                        </option>
+                                    ))}
+                                </select>
 
-                            <select value={selectedFacility} onChange={handleFacilityChange}
-                                    className="p-2 border rounded">
-                                {facilityType.map((facility, index) => (
-                                    <option key={index} value={facility} className={`font-bold`}>
-                                        {facility}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>) : <></>}
+                                <select value={selectedFacility} onChange={handleFacilityChange}
+                                        className="p-2 border rounded">
+                                    {facilityType.map((facility, index) => (
+                                        <option key={index} value={facility} className={`font-bold`}>
+                                            {facility}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>) : <></>}
                         <div
                             className={`w-full flex flex-wrap flex-center items-center max-w-7xl mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                             {filteredAccommodations.map((item, index) => (
