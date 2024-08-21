@@ -18,12 +18,8 @@ function parsePhones(phones) {
 }
 
 const AccommodationDetails = ({item = {}, index}) => {
-    const [showModalSm, setShowModalSm] = useState(false);
-
     useEffect(() => {
-        // This code will run only on the client side
         if (typeof window !== "undefined") {
-            // Any client side specific code can be added here
         }
     }, []);
 
@@ -34,10 +30,11 @@ const AccommodationDetails = ({item = {}, index}) => {
         {icon: ImMail4, text: item.contact.email},
         {icon: ImLink, element: <ReusableButton buttonText={`Website`} refLink={item.contact.link}/>}
     ];
+    const allImages = [item.mainImgSrc, ...item.imagesSrc];
 
     return (
         <div className={`w-full h-full flex flex-col flex-center max-w-screen-7xl py-12 px-4 bg-default`}>
-            <AccommodationImgSwiper images={item.imagesSrc}/>
+            <AccommodationImgSwiper images={allImages}/>
             <div className={`py-4 text-center mx-auto max-w-screen-xl`}>
                 <h3 className={`text-xl`}>
                     {`ABOUT ${item.title}`}
@@ -47,7 +44,8 @@ const AccommodationDetails = ({item = {}, index}) => {
 
             <div className={`flex flex-wrap flex-between text-sm max-w-screen-7xl mx-auto`}>
                 {itemDetails.map((detail = {}, index) => (
-                    <div key={index} className={`flex flex-col ${index > 2 ? "w-full" : "w-1/3"} xl:w-1/5 flex-center p-4`}>
+                    <div key={index}
+                         className={`flex flex-col ${index > 2 ? "w-full" : "w-1/3"} xl:w-1/5 flex-center p-4`}>
                         <detail.icon className={`w-11 h-11 `}/>
                         <span className={`${index === 3 ? "min-h-2 xl:min-h-32" : "min-h-32"} mt-4 text-center`}>
                                                 {detail.text ? detail.text : detail.element}

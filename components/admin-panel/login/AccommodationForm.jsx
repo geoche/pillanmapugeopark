@@ -1,5 +1,6 @@
 "use client"
-import { useState } from 'react';
+import {useState, useRef} from 'react';
+import Spinner from "@components/Spinner";
 
 const AccommodationForm = () => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
@@ -19,6 +20,8 @@ const AccommodationForm = () => {
         coordinates: [0, 0],
     });
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef(null);
 
     const handleMainImageChange = (e) => {
         const file = e.target.files[0];
@@ -50,17 +53,18 @@ const AccommodationForm = () => {
     };
 
     const handleContactChange = (e) => {
-        setContact({ ...contact, [e.target.name]: e.target.value });
+        setContact({...contact, [e.target.name]: e.target.value});
     };
 
     const handleLocationChange = (e, index) => {
         const newCoordinates = [...location.coordinates];
         newCoordinates[index] = parseFloat(e.target.value);
-        setLocation({ ...location, coordinates: newCoordinates });
+        setLocation({...location, coordinates: newCoordinates});
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const accommodationData = {
             mainImgSrc,
@@ -106,11 +110,14 @@ const AccommodationForm = () => {
                     type: 'Point',
                     coordinates: [0, 0],
                 });
+                fileInputRef.current.value = '';
             } else {
                 setMessage('Failed to save accommodation');
             }
         } catch (error) {
             setMessage('An error occurred');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -123,8 +130,10 @@ const AccommodationForm = () => {
                     id="mainImgSrc"
                     accept="image/*"
                     onChange={handleMainImageChange}
+                    ref={fileInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -135,8 +144,10 @@ const AccommodationForm = () => {
                     accept="image/*"
                     multiple
                     onChange={handleImagesChange}
+                    ref={fileInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -148,6 +159,7 @@ const AccommodationForm = () => {
                     onChange={(e) => setCity(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -159,6 +171,7 @@ const AccommodationForm = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -170,6 +183,7 @@ const AccommodationForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     rows="4"
                     required
+                    disabled={loading}
                 ></textarea>
             </div>
             <div className="mb-4">
@@ -181,6 +195,7 @@ const AccommodationForm = () => {
                     onChange={(e) => setFacilities(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 ></input>
             </div>
             <div className="mb-4">
@@ -193,6 +208,7 @@ const AccommodationForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -205,6 +221,7 @@ const AccommodationForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -217,6 +234,7 @@ const AccommodationForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -229,6 +247,7 @@ const AccommodationForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -241,6 +260,7 @@ const AccommodationForm = () => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Longitude"
                         required
+                        disabled={loading}
                     />
                     <input
                         type="number"
@@ -249,13 +269,23 @@ const AccommodationForm = () => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Latitude"
                         required
+                        disabled={loading}
                     />
                 </div>
             </div>
-            <button type="submit" className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}>
-                Submit
-            </button>
-            {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+            {loading ?
+                <div className={`w-full flex flex-center`}>
+                    <Spinner/>
+                </div> : (
+                    <button
+                        type="submit"
+                        className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
+                        disabled={loading}
+                    >
+                        Submit
+                    </button>)}
+
+            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
         </form>
     );
 };

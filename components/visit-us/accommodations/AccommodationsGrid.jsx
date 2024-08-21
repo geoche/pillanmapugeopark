@@ -61,7 +61,7 @@ const AccommodationsGrid = () => {
             });
             setFilteredAccommodations(filtered);
             setShowContent(true);
-        }, 300); // Delay for smooth transition after filtering
+        }, 300);
 
         return () => clearTimeout(timeout);
     }, [selectedCity, selectedFacility, accommodations]);
@@ -73,8 +73,9 @@ const AccommodationsGrid = () => {
             <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
                 {loading ? (<Spinner />) : (
                     <>
-                        <div className={`flex flex-row flex-center w-full py-4`}>
-                            <select value={selectedCity} onChange={handleCityChange} className={`p-2 mx-4 border rounded`}>
+                        {accommodations.length > 0 ? (<div className={`flex flex-row flex-center w-full py-4`}>
+                            <select value={selectedCity} onChange={handleCityChange}
+                                    className={`p-2 mx-4 border rounded`}>
                                 {cities.map((city, index) => (
                                     <option key={index} value={city} className={`font-bold`}>
                                         {city}
@@ -90,7 +91,7 @@ const AccommodationsGrid = () => {
                                     </option>
                                 ))}
                             </select>
-                        </div>
+                        </div>) : <></>}
                         <div
                             className={`w-full flex flex-wrap flex-center items-center max-w-7xl mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                             {filteredAccommodations.map((item, index) => (
