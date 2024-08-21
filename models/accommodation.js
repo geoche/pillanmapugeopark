@@ -25,8 +25,8 @@ const AccommodationSchema = new Schema({
         type: String,
         required: true,
     },
-    facilities: {
-        type: String,
+    facilityType: {
+        type: [String],
         required: true,
     },
     contact: {
@@ -35,7 +35,7 @@ const AccommodationSchema = new Schema({
             required: true,
         },
         phone: {
-            type: String,
+            type: [String],
             required: true,
         },
         email: {

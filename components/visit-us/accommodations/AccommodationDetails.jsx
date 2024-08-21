@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import AccommodationImgSwiper from "@components/visit-us/accommodations/AccommodationImgSwiper";
 
 import {ImHome3, ImAddressBook, ImPhone, ImMail4, ImLink} from "react-icons/im";
@@ -12,7 +12,7 @@ function parseDescription(description) {
 }
 
 function parsePhones(phones) {
-    return phones.split(/[,.]/).map((phone, index) => {
+    return phones.map((phone, index) => {
         if (phone.trim() !== "") return <p key={index}>{`${phone.trim()}`}</p>
     });
 }

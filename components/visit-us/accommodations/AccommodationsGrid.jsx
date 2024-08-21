@@ -5,16 +5,16 @@ import Spinner from "@components/Spinner";
 import Separator from "@components/Separator";
 
 const ALL_LOCATIONS = 'All locations';
-const ALL_FACILITIES = 'All facilities';
+const ALL_FACILITY_TYPES = 'All types';
 
 const AccommodationsGrid = () => {
     const [accommodations, setAccommodations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
     const [selectedCity, setSelectedCity] = useState(ALL_LOCATIONS);
-    const [selectedFacility, setSelectedFacility] = useState(ALL_FACILITIES);
+    const [selectedFacility, setSelectedFacility] = useState(ALL_FACILITY_TYPES);
     const [cities, setCities] = useState([]);
-    const [facilities, setFacilities] = useState([]);
+    const [facilityType, setFacilityTypes] = useState([]);
     const [filteredAccommodations, setFilteredAccommodations] = useState([]);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const AccommodationsGrid = () => {
                 const data = await res.json();
                 setAccommodations(data);
                 setCities([ALL_LOCATIONS, ...new Set(data.map(item => item.city))]);
-                setFacilities([ALL_FACILITIES, ...new Set(data.flatMap(item => item.facilities))]);
+                setFacilityTypes([ALL_FACILITY_TYPES, ...new Set(data.flatMap(item => item.facilityType))]);
                 setFilteredAccommodations(data);
             } catch (error) {
                 console.error('An error occurred:', error);
@@ -57,7 +57,7 @@ const AccommodationsGrid = () => {
         const timeout = setTimeout(() => {
             const filtered = accommodations.filter(item => {
                 return (selectedCity === ALL_LOCATIONS || item.city === selectedCity) &&
-                    (selectedFacility === ALL_FACILITIES || item.facilities.includes(selectedFacility));
+                    (selectedFacility === ALL_FACILITY_TYPES || item.facilityType.includes(selectedFacility));
             });
             setFilteredAccommodations(filtered);
             setShowContent(true);
@@ -85,7 +85,7 @@ const AccommodationsGrid = () => {
 
                             <select value={selectedFacility} onChange={handleFacilityChange}
                                     className="p-2 border rounded">
-                                {facilities.map((facility, index) => (
+                                {facilityType.map((facility, index) => (
                                     <option key={index} value={facility} className={`font-bold`}>
                                         {facility}
                                     </option>

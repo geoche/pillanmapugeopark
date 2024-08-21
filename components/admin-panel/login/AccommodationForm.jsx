@@ -153,24 +153,24 @@ const AccommodationForm = () => {
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="city" className="block text-gray-700 font-bold mb-2">City:</label>
-                <input
-                    type="text"
-                    id="city"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded"
-                    required
-                    disabled={loading}
-                />
-            </div>
-            <div className="mb-4">
                 <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title:</label>
                 <input
                     type="text"
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded"
+                    required
+                    disabled={loading}
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="city" className="block text-gray-700 font-bold mb-2">City:</label>
+                <input
+                    type="text"
+                    id="city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                     disabled={loading}
@@ -196,9 +196,11 @@ const AccommodationForm = () => {
                     value={facilities}
                     onChange={(e) => setFacilities(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
+                    placeholder="Enter facility types separated by commas"
                     required
                     disabled={loading}
-                ></input>
+                />
+                <p className="text-sm text-gray-500 mt-2">Each facility type should be separated by a comma.</p>
             </div>
             <div className="mb-4">
                 <label htmlFor="address" className="block text-gray-700 font-bold mb-2">Address:</label>
@@ -222,9 +224,11 @@ const AccommodationForm = () => {
                     value={contact.phone}
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
+                    placeholder="Enter phone numbers separated by commas"
                     required
                     disabled={loading}
                 />
+                <p className="text-sm text-gray-500 mt-2">Each number should be separated by a comma.</p>
             </div>
             <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email:</label>

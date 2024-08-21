@@ -26,7 +26,7 @@ const GuidesAndToursSchema = new Schema({
         required: true,
     },
     type: {
-        type: [String],  // Change this to an array of strings
+        type: [String],
         required: true,
     },
     contact: {
