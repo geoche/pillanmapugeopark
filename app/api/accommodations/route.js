@@ -12,7 +12,7 @@ export const POST = async (request) => {
             city,
             title,
             description,
-            facilities,
+            facilityType,
             contact,
             location,
         } = await request.json();
@@ -32,7 +32,7 @@ export const POST = async (request) => {
             city,
             title,
             description,
-            facilities,
+            facilityType,
             contact,
             location,
         });

@@ -7,7 +7,7 @@ const AccommodationForm = () => {
     const [city, setCity] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [facilities, setFacilities] = useState('');
+    const [facilityType, setFacilityType] = useState('');
     const [contact, setContact] = useState({
         address: '',
         phone: '',
@@ -67,13 +67,16 @@ const AccommodationForm = () => {
         e.preventDefault();
         setLoading(true);
 
+        // Split facilityType string into an array of strings
+        const facilitiesArray = facilityType.split(',').map(facility => facility.trim());
+
         const accommodationData = {
             mainImgSrc,
             imagesSrc,
             city,
             title,
             description,
-            facilities,
+            facilityType: facilitiesArray, // Use the split array here
             contact,
             location,
         };
@@ -100,7 +103,7 @@ const AccommodationForm = () => {
                 setCity('');
                 setTitle('');
                 setDescription('');
-                setFacilities('');
+                setFacilityType('');
                 setContact({
                     address: '',
                     phone: '',
@@ -193,8 +196,8 @@ const AccommodationForm = () => {
                 <input
                     type="text"
                     id="facilities"
-                    value={facilities}
-                    onChange={(e) => setFacilities(e.target.value)}
+                    value={facilityType}
+                    onChange={(e) => setFacilityType(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     placeholder="Enter facility types separated by commas"
                     required

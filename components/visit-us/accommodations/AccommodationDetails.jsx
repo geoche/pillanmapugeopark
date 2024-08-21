@@ -16,6 +16,11 @@ function parsePhones(phones) {
         if (phone.trim() !== "") return <p key={index}>{`${phone.trim()}`}</p>
     });
 }
+function parseTypes(types) {
+    return types.map((type, index) => {
+        if (type.trim() !== "") return <p key={index}>{`${type.trim()}`}</p>
+    });
+}
 
 const AccommodationDetails = ({item = {}, index}) => {
     useEffect(() => {
@@ -24,7 +29,7 @@ const AccommodationDetails = ({item = {}, index}) => {
     }, []);
 
     const itemDetails = [
-        {icon: ImHome3, text: item.facilities},
+        {icon: ImHome3, text: parseTypes(item.facilityType)},
         {icon: ImAddressBook, text: item.contact.address},
         {icon: ImPhone, text: parsePhones(item.contact.phone), isNested: true},
         {icon: ImMail4, text: item.contact.email},
