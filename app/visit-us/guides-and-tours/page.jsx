@@ -1,9 +1,11 @@
-﻿import PageUnderConstruction from "@components/PageUnderConstruction";
+﻿import HeaderOpacity from "@components/HeaderOpacity";
+import GuidesAndToursGrid from "@components/visit-us/guides-and-tours/GuidesAndToursGrid";
 
 const GuidesAndTours = () => {
     return (
         <section className={`component-section`}>
-            <PageUnderConstruction/>
+            <HeaderOpacity title={`Guides and tour operators`}/>
+            <GuidesAndToursGrid/>
         </section>
     );
 };
