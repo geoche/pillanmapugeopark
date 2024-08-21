@@ -5,15 +5,14 @@ import HeaderOpacity from "@components/HeaderOpacity";
 import GuidesAndToursDetails from "@components/visit-us/guides-and-tours/GuidesAndToursDetails";
 
 const GuidesAndToursDetailsPage = ({params}) => {
-    const [accommodationDetails, setAccommodationDetails] = useState(null);
+    const [guidesAndToursDetails, setGuidesAndToursDetails] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        const fetchAccommodationDetails = async () => {
+        const fetchGuidesAndToursDetails = async () => {
             try {
-                // Fetch the accommodation by ID
-                const res = await fetch(`/api/accommodations/details/${params.id}`, {
+                const res = await fetch(`/api/guides-and-tours/details/${params.id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -21,13 +20,13 @@ const GuidesAndToursDetailsPage = ({params}) => {
                 });
 
                 if (!res.ok) {
-                    throw new Error('Failed to fetch accommodation details');
+                    throw new Error('Failed to fetch entry details');
                 }
 
                 const data = await res.json();
-                setAccommodationDetails(data);
+                setGuidesAndToursDetails(data);
             } catch (error) {
-                console.error('Error fetching accommodation details:', error);
+                console.error('Error fetching entry details:', error);
             } finally {
                 setLoading(false);
                 setTimeout(() => {
@@ -36,7 +35,7 @@ const GuidesAndToursDetailsPage = ({params}) => {
             }
         };
 
-        fetchAccommodationDetails().then(() => {
+        fetchGuidesAndToursDetails().then(() => {
         });
     }, []); // Add params.id as a dependency
 
@@ -47,13 +46,13 @@ const GuidesAndToursDetailsPage = ({params}) => {
                     <div className={`w-full h-screen overflow-x-hidden flex flex-center bg-default-opacity`}>
                         <Spinner/>
                     </div>
-                ) : showContent && accommodationDetails ? (
+                ) : showContent && guidesAndToursDetails ? (
                     <>
-                        <HeaderOpacity title={accommodationDetails.title}/>
-                        <GuidesAndToursDetails item={accommodationDetails}/>
+                        <HeaderOpacity title={guidesAndToursDetails.title}/>
+                        <GuidesAndToursDetails item={guidesAndToursDetails}/>
                     </>
                 ) : (
-                    <div>Accommodation not found</div>
+                    <div>Entry not found</div>
                 )}
             </div>
         </section>

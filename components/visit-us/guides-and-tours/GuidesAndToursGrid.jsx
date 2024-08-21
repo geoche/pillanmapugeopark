@@ -5,31 +5,31 @@ import Separator from "@components/Separator";
 import GuidesAndToursGridItem from "@components/visit-us/guides-and-tours/GuidesAndToursGridItem";
 
 const ALL_LOCATIONS = 'All locations';
-const ALL_FACILITIES = 'All facilities';
+const ALL_TYPES = 'All types';
 
 const GuidesAndToursGrid = () => {
-    const [accommodations, setAccommodations] = useState([]);
+    const [guidesAndTours, setGuidesAndTours] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
     const [selectedCity, setSelectedCity] = useState(ALL_LOCATIONS);
-    const [selectedFacility, setSelectedFacility] = useState(ALL_FACILITIES);
+    const [selectedType, setSelectedType] = useState(ALL_TYPES);
     const [cities, setCities] = useState([]);
-    const [facilities, setFacilities] = useState([]);
-    const [filteredAccommodations, setFilteredAccommodations] = useState([]);
+    const [types, setType] = useState([]);
+    const [filteredGuidesAndTours, setFilteredGuidesAndTours] = useState([]);
 
     useEffect(() => {
-        const fetchAccommodations = async () => {
+        const fetchGuidesAndTours = async () => {
             try {
-                const res = await fetch('/api/accommodations');
+                const res = await fetch('/api/guides-and-tours');
                 if (!res.ok) {
-                    console.error('Failed to fetch accommodations');
+                    console.error('Failed to fetch data');
                     return;
                 }
                 const data = await res.json();
-                setAccommodations(data);
+                setGuidesAndTours(data);
                 setCities([ALL_LOCATIONS, ...new Set(data.map(item => item.city))]);
-                setFacilities([ALL_FACILITIES, ...new Set(data.flatMap(item => item.facilities))]);
-                setFilteredAccommodations(data);
+                setType([ALL_TYPES, ...new Set(data.flatMap(item => item.type))]);
+                setFilteredGuidesAndTours(data);
             } catch (error) {
                 console.error('An error occurred:', error);
             } finally {
@@ -40,7 +40,7 @@ const GuidesAndToursGrid = () => {
             }
         };
 
-        fetchAccommodations().then(() => {});
+        fetchGuidesAndTours().then(() => {});
     }, []);
 
     const handleCityChange = (e) => {
@@ -48,23 +48,23 @@ const GuidesAndToursGrid = () => {
         setSelectedCity(e.target.value);
     };
 
-    const handleFacilityChange = (e) => {
+    const handleSelectedTypeChange = (e) => {
         setShowContent(false);
-        setSelectedFacility(e.target.value);
+        setSelectedType(e.target.value);
     };
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            const filtered = accommodations.filter(item => {
+            const filtered = guidesAndTours.filter(item => {
                 return (selectedCity === ALL_LOCATIONS || item.city === selectedCity) &&
-                    (selectedFacility === ALL_FACILITIES || item.facilities.includes(selectedFacility));
+                    (selectedType === ALL_TYPES || item.type.includes(selectedType));
             });
-            setFilteredAccommodations(filtered);
+            setFilteredGuidesAndTours(filtered);
             setShowContent(true);
         }, 300); // Delay for smooth transition after filtering
 
         return () => clearTimeout(timeout);
-    }, [selectedCity, selectedFacility, accommodations]);
+    }, [selectedCity, selectedType, guidesAndTours]);
 
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
@@ -82,9 +82,9 @@ const GuidesAndToursGrid = () => {
                                 ))}
                             </select>
 
-                            <select value={selectedFacility} onChange={handleFacilityChange}
+                            <select value={selectedType} onChange={handleSelectedTypeChange}
                                     className="p-2 border rounded">
-                                {facilities.map((facility, index) => (
+                                {types.map((facility, index) => (
                                     <option key={index} value={facility} className={`font-bold`}>
                                         {facility}
                                     </option>
@@ -93,7 +93,7 @@ const GuidesAndToursGrid = () => {
                         </div>
                         <div
                             className={`w-full flex flex-wrap flex-center items-center max-w-7xl mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                            {filteredAccommodations.map((item, index) => (
+                            {filteredGuidesAndTours.map((item, index) => (
                                 <GuidesAndToursGridItem
                                     index={index}
                                     item={item}
