@@ -11,9 +11,8 @@ import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import '@/styles/accommodations.css';
-import Separator from "@components/Separator";
 
-const AccommodationImgSwiper = ({images = {}}) => {
+const GuidesAndToursImgSwiper = ({images = {}}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
     return (
@@ -74,4 +73,4 @@ const AccommodationImgSwiper = ({images = {}}) => {
     );
 };
 
-export default AccommodationImgSwiper;
+export default GuidesAndToursImgSwiper;

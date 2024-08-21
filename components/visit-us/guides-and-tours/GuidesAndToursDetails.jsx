@@ -1,7 +1,7 @@
 "use client"
 import {useState, useEffect} from "react";
 
-import {ImHome3, ImAddressBook, ImPhone, ImMail4, ImLink} from "react-icons/im";
+import {ImSearch, ImAddressBook, ImPhone, ImMail4, ImLink, } from "react-icons/im";
 import ReusableButton from "@components/ReusableButton";
 import GuidesAndToursImgSwiper from "@components/visit-us/guides-and-tours/GuidesAndToursImgSwiper";
 
@@ -16,6 +16,11 @@ function parsePhones(phones) {
         if (phone.trim() !== "") return <p key={index}>{`${phone.trim()}`}</p>
     });
 }
+function parseTypes(types) {
+    return types.map((type, index) => {
+        if (type.trim() !== "") return <p key={index}>{`${type.trim()}`}</p>
+    });
+}
 
 const GuidesAndToursDetails = ({item = {}, index}) => {
     const [showModalSm, setShowModalSm] = useState(false);
@@ -28,7 +33,7 @@ const GuidesAndToursDetails = ({item = {}, index}) => {
     }, []);
 
     const itemDetails = [
-        {icon: ImHome3, text: item.facilities},
+        {icon: ImSearch, text: parseTypes(item.type)},
         {icon: ImAddressBook, text: item.contact.address},
         {icon: ImPhone, text: parsePhones(item.contact.phone), isNested: true},
         {icon: ImMail4, text: item.contact.email},
