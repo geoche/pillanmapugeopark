@@ -1,9 +1,12 @@
-﻿import { useState } from 'react';
+﻿import {useState, useRef} from 'react';
+import Spinner from "@components/Spinner";
 
 const ImageForm = () => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -22,8 +25,9 @@ const ImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
-        console.log('Submitting:', { imageSrc: image, caption });
+        console.log('Submitting:', {imageSrc: image, caption});
 
         try {
             const res = await fetch('/api/gallery/images', {
@@ -31,7 +35,7 @@ const ImageForm = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ imageSrc: image, caption }),
+                body: JSON.stringify({imageSrc: image, caption}),
             });
 
             const data = await res.json();
@@ -41,14 +45,16 @@ const ImageForm = () => {
                 setMessage('Image saved successfully');
                 setImage(null);
                 setCaption('');
+                fileInputRef.current.value = '';
             } else {
                 setMessage('Failed to save image');
             }
         } catch (error) {
             setMessage('An error occurred');
+        } finally {
+            setLoading(false);
         }
     };
-
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
@@ -59,8 +65,10 @@ const ImageForm = () => {
                     id="image"
                     accept="image/*"
                     onChange={handleImageChange}
+                    ref={fileInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -72,12 +80,22 @@ const ImageForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     rows="4"
                     required
+                    disabled={loading}
                 ></textarea>
             </div>
-            <button type="submit" className="bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500">
-                Submit
-            </button>
-            {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+            {loading ?
+                <div className={`w-full flex flex-center`}>
+                    <Spinner />
+                </div> : (
+                    <button
+                        type="submit"
+                        className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
+                        disabled={loading}
+                    >
+                        Submit
+                    </button>)}
+
+            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
         </form>
     );
 };
