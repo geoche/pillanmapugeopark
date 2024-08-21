@@ -1,6 +1,7 @@
-﻿import { useState } from 'react';
+﻿import {useState, useRef} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Spinner from "@components/Spinner";
 
 const EventForm = () => {
     const [eventShortDesc, setEventShortDesc] = useState('');
@@ -8,6 +9,8 @@ const EventForm = () => {
     const [eventDate, setEventDate] = useState(new Date());
     const [eventImgSrc, setEventImgSrc] = useState(null);
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -26,6 +29,7 @@ const EventForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         try {
             const res = await fetch('/api/events', {
@@ -49,11 +53,14 @@ const EventForm = () => {
                 setEventFullDesc('');
                 setEventDate(new Date());
                 setEventImgSrc(null);
+                fileInputRef.current.value = '';
             } else {
                 setMessage('Failed to save event');
             }
         } catch (error) {
             setMessage('An error occurred');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -68,6 +75,7 @@ const EventForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     rows="2"
                     required
+                    disabled={loading}
                 ></textarea>
             </div>
             <div className="mb-4">
@@ -79,6 +87,7 @@ const EventForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     rows="4"
                     required
+                    disabled={loading}
                 ></textarea>
             </div>
             <div className="mb-4">
@@ -88,6 +97,7 @@ const EventForm = () => {
                     onChange={(date) => setEventDate(date)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -97,14 +107,25 @@ const EventForm = () => {
                     id="image"
                     accept="image/*"
                     onChange={handleImageChange}
+                    ref={fileInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
-            <button type="submit" className="bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500">
-                Submit
-            </button>
-            {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+            {loading ?
+                <div className={`w-full flex flex-center`}>
+                    <Spinner />
+                </div> : (
+                    <button
+                        type="submit"
+                        className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
+                        disabled={loading}
+                    >
+                        Submit
+                    </button>)}
+
+            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
         </form>
     );
 };

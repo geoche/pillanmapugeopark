@@ -17,7 +17,6 @@ const EventsCalendar = () => {
             try {
                 const response = await fetch('/api/events');
                 const data = await response.json();
-                // Sort events by date in descending order
                 const sortedEvents = data.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
                 setEvents(sortedEvents);
             } catch (error) {
@@ -26,7 +25,7 @@ const EventsCalendar = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setShowContent(true);
-                }, 1); // Short delay to ensure smooth transition
+                }, 300); 
             }
         };
 
@@ -47,7 +46,7 @@ const EventsCalendar = () => {
                 ) : (
                     events.map((event, index) => (
                         <div key={event._id}
-                             className={`w-full transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                             className={`w-full p-4 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                             <button
                                 onClick={() => toggleEvent(index)}
                                 className="w-full flex flex-col sm:flex-row justify-between items-center sm:items-center text-left"
@@ -70,7 +69,7 @@ const EventsCalendar = () => {
 
                                     <div id="IMAGE"
                                          className={`transition-all duration-300 md:duration-300 ${openIndex === index ? 'max-w-0 max-h-0' : 'lg:max-w-[13%] w-full h-full'} px-4`}>
-                                        <Image src={event.eventImgSrc} alt="event image" width={0} height={0} className="transition-all duration-300 my-4 md:my-0 w-full h-full" />
+                                        <Image src={event.eventImgSrc} alt="event image" width={500} height={300} className="transition-all duration-300 my-4 md:my-0 w-full h-full" />
 
                                     </div>
 
@@ -81,14 +80,14 @@ const EventsCalendar = () => {
                                 </div>
                             </button>
                             <div
-                                className={`p-4 transition-all duration-300 md:duration-300 overflow-hidden ${openIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
+                                className={`transition-all duration-300 md:duration-300 overflow-hidden ${openIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
                                 <div
                                     className="flex flex-col md:flex-row justify-between p-0 md:p-4 items-center space-x-0 md:space-x-6">
                                     <div className="w-full md:w-1/2">
                                         <p className="text-justify">{event.eventFullDesc}</p>
                                     </div>
                                     <div className="w-full md:w-[70%]">
-                                        <Image src={event.eventImgSrc} alt="event image" width={0} height={0}
+                                        <Image src={event.eventImgSrc} alt="event image" width={500} height={300}
                                                className="w-full h-full py-4"/>
                                     </div>
                                 </div>

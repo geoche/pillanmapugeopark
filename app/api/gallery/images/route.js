@@ -6,16 +6,14 @@ export const POST = async (request) => {
     const { imageSrc, caption } = await request.json();
 
     try {
-        // Decode base64 to binary data
         const imageBuffer = Buffer.from(imageSrc.split(",")[1], "base64");
 
-        // Upload the image to Vercel Blob
         const { url } = await put(`images/${Date.now()}.png`, imageBuffer, { access: 'public' });
 
         await connectToDatabase();
 
         const newImage = new Image({
-            imageSrc: url, // Save the Blob URL to MongoDB
+            imageSrc: url,
             caption
         });
 

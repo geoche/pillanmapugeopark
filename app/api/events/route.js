@@ -1,16 +1,21 @@
 ﻿import { connectToDatabase } from '@utils/database';
 import Event from '@models/event';
+import { put } from '@vercel/blob';
 
 export const POST = async (request) => {
     const { eventShortDesc, eventFullDesc, eventImgSrc, eventDate } = await request.json();
 
     try {
+        const imageBuffer = Buffer.from(eventImgSrc.split(",")[1], "base64");
+
+        const { url } = await put(`events/${Date.now()}.png`, imageBuffer, { access: 'public' });
+        
         await connectToDatabase();
 
         const newEvent = new Event({
             eventShortDesc,
             eventFullDesc,
-            eventImgSrc,
+            eventImgSrc: url,
             eventDate
         });
 
