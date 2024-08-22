@@ -14,6 +14,7 @@ const BlogForm = () => {
         nodeImageDescription: '',
         nodeImageBy: ''
     }]);
+    const [expandedNodeIndex, setExpandedNodeIndex] = useState(0);
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -62,18 +63,26 @@ const BlogForm = () => {
             nodeImageDescription: '',
             nodeImageBy: ''
         }]);
+        setExpandedNodeIndex(blogNodes.length);
     };
 
     const handleRemoveBlogNode = (index) => {
         const newBlogNodes = [...blogNodes];
         newBlogNodes.splice(index, 1);
         setBlogNodes(newBlogNodes);
+        if (expandedNodeIndex >= index && expandedNodeIndex > 0) {
+            setExpandedNodeIndex(expandedNodeIndex - 1);
+        }
     };
 
     const handleBlogNodeChange = (index, field, value) => {
         const newBlogNodes = [...blogNodes];
         newBlogNodes[index][field] = value;
         setBlogNodes(newBlogNodes);
+    };
+
+    const handleExpandNode = (index) => {
+        setExpandedNodeIndex(index === expandedNodeIndex ? null : index);
     };
 
     const handleSubmit = async (e) => {
@@ -87,7 +96,7 @@ const BlogForm = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    title,  // Ensure title is included here
+                    title,
                     mainImgSrc: mainImage,
                     description,
                     blogpostBy,
@@ -113,6 +122,7 @@ const BlogForm = () => {
                 }]);
                 mainImageInputRef.current.value = '';
                 nodeImageInputRefs.current.forEach(ref => ref.value = '');
+                setExpandedNodeIndex(0);
             } else {
                 setMessage('Failed to save blog post');
             }
@@ -180,7 +190,9 @@ const BlogForm = () => {
                 {blogNodes.map((node, index) => (
                     <div key={index} className="mb-4 p-4 border border-gray-300 rounded">
                         <div className="flex justify-between items-center mb-2">
-                            <h4 className="text-gray-700 font-bold">Node {index + 1}</h4>
+                            <h4 className="text-gray-700 font-bold cursor-pointer" onClick={() => handleExpandNode(index)}>
+                                Node {index + 1} {expandedNodeIndex === index ? '-' : '+'}
+                            </h4>
                             {blogNodes.length > 1 && (
                                 <button
                                     type="button"
@@ -192,57 +204,61 @@ const BlogForm = () => {
                                 </button>
                             )}
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Header:</label>
-                            <input
-                                type="text"
-                                value={node.header}
-                                onChange={(e) => handleBlogNodeChange(index, 'header', e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded"
-                                disabled={loading}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Text:</label>
-                            <textarea
-                                value={node.text}
-                                onChange={(e) => handleBlogNodeChange(index, 'text', e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded"
-                                rows="4"
-                                disabled={loading}
-                            ></textarea>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Node Image:</label>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => handleNodeImageChange(index, e)}
-                                ref={el => nodeImageInputRefs.current[index] = el}
-                                className="w-full p-2 border border-gray-300 rounded"
-                                disabled={loading}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Image Description:</label>
-                            <input
-                                type="text"
-                                value={node.nodeImageDescription}
-                                onChange={(e) => handleBlogNodeChange(index, 'nodeImageDescription', e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded"
-                                disabled={loading}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 mb-2">Image By:</label>
-                            <input
-                                type="text"
-                                value={node.nodeImageBy}
-                                onChange={(e) => handleBlogNodeChange(index, 'nodeImageBy', e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded"
-                                disabled={loading}
-                            />
-                        </div>
+                        {expandedNodeIndex === index && (
+                            <>
+                                <div className="mb-4">
+                                    <label className="block text-gray-700 mb-2">Header:</label>
+                                    <input
+                                        type="text"
+                                        value={node.header}
+                                        onChange={(e) => handleBlogNodeChange(index, 'header', e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        disabled={loading}
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-gray-700 mb-2">Text:</label>
+                                    <textarea
+                                        value={node.text}
+                                        onChange={(e) => handleBlogNodeChange(index, 'text', e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        rows="4"
+                                        disabled={loading}
+                                    ></textarea>
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-gray-700 mb-2">Node Image:</label>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => handleNodeImageChange(index, e)}
+                                        ref={el => nodeImageInputRefs.current[index] = el}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        disabled={loading}
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-gray-700 mb-2">Image Description:</label>
+                                    <input
+                                        type="text"
+                                        value={node.nodeImageDescription}
+                                        onChange={(e) => handleBlogNodeChange(index, 'nodeImageDescription', e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        disabled={loading}
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-gray-700 mb-2">Image By:</label>
+                                    <input
+                                        type="text"
+                                        value={node.nodeImageBy}
+                                        onChange={(e) => handleBlogNodeChange(index, 'nodeImageBy', e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        disabled={loading}
+                                    />
+                                </div>
+                            </>
+                        )}
                     </div>
                 ))}
                 <button
