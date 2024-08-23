@@ -49,11 +49,11 @@ const EventsCalendar = () => {
                              className={`w-full p-4 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                             <button
                                 onClick={() => toggleEvent(index)}
-                                className="w-full flex flex-col sm:flex-row justify-between items-center sm:items-center text-left"
+                                className="w-full flex flex-col sm:flex-wrap justify-between items-center sm:items-center text-left"
                             >
                                 <div
                                     className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div id="DATE" className="w-full md:w-[20%] flex flex-row items-center px-4">
+                                    <div id="DATE" className="w-full md:w-1/3 lg:w-[22%] xl:w-[30%] flex flex-row items-center px-4">
                                         <p className=" text-8xl min-w-[5rem] text-end">{new Date(event.eventDate).getDate()}</p>
                                         <div className="flex flex-col items-start  text-lg pl-4">
                                             <p>{new Date(event.eventDate).toLocaleString('default', {month: 'long'})}</p>
@@ -63,12 +63,12 @@ const EventsCalendar = () => {
                                     </div>
 
                                     <div id="DESCRIPTION"
-                                         className={`w-full md:w-[50%] flex h-full text-justify transition-all duration-150 md:duration-300 px-4 md:px-0 ${openIndex === index ? 'text-lg md:text-2xl pt-4 md:pt-0' : ''}`}>
+                                         className={`w-full md:w-1/3 xl:w-[50%] flex h-full text-justify transition-all duration-150 md:duration-300 px-4 md:px-0 ${openIndex === index ? 'text-lg md:text-2xl pt-4 md:pt-0' : ''}`}>
                                         {event.eventShortDesc}
                                     </div>
 
                                     <div id="IMAGE"
-                                         className={`transition-all duration-300 md:duration-300 ${openIndex === index ? 'max-w-0 max-h-0' : 'lg:max-w-[13%] w-full h-full'} px-4`}>
+                                         className={`transition-all md:w-1/3 xl:w-[20%] duration-300 md:duration-300 ${openIndex === index ? 'max-w-0 max-h-0' : ''} px-4`}>
                                         <Image src={event.eventImgSrc} alt="event image" width={500} height={300} className="transition-all duration-300 my-4 md:my-0 w-full h-full" />
 
                                     </div>
