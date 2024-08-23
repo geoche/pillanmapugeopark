@@ -116,25 +116,29 @@ const BlogForm = () => {
                 setBlogNodes([{
                     header: '',
                     text: '',
-                    nodeImageSrc: null,
+                    nodeImageSrc: null, // Change this to null
                     nodeImageDescription: '',
                     nodeImageBy: ''
                 }]);
                 mainImageInputRef.current.value = '';
-                nodeImageInputRefs.current.forEach(ref => ref.value = '');
+                nodeImageInputRefs.current.forEach(ref => {
+                    if (ref) {
+                        ref.value = '';
+                    }
+                });
                 setExpandedNodeIndex(0);
             } else {
                 setMessage('Failed to save blog post');
             }
         } catch (error) {
+            console.log(error);
             setMessage('An error occurred');
         } finally {
             setLoading(false);
         }
     };
-
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-4 bg-white rounded shadow-md">
             <div className="mb-4">
                 <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title:</label>
                 <input
@@ -186,12 +190,12 @@ const BlogForm = () => {
             </div>
 
             <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">Blog Nodes:</label>
+                <label className="block text-gray-700 font-bold mb-2">Blog Sections:</label>
                 {blogNodes.map((node, index) => (
                     <div key={index} className="mb-4 p-4 border border-gray-300 rounded">
-                        <div className="flex justify-between items-center mb-2">
+                        <div className="flex justify-between items-center">
                             <h4 className="text-gray-700 font-bold cursor-pointer" onClick={() => handleExpandNode(index)}>
-                                Node {index + 1} {expandedNodeIndex === index ? '-' : '+'}
+                                Section {index + 1} {expandedNodeIndex === index ? '-' : '+'}
                             </h4>
                             {blogNodes.length > 1 && (
                                 <button
@@ -206,7 +210,7 @@ const BlogForm = () => {
                         </div>
                         {expandedNodeIndex === index && (
                             <>
-                                <div className="mb-4">
+                                <div className="my-4">
                                     <label className="block text-gray-700 mb-2">Header:</label>
                                     <input
                                         type="text"
@@ -227,7 +231,7 @@ const BlogForm = () => {
                                     ></textarea>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="block text-gray-700 mb-2">Node Image:</label>
+                                    <label className="block text-gray-700 mb-2">Section Image:</label>
                                     <input
                                         type="file"
                                         accept="image/*"
@@ -267,7 +271,7 @@ const BlogForm = () => {
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400"
                     disabled={loading}
                 >
-                    + Add Blog Node
+                    Add Section
                 </button>
             </div>
 

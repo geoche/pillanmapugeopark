@@ -6,7 +6,6 @@ const BlogNodeSchema = new Schema({
     },
     text: {
         type: String,
-        required: true,
     },
     nodeImage: {
         nodeImageSrc: {
