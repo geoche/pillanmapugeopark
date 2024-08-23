@@ -2,14 +2,14 @@
     [
         {
             label: "Interactive Map",
-            link: "#",
+            link: "/interactive-map",
         },
         {
             label: "Visit Us",
-            link: "#",
+            link: "/visit-us/how-to-arrive",
         },
         {
             label: "Blog",
-            link: "#",
+            link: "/blog",
         }
     ];

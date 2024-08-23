@@ -2,22 +2,30 @@
     [
         {
             label: "Geosites",
-            link: "#",
+            link: "/explore/geosites",
         },
         {
             label: "Georoutes",
-            link: "#",
+            link: "/explore/georoutes",
         },
         {
             label: "Archaeology",
-            link: "#",
+            link: "/explore/archaeology",
         },
         {
-            label: "Biodiversity",
-            link: "#",
+            label: "Flora",
+            link: "/explore/biodiversity/flora",
         },
         {
-            label: "Culture",
-            link: "#",
+            label: "Fauna",
+            link: "/explore/biodiversity/fauna",
         },
+        {
+            label: "Muleteer culture",
+            link: "/explore/culture/muleteer-culture",
+        },
+        {
+            label: "Traditional craftsmanship",
+            link: "/explore/culture/traditional-craftsmanship",
+        }
     ];

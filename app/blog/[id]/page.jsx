@@ -4,6 +4,7 @@ import Image from "next/image";
 import Spinner from "@components/Spinner";
 import HeaderOpacity from "@components/HeaderOpacity";
 import Separator from "@components/Separator";
+import BlogPostSection from "@components/blog/BlogPostSection";
 
 const BlogPostPage = ({params}) => {
     const [blogPost, setBlogPost] = useState([]);
@@ -49,7 +50,7 @@ const BlogPostPage = ({params}) => {
                 </div>
             ) : (showContent && blogPost ? (
                     <div
-                        className={`w-full transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                        className={`w-full transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'} overflow-x-hidden`}>
                         <HeaderOpacity title={blogPost.title}/>
                         <div className={`w-screen overflow-x-hidden flex flex-col flex-center bg-default p-4 xl:py-12`}>
                             <div className={`max-w-7xl`}>
@@ -70,36 +71,7 @@ const BlogPostPage = ({params}) => {
                             </div>
                             <div>
                                 {blogPost.blogNode.map((node, index) => (
-                                    <div key={index} className={`max-w-7xl py-8`}>
-                                        {node.nodeImage.nodeImageSrc && (
-                                            <>
-                                                <Image
-                                                    src={node.nodeImage.nodeImageSrc}
-                                                    alt={`nodeImg-${index}`}
-                                                    className="w-full max-w-4xl"
-                                                    width={1280}
-                                                    height={720}
-                                                />
-                                                <div className="w-full flex flex-col flex-center py-2 px-4">
-                                                    <p className="text-black w-full max-w-4xl text-justify italic text-xs">
-                                                        {node.nodeImage.nodeImageDescription}
-                                                    </p>
-                                                    <p className="text-black w-full max-w-4xl italic text-xs">
-                                                        {`Photography by ${node.nodeImage.nodeImageBy}`}
-                                                    </p>
-                                                </div>
-                                                {node.text && (
-                                                    <>
-                                                        <div className="w-full flex flex-col flex-center px-0 xl:px-4 py-8">
-                                                            <p className="text-black w-full max-w-2xl text-justify ">
-                                                                {node.text}
-                                                            </p>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </>
-                                        )}
-                                    </div>
+                                    <BlogPostSection blogPostSection={node} index={index}/>
                                 ))}
                             </div>
                         </div>
