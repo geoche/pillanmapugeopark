@@ -1,5 +1,7 @@
 import { connectToDatabase } from '@utils/database';
 import GuidesAndTours from "@models/guidesAndTours";
+import {put} from '@vercel/blob';
+
 
 export const POST = async (request) => {
     try {
@@ -16,9 +18,18 @@ export const POST = async (request) => {
             location,
         } = await request.json();
 
+        const mainImageBuffer = Buffer.from(mainImgSrc.split(",")[1], "base64");
+        const {url: mainImgUrl} = await put(`guides-and-tours/main-${Date.now()}.png`, mainImageBuffer, {access: 'public'});
+
+        const imageUrls = await Promise.all(imagesSrc.map(async (imgSrc, index) => {
+            const imageBuffer = Buffer.from(imgSrc.split(",")[1], "base64");
+            const {url} = await put(`guides-and-tours/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
+            return url;
+        }));
+
         const newGuidesAndTours = new GuidesAndTours({
-            mainImgSrc,
-            imagesSrc,
+            mainImgSrc: mainImgUrl,
+            imagesSrc: imageUrls,
             city,
             title,
             description,

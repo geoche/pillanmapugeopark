@@ -1,5 +1,6 @@
 "use client"
-import { useState } from 'react';
+import {useState, useRef} from 'react';
+import Spinner from "@components/Spinner";
 
 const GuidesAndToursForm = () => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
@@ -19,6 +20,11 @@ const GuidesAndToursForm = () => {
         coordinates: [0, 0],
     });
     const [message, setMessage] = useState('');
+
+    const [loading, setLoading] = useState(false);
+
+    const mainImgInputRef = useRef(null);
+    const imagesInputRef = useRef(null);
 
     const handleMainImageChange = (e) => {
         const file = e.target.files[0];
@@ -50,17 +56,18 @@ const GuidesAndToursForm = () => {
     };
 
     const handleContactChange = (e) => {
-        setContact({ ...contact, [e.target.name]: e.target.value });
+        setContact({...contact, [e.target.name]: e.target.value});
     };
 
     const handleLocationChange = (e, index) => {
         const newCoordinates = [...location.coordinates];
         newCoordinates[index] = parseFloat(e.target.value);
-        setLocation({ ...location, coordinates: newCoordinates });
+        setLocation({...location, coordinates: newCoordinates});
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         // Split the types by comma and trim spaces
         const typesArray = types.split(',').map(type => type.trim());
@@ -109,11 +116,15 @@ const GuidesAndToursForm = () => {
                     type: 'Point',
                     coordinates: [0, 0],
                 });
+                mainImgInputRef.current.value = '';
+                imagesInputRef.current.value = '';
             } else {
                 setMessage('Failed to save data');
             }
         } catch (error) {
             setMessage('An error occurred');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -126,8 +137,10 @@ const GuidesAndToursForm = () => {
                     id="mainImgSrc"
                     accept="image/*"
                     onChange={handleMainImageChange}
+                    ref={mainImgInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -138,8 +151,10 @@ const GuidesAndToursForm = () => {
                     accept="image/*"
                     multiple
                     onChange={handleImagesChange}
+                    ref={imagesInputRef}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -151,6 +166,7 @@ const GuidesAndToursForm = () => {
                     onChange={(e) => setCity(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -162,6 +178,7 @@ const GuidesAndToursForm = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -173,6 +190,7 @@ const GuidesAndToursForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     rows="4"
                     required
+                    disabled={loading}
                 ></textarea>
             </div>
             <div className="mb-4">
@@ -185,6 +203,7 @@ const GuidesAndToursForm = () => {
                     className="w-full p-2 border border-gray-300 rounded"
                     placeholder="Enter types separated by commas"
                     required
+                    disabled={loading}
                 />
                 <p className="text-sm text-gray-500 mt-2">Each type should be separated by a comma.</p>
             </div>
@@ -198,6 +217,7 @@ const GuidesAndToursForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -210,6 +230,7 @@ const GuidesAndToursForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -222,6 +243,7 @@ const GuidesAndToursForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -234,6 +256,7 @@ const GuidesAndToursForm = () => {
                     onChange={handleContactChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
+                    disabled={loading}
                 />
             </div>
             <div className="mb-4">
@@ -246,6 +269,7 @@ const GuidesAndToursForm = () => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Longitude"
                         required
+                        disabled={loading}
                     />
                     <input
                         type="number"
@@ -254,12 +278,21 @@ const GuidesAndToursForm = () => {
                         className="w-full p-2 border border-gray-300 rounded"
                         placeholder="Latitude"
                         required
+                        disabled={loading}
                     />
                 </div>
             </div>
-            <button type="submit" className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}>
-                Submit
-            </button>
+            {loading ?
+                <div className={`w-full flex flex-center`}>
+                    <Spinner/>
+                </div> : (
+                    <button
+                        type="submit"
+                        className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
+                        disabled={loading}
+                    >
+                        Submit
+                    </button>)}
             {message && <p className="mt-4 text-center text-green-500">{message}</p>}
         </form>
     );
