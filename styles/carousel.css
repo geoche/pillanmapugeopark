@@ -3,7 +3,7 @@
 }
 
 .swiper-slide {
-    @apply text-center text-xl bg-white rounded-2xl flex justify-center items-center pt-4
+    @apply text-center text-xl bg-white rounded-2xl flex justify-center items-center py-8
 }
 .swiper-wrapper {
     @apply items-center

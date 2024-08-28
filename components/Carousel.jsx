@@ -21,6 +21,12 @@ const Carousel = () => {
         "/assets/images/stakeholders/fcb.png",
         "/assets/images/stakeholders/geoparques.png",
         "/assets/images/stakeholders/umayor-geologia.jpg",
+        "/assets/images/stakeholders/atacama.jpeg",
+        "/assets/images/stakeholders/kutralkura.png",
+        "/assets/images/stakeholders/escalera-del-diablo.png",
+        "/assets/images/stakeholders/litoral-bio-bio.jpg",
+        "/assets/images/stakeholders/puchuncavi.jpg",
+        "/assets/images/stakeholders/cajon-del-maipo.png",
     ];
 
     return (
@@ -116,11 +122,14 @@ const Carousel = () => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3`}>
-                        <Image src={image}
-                               alt={"logo"}
-                               width={300}
-                               height={300}
-                               className="sm:p-4 p-2"/>
+                        <div className={`flex flex-center`}>
+                            <Image src={image}
+                                   alt={"logo"}
+                                   width={300}
+                                   height={300}
+                                   className="sm:p-4 p-2 max-h-44 w-auto"/>
+                        </div>
+                       
                     </SwiperSlide>
                 ))}
             </Swiper>
