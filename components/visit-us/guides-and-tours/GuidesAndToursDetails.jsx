@@ -3,7 +3,7 @@ import {useEffect} from "react";
 
 import {ImSearch, ImAddressBook, ImPhone, ImMail4, ImLink, } from "react-icons/im";
 import ReusableButton from "@components/ReusableButton";
-import GuidesAndToursImgSwiper from "@components/visit-us/guides-and-tours/GuidesAndToursImgSwiper";
+import ImageSwiperWithThumbnails from "@components/ImageSwiperWithThumbnails";
 
 function parseDescription(description) {
     return description.split(/[!?.]/).map((sentence, index) => {
@@ -43,7 +43,7 @@ const GuidesAndToursDetails = ({item = {}}) => {
 
     return (
         <div className={`w-full h-full flex flex-col flex-center max-w-screen-7xl py-12 px-4 bg-default`}>
-            <GuidesAndToursImgSwiper images={allImages}/>
+            <ImageSwiperWithThumbnails images={allImages}/>
             <div className={`py-4 text-center mx-auto max-w-screen-xl`}>
                 <h3 className={`text-xl`}>
                     {`ABOUT ${item.title}`}

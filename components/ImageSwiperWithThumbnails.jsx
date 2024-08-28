@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
@@ -10,10 +10,9 @@ import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
-import '@/styles/accommodations.css';
-import Separator from "@components/Separator";
+import '@/styles/image-swiper.css';
 
-const AccommodationImgSwiper = ({images = {}}) => {
+const ImageSwiperWithThumbnails = ({images = {}}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
     return (
@@ -74,4 +73,4 @@ const AccommodationImgSwiper = ({images = {}}) => {
     );
 };
 
-export default AccommodationImgSwiper;
+export default ImageSwiperWithThumbnails;
