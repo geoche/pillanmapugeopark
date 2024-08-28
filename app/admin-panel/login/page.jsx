@@ -7,6 +7,7 @@ import ReusableButton from "@components/ReusableButton";
 import AccommodationForm from "@components/admin-panel/login/AccommodationForm";
 import GuidesAndToursForm from "@components/admin-panel/login/GuidesAndToursForm";
 import BlogForm from "@components/admin-panel/login/BlogForm";
+import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
 
 
 const LoginPage = () => {
@@ -18,17 +19,19 @@ const LoginPage = () => {
                 <div className={`w-full h-full flex flex-center items-center bg-default-opacity`}>
                     <div className={`w-full h-full py-20`}>
                         <ReusableButton onClickAction={() => signOut()} buttonText={`LOG OUT`}/>
-                        <VideoForm/>
+                        {/*<VideoForm/>*/}
+                        {/*<div className={`py-4`}/>*/}
+                        {/*<ImageForm/>*/}
+                        {/*<div className={`py-4`}/>*/}
+                        {/*<EventForm/>*/}
+                        {/*<div className={`py-4`}/>*/}
+                        {/*<AccommodationForm/>*/}
+                        {/*<div className={`py-4`}/>*/}
+                        {/*<GuidesAndToursForm/>*/}
+                        {/*<div className={`py-4`}/>*/}
+                        {/*<BlogForm/>*/}
                         <div className={`py-4`}/>
-                        <ImageForm/>
-                        <div className={`py-4`}/>
-                        <EventForm/>
-                        <div className={`py-4`}/>
-                        <AccommodationForm/>
-                        <div className={`py-4`}/>
-                        <GuidesAndToursForm/>
-                        <div className={`py-4`}/>
-                        <BlogForm/>
+                        <ExperiencesForm/>
                     </div>
                 </div>
             ) : (

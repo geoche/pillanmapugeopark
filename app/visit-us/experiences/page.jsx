@@ -1,9 +1,11 @@
-﻿import PageUnderConstruction from "@components/PageUnderConstruction";
+﻿import HeaderOpacity from "@components/HeaderOpacity";
+import ExperiencesGrid from "@components/visit-us/experiences/ExperiencesGrid";
 
 const Experiences = () => {
     return (
         <section className={`component-section`}>
-            <PageUnderConstruction/>
+            <HeaderOpacity title={`Experiences`}/>
+            <ExperiencesGrid/>
         </section>
     );
 };

@@ -2,17 +2,17 @@
 import {useEffect, useState} from 'react';
 import Spinner from "@components/Spinner";
 import HeaderOpacity from "@components/HeaderOpacity";
-import GuidesAndToursDetails from "@components/visit-us/guides-and-tours/GuidesAndToursDetails";
+import ExperiencesDetails from "@components/visit-us/experiences/ExperiencesDetails";
 
-const GuidesAndToursDetailsPage = ({params}) => {
-    const [guidesAndToursDetails, setGuidesAndToursDetails] = useState(null);
+const ExperiencesDetailsPage = ({params}) => {
+    const [experiencesEntry, setExperiencesEntry] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        const fetchGuidesAndToursDetails = async () => {
+        const fetchExperiencesEntry = async () => {
             try {
-                const res = await fetch(`/api/guides-and-tours/details/${params.id}`, {
+                const res = await fetch(`/api/experiences/details/${params.id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const GuidesAndToursDetailsPage = ({params}) => {
                 }
 
                 const data = await res.json();
-                setGuidesAndToursDetails(data);
+                setExperiencesEntry(data);
             } catch (error) {
                 console.error('Error fetching entry details:', error);
             } finally {
@@ -35,9 +35,9 @@ const GuidesAndToursDetailsPage = ({params}) => {
             }
         };
 
-        fetchGuidesAndToursDetails().then(() => {
+        fetchExperiencesEntry().then(() => {
         });
-    }, []); // Add params.id as a dependency
+    }, []);
 
     return (
         <section className={`component-section`}>
@@ -46,17 +46,21 @@ const GuidesAndToursDetailsPage = ({params}) => {
                     <div className={`w-full h-screen overflow-x-hidden flex flex-center bg-default-opacity`}>
                         <Spinner/>
                     </div>
-                ) : showContent && guidesAndToursDetails ? (
+                ) : showContent && experiencesEntry ? (
                     <>
-                        <HeaderOpacity title={guidesAndToursDetails.title}/>
-                        <GuidesAndToursDetails item={guidesAndToursDetails}/>
+                        <HeaderOpacity title={experiencesEntry.title}/>
+                        <ExperiencesDetails item={experiencesEntry}/>
                     </>
                 ) : (
                     <div>Entry not found</div>
                 )}
             </div>
         </section>
+
     );
 };
 
-export default GuidesAndToursDetailsPage;
+export default ExperiencesDetailsPage;
+
+
+

@@ -1,23 +1,23 @@
-"use client"
+﻿"use client"
 import {useState, useEffect} from 'react';
 import Spinner from "@components/Spinner";
-import BlogGridItem from "@components/blog/BlogGridItem";
+import ExperiencesGridItem from "@components/visit-us/experiences/ExperiencesGridItem";
 
-const BlogGrid = () => {
-    const [blogPosts, setBlogPosts] = useState([]);
+const ExperiencesGrid = () => {
+    const [experiences, setExperiences] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        const fetchBlogposts = async () => {
+        const fetchExperiences = async () => {
             try {
-                const res = await fetch('/api/blog');
+                const res = await fetch('/api/experiences');
                 if (!res.ok) {
                     console.error('Failed to fetch data');
                     return;
                 }
                 const data = await res.json();
-                setBlogPosts(data);
+                setExperiences(data);
             } catch (error) {
                 console.error('An error occurred:', error);
             } finally {
@@ -28,10 +28,10 @@ const BlogGrid = () => {
             }
         };
 
-        fetchBlogposts().then(() => {
+        fetchExperiences().then(() => {
         });
     }, []);
-    
+
     return (
         <div className={`w-full ${loading ? `h-[32rem]` : null} bg-default py-12`}>
             {loading ?
@@ -41,8 +41,8 @@ const BlogGrid = () => {
                 : (
                     <div
                         className={`w-full flex flex-wrap flex-center items-center max-w-7xl p-4 mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                        {blogPosts.map((post, index) => (
-                            <BlogGridItem post={post} index={index}/>
+                        {experiences.map((post, index) => (
+                            <ExperiencesGridItem expItem={post} index={index}/>
                         ))}
                     </div>
                 )}
@@ -50,4 +50,4 @@ const BlogGrid = () => {
     );
 };
 
-export default BlogGrid;
+export default ExperiencesGrid;
