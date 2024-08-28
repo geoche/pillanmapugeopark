@@ -18,15 +18,16 @@ const LoginPage = () => {
                 <div className={`w-full h-full flex flex-center items-center bg-default-opacity`}>
                     <div className={`w-full h-full py-20`}>
                         <ReusableButton onClickAction={() => signOut()} buttonText={`LOG OUT`}/>
-                        {/*<VideoForm/>*/}
-                        {/*<div className={`py-4`}/>*/}
-                        {/*<ImageForm/>*/}
-                        {/*<div className={`py-4`}/>*/}
-                        {/*<EventForm/>*/}
-                        {/*<div className={`py-4`}/>*/}
-                        {/*<AccommodationForm/>*/}
-                        {/*<div className={`py-4`}/>*/}
-                        {/*<GuidesAndToursForm/>*/}
+                        <VideoForm/>
+                        <div className={`py-4`}/>
+                        <ImageForm/>
+                        <div className={`py-4`}/>
+                        <EventForm/>
+                        <div className={`py-4`}/>
+                        <AccommodationForm/>
+                        <div className={`py-4`}/>
+                        <GuidesAndToursForm/>
+                        <div className={`py-4`}/>
                         <BlogForm/>
                     </div>
                 </div>
