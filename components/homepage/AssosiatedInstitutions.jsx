@@ -22,7 +22,7 @@ const AssosiatedInstitutions = () => {
             </div>
             <Carousel/>
             <div className="flex justify-center py-4">
-                <ReusableButton buttonText={"Know more"} refLink={"/associates"}/> {/*Your button usage here*/}
+                <ReusableButton buttonText={"Know more"} refLink={"/associates"}/>
             </div>
         </>
     );

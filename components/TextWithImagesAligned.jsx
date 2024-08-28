@@ -13,21 +13,24 @@ const TextWithImagesAligned = ({
             className={`relative flex flex-col items-center max-w-screen-xl px-4 py-12 mx-auto ${flexDirection} sm:px-6`}>
             <div className={`flex items-center md:w-1/2 md:pb-20 md:pt-10 ${padding}`}>
                 <div className="text-justify ">
-                    {headerText && <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
+                    {headerText &&
+                        <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
                     {displayText.map((text, index) => (<div className={`align-bottom`} key={index}>
                         <p className="pt-4">
                             {text}
                         </p>
                     </div>))}
-                    {buttonText ? (<div className="flex justify-center py-4">
+                    {buttonText ? (<div className="flex flex-center py-4">
                         <ReusableButton buttonText={buttonText} refLink={refLink}/>
                     </div>) : null}
                 </div>
             </div>
             <div className="flex items-center md:w-1/2 flex-wrap py-12">
-                <div className="relative">
-                    {imageSources.map((item, index) => (
-                        <div className={`flex flex-col flex-center justify-center`} key={`div-${index}`}>
+                {imageSources.map((item, index) => (
+                    <div
+                        className={`flex flex-center ${imageSources.length > 3 ? (index === imageSources.length - 1 ? "w-full" : "w-1/2") : ""}`}
+                        key={`div-${index}`}>
+                        {item.link ? (
                             <Link href={item.link}
                                   passHref legacyBehavior>
                                 <a target="_blank">
@@ -36,17 +39,18 @@ const TextWithImagesAligned = ({
                                         width={500}
                                         height={300}
                                         alt="image"
-                                        sizes="100vw"
-                                        className={`w-auto h-full min-w-[21.88rem]`}
+                                        className={`${imageSources.length > 3 ? "max-h-32 w-auto" : ""}`}
                                     />
                                 </a>
-                            </Link>
-                        </div>
-
-                    ))}
-                </div>
-
-
+                            </Link>) : (<Image
+                            src={item.imageSource}
+                            width={500}
+                            height={300}
+                            alt="image"
+                            className={`${imageSources.length > 3 ? "max-h-32 w-auto" : ""}`}
+                        />)}
+                    </div>
+                ))}
             </div>
         </div>
     );
