@@ -6,8 +6,8 @@ import Accommodations from "@components/homepage/Accommodations";
 import AssosiatedInstitutions from "@components/homepage/AssosiatedInstitutions";
 import Separator from "@components/Separator";
 
-const Home = () => {
-
+const Home = ({ params: { lang } }) => {
+    console.log(`Here is ${lang}`);
     return (
         <div className="relative w-full h-full flex-col">
             <BackgroundVideoMuted/>

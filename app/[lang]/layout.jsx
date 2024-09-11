@@ -11,11 +11,8 @@ export const metadata = {
 
 
 const RootLayout = ({children, params}) => {
-    console.log('Language:', params);
-
     return (
         <html lang={params}>
-
         <Provider>
             <body>
             <Navbar/>
