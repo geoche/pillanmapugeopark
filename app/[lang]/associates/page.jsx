@@ -1,9 +1,10 @@
-﻿import ManagementAcademy from "@app/geopark/management/academy/page";
-import ManagementPublicSector from "@app/geopark/management/public-sector/page";
+﻿
 import HeaderOpacity from "@components/HeaderOpacity";
 import TextWithImagesAligned from "@components/TextWithImagesAligned";
 import {geoparksLogos} from "@components/management/geoparks/geoparksLogos";
 import {geoparksText} from "@components/management/geoparks/geoparksText";
+import ManagementAcademy from "@app/[lang]/geopark/management/academy/page";
+import ManagementPublicSector from "@app/[lang]/geopark/management/public-sector/page";
 
 const Associates = () => {
     return (

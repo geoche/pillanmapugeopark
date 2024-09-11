@@ -51,7 +51,7 @@ body {
 }
 
 .component-section {
-    @apply relative flex-col bg-cover bg-fixed bg-center bg-no-repeat bg-[url('/assets/images/banner.jpg')]
+    @apply relative flex-col bg-cover bg-fixed bg-center bg-no-repeat bg-[url('/assets/images/banner/banner.jpg')]
 }
 
 .text-default {

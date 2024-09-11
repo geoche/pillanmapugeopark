@@ -9,9 +9,13 @@ export const metadata = {
     description: "Geopark website",
 };
 
-const RootLayout = ({children}) => {
+
+const RootLayout = ({children, lang}) => {
+    console.log('Language:', lang); // Added console log
+
     return (
-        <html lang="en">
+        <html lang={lang}>
+        
         <Provider>
             <body>
             <Navbar/>

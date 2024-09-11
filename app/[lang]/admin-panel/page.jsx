@@ -12,6 +12,11 @@ import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
 
 const LoginPage = () => {
     const {data: session} = useSession();
+    const handleSignIn = () => {
+        signIn("google", {
+            callbackUrl: `//`
+        });
+    };
 
     return (
         <section className={`component-section`}>

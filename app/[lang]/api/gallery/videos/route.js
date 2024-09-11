@@ -1,5 +1,5 @@
 ﻿import { connectToDatabase } from '@utils/database';
-import Video from '../../../../models/video';
+import Video from '@models/video';
 
 export const POST = async (request) => {
     const { videoLink, description } = await request.json();
