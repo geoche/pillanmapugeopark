@@ -1,30 +1,42 @@
-import {match} from '@formatjs/intl-localematcher'
-import Negotiator from 'negotiator'
 import {NextResponse} from "next/server";
-
-let headers = {'accept-language': 'en-US,en;q=0.5'}
-let languages = new Negotiator({headers}).languages()
-let locales = ['en', 'es']
-let defaultLocale = 'en'
-
-match(languages, locales, defaultLocale) // -> 'en-US'
-
+import {defaultLocale} from "@/constants/locales";
+import {i18n} from "@/i18n-config";
 
 export function middleware(request) {
     // Check if there is any supported locale in the pathname
-    const {pathname} = request.nextUrl
-    const pathnameHasLocale = locales.some(
-        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    )
+    console.log(i18n);
+    const {pathname} = request.nextUrl;
 
-    if (pathnameHasLocale) return
+    if (
+        pathname.startsWith(`/${defaultLocale}/`) ||
+        pathname === `/${defaultLocale}`
+    ) {
+        // The incoming request is for /en/whatever, so we'll reDIRECT to /whatever
+        return NextResponse.redirect(
+            new URL(
+                pathname.replace(
+                    `/${defaultLocale}`,
+                    pathname === `/${defaultLocale}` ? "/" : ""
+                ),
+                request.url
+            )
+        );
+    }
 
-    // Redirect if there is no locale
-    const locale = match(languages, locales, defaultLocale)
-    request.nextUrl.pathname = `/${locale}${pathname}`
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(request.nextUrl)
+    const pathnameIsMissingLocale = i18n.locales.every(
+        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    );
+
+    if (pathnameIsMissingLocale) {
+        // Now for EITHER /en or /nl (for example) we're going to tell Next.js that the request is for /en/whatever
+        // or /nl/whatever, and then reWRITE the request to that it is handled properly.
+        return NextResponse.rewrite(
+            new URL(
+                `/${defaultLocale}${pathname}${request.nextUrl.search}`,
+                request.nextUrl.href
+            )
+        );
+    }
 }
 
 export const config = {

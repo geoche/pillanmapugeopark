@@ -10,12 +10,12 @@ export const metadata = {
 };
 
 
-const RootLayout = ({children, lang}) => {
-    console.log('Language:', lang); // Added console log
+const RootLayout = ({children, params}) => {
+    console.log('Language:', params);
 
     return (
-        <html lang={lang}>
-        
+        <html lang={params}>
+
         <Provider>
             <body>
             <Navbar/>
