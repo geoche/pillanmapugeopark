@@ -12,9 +12,9 @@ import {
 import {GrClose, GrMenu} from "react-icons/gr";
 
 import NavMbAccordion from "@components/navbar/navbarMobile/NavMbAccordion";
-import Link from "@node_modules/next/link";
+import Link from "next/link";
 
-const NavbarMobile = ({lang}) => {
+const NavbarMobile = ({lang, updatedNavbarLinks = {}}) => {
     const [showModalSm, setShowModalSm] = useState(false);
 
     useEffect(() => {
@@ -64,7 +64,7 @@ const NavbarMobile = ({lang}) => {
                         </TEModalHeader>
                         {/* <!--Modal body--> */}
                         <TEModalBody className={`!py-0 !pb-4 !px-4`}>
-                            <NavMbAccordion lang={lang}/>
+                            <NavMbAccordion lang={lang} updatedNavbarLinks={updatedNavbarLinks}/>
                             <div className={`flex flex-end`}>
                                 <Link href="/en">
                                     <div className={`p-2 ${lang === "en" ? "hidden" : "text-base"}`}>

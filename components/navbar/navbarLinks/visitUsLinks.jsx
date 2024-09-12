@@ -1,23 +1,23 @@
 ﻿export const visitUsLinks =
     [
         {
-            label: "Visit Us",
+            title: "navbar.visitUs.title",
             link: "#",
             children: [
                 {
-                    label: "How to arrive",
+                    title: "navbar.visitUs.howToArrive",
                     link: "/visit-us/how-to-arrive",
                 },
                 {
-                    label: "Accommodations",
+                    title: "navbar.visitUs.accommodations",
                     link: "/visit-us/accommodations",
                 },
                 {
-                    label: "Guides and tour operators",
+                    title: "navbar.visitUs.guidesAndTours",
                     link: "/visit-us/guides-and-tours",
                 },
                 {
-                    label: "Experiences",
+                    title: "navbar.visitUs.experiences",
                     link: "/visit-us/experiences",
                 }
             ]

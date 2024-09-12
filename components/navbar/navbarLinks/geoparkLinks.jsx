@@ -1,53 +1,53 @@
 ﻿export const geoparkLinks =
     [
         {
-            label: "The Geopark",
+            title: "navbar.geopark.title",
             link: "#",
             children: [
                 {
-                    label: "What’s a Geopark",
+                    title: "navbar.geopark.whatsAGeopark",
                     link: "/geopark/about-geopark",
                 },
                 {
-                    label: "Territory",
+                    title: "navbar.geopark.territory.title",
                     link: "/geopark/territory",
                 },
                 {
-                    label: "Geopark management",
+                    title: "navbar.geopark.geoparkManagement.title",
                     link: "#",
                     children: [
                         {
-                            label: "Public sector",
+                            title: "navbar.geopark.geoparkManagement.publicSector",
                             link: "/geopark/management/public-sector",
                         },
                         {
-                            label: "Academy",
+                            title: "navbar.geopark.geoparkManagement.academy",
                             link: "/geopark/management/academy",
                         }
                     ]
                 },
                 {
-                    label: "Partnerships",
+                    title: "navbar.geopark.partnerships.title",
                     link: "/geopark/partnerships",
                 },
                 {
-                    label: "Events",
+                    title: "navbar.geopark.events.title",
                     link: "/geopark/events",
                 },
                 {
-                    label: "About us",
+                    title: "navbar.geopark.aboutUs.title",
                     link: "#",
                     children: [
                         {
-                            label: "What we are",
+                            title: "navbar.geopark.aboutUs.whatWeAre",
                             link: "/geopark/about-us/what-we-are",
                         },
                         {
-                            label: "What we do",
+                            title: "navbar.geopark.aboutUs.whatWedo",
                             link: "/geopark/about-us/what-we-do",
                         },
                         {
-                            label: "Who we are",
+                            title: "navbar.geopark.aboutUs.whoWeAre",
                             link: "/geopark/about-us/who-we-are",
                         },
                     ]

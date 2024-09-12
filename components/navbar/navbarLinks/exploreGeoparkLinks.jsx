@@ -1,45 +1,45 @@
 ﻿export const exploreGeoparkLinks =
     [
         {
-            label: "Explore the Geopark",
+            title: "navbar.exploreGeopark.title",
             link: "#",
             children: [
                 {
-                    label: "Geosites",
+                    title: "navbar.exploreGeopark.geosites.title",
                     link: "/explore/geosites",
                 },
                 {
-                    label: "Georoutes",
+                    title: "navbar.exploreGeopark.georoutes.title",
                     link: "/explore/georoutes",
                 },
                 {
-                    label: "Archaeology",
+                    title: "navbar.exploreGeopark.archaeology.title",
                     link: "/explore/archaeology",
                 },
                 {
-                    label: "Biodiversity",
+                    title: "navbar.exploreGeopark.biodiversity.title",
                     link: "#",
                     children: [
                         {
-                            label: "Flora",
+                            title: "navbar.exploreGeopark.biodiversity.flora",
                             link: "/explore/biodiversity/flora",
                         },
                         {
-                            label: "Fauna",
+                            title: "navbar.exploreGeopark.biodiversity.fauna",
                             link: "/explore/biodiversity/fauna",
                         }
                     ]
                 },
                 {
-                    label: "Culture",
+                    title: "navbar.exploreGeopark.culture.title",
                     link: "#",
                     children: [
                         {
-                            label: "Muleteer culture",
+                            title: "navbar.exploreGeopark.culture.muleteerCulture",
                             link: "/explore/culture/muleteer-culture",
                         },
                         {
-                            label: "Traditional craftsmanship",
+                            title: "navbar.exploreGeopark.culture.traditionalCraftsmanship",
                             link: "/explore/culture/traditional-craftsmanship",
                         }
                     ]

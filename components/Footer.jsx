@@ -57,7 +57,7 @@ export const Footer = ({lang, classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {geoparkInfo.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -69,7 +69,7 @@ export const Footer = ({lang, classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {exploreGeopark.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -81,7 +81,7 @@ export const Footer = ({lang, classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {other.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
                                     </li>
                                 ))}
                             </ul>

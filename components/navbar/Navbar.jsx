@@ -8,7 +8,19 @@ import NavbarItemsList from "@components/navbar/NavbarItemsList";
 import Link from "next/link";
 import "flag-icons/css/flag-icons.min.css";
 
-const Navbar = ({lang}) => {
+import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
+import {mapKeysToValues} from "@utils/utils";
+
+function updateAllNavLinks(navbarLinksArray, json) {
+    return navbarLinksArray.map(section => {
+        const updatedSection = { ...section };
+        updatedSection.links = mapKeysToValues(section.links, json);
+        return updatedSection;
+    });
+}
+
+
+const Navbar = ({lang, dict = {}}) => {
     const [isClient, setIsClient] = useState(false);
     const NavbarMobile = isClient ? require("@components/navbar/NavbarMobile").default : () => null;
 
@@ -16,12 +28,14 @@ const Navbar = ({lang}) => {
         setIsClient(true);
     }, []);
 
+    const updatedNavbarLinks = updateAllNavLinks(navbarLinks, dict);
+
     return (
         <nav
             className={`sticky justify-between space-x-14 lg:justify-center items-center w-full flex top-0 z-10 bg-white`}>
             <NavbarHomeLogo lang={lang}/>
             <div className={`hidden lg:flex`}>
-                <NavbarItemsList lang={lang}/>
+                <NavbarItemsList lang={lang} updatedNavbarLinks={updatedNavbarLinks}/>
             </div>
             <div className={`hidden lg:flex ${lang === "en" ? "flex-row-reverse" : ""}`}>
                 <Link href="/es">
@@ -35,7 +49,7 @@ const Navbar = ({lang}) => {
                     </div>
                 </Link>
             </div>
-            <NavbarMobile lang={lang}/>
+            <NavbarMobile lang={lang} updatedNavbarLinks={updatedNavbarLinks}/>
         </nav>
     );
 };

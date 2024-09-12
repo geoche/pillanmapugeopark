@@ -1,7 +1,7 @@
 ﻿export const blogLinks =
     [
         {
-            label: "Blog",
+            title: "navbar.blog.title",
             link: "/blog",
         }
     ]

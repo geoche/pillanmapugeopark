@@ -1,23 +1,22 @@
 "use client";
-import { useState } from "react";
+import {useState} from "react";
 import NavMbAccordionItem from "@components/navbar/navbarMobile/NavMbAccordionItem";
 
-import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
-
-const NavMbAccordion = ({lang}) => {
+const NavMbAccordion = ({lang, updatedNavbarLinks = {}}) => {
+    const language = lang;
     const [openIndex, setOpenIndex] = useState(null);
 
     const handleToggle = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
-    
+
     return (
         <div className="bg-transparent z-20">
-            {navbarLinks.map((group, index) => (
+            {updatedNavbarLinks.map((group, index) => (
                 <div key={index}>
                     <NavMbAccordionItem
                         key={index}
-                        lang={lang}
+                        lang={language}
                         item={group.links[0]}
                         isOpen={openIndex === index}
                         onToggle={() => handleToggle(index)}

@@ -1,34 +1,34 @@
 ﻿export const geoparkInfo = [
     {
-        label: "What’s a Geopark",
+        title: "What’s a Geopark",
         link: "/geopark/about-geopark",
     },
     {
-        label: "Territory",
+        title: "Territory",
         link: "/geopark/territory",
     },
     {
-        label: "Geopark management",
+        title: "Geopark management",
         link: "#",
     },
     {
-        label: "Partnerships",
+        title: "Partnerships",
         link: "/geopark/partnerships",
     },
     {
-        label: "Events",
+        title: "Events",
         link: "/geopark/events",
     },
     {
-        label: "Video Gallery",
+        title: "Video Gallery",
         link: "/geopark/gallery/videos",
     },
     {
-        label: "Picture gallery",
+        title: "Picture gallery",
         link: "/geopark/gallery/images",
     },
     {
-        label: "About us",
+        title: "About us",
         link: "/geopark/about-us/who-we-are",
     },
 ];

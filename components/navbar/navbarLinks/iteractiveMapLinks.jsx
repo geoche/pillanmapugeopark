@@ -1,7 +1,7 @@
 ﻿export const interactiveMapLinks =
     [
         {
-            label: "Interactive Map",
+            title: "navbar.interactiveMap.title",
             link: "/interactive-map",
         }
     ]

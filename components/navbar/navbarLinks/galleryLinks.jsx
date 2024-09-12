@@ -1,15 +1,15 @@
 export const galleryLinks =
     [
         {
-            label: "Gallery",
+            title: "navbar.gallery.title",
             link: "#",
             children: [
                 {
-                    label: "Video Gallery",
+                    title: "navbar.gallery.videoGallery",
                     link: "/geopark/gallery/videos",
                 },
                 {
-                    label: "Picture gallery",
+                    title: "navbar.gallery.pictureGallery",
                     link: "/geopark/gallery/images",
                 }
             ]

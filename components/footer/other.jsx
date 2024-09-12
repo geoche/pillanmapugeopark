@@ -1,15 +1,15 @@
 ﻿export const other =
     [
         {
-            label: "Interactive Map",
+            title: "Interactive Map",
             link: "/interactive-map",
         },
         {
-            label: "Visit Us",
+            title: "Visit Us",
             link: "/visit-us/how-to-arrive",
         },
         {
-            label: "Blog",
+            title: "Blog",
             link: "/blog",
         }
     ];

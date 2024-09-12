@@ -1,2 +1,68 @@
 {
+  "navbar": {
+    "geopark": {
+      "title": "The Geopark",
+      "whatsAGeopark": "What's a Geopark",
+      "territory": {
+        "title": "Territory"
+      },
+      "geoparkManagement": {
+        "title": "Geopark management",
+        "publicSector": "Public sector",
+        "academy": "Academy"
+      },
+      "partnerships": {
+        "title": "Partnerships"
+      },
+      "events": {
+        "title": "Events"
+      },
+      "aboutUs": {
+        "title": "About us",
+        "whatWeAre": "What we are",
+        "whatWeDo": "What we do",
+        "whoWeAre": "Who we are"
+      }
+    },
+    "exploreGeopark": {
+      "title": "Explore The Geopark",
+      "geosites": {
+        "title": "Geosites"
+      },
+      "georoutes": {
+        "title": "Georoutes"
+      },
+      "archaeology": {
+        "title": "Archaeology"
+      },
+      "biodiversity": {
+        "title": "Biodiversity",
+        "flora": "Flora",
+        "fauna": "Fauna"
+      },
+      "culture": {
+        "title": "Culture",
+        "muleteerCulture": "Muleteer culture",
+        "traditionalCraftsmanship": "Traditional craftsmanship"
+      }
+    },
+    "gallery": {
+      "title": "Gallery",
+      "videoGallery": "Video gallery",
+      "pictureGallery": "Picture gallery"
+    },
+    "interactiveMap": {
+      "title": "Interactive Map"
+    },
+    "visitUs": {
+      "title": "Visit Us",
+      "howToArrive": "How to arrive",
+      "accommodations": "Accommodations",
+      "guidesAndTours": "Guides and tour operators",
+      "experiences": "Experiences"
+    },
+    "blog": {
+      "title": "Blog"
+    }
+  }
 }

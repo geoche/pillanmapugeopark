@@ -1,31 +1,31 @@
 ﻿export const exploreGeopark =
     [
         {
-            label: "Geosites",
+            title: "Geosites",
             link: "/explore/geosites",
         },
         {
-            label: "Georoutes",
+            title: "Georoutes",
             link: "/explore/georoutes",
         },
         {
-            label: "Archaeology",
+            title: "Archaeology",
             link: "/explore/archaeology",
         },
         {
-            label: "Flora",
+            title: "Flora",
             link: "/explore/biodiversity/flora",
         },
         {
-            label: "Fauna",
+            title: "Fauna",
             link: "/explore/biodiversity/fauna",
         },
         {
-            label: "Muleteer culture",
+            title: "Muleteer culture",
             link: "/explore/culture/muleteer-culture",
         },
         {
-            label: "Traditional craftsmanship",
+            title: "Traditional craftsmanship",
             link: "/explore/culture/traditional-craftsmanship",
         }
     ];

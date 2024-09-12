@@ -1,9 +1,11 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import {useState, useEffect, useRef} from "react";
+import {MdKeyboardArrowDown} from "react-icons/md";
 import Link from "next/link";
 
-const NavMbAccordionItem = ({ lang, item, isOpen, onToggle, isParentOpen, setOpenIndex }) => {
+const NavMbAccordionItem = ({lang, item, isOpen, onToggle, isParentOpen, setOpenIndex}) => {
+    console.log(`HERE IS ${lang} for ${item.title}`);
+
     const [isChildOpen, setIsChildOpen] = useState(null);
     const contentRef = useRef(null);
     const hasChildren = item.children && item.children.length > 0;
@@ -38,7 +40,7 @@ const NavMbAccordionItem = ({ lang, item, isOpen, onToggle, isParentOpen, setOpe
             }}>
                 {hasChildren ? (
                     <button className="flex items-center w-full justify-between">
-                        <p>{item.label}</p>
+                        <p>{item.title}</p>
                         <MdKeyboardArrowDown
                             className={`transition-transform duration-300 ${
                                 isOpen ? "rotate-180" : "rotate-0"
@@ -47,7 +49,7 @@ const NavMbAccordionItem = ({ lang, item, isOpen, onToggle, isParentOpen, setOpe
                     </button>
                 ) : (
                     <Link href={`/${lang}${item.link}`}>
-                        <p className="">{item.label}</p>
+                        <p className="">{item.title}</p>
                     </Link>
                 )}
             </div>

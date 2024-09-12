@@ -1,2 +1,44 @@
 {
+  "navbar": {
+    "geopark": {
+      "whatsAGeopark": "",
+      "territory": "",
+      "geoparkManagement": {
+        "publicSector": "",
+        "academy": ""
+      },
+      "partnerships": "",
+      "events": "",
+      "aboutUs": {
+        "whatWeAre": "",
+        "whatWeDo": "",
+        "whoWeAre": ""
+      }
+    },
+    "exploreGeopark": {
+      "geosites": "",
+      "georoutes": "",
+      "archaeology": "",
+      "biodiversity": {
+        "flora": "",
+        "fauna": ""
+      },
+      "culture": {
+        "muleteerCulture": "",
+        "traditionalCraftsmanship": ""
+      }
+    },
+    "gallery": {
+      "videoGallery": "",
+      "imageGallery": ""
+    },
+    "interactiveMap": "",
+    "visitUs": {
+      "howToArrive": "",
+      "accommodations": "",
+      "guidesAndTours": "",
+      "experiences": ""
+    },
+    "blog": ""
+  }
 }

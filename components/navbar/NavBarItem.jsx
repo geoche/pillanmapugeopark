@@ -16,7 +16,7 @@ const NavbarItem = ({lang, navItemsList = {}}) => {
                         <>
                             <button aria-haspopup="true" aria-controls="menu"
                                     className="outline-none focus:outline-none px-3 rounded-xl flex items-center">
-                                <span className="pr-1 text-lg">{item.label}</span>
+                                <span className="pr-1 text-lg">{`${item.title}`}</span>
                                 <MdKeyboardArrowDown
                                     className={`fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-300 ease-in-out`}/>
                             </button>
@@ -24,17 +24,18 @@ const NavbarItem = ({lang, navItemsList = {}}) => {
                                 className="bg-white border rounded-xl transform scale-0 group-hover:scale-100 absolute transition duration-300 ease-in-out origin-top min-w-32">
                                 {item.children.map((child, childIndex) => (
                                     child.children ? (
-                                        <NavbarDropdownItem label={child.label} childLinks={child.children}
+                                        <NavbarDropdownItem title={child.title} childLinks={child.children}
                                                             key={childIndex} lang={lang}/>
                                     ) : (
-                                        <NavbarSimpleItem label={child.label} refLink={child.link} key={childIndex} lang={lang}/>
+                                        <NavbarSimpleItem title={child.title} refLink={child.link} key={childIndex}
+                                                          lang={lang}/>
                                     )
                                 ))}
                             </ul>
                         </>
                     ) : (
                         <Link href={`/${lang}${item.link}`} key={index}>
-                            <span className="px-3 text-lg">{item.label}</span>
+                            <span className="px-3 text-lg">{item.title}</span>
                         </Link>
                     )}
                 </div>
