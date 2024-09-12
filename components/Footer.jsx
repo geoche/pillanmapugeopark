@@ -16,7 +16,7 @@ export const Footer = ({lang, classNameExternal}) => {
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="grid gap-16 mb-8 lg:grid-cols-6">
                     <div className="grid-cols-1 col-span-2 flex flex-between">
-                        <Link href="/">
+                        <Link href={`/${lang}`}>
                             <div className="relative w-1/2 lg:w-[80%]">
                                 <Image
                                     src={footerLogo}

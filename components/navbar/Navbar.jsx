@@ -6,6 +6,7 @@ import "@/styles/navbar.css"
 import NavbarMobile from "@components/navbar/NavbarMobile";
 import NavbarItemsList from "@components/navbar/NavbarItemsList";
 import Link from "next/link";
+import "flag-icons/css/flag-icons.min.css";
 
 const Navbar = ({lang}) => {
     const [isClient, setIsClient] = useState(false);
@@ -22,15 +23,15 @@ const Navbar = ({lang}) => {
             <div className={`hidden lg:flex`}>
                 <NavbarItemsList lang={lang}/>
             </div>
-            <div className={`hidden lg:flex`}>
-                <Link href="/en">
-                    <div className={`p-4 ${lang === "en" ? "text-base" : "text-sm"}`}>
-                        EN
+            <div className={`hidden lg:flex ${lang === "en" ? "flex-row-reverse" : ""}`}>
+                <Link href="/es">
+                    <div className={`px-1 ${lang === "es" ? "text-lg " : "text-xs p-1 opacity-50"}`}>
+                        <span className={`fi fi-es`}></span>
                     </div>
                 </Link>
-                <Link href="/es">
-                    <div className={`p-4 ${lang === "es" ? "text-base" : "text-sm"}`}>
-                        ES
+                <Link href="/en">
+                    <div className={`px-1 ${lang === "en" ? "text-lg" : "text-xs p-1 opacity-50"}`}>
+                        <span className={`fi fi-gb`}></span>
                     </div>
                 </Link>
             </div>

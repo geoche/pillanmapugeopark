@@ -65,15 +65,17 @@ const NavbarMobile = ({lang}) => {
                         {/* <!--Modal body--> */}
                         <TEModalBody className={`!py-0 !pb-4 !px-4`}>
                             <NavMbAccordion lang={lang}/>
-                            <div className={`mt-3 flex flex-end`}>
+                            <div className={`flex flex-end`}>
                                 <Link href="/en">
-                                    <div className={`p-4 ${lang === "en" ? "text-base" : "text-sm"}`}>
-                                        EN
+                                    <div className={`p-2 ${lang === "en" ? "hidden" : "text-base"}`}>
+                                        <span>Cambiar el idioma a: </span>
+                                        <span className={`fi fi-gb`}></span>
                                     </div>
                                 </Link>
                                 <Link href="/es">
-                                    <div className={`p-4 ${lang === "es" ? "text-base" : "text-sm"}`}>
-                                        ES
+                                    <div className={`p-2 ${lang === "es" ? "hidden" : "text-base"}`}>
+                                        <span>Change language to: </span>
+                                        <span className={`fi fi-es`}></span>
                                     </div>
                                 </Link>
                             </div>
