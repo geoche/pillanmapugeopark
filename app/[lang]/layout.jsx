@@ -24,7 +24,7 @@ const RootLayout = ({children, params}) => {
             <main>
                 {children}
             </main>
-            <Footer/>
+            <Footer lang={params.lang}/>
             </body>
         </Provider>
         </html>

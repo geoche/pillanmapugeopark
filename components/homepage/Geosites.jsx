@@ -8,7 +8,7 @@ const geositesText =
         "Browse our gallery to see some of the most remarkable locations and get inspired for your next adventure."
     ];
 
-const Geosites = () => {
+const Geosites = ({lang}) => {
     return (
         <TextWithImageAligned
             index={`geosites`}

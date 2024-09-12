@@ -2,7 +2,7 @@
 import schematicMap from "@/public/assets/images/schematic-map.png"
 import {schematicMapText} from "@components/geopark/text/shematicMapText";
 
-const SchematicMap = () => {
+const SchematicMap = ({lang}) => {
     return (
         <TextWithImageAligned
             index={`schematic-map`}

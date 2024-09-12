@@ -10,7 +10,7 @@ import {other} from "@components/footer/other";
 import shLogo from '@/public/assets/images/shlogo.svg';
 
 
-export const Footer = ({classNameExternal}) => {
+export const Footer = ({lang, classNameExternal}) => {
     return (
         <div className={`${classNameExternal} relative bg-white`}>
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -57,7 +57,7 @@ export const Footer = ({classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {geoparkInfo.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={info.link}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -69,7 +69,7 @@ export const Footer = ({classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {exploreGeopark.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={info.link}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -81,7 +81,7 @@ export const Footer = ({classNameExternal}) => {
                             <ul className="mt-2 space-y-2">
                                 {other.map((info, index) => (
                                     <li key={index}>
-                                        <Link href={info.link}>{info.label}</Link>
+                                        <Link href={`/${lang}${info.link}`}>{info.label}</Link>
                                     </li>
                                 ))}
                             </ul>
