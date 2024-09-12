@@ -4,7 +4,7 @@ import NavMbAccordionItem from "@components/navbar/navbarMobile/NavMbAccordionIt
 
 import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
 
-const NavMbAccordion = () => {
+const NavMbAccordion = ({lang}) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     const handleToggle = (index) => {
@@ -16,6 +16,8 @@ const NavMbAccordion = () => {
             {navbarLinks.map((group, index) => (
                 <div key={index}>
                     <NavMbAccordionItem
+                        key={index}
+                        lang={lang}
                         item={group.links[0]}
                         isOpen={openIndex === index}
                         onToggle={() => handleToggle(index)}

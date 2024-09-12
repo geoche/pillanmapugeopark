@@ -9,11 +9,12 @@ import {
     TEModalHeader,
     TEModalBody,
 } from "tw-elements-react";
-import { GrClose, GrMenu } from "react-icons/gr";
+import {GrClose, GrMenu} from "react-icons/gr";
 
 import NavMbAccordion from "@components/navbar/navbarMobile/NavMbAccordion";
+import Link from "@node_modules/next/link";
 
-const NavbarMobile = () => {
+const NavbarMobile = ({lang}) => {
     const [showModalSm, setShowModalSm] = useState(false);
 
     useEffect(() => {
@@ -45,7 +46,7 @@ const NavbarMobile = () => {
             {/* <!--Small modal-->*/}
             <TEModal show={showModalSm} setShow={setShowModalSm}>
                 <TEModalDialog size="fullscreen">
-                    <TEModalContent  className={`!bg-white`}>
+                    <TEModalContent className={`!bg-white`}>
                         <TEModalHeader>
                             {/* <!--Modal title--> */}
                             <h5 className="text-lg font-bold leading-normal px-4">
@@ -63,7 +64,19 @@ const NavbarMobile = () => {
                         </TEModalHeader>
                         {/* <!--Modal body--> */}
                         <TEModalBody className={`!py-0 !pb-4 !px-4`}>
-                            <NavMbAccordion/>
+                            <NavMbAccordion lang={lang}/>
+                            <div className={`mt-3 flex flex-end`}>
+                                <Link href="/en">
+                                    <div className={`p-4 ${lang === "en" ? "text-base" : "text-sm"}`}>
+                                        EN
+                                    </div>
+                                </Link>
+                                <Link href="/es">
+                                    <div className={`p-4 ${lang === "es" ? "text-base" : "text-sm"}`}>
+                                        ES
+                                    </div>
+                                </Link>
+                            </div>
                         </TEModalBody>
                     </TEModalContent>
                 </TEModalDialog>

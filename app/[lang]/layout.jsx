@@ -9,13 +9,18 @@ export const metadata = {
     description: "Geopark website",
 };
 
+export async function generateStaticParams() {
+    return [{lang: 'en'}, {lang: 'es'}];
+}
+
 
 const RootLayout = ({children, params}) => {
+    console.log(params.lang);
     return (
         <html lang={params}>
         <Provider>
             <body>
-            <Navbar/>
+            <Navbar lang={params.lang}/>
             <main>
                 {children}
             </main>

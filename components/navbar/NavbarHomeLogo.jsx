@@ -2,9 +2,9 @@
 import logo from "@public/assets/images/home-logo-bck.png";
 import Link from "next/link";
 
-const NavbarHomeLogo = () => {
+const NavbarHomeLogo = ({lang}) => {
     return (
-        <Link href="/" className="p-2 w-[15%] max-w-24">
+        <Link href={`/${lang}`} className="p-2 w-[15%] max-w-24">
             <div className="relative ">
                 <Image
                     src={logo}

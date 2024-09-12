@@ -42,7 +42,7 @@ const BlogGrid = () => {
                     <div
                         className={`w-full flex flex-wrap flex-center items-center max-w-7xl p-4 mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                         {blogPosts.map((post, index) => (
-                            <BlogGridItem post={post} index={index}/>
+                            <BlogGridItem key={index} post={post} index={index}/>
                         ))}
                     </div>
                 )}

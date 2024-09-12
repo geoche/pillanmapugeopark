@@ -7,7 +7,7 @@ import Link from "next/link";
 import {MdKeyboardArrowDown} from "react-icons/md";
 
 
-const NavbarItem = ({navItemsList = {}}) => {
+const NavbarItem = ({lang, navItemsList = {}}) => {
     return (
         <>
             {navItemsList && navItemsList.map((item, index) => (
@@ -25,15 +25,15 @@ const NavbarItem = ({navItemsList = {}}) => {
                                 {item.children.map((child, childIndex) => (
                                     child.children ? (
                                         <NavbarDropdownItem label={child.label} childLinks={child.children}
-                                                            key={childIndex}/>
+                                                            key={childIndex} lang={lang}/>
                                     ) : (
-                                        <NavbarSimpleItem label={child.label} refLink={child.link} key={childIndex}/>
+                                        <NavbarSimpleItem label={child.label} refLink={child.link} key={childIndex} lang={lang}/>
                                     )
                                 ))}
                             </ul>
                         </>
                     ) : (
-                        <Link href={item.link} key={index}>
+                        <Link href={`/${lang}${item.link}`} key={index}>
                             <span className="px-3 text-lg">{item.label}</span>
                         </Link>
                     )}

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Link from "next/link";
 
-const NavMbAccordionItem = ({ item, isOpen, onToggle, isParentOpen, setOpenIndex }) => {
+const NavMbAccordionItem = ({ lang, item, isOpen, onToggle, isParentOpen, setOpenIndex }) => {
     const [isChildOpen, setIsChildOpen] = useState(null);
     const contentRef = useRef(null);
     const hasChildren = item.children && item.children.length > 0;
@@ -46,7 +46,7 @@ const NavMbAccordionItem = ({ item, isOpen, onToggle, isParentOpen, setOpenIndex
                         />
                     </button>
                 ) : (
-                    <Link href={item.link}>
+                    <Link href={`/${lang}${item.link}`}>
                         <p className="">{item.label}</p>
                     </Link>
                 )}
