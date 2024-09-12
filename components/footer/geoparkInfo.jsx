@@ -8,10 +8,6 @@
         link: "/geopark/territory",
     },
     {
-        title: "Geopark management",
-        link: "#",
-    },
-    {
         title: "Partnerships",
         link: "/geopark/partnerships",
     },

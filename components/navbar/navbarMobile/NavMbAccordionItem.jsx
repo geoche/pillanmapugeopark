@@ -63,6 +63,7 @@ const NavMbAccordionItem = ({lang, item, isOpen, onToggle, isParentOpen, setOpen
                     <div className="pl-4">
                         {item.children.map((child, index) => (
                             <NavMbAccordionItem
+                                lang={lang}
                                 key={index}
                                 item={child}
                                 isOpen={isChildOpen === index}
