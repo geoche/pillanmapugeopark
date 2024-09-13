@@ -6,7 +6,6 @@ import HeaderOpacity from "@components/HeaderOpacity";
 import {getDictionary} from "@app/[lang]/dictionaries";
 
 const WhatWeAre = async ({params}) => {
-    const currentLanguage = params.lang;
     const dict = await getDictionary(params.lang);
     return (
         <section className={`component-section`}>
