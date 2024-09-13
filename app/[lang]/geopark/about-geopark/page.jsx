@@ -12,7 +12,7 @@ const GeoparkPage = async ({params}) => {
     const dict = await getDictionary(params.lang);
     return (
         <section className={`component-section`}>
-            <HeaderOpacity title={dict.geopark.header}/>
+            <HeaderOpacity title={dict.geopark.whatIsGeopark.header}/>
             <Documentary dict={dict}/>
             <GeoparkInfo lang={currentLang} dict={dict}/>
             <WhatWeDo lang={currentLang} dict={dict}/>

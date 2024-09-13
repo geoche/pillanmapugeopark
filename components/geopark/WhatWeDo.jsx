@@ -23,7 +23,7 @@ const WhatWeDo = ({lang, dict}) => {
         <div className={`flex items-center justify-center mx-auto bg-default`}>
             <div className="w-screen">
                 <div className={`py-12`}>
-                    <h2 className={`text-h-secondary`}>{dict.geopark.whatWeDo.title}</h2>
+                    <h2 className={`text-h-secondary`}>{dict.geopark.whatIsGeopark.whatWeDo.title}</h2>
                     <Separator/>
                     <div className={`flex flex-col md:flex-row flex-center py-4`}>
                         <div className={`flex flex-col lg:flex-row`}>

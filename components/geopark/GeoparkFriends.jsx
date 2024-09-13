@@ -3,10 +3,10 @@
 const GeoparkFriends = ({lang, dict}) => {
     return (
         <TextWithImgAndButton 
-            sectionText={dict.geopark.geoparkFriends.sectionText} 
-            label={dict.geopark.geoparkFriends.title} 
+            sectionText={dict.geopark.whatIsGeopark.geoparkFriends.sectionText} 
+            label={dict.geopark.whatIsGeopark.geoparkFriends.title} 
             buttonRefLink={`/${lang}/geopark/about-us/who-we-are`} 
-            buttonText={dict.geopark.geoparkFriends.buttonText.joinUs}/>
+            buttonText={dict.geopark.whatIsGeopark.geoparkFriends.buttonText.joinUs}/>
     );
 };
 

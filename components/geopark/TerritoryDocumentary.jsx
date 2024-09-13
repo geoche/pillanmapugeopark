@@ -1,6 +1,6 @@
 ﻿import Separator from "@components/Separator";
 
-const TerritoryDocumentary = () => {
+const TerritoryDocumentary = ({dict}) => {
     return (
         <div className={`flex items-center justify-center bg-default py-12`}>
             <div className="text-center w-full">
