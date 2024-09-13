@@ -24,7 +24,7 @@ const TextWithImageAligned = ({
                         <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
                     {Object.keys(sectionText).map((key, index) => (
                         <div key={`dp-text-${index}`} className={`align-bottom`}>
-                            <p>{sectionText[key]}</p>
+                            <p className={`py-2`}>{sectionText[key]}</p>
                         </div>
                     ))}
                     {buttonText ? (

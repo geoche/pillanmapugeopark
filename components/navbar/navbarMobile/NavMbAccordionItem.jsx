@@ -4,8 +4,6 @@ import {MdKeyboardArrowDown} from "react-icons/md";
 import Link from "next/link";
 
 const NavMbAccordionItem = ({lang, item, isOpen, onToggle, isParentOpen, setOpenIndex}) => {
-    console.log(`HERE IS ${lang} for ${item.title}`);
-
     const [isChildOpen, setIsChildOpen] = useState(null);
     const contentRef = useRef(null);
     const hasChildren = item.children && item.children.length > 0;

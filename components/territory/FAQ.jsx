@@ -3,32 +3,51 @@
 import {useState} from 'react';
 import {IoIosArrowDown} from "react-icons/io";
 
-import {questionsList} from "@components/territory/questionsList";
 import Separator from "@components/Separator";
+import {questionsList} from "@components/territory/questionsList";
+import {getValueByKey} from "@utils/utils";
 
 
-const FAQ = () => {
+export function updateNestedTranslations(linksArray, json) {
+    return linksArray.map(link => {
+        const updatedLink = {...link};
+        Object.keys(updatedLink).forEach(key => {
+            updatedLink[key] = getValueByKey(json, updatedLink[key]) || updatedLink[key];
+        });
+
+        if (link.children) {
+            updatedLink.children = updateNestedTranslations(link.children, json);
+        }
+
+        return updatedLink;
+    });
+}
+
+const FAQ = ({dict}) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
+    const updatedQuestionsList = updateNestedTranslations(questionsList, dict);
+
+
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
             <div className={`py-4`}>
-                <h2 className={`text-h-secondary`}>Frequently Asked Questions</h2>
+                <h2 className={`text-h-secondary`}>{dict.geopark.aboutUs.whatWeAre.faq.header.h2}</h2>
                 <Separator/>
-                <h3 className={`text-center py-4`}>Resolve your doubts here</h3>
+                <h3 className={`text-center py-4`}>{dict.geopark.aboutUs.whatWeAre.faq.header.h3}</h3>
             </div>
-            <div className="space-y-4 max-w-2xl flex flex-col justify-center items-center mx-auto">
-                {questionsList.map((faq, index) => (
+            <div className="space-y-4 max-w-2xl flex flex-col mx-auto">
+                {updatedQuestionsList.map((faq, index) => (
                     <div key={index} className="w-full">
                         <button
                             onClick={() => toggleFAQ(index)}
-                            className="w-full flex justify-between items-center text-left"
+                            className="w-full flex justify-between"
                         >
-                            <h4 className={`text-xl`}>{faq.question}</h4>
+                            <h4 className={`text-xl text-left`}>{faq.question}</h4>
                             <IoIosArrowDown
                                 className={`transform transition-transform duration-300 ${
                                     openIndex === index ? 'rotate-180' : ''
@@ -36,7 +55,7 @@ const FAQ = () => {
                             />
                         </button>
                         <div
-                            className={`mt-4 transition-all duration-300 overflow-hidden ${
+                            className={`mt-4 transition-all duration-300 overflow-hidden text-justify ${
                                 openIndex === index ? 'max-h-screen' : 'max-h-0'
                             }`}
                         >

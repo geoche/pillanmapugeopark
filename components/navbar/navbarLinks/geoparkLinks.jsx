@@ -43,7 +43,7 @@
                             link: "/geopark/about-us/what-we-are",
                         },
                         {
-                            title: "navbar.geopark.aboutUs.whatWedo",
+                            title: "navbar.geopark.aboutUs.whatWeDo",
                             link: "/geopark/about-us/what-we-do",
                         },
                         {

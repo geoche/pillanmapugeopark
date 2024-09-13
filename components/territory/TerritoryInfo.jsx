@@ -1,12 +1,11 @@
 ﻿import React from 'react';
 import TextWithImageAligned from "@components/TextWithImageAligned";
 import geoparkLogo from "@public/assets/images/footer-logo.png";
-import {geoparkTerritoryText} from "@components/geopark/text/geoparkTerritoryText";
-const TerritoryInfo = () => {
+const TerritoryInfo = ({dict}) => {
     return (
         <>
             <TextWithImageAligned
-                displayText={geoparkTerritoryText}
+                sectionText={dict.geopark.aboutUs.whatWeAre.geoparkTerritory.sectionText}
                 imageSrc={geoparkLogo}
                 contentAlignedRight={false}
             />
