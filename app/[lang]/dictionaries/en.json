@@ -69,6 +69,45 @@
     "bgVideo": {
       "title": "GEOPARK",
       "logoText": "MANAGING HERITAGE – SUSTAINING TERRITORIES"
+    },
+    "schematicMap": {
+      "title": "Territory",
+      "sectionText": {
+        "par1": "13,300 km2 of territory, equivalent to 1.4% of the continental national surface, which we are working to certify as a UNESCO Global Geopark and transform it into a global example of sustainable territorial management.",
+        "par2": "The Pillanmapu Geopark project covers the pre-mountain and mountain range areas of the municipalities of Romeral, Curicó, Molina, San Clemente, Colbún and Linares.",
+        "par3": "Some of the most emblematic places are the Laguna del Maule, the Cajón del Achibueno, the Valley of the Condors, the Siete Tazas National Park or the Altos de Lircay National Reserve."
+      }
+    },
+    "geosites": {
+      "title": "Geosites",
+      "sectionText": {
+        "par1": "Discover the unique and stunning geosites within the Pillanmapu Geopark.",
+        "par2": "From majestic mountains to serene lakes, our geosites showcase the natural beauty and geological heritage of the region.",
+        "par3": "Browse our gallery to see some of the most remarkable locations and get inspired for your next adventure."
+      }
+    },
+    "guidesAndTours": {
+      "title": "Guides and tour operators",
+      "sectionText": {
+        "par1": "Explore the best of Pillanmapu Geopark with our experienced guides and trusted tour operators.",
+        "par2": "Whether you're seeking an adventurous trek, a scenic tour, or a cultural experience, our guides are here to provide you with unforgettable journeys.",
+        "par3": " Browse our gallery to see some of the dedicated professionals ready to make your visit extraordinary."
+      }
+    },
+    "accommodations": {
+      "title": "Accommodations",
+      "sectionText": {
+        "par1": "Discover the charm and comfort of our unique lodgings.",
+        "par2": "From cozy cabins to luxurious suites, each accommodation offers a perfect blend of nature and relaxation.",
+        "par3": "Browse through our gallery to find the ideal stay for your visit."
+      }
+    },
+    "associatedInstitutions": {
+      "title": "Associated institutions",
+      "sectionText": {
+        "par1": "The Pillanmapu Geopark Foundation seeks to establish a governance model that integrates all relevant actors in the management of the Maule Andes.",
+        "par2": "The public sector and academia are key parts of this system of gears that must be articulated to achieve the sustainable development expected of a UNESCO Global Geopark."
+      }
     }
   }
 }

@@ -1,21 +1,15 @@
 ﻿import TextWithImageAligned from "@components/TextWithImageAligned";
-
 import guidesAndToursImage from "@/public/assets/images/guides.png"
 
-const guidesAndToursDisplayText =
-    ["Explore the best of Pillanmapu Geopark with our experienced guides and trusted tour operators.",
-        "Whether you're seeking an adventurous trek, a scenic tour, or a cultural experience, our guides are here to provide you with unforgettable journeys.",
-        "Browse our gallery to see some of the dedicated professionals ready to make your visit extraordinary."]
-
-const GuidesAndTours = () => {
+const GuidesAndTours = ({lang, dict}) => {
     return (
         <TextWithImageAligned
             index={`guides-and-tour-operators`}
-            headerText={"Guides and tour operators"}
-            displayText={guidesAndToursDisplayText}
+            headerText={dict.home.guidesAndTours.title}
+            sectionText={dict.home.guidesAndTours.sectionText}
             imageSrc={guidesAndToursImage}
             buttonText={"See all guides and tour operators"}
-            refLink={"/visit-us/guides-and-tours"}
+            refLink={`${lang}/visit-us/guides-and-tours`}
             contentAlignedRight={true}
         />
     );

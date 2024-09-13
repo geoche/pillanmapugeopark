@@ -3,7 +3,7 @@ import ReusableButton from "@components/ReusableButton";
 
 const TextWithImageAligned = ({
                                   headerText,
-                                  displayText,
+                                  sectionText,
                                   imageSrc,
                                   buttonText,
                                   refLink,
@@ -22,9 +22,9 @@ const TextWithImageAligned = ({
                 <div className={`text-justify mx-4 ${whiteText ? "text-white" : ""} `}>
                     {headerText &&
                         <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
-                    {displayText.map((text, index) => (
+                    {Object.keys(sectionText).map((key, index) => (
                         <div key={`dp-text-${index}`} className={`align-bottom`}>
-                            <p>{text}</p>
+                            <p>{sectionText[key]}</p>
                         </div>
                     ))}
                     {buttonText ? (

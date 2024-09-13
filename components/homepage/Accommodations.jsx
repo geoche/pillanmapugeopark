@@ -1,22 +1,15 @@
-﻿import accommodations from "@/public/assets/images/accommodations.png";
-import TextWithImageAligned from "@components/TextWithImageAligned";
+﻿import TextWithImageAligned from "@components/TextWithImageAligned";
+import accommodations from "@/public/assets/images/accommodations.png";
 
-const accommodationsText =
-    [
-        "Discover the charm and comfort of our unique lodgings.",
-        "From cozy cabins to luxurious suites, each accommodation offers a perfect blend of nature and relaxation.",
-        "Browse through our gallery to find the ideal stay for your visit."
-    ]
-
-const Accommodations = () => {
+const Accommodations = ({lang, dict}) => {
     return (
         <TextWithImageAligned
             index={`accommodation`}
-            headerText={"Explore Our Accommodations"}
-            displayText={accommodationsText}
+            headerText={dict.home.accommodations.title}
+            sectionText={dict.home.accommodations.sectionText}
             imageSrc={accommodations}
             buttonText={"See all accommodations"}
-            refLink={"/visit-us/accommodations"}
+            refLink={`${lang}/visit-us/accommodations`}
             contentAlignedRight={false}
         />
     );

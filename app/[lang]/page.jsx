@@ -8,19 +8,20 @@ import Separator from "@components/Separator";
 import {getDictionary} from "@app/[lang]/dictionaries";
 
 const Home = async ({params}) => {
+    const currentLang = params.lang;
     const dict = await getDictionary(params.lang);
     return (
         <div className="relative w-full h-full flex-col">
             <BackgroundVideoMuted dict={dict}/>
-            <SchematicMap/>
+            <SchematicMap dict={dict}/>
             <Separator/>
-            <Geosites/>
+            <Geosites lang={currentLang} dict={dict}/>
             <Separator/>
-            <GuidesAndTours/>
+            <GuidesAndTours lang={currentLang} dict={dict}/>
             <Separator/>
-            <Accommodations/>
+            <Accommodations lang={currentLang} dict={dict}/>
             <Separator/>
-            <AssosiatedInstitutions/>
+            <AssosiatedInstitutions lang={currentLang} dict={dict}/>
         </div>
     );
 };

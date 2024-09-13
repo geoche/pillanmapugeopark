@@ -1,13 +1,12 @@
 ﻿import TextWithImageAligned from "@components/TextWithImageAligned";
 import schematicMap from "@/public/assets/images/schematic-map.png"
-import {schematicMapText} from "@components/geopark/text/shematicMapText";
 
-const SchematicMap = ({lang}) => {
+const SchematicMap = ({dict}) => {
     return (
         <TextWithImageAligned
             index={`schematic-map`}
-            headerText={"Territory"}
-            displayText={schematicMapText}
+            headerText={dict.home.schematicMap.title}
+            sectionText={dict.home.schematicMap.sectionText}
             imageSrc={schematicMap}
             contentAlignedRight={true}
         />
