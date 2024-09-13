@@ -4,7 +4,7 @@ const TerritoryDocumentary = ({dict}) => {
     return (
         <div className={`flex items-center justify-center bg-default py-12`}>
             <div className="text-center w-full">
-                <h2 className="text-h-secondary">TERRITORY DOCUMENTARY</h2>
+                <h2 className="text-h-secondary">{dict.geopark.territory.documentary.title}</h2>
                 <Separator/>
                 <div className="max-w-2xl aspect-video mx-auto p-4">
                     <iframe

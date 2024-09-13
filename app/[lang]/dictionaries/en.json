@@ -149,6 +149,12 @@
           "par3": "Don't hesitate to join us!"
         }
       }
+    },
+    "territory": {
+      "header": "Pillanmapu Geopark Territory",
+      "documentary": {
+        "title": "TERRITORY DOCUMENTARY"
+      }
     }
   }
 }
