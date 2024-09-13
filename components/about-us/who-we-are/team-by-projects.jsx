@@ -33,13 +33,13 @@
         {
             imageSource: "/assets/images/about-us/who-we-are/natalia-oliva.jpeg",
             name: "Natalia Oliva",
-            position: ["Research Associate in Biological  Science"],
+            position: ["Research Associate in Biological Science"],
             description: ["Biologist"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/joao-de-la-cruz.jpg",
             name: "Joao de la Cruz",
-            position: ["Research Associate in Biological  Science"],
+            position: ["Research Associate in Biological Science"],
             description: ["Flora Specialist"]
         }
     ]

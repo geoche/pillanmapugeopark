@@ -1,22 +1,23 @@
-﻿import React from 'react';
-import Avatars from "@components/about-us/Avatars";
+﻿import Avatars from "@components/about-us/Avatars";
 import {teamByProjects} from "@components/about-us/who-we-are/team-by-projects";
 import {infrastructure} from "@components/about-us/who-we-are/infrastructure";
 import {monitoring} from "@components/about-us/who-we-are/monitoring";
-import Separator from "@components/Separator";
 
-const TeamByProject = () => {
+const TeamByProject = ({dict}) => {
     return (
         <>
             <div className={`bg-default-opacity`}>
-                <Avatars header={`TEAM BY PROJECT`.toUpperCase()} teamName={`INVESTIGATION`.toUpperCase()}
+                <Avatars header={dict.geopark.aboutUs.whoWeAre.teamByProject.title}
+                         teamName={dict.geopark.aboutUs.whoWeAre.teamByProject.investigation.title}
                          team={teamByProjects} whiteText={true}/>
             </div>
             <div className={`bg-white mx-auto`}>
-                <Avatars teamName={`INFRASTRUCTURE`.toUpperCase()} team={infrastructure}/>
+                <Avatars teamName={dict.geopark.aboutUs.whoWeAre.teamByProject.infrastructure.title}
+                         team={infrastructure}/>
             </div>
             <div className={`bg-default-opacity`}>
-                <Avatars teamName={`MONITORING`.toUpperCase()} team={monitoring} whiteText={true}/>
+                <Avatars teamName={dict.geopark.aboutUs.whoWeAre.teamByProject.monitoring.title} team={monitoring}
+                         whiteText={true}/>
             </div>
         </>
 

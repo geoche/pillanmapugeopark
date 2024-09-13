@@ -283,6 +283,74 @@
             }
           }
         }
+      },
+      "whoWeAre": {
+        "header": {
+          "main": "Who we are",
+          "h2": "WE ARE A TEAM",
+          "h3": "Who loves working in the service of nature, culture and the people who inhabit the magical territories of the Maule mountain range"
+        },
+        "permanentTeam": {
+          "title": "PERMANENT TEAM",
+          "position": {
+            "coFounder": "Co-Founder",
+            "directorOfOp": "Director of Operations",
+            "scientificDirector": "Scientific Director",
+            "corpManagementExec": "Corporate Management Executive",
+            "administrator": "Administrator"
+          },
+          "description": {
+            "msc": "MSc",
+            "geologist": "Geologist",
+            "historianAndAnthropologist": "Historian & Anthropologist",
+            "adminFin": "Administration and finance"
+          }
+        },
+        "teamByProject": {
+          "title": "TEAM BY PROJECT",
+          "investigation": {
+            "title": "INVESTIGATION",
+            "position": {
+              "associateResArch": "Associate Researcher in Archaeological Sciences",
+              "associateResAnt": "Associate Researcher in Anthropological Sciences",
+              "associateResGov": "Associate Researcher in Governance",
+              "associateResGoe": "Associate Researcher in Geological Sciences",
+              "associateResBio": "Associate Researcher in Biological Sciences"
+            },
+            "description": {
+              "msc": "MSc",
+              "MScCandidate": "MSc and PhD candidate",
+              "MScPhdCandidate": "MSc candidate",
+              "archaeologist": "Archaeologist",
+              "geologist": "Geologist",
+              "biologist": "Biologist",
+              "floraSpec": "Flora Specialist",
+              "socialCompSci": "Social Complexity Scientist"
+              
+            }
+          },
+          "infrastructure": {
+            "title": "INFRASTRUCTURE",
+            "position": {
+              "infraMgr": "Infrastructure Manager",
+              "design": "Design",
+              "construction": "Construction"
+            },
+            "description": {
+              "architect": "Architect",
+              "march": "March"
+            }
+          },
+          "monitoring": {
+            "title": "MONITORING",
+            "position": {
+              "monitor": "Monitor"
+            },
+            "description": {
+              "tourGuide": "Tourist and Mountaineering Guide"
+            }
+          }
+        }
       }
     }
   }
