@@ -1,15 +1,14 @@
 ﻿import TextWithImagesAligned from "@components/TextWithImagesAligned";
-import {academyText} from "@components/management/academy/academyText";
 import {academyLogos} from "@components/management/academy/academyLogos";
 
-const Academy = () => {
+const Academy = ({dict}) => {
     return (
         <>
             <TextWithImagesAligned
                 imageSources={academyLogos}
                 contentAlignedRight={false}
-                displayText={academyText}
-                headerText={`Academy`}
+                sectionText={dict.geopark.geoparkManagement.academy.sectionText}
+                headerText={dict.geopark.geoparkManagement.academy.header}
             />
         </>
     );

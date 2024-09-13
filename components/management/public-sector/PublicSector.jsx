@@ -1,14 +1,13 @@
 ﻿import TextWithImagesAligned from "@components/TextWithImagesAligned";
-
 import {publicSectorLogos} from "@components/management/public-sector/publicSectorLogos";
-import {publicSectorText} from "@components/management/public-sector/publicSectorText";
-const PublicSector = () => {
+
+const PublicSector = ({dict}) => {
     return (
         <TextWithImagesAligned
             imageSources={publicSectorLogos}
             contentAlignedRight={true}
-            displayText={publicSectorText}
-            headerText={`Public sector`}
+            sectionText={dict.geopark.geoparkManagement.publicSector.sectionText}
+            headerText={dict.geopark.geoparkManagement.publicSector.header}
         />
     );
 };

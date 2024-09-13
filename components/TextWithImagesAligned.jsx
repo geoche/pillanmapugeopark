@@ -3,7 +3,7 @@ import ReusableButton from "@components/ReusableButton";
 import Link from "next/link";
 
 const TextWithImagesAligned = ({
-                                   headerText, displayText, imageSources = [], buttonText, refLink, contentAlignedRight
+                                   headerText, sectionText, imageSources = [], buttonText, refLink, contentAlignedRight
                                }) => {
     const flexDirection = contentAlignedRight ? 'md:flex-row' : 'md:flex-row-reverse';
     const padding = contentAlignedRight ? 'md:pr-10' : 'md:pl-10';
@@ -15,11 +15,11 @@ const TextWithImagesAligned = ({
                 <div className="text-justify ">
                     {headerText &&
                         <h2 className={`text-h-secondary ${contentAlignedRight ? "md:text-end" : "md:text-start"} py-4`}>{headerText}</h2>}
-                    {displayText.map((text, index) => (<div className={`align-bottom`} key={index}>
-                        <p className="pt-4">
-                            {text}
-                        </p>
-                    </div>))}
+                    {Object.keys(sectionText).map((key, index) => (
+                        <div className={`align-bottom`} key={index}>
+                            <p className="pt-4">{sectionText[key]}</p>
+                        </div>
+                    ))}
                     {buttonText ? (<div className="flex flex-center py-4">
                         <ReusableButton buttonText={buttonText} refLink={refLink}/>
                     </div>) : null}

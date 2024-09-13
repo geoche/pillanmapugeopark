@@ -155,6 +155,22 @@
       "documentary": {
         "title": "TERRITORY DOCUMENTARY"
       }
+    },
+    "geoparkManagement": {
+      "publicSector": {
+        "header": "Public Sector",
+        "sectionText":{
+          "par1": "Authorities and the public sector in general are a key player in the sustainable management of territories.",
+          "par2": "At the Pillanmapu Geopark we work collaboratively with different members of this sector, seeking to nourish, through scientific research and the perception of local communities, the decision-making that affects the future of the Maule mountain range."
+        } 
+      },
+      "academy": {
+        "header": "Academy",
+        "sectionText": {
+          "par1": "Managing and promoting the sustainable development of territories is a process in which it is essential to have up-to-date scientific and technical information that meets the highest quality standards so that we can make the best possible decisions. This is where academia plays a key role, facilitating and carrying out studies that help us better understand our territory and its evolution over time.",
+          "par2": "We work collaboratively with the School of Geology of the Universidad Mayor, with the Faculty of Basic Sciences of the Catholic University of Maule, who recently opened the geology degree, and with the Cultural Heritage Center of the Pontifical Catholic University of Chile."
+        }
+      }
     }
   }
 }
