@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const NavbarDropdownItem = ({lang, title, childLinks = []}) => {
     return (
-        <li className="relative px-4 py-2 hover:bg-gray-100">
+        <li className="relative px-4 py-2 hover:bg-gray-100 rounded-xl">
             <button className="w-full text-left flex items-center outline-none focus:outline-none">
                 <span className="flex-1 text-nowrap">{title}</span>
                 <MdKeyboardArrowDown className={`fill-current h-4 w-4 transition duration-300 ease-in-out z-10 relative`}/>
