@@ -1,18 +1,30 @@
 ﻿import {FaFacebook, FaYoutube, FaInstagram} from "react-icons/fa"; // Importing social media icons from react-icons
 
-import footerLogo from "@/public/assets/images/footer-logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import FooterColumns from "@components/footer/FooterColumns";
 
-import {geoparkInfo} from "@components/footer/geoparkInfo";
-import {exploreGeopark} from "@components/footer/exploreGeopark";
-import {other} from "@components/footer/other";
+import footerLogo from "@/public/assets/images/footer-logo.png";
 import shLogo from '@/public/assets/images/shlogo.svg';
 
+import {footerLinks} from "@components/footer/footerLinks";
+import {mapKeysToValues} from "@utils/utils";
 
-export const Footer = ({lang, classNameExternal}) => {
+function updateAllNavLinks(navbarLinksArray, json) {
+    return navbarLinksArray.map(section => {
+        const updatedSection = { ...section };
+        updatedSection.links = mapKeysToValues(section.links, json);
+        return updatedSection;
+    });
+}
+
+
+export const Footer = ({lang, dict}) => {
+    const updatedNavbarLinks = updateAllNavLinks(footerLinks, dict);
+    console.log(JSON.stringify(updatedNavbarLinks));
+
     return (
-        <div className={`${classNameExternal} relative bg-white`}>
+        <div className={`relative bg-white`}>
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="grid gap-16 mb-8 lg:grid-cols-6">
                     <div className="grid-cols-1 col-span-2 flex flex-between">
@@ -50,42 +62,7 @@ export const Footer = ({lang, classNameExternal}) => {
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-32 lg:col-span-4 md:grid-cols-3">
-                        <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">
-                                The Geopark
-                            </p>
-                            <ul className="mt-2 space-y-2">
-                                {geoparkInfo.map((info, index) => (
-                                    <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Explore the Geopark
-                            </p>
-                            <ul className="mt-2 space-y-2">
-                                {exploreGeopark.map((info, index) => (
-                                    <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">
-                                Other
-                            </p>
-                            <ul className="mt-2 space-y-2">
-                                {other.map((info, index) => (
-                                    <li key={index}>
-                                        <Link href={`/${lang}${info.link}`}>{info.title}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <FooterColumns lang={lang} links={updatedNavbarLinks} />
                     </div>
                 </div>
                 <div

@@ -1,6 +1,6 @@
 ﻿import Provider from "@components/Provider";
 import Navbar from "@components/navbar/Navbar";
-import Footer from "@components/Footer";
+import Footer from "@components/footer/Footer";
 import "@styles/globals.css";
 
 import {getDictionary} from "@app/[lang]/dictionaries";
@@ -27,7 +27,7 @@ const RootLayout = async ({children, params}) => {
             <main>
                 {children}
             </main>
-            <Footer lang={selectedLang}/>
+            <Footer lang={selectedLang} dict={dict}/>
             </body>
         </Provider>
         </html>

@@ -1,15 +1,15 @@
 ﻿export const other =
     [
         {
-            title: "Interactive Map",
+            title: "navbar.interactiveMap.title",
             link: "/interactive-map",
         },
         {
-            title: "Visit Us",
+            title: "navbar.visitUs.howToArrive",
             link: "/visit-us/how-to-arrive",
         },
         {
-            title: "Blog",
+            title: "navbar.blog.title",
             link: "/blog",
         }
     ];

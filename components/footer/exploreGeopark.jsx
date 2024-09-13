@@ -1,31 +1,31 @@
 ﻿export const exploreGeopark =
     [
         {
-            title: "Geosites",
+            title: "navbar.exploreGeopark.geosites.title",
             link: "/explore/geosites",
         },
         {
-            title: "Georoutes",
+            title: "navbar.exploreGeopark.georoutes.title",
             link: "/explore/georoutes",
         },
         {
-            title: "Archaeology",
+            title: "navbar.exploreGeopark.archaeology.title",
             link: "/explore/archaeology",
         },
         {
-            title: "Flora",
+            title: "navbar.exploreGeopark.biodiversity.flora",
             link: "/explore/biodiversity/flora",
         },
         {
-            title: "Fauna",
+            title: "navbar.exploreGeopark.biodiversity.fauna",
             link: "/explore/biodiversity/fauna",
         },
         {
-            title: "Muleteer culture",
+            title: "navbar.exploreGeopark.culture.muleteerCulture",
             link: "/explore/culture/muleteer-culture",
         },
         {
-            title: "Traditional craftsmanship",
+            title: "navbar.exploreGeopark.culture.traditionalCraftsmanship",
             link: "/explore/culture/traditional-craftsmanship",
         }
     ];
