@@ -109,5 +109,44 @@
         "par2": "The public sector and academia are key parts of this system of gears that must be articulated to achieve the sustainable development expected of a UNESCO Global Geopark."
       }
     }
+  },
+  "geopark": {
+    "header": "About Geopark",
+    "documentary": {
+      "title": "PILLANMAPU DOCUMENTARY"
+    },
+    "geoparkInfo": {
+      "title": "THE GEOPARK",
+      "sectionText": {
+        "par1": "The Pillanmapu Geopark Foundation was created with the aim of establishing a UNESCO Global Geopark in the Maule Andes mountain range.",
+        "par2": "Geoparks are territorial management models where natural and cultural heritage is managed in a holistic manner, involving local communities through a bottom-up approach.",
+        "par3": "We investigate the Maule Andes, generating valuable information that allows us to propose conservation and sustainable management strategies.",
+        "par4": "We design and implement educational activities to change the way we relate to our territory.",
+        "par5": "We promote sustainable economic development through geotourism and support for local."
+      }
+    },
+    "whatWeDo": {
+      "title": "WHAT WE DO?",
+      "buttonText": {
+        "investigation": "investigation",
+        "conservation": "conservation",
+        "geotourism": "geotourism",
+        "education": "education"
+      }
+    },
+    "getToKnowGeopark": {
+      "title": "GET TO KNOW THE GEOPARK"
+    },
+    "geoparkFriends": {
+      "title": "FRIENDS OF THE GEOPARK",
+      "buttonText": {
+        "joinUs": "Join us"
+      },
+      "sectionText": {
+        "par1": "We bring together the efforts of all actors pursuing sustainable development in the Maule Andes.",
+        "par2": "Are you part of an organization, with or without profit, that carries out activities in the Maule mountain range and would you like to be part of this network?",
+        "par3": "Don't hesitate to join us!"
+      }
+    }
   }
 }

@@ -1,14 +1,14 @@
 export const whatWeDoSources =
     [{
         imageSource: '/assets/images/geopark/doctor.png', 
-        buttonText: 'investigation'
+        buttonText: 'geopark.whatWeDo.buttonText.investigation'
     }, {
         imageSource: '/assets/images/geopark/knight.png', 
-        buttonText: 'conservation'
+        buttonText: 'geopark.whatWeDo.buttonText.conservation'
     }, {
         imageSource: '/assets/images/geopark/turista.png', 
-        buttonText: 'geotourism'
+        buttonText: 'geopark.whatWeDo.buttonText.geotourism'
     }, {
         imageSource: '/assets/images/geopark/teacher.png', 
-        buttonText: 'education'
+        buttonText: 'geopark.whatWeDo.buttonText.education'
     }]

@@ -1,9 +1,11 @@
 ﻿import TextWithImgAndButton from "@components/TextWithImgAndButton";
-import {geoparkInfoText} from "@components/homepage/text/geoparkInfoText";
-const GeoparkInfo = () => {
+const GeoparkInfo = ({lang, dict}) => {
     return (
-        <TextWithImgAndButton textToMap={geoparkInfoText} label={`The Geopark`.toUpperCase()}
-                              buttonRefLink={`/geopark/about-us/what-we-are`} buttonText={`I want to know more!`}/>
+        <TextWithImgAndButton 
+            sectionText={dict.geopark.geoparkInfo.sectionText} 
+            label={dict.geopark.geoparkInfo.title}
+            buttonRefLink={`/${lang}/geopark/about-us/what-we-are`}
+            buttonText={`I want to know more!`}/>
     );
 };
 

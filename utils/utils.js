@@ -1,4 +1,4 @@
-function getValueByKey(json, key) {
+export function getValueByKey(json, key) {
     return key.split('.').reduce((o, k) => (o || {})[k], json);
 }
 

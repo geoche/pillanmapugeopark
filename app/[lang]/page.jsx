@@ -10,6 +10,7 @@ import {getDictionary} from "@app/[lang]/dictionaries";
 const Home = async ({params}) => {
     const currentLang = params.lang;
     const dict = await getDictionary(params.lang);
+
     return (
         <div className="relative w-full h-full flex-col">
             <BackgroundVideoMuted dict={dict}/>

@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 
-const ReusableButton = ({ buttonText, refLink, onClickAction }) => {
+const ReusableButton = ({ buttonText, refLink, onClickAction, lang }) => {
     const button = (
         <button
             onClick={onClickAction}
