@@ -6,7 +6,7 @@ import Image from "next/image";
 import Spinner from "@components/Spinner";
 import Separator from "@components/Separator";
 
-const EventsCalendar = () => {
+const EventsCalendar = ({lang, dict}) => {
     const [events, setEvents] = useState([]);
     const [openIndex, setOpenIndex] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -35,10 +35,12 @@ const EventsCalendar = () => {
     const toggleEvent = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
+    
+    const locale = lang === 'en' ? 'default' : 'es-ES';
 
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
-            <h2 className={`text-h-secondary`}>See our latest events</h2>
+            <h2 className={`text-h-secondary`}>{dict.geopark.events.eventsCalendar.title}</h2>
             <Separator/>
             <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
                 {loading ? (
@@ -56,8 +58,8 @@ const EventsCalendar = () => {
                                     <div id="DATE" className="w-full md:w-1/3 lg:w-[22%] xl:w-[30%] flex flex-row items-center px-4">
                                         <p className=" text-8xl min-w-[5rem] text-end">{new Date(event.eventDate).getDate()}</p>
                                         <div className="flex flex-col items-start  text-lg pl-4">
-                                            <p>{new Date(event.eventDate).toLocaleString('default', {month: 'long'})}</p>
-                                            <p>{new Date(event.eventDate).toLocaleString('default', {weekday: 'long'})}</p>
+                                            <p>{new Date(event.eventDate).toLocaleString(locale, {month: 'long'})}</p>
+                                            <p>{new Date(event.eventDate).toLocaleString(locale, {weekday: 'long'})}</p>
                                             <p>{new Date(event.eventDate).getFullYear()}</p>
                                         </div>
                                     </div>

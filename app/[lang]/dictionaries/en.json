@@ -194,6 +194,12 @@
           }
         }
       }
+    },
+    "events": {
+      "header": "Events Calendar",
+      "eventsCalendar": {
+        "title": "See our latest events"
+      }
     }
   }
 }
