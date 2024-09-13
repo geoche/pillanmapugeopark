@@ -159,16 +159,39 @@
     "geoparkManagement": {
       "publicSector": {
         "header": "Public Sector",
-        "sectionText":{
+        "sectionText": {
           "par1": "Authorities and the public sector in general are a key player in the sustainable management of territories.",
           "par2": "At the Pillanmapu Geopark we work collaboratively with different members of this sector, seeking to nourish, through scientific research and the perception of local communities, the decision-making that affects the future of the Maule mountain range."
-        } 
+        }
       },
       "academy": {
         "header": "Academy",
         "sectionText": {
           "par1": "Managing and promoting the sustainable development of territories is a process in which it is essential to have up-to-date scientific and technical information that meets the highest quality standards so that we can make the best possible decisions. This is where academia plays a key role, facilitating and carrying out studies that help us better understand our territory and its evolution over time.",
           "par2": "We work collaboratively with the School of Geology of the Universidad Mayor, with the Faculty of Basic Sciences of the Catholic University of Maule, who recently opened the geology degree, and with the Cultural Heritage Center of the Pontifical Catholic University of Chile."
+        }
+      }
+    },
+    "partnerships": {
+      "header": "Meet the members of our network",
+      "collaborationInfo": {
+        "header": {
+          "h2": "Strengthening collaborative work in Maule",
+          "h3": "Resolve your doubts here"
+        },
+        "accordion": {
+          "question1": {
+            "question": "why collaborative work?",
+            "answer": "Given the problems we are currently facing, the need to join forces and align the efforts of the different actors is imperative. The Maule region is no exception. The rainfall deficit increases every year and wild spaces are steadily losing ground. From this point of view, collaborative models are more important than ever. From the Pillanmapu Geopark we are taking a step towards collaborative work by creating the Network of Friends of the Geopark."
+          },
+          "question2": {
+            "question": "why should i join?",
+            "answer": "Being part of the Geopark Friends Network is beneficial for all its members: The network of contacts allows for joint work, streamlining and increasing the efficiency of projects. Participants are in close contact with the Geopark team and can benefit from their expertise in science, heritage and geotourism. Through the Geopark, they can work together with academia, facilitating the development of projects that require research."
+          },
+          "question3": {
+            "question": "who can be part of it?",
+            "answer": "All companies, NGOs, foundations or any private institution with operations in Maule that has institutional missions and visions similar to the Geopark can become part of the Network of Friends of the Geopark. Some examples are: tour operators and guides, non-profit organizations that ensure the integrity of the heritage or that work on issues related to sustainability, groups or neighborhood associations, local producer groups, among others."
+          }
         }
       }
     }
