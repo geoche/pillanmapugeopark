@@ -64,5 +64,11 @@
     "blog": {
       "title": "Blog"
     }
+  },
+  "home": {
+    "bgVideo": {
+      "title": "GEOPARK",
+      "logoText": "MANAGING HERITAGE – SUSTAINING TERRITORIES"
+    }
   }
 }

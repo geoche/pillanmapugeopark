@@ -21,8 +21,6 @@ function updateAllNavLinks(navbarLinksArray, json) {
 
 export const Footer = ({lang, dict}) => {
     const updatedNavbarLinks = updateAllNavLinks(footerLinks, dict);
-    console.log(JSON.stringify(updatedNavbarLinks));
-
     return (
         <div className={`relative bg-white`}>
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

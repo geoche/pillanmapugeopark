@@ -11,7 +11,7 @@ const Home = async ({params}) => {
     const dict = await getDictionary(params.lang);
     return (
         <div className="relative w-full h-full flex-col">
-            <BackgroundVideoMuted/>
+            <BackgroundVideoMuted dict={dict}/>
             <SchematicMap/>
             <Separator/>
             <Geosites/>

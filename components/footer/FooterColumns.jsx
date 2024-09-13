@@ -2,7 +2,6 @@ import React from 'react';
 import Link from "next/link";
 
 const FooterColumns = ({lang, links = {}}) => {
-    console.log(JSON.stringify(links, null, 2));
     return (
         <>
             {links.map((column, index) => (
