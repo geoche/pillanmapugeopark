@@ -40,7 +40,7 @@ const GeorouteDetails = async ({params}) => {
                         <Image
                             src={georouteToShow.mainImgSrc}
                             alt={`grt-img-${params.id}`}
-                            className={`w-full`}
+                            className={`w-full max-w-4xl`}
                             width={1280}
                             height={720}/>
                         <div className={`text-justify`}>
