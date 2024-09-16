@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import Spinner from "@components/Spinner";
 import BlogGridItem from "@components/blog/BlogGridItem";
 
-const BlogGrid = () => {
+const BlogGrid = ({lang}) => {
     const [blogPosts, setBlogPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
@@ -42,7 +42,7 @@ const BlogGrid = () => {
                     <div
                         className={`w-full flex flex-wrap flex-center items-center max-w-7xl p-4 mx-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                         {blogPosts.map((post, index) => (
-                            <BlogGridItem key={index} post={post} index={index}/>
+                            <BlogGridItem key={index} post={post} index={index} lang={lang}/>
                         ))}
                     </div>
                 )}
