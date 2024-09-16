@@ -2,26 +2,12 @@
 import HeaderOpacity from "@components/HeaderOpacity";
 import {getDictionary} from "@app/[lang]/dictionaries";
 import {whatWeDoList} from "@components/about-us/what-we-do/whatWeDoList";
-import {getValueByKey} from "@utils/utils";
+import {replaceConfigStrings} from "@utils/utils";
 
-function updateNestedTranslations(linksArray, json) {
-    return linksArray.map(link => {
-        const updatedLink = { ...link };
-        Object.keys(updatedLink).forEach(key => {
-            updatedLink[key] = getValueByKey(json, updatedLink[key]) || updatedLink[key];
-        });
-
-        if (link.children) {
-            updatedLink.children = updateNestedTranslations(link.children, json);
-        }
-
-        return updatedLink;
-    });
-}
 const WhatWeDo = async ({params}) => {
     const dict = await getDictionary(params.lang);
 
-    const updatedWhatWeDoList = updateNestedTranslations(whatWeDoList, dict);
+    const updatedWhatWeDoList = replaceConfigStrings(whatWeDoList, dict);
     return (
         <section className={`component-section`}>
             <HeaderOpacity title={dict.geopark.aboutUs.whatWeDo.header}/>

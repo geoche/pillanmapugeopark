@@ -9,16 +9,7 @@ import Link from "next/link";
 import "flag-icons/css/flag-icons.min.css";
 
 import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
-import {mapKeysToValues} from "@utils/utils";
-
-function updateAllNavLinks(navbarLinksArray, json) {
-    return navbarLinksArray.map(section => {
-        const updatedSection = { ...section };
-        updatedSection.links = mapKeysToValues(section.links, json);
-        return updatedSection;
-    });
-}
-
+import {replaceConfigStrings} from "@utils/utils";
 
 const Navbar = ({lang, dict = {}}) => {
     const [isClient, setIsClient] = useState(false);
@@ -28,7 +19,7 @@ const Navbar = ({lang, dict = {}}) => {
         setIsClient(true);
     }, []);
 
-    const updatedNavbarLinks = updateAllNavLinks(navbarLinks, dict);
+    const updatedNavbarLinks = replaceConfigStrings(navbarLinks, dict);
 
     return (
         <nav

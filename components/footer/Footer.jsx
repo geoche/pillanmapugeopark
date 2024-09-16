@@ -1,5 +1,4 @@
-﻿import {FaFacebook, FaYoutube, FaInstagram} from "react-icons/fa"; // Importing social media icons from react-icons
-
+﻿import {FaFacebook, FaYoutube, FaInstagram} from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import FooterColumns from "@components/footer/FooterColumns";
@@ -8,19 +7,10 @@ import footerLogo from "@/public/assets/images/footer-logo.png";
 import shLogo from '@/public/assets/images/shlogo.svg';
 
 import {footerLinks} from "@components/footer/footerLinks";
-import {mapKeysToValues} from "@utils/utils";
-
-function updateAllNavLinks(navbarLinksArray, json) {
-    return navbarLinksArray.map(section => {
-        const updatedSection = { ...section };
-        updatedSection.links = mapKeysToValues(section.links, json);
-        return updatedSection;
-    });
-}
-
+import {replaceConfigStrings} from "@utils/utils";
 
 export const Footer = ({lang, dict}) => {
-    const updatedNavbarLinks = updateAllNavLinks(footerLinks, dict);
+    const updatedNavbarLinks = replaceConfigStrings(footerLinks, dict);
     return (
         <div className={`relative bg-white`}>
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -60,7 +50,7 @@ export const Footer = ({lang, dict}) => {
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-32 lg:col-span-4 md:grid-cols-3">
-                        <FooterColumns lang={lang} links={updatedNavbarLinks} />
+                        <FooterColumns lang={lang} links={updatedNavbarLinks}/>
                     </div>
                 </div>
                 <div
