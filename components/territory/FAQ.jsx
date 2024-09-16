@@ -5,23 +5,7 @@ import {IoIosArrowDown} from "react-icons/io";
 
 import Separator from "@components/Separator";
 import {questionsList} from "@components/territory/questionsList";
-import {getValueByKey} from "@utils/utils";
-
-
-export function updateNestedTranslations(linksArray, json) {
-    return linksArray.map(link => {
-        const updatedLink = {...link};
-        Object.keys(updatedLink).forEach(key => {
-            updatedLink[key] = getValueByKey(json, updatedLink[key]) || updatedLink[key];
-        });
-
-        if (link.children) {
-            updatedLink.children = updateNestedTranslations(link.children, json);
-        }
-
-        return updatedLink;
-    });
-}
+import {replaceConfigStrings} from "@utils/utils";
 
 const FAQ = ({dict}) => {
     const [openIndex, setOpenIndex] = useState(null);
@@ -30,7 +14,7 @@ const FAQ = ({dict}) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const updatedQuestionsList = updateNestedTranslations(questionsList, dict);
+    const updatedQuestionsList = replaceConfigStrings(questionsList, dict);
 
 
     return (

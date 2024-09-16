@@ -3,6 +3,7 @@ import HeaderOpacity from "@components/HeaderOpacity";
 import {getDictionary} from "@app/[lang]/dictionaries";
 
 const ManagementAcademy = async ({params}) => {
+    console.log(params.lang);
     const dict = await getDictionary(params.lang);
     return (
         <section className={`component-section`}>

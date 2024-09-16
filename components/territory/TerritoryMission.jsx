@@ -1,4 +1,4 @@
-﻿import {getValueByKey} from "@utils/utils";
+﻿import {replaceConfigStrings} from "@utils/utils";
 
 const missionVisionValues = [
     {
@@ -15,23 +15,8 @@ const missionVisionValues = [
     }
 ];
 
-// Function to update translations
-function updateNestedTranslations(linksArray, json) {
-    return linksArray.map(link => {
-        const updatedLink = { ...link };
-        Object.keys(updatedLink).forEach(key => {
-            updatedLink[key] = getValueByKey(json, updatedLink[key]) || updatedLink[key];
-        });
-
-        if (link.children) {
-            updatedLink.children = updateNestedTranslations(link.children, json);
-        }
-
-        return updatedLink;
-    });
-}
 const TerritoryMission = ({dict}) => {
-    const updatedMissionVisionValues = updateNestedTranslations(missionVisionValues, dict);
+    const updatedMissionVisionValues = replaceConfigStrings(missionVisionValues, dict);
     return (
         <div className={`flex items-center justify-center mx-auto bg-default-opacity py-12`}>
             <div className="text-center text-white w-screen  max-w-7xl">

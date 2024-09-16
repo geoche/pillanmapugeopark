@@ -1,11 +1,12 @@
 ﻿import HeaderOpacity from "@components/HeaderOpacity";
 import GuidesAndToursGrid from "@components/visit-us/guides-and-tours/GuidesAndToursGrid";
 
-const GuidesAndTours = () => {
+const GuidesAndTours = async({params}) => {
+    const currentLanguage = params.lang;
     return (
         <section className={`component-section`}>
             <HeaderOpacity title={`Guides and tour operators`}/>
-            <GuidesAndToursGrid/>
+            <GuidesAndToursGrid lang={currentLanguage}/>
         </section>
     );
 };

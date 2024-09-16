@@ -7,7 +7,7 @@ import GuidesAndToursGridItem from "@components/visit-us/guides-and-tours/Guides
 const ALL_LOCATIONS = 'All locations';
 const ALL_TYPES = 'All types';
 
-const GuidesAndToursGrid = () => {
+const GuidesAndToursGrid = ({lang}) => {
     const [guidesAndTours, setGuidesAndTours] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
@@ -102,6 +102,7 @@ const GuidesAndToursGrid = () => {
                                     index={index}
                                     item={item}
                                     key={`aci-${index}`}
+                                    lang={lang}
                                 />
                             ))}
                         </div>

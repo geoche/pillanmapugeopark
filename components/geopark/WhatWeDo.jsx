@@ -3,22 +3,10 @@ import ReusableButton from "@components/ReusableButton";
 import Image from "next/image";
 import {whatWeDoSources} from "@components/homepage/sources/whatWeDoSources";
 
-import {getValueByKey} from "@utils/utils";
+import {replaceConfigStrings} from "@utils/utils";
 
-function updateTranslations(linksArray, json) {
-    return linksArray.map(link => {
-        const updatedLink = { ...link };
-        updatedLink.buttonText = getValueByKey(json, link.buttonText) || link.buttonText;
-
-        if (link.children) {
-            updatedLink.children = updateTranslations(link.children, json);
-        }
-
-        return updatedLink;
-    });
-}
 const WhatWeDo = ({lang, dict}) => {
-    const sources = updateTranslations(whatWeDoSources, dict);
+    const sources = replaceConfigStrings(whatWeDoSources, dict);
     return (
         <div className={`flex items-center justify-center mx-auto bg-default`}>
             <div className="w-screen">

@@ -5,22 +5,7 @@ import {IoIosArrowDown} from "react-icons/io";
 import Separator from "@components/Separator";
 
 import {colabInfo} from "@components/partnership/colabInfo";
-import {getValueByKey} from "@utils/utils";
-
-export function updateNestedTranslations(linksArray, json) {
-    return linksArray.map(link => {
-        const updatedLink = {...link};
-        Object.keys(updatedLink).forEach(key => {
-            updatedLink[key] = getValueByKey(json, updatedLink[key]) || updatedLink[key];
-        });
-
-        if (link.children) {
-            updatedLink.children = updateNestedTranslations(link.children, json);
-        }
-
-        return updatedLink;
-    });
-}
+import {replaceConfigStrings} from "@utils/utils";
 
 const CollaborationInfo = ({dict}) => {
     const [openIndex, setOpenIndex] = useState(null);
@@ -29,7 +14,7 @@ const CollaborationInfo = ({dict}) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const colabInfoProcessed = updateNestedTranslations(colabInfo, dict);
+    const colabInfoProcessed = replaceConfigStrings(colabInfo, dict);
 
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">

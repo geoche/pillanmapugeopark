@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-const GuidesAndToursGridItem = ({item = {}, index}) => {
+const GuidesAndToursGridItem = ({lang, item = {}, index}) => {
     return (
         <div key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3 relative`}>
-            <Link className={`w-full`} href={`/visit-us/guides-and-tours/${item._id}`}>
+            <Link className={`w-full`} href={`/${lang}/visit-us/guides-and-tours/${item._id}`}>
                 <div>
                     <Image
                         src={item.mainImgSrc}
