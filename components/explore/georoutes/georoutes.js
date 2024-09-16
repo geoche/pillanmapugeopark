@@ -1,5 +1,6 @@
 export const georoutes = [
     {
+        id:"tenor-river-mountain-valley",
         title: "exploreGeopark.georoutes.georoute.tenorRiverMountainValley.title",
         mainImgSrc: "/assets/images/explore/tenorRiverMountainValley.jpg",
         videoId: "1VONshSCNRk",
@@ -10,6 +11,7 @@ export const georoutes = [
         }
     },
     {
+        id:"radal-siete-tazas",
         title: "exploreGeopark.georoutes.georoute.radalSieteTazas.title",
         mainImgSrc: "/assets/images/explore/radalSieteTazas.jpg",
         videoId: "LlOAtubo54k",
@@ -19,6 +21,7 @@ export const georoutes = [
         }
     },
     {
+        id:"altos-de-lircay",
         title: "exploreGeopark.georoutes.georoute.altosDeLircay.title",
         mainImgSrc: "/assets/images/explore/altosDeLircay.jpg",
         videoId: "L3uTFvDaX3o",
@@ -29,6 +32,7 @@ export const georoutes = [
         }
     },
     {
+        id:"pehuenche-international-pass",
         title: "exploreGeopark.georoutes.georoute.pehuencheInternationalPass.title",
         mainImgSrc: "/assets/images/explore/pehuencheInternationalPass.jpg",
         videoId: "VEXeD46jHnA",
@@ -40,6 +44,7 @@ export const georoutes = [
         }
     },
     {
+        id:"melado-mountain-valley",
         title: "exploreGeopark.georoutes.georoute.meladoMountainValley.title",
         mainImgSrc: "/assets/images/explore/meladoMountainValley.jpg",
         videoId: "TzA8srm4m38",
@@ -49,6 +54,7 @@ export const georoutes = [
         }
     },
     {
+        id:"artisan-tradition-of-rari",
         title: "exploreGeopark.georoutes.georoute.artisanTraditionOfRari.title",
         mainImgSrc: "/assets/images/explore/artisanTraditionOfRari.jpg",
         videoId: "0H5tbBrAQqg",
@@ -59,6 +65,7 @@ export const georoutes = [
         }
     },
     {
+        id:"archibueno-river-mountain-valley",
         title: "exploreGeopark.georoutes.georoute.archibuenoRiverMountainValley.title",
         mainImgSrc: "/assets/images/explore/archibuenoRiverMountainValley.jpg",
         videoId: "5bexe4Yhels",

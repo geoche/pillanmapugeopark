@@ -5,7 +5,7 @@ import Image from "next/image";
 const GeoroutesGridItem = ({lang, item, index}) => {
     return (
         <div key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3 relative`}>
-            <Link className={`w-full`} href={`/visit-us/accommodations/${item._id}`}>
+            <Link className={`w-full`} href={`/${lang}/explore/georoutes/${item.id}`}>
                 <div>
                     <Image
                         src={item.mainImgSrc}
