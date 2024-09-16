@@ -14,7 +14,7 @@ const AssosiatedInstitutions = ({lang, dict}) => {
             </div>
             <Carousel/>
             <div className="flex justify-center py-4">
-                <ReusableButton buttonText={"Know more"} refLink={`${lang}/associates`}/>
+                <ReusableButton buttonText={dict.home.associatedInstitutions.buttonText.knowMore} refLink={`${lang}/associates`}/>
             </div>
         </>
     );

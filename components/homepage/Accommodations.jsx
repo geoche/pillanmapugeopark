@@ -8,7 +8,7 @@ const Accommodations = ({lang, dict}) => {
             headerText={dict.home.accommodations.title}
             sectionText={dict.home.accommodations.sectionText}
             imageSrc={accommodations}
-            buttonText={"See all accommodations"}
+            buttonText={dict.home.accommodations.buttonText.accommodations}
             refLink={`${lang}/visit-us/accommodations`}
             contentAlignedRight={false}
         />

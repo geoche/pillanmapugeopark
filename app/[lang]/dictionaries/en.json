@@ -42,7 +42,7 @@
       },
       "culture": {
         "title": "Culture",
-        "muleteerCulture": "Muleteer culture",
+        "muleteerCulture": "Mountain herder",
         "traditionalCraftsmanship": "Traditional craftsmanship"
       }
     },
@@ -80,6 +80,9 @@
     },
     "geosites": {
       "title": "Geosites",
+      "buttonText": {
+        "seeMainGeosites": "See the main geosites"
+      },
       "sectionText": {
         "par1": "Discover the unique and stunning geosites within the Pillanmapu Geopark.",
         "par2": "From majestic mountains to serene lakes, our geosites showcase the natural beauty and geological heritage of the region.",
@@ -88,6 +91,9 @@
     },
     "guidesAndTours": {
       "title": "Guides and tour operators",
+      "buttonText": {
+        "guidesAndTours": "See all guides and tour operators"
+      },
       "sectionText": {
         "par1": "Explore the best of Pillanmapu Geopark with our experienced guides and trusted tour operators.",
         "par2": "Whether you're seeking an adventurous trek, a scenic tour, or a cultural experience, our guides are here to provide you with unforgettable journeys.",
@@ -96,6 +102,9 @@
     },
     "accommodations": {
       "title": "Accommodations",
+      "buttonText": {
+        "accommodations": "See all accommodations"
+      },
       "sectionText": {
         "par1": "Discover the charm and comfort of our unique lodgings.",
         "par2": "From cozy cabins to luxurious suites, each accommodation offers a perfect blend of nature and relaxation.",
@@ -104,6 +113,9 @@
     },
     "associatedInstitutions": {
       "title": "Associated institutions",
+      "buttonText": {
+        "knowMore": "Know more"
+      },
       "sectionText": {
         "par1": "The Pillanmapu Geopark Foundation seeks to establish a governance model that integrates all relevant actors in the management of the Maule Andes.",
         "par2": "The public sector and academia are key parts of this system of gears that must be articulated to achieve the sustainable development expected of a UNESCO Global Geopark."
@@ -326,7 +338,6 @@
               "biologist": "Biologist",
               "floraSpec": "Flora Specialist",
               "socialCompSci": "Social Complexity Scientist"
-              
             }
           },
           "infrastructure": {

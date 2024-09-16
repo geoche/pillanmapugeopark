@@ -8,7 +8,7 @@ const Geosites = ({dict, lang}) => {
             headerText={dict.home.geosites.title}
             sectionText={dict.home.geosites.sectionText}
             imageSrc={geosites}
-            buttonText={"See all geosites"}
+            buttonText={dict.home.geosites.buttonText.seeMainGeosites}
             refLink={`${lang}/explore/geosites`}
             contentAlignedRight={false}
         />
