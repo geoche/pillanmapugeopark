@@ -5,7 +5,6 @@ import {replaceConfigStrings} from "@utils/utils";
 import Image from "@node_modules/next/image";
 import GeorouteVideo from "@components/explore/georoutes/details/GeorouteVideo";
 
-// Create a georoute map for O(1) lookup
 const georouteMap = georoutes.reduce((map, georoute) => {
     map[georoute.id] = georoute;
     return map;
@@ -22,7 +21,6 @@ const GeorouteDetails = async ({params}) => {
     const currentGeorouteRaw = getGeorouteById(id);
 
     if (!currentGeorouteRaw) {
-        // Handle the case where the georoute is not found
         return (
             <section className="component-section">
                 <HeaderOpacity title={`Georoute Not Found`}/>
