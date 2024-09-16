@@ -13,7 +13,7 @@ const GeoroutesGridItem = ({lang, item, index}) => {
                         priority
                         width={800}
                         height={600}
-                        className={`rounded-2xl aspect-video`}
+                        className={`rounded-2xl aspect-video object-cover`}
                     />
                 </div>
                 <div

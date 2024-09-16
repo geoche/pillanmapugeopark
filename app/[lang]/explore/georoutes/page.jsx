@@ -21,7 +21,7 @@ const Georoutes = async ({params}) => {
                     ))}
                 </div>
                 <Separator/>
-                <div className={`max-w-7xl`}>
+                <div className={`max-w-7xl py-4`}>
                     <GeoroutesGrid dict={dict} lang={currentLang}/>
                 </div>
             </div>
