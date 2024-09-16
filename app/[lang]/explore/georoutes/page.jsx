@@ -21,7 +21,6 @@ const Georoutes = async ({params}) => {
                 </div>
             </div>
             <GeoroutesGrid dict={dict} lang={currentLang}/>
-
         </section>
     );
 };
