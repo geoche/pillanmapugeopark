@@ -7,7 +7,7 @@ import Separator from "@components/Separator";
 const ALL_LOCATIONS = 'All locations';
 const ALL_FACILITY_TYPES = 'All types';
 
-const AccommodationsGrid = () => {
+const AccommodationsGrid = ({lang}) => {
     const [accommodations, setAccommodations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
@@ -102,6 +102,7 @@ const AccommodationsGrid = () => {
                                     index={index}
                                     item={item}
                                     key={`aci-${index}`}
+                                    lang={lang}
                                 />
                             ))}
                         </div>
