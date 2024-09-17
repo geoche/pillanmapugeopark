@@ -1,4 +1,5 @@
-﻿import VideoGalleryItem from '@components/gallery/video-gallery/VideoGalleryItem';
+﻿"use client";
+import VideoGalleryItem from '@components/gallery/video-gallery/VideoGalleryItem';
 import Spinner from "@components/Spinner";
 import {useEffect, useState} from 'react';
 

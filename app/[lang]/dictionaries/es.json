@@ -377,6 +377,14 @@
           }
         }
       }
+    },
+    "gallery": {
+      "videoGallery": {
+        "header": "Galería de videos"
+      },
+      "imageGallery": {
+        "header": "Galería de imágenes"
+      }
     }
   },
   "exploreGeopark": {

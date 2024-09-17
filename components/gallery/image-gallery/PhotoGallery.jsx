@@ -1,4 +1,5 @@
-﻿import {useEffect, useState} from 'react';
+﻿"use client"
+import {useEffect, useState} from 'react';
 import ImageGallery from "@components/ImageGallery";
 import Spinner from "@components/Spinner";
 
