@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FooterColumns from "@components/footer/FooterColumns";
 
-import footerLogo from "@/public/assets/images/footer-logo.png";
+import footerLogo from "@/public/assets/images/Logo-PillanMapu.svg";
 import shLogo from '@/public/assets/images/shlogo.svg';
 
 import {footerLinks} from "@components/footer/footerLinks";
@@ -17,15 +17,15 @@ export const Footer = ({lang, dict}) => {
                 <div className="grid gap-16 mb-8 lg:grid-cols-6">
                     <div className="grid-cols-1 col-span-2 flex flex-between">
                         <Link href={`/${lang}`}>
-                            <div className="relative w-1/2 lg:w-[80%]">
+                            <div className="relative">
                                 <Image
                                     src={footerLogo}
                                     alt="logo"
-                                    className={`w-full h-full max-w-44`}
+                                    className={`w-full h-full`}
                                 />
                             </div>
                         </Link>
-                        <div className=" px-4">
+                        <div className="px-4">
                             <p className="font-semibold mb-2 text-center">{dict.footer.socialMedia}</p>
                             <div className="flex space-x-4 text-center">
                                 <Link href={"https://www.facebook.com/GeoparquePillanmapu"}

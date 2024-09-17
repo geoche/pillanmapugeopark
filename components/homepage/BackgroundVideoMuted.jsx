@@ -9,7 +9,7 @@ const BackgroundVideoMuted = ({dict}) => {
                 className={`absolute flex flex-center flex-col items-center text-white text-sm md:text-lg left-0 right-0 top-0 bottom-0 justify-center`}>
                 <p>{dict.home.bgVideo.title}</p>
                 <Image src={pilMapLogo} alt="pilMapLogo" className="py-4 max-w-[50%]"/>
-                <p>{dict.home.bgVideo.logoText}</p>
+                <p className={`text-center`}>{dict.home.bgVideo.logoText}</p>
             </div>
             <video src={process.env.BG_VIDEO} autoPlay muted loop controls={false} className={`w-full h-full`}/>
         </div>
