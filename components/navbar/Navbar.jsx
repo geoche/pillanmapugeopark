@@ -1,5 +1,7 @@
 ﻿"use client"
 import {useEffect, useState} from "react";
+import {usePathname} from 'next/navigation'
+
 import NavbarHomeLogo from './NavbarHomeLogo';
 import "@/styles/navbar.css"
 
@@ -11,6 +13,18 @@ import "flag-icons/css/flag-icons.min.css";
 import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
 import {replaceConfigStrings} from "@utils/utils";
 
+function removeLangFromPathname(pathname) {
+    const supportedLangs = ['en', 'es'];
+    const segments = pathname.split('/');
+    if (supportedLangs.includes(segments[1])) {
+        const newSegments = segments.slice(2);
+        const newPathname = '/' + newSegments.join('/');
+        return newPathname === '/' ? '/' : newPathname;
+    } else {
+        return pathname;
+    }
+}
+
 const Navbar = ({lang, dict = {}}) => {
     const [isClient, setIsClient] = useState(false);
     const NavbarMobile = isClient ? require("@components/navbar/NavbarMobile").default : () => null;
@@ -18,6 +32,8 @@ const Navbar = ({lang, dict = {}}) => {
     useEffect(() => {
         setIsClient(true);
     }, []);
+    
+    const updatedPathname = removeLangFromPathname(usePathname());
 
     const updatedNavbarLinks = replaceConfigStrings(navbarLinks, dict);
 
@@ -29,12 +45,12 @@ const Navbar = ({lang, dict = {}}) => {
                 <NavbarItemsList lang={lang} updatedNavbarLinks={updatedNavbarLinks}/>
             </div>
             <div className={`hidden lg:flex ${lang === "en" ? "flex-row-reverse" : ""}`}>
-                <Link href="/es">
+                <Link href={`/es${updatedPathname}`}>
                     <div className={`px-1 ${lang === "es" ? "text-lg " : "text-xs p-1 opacity-50"}`}>
                         <span className={`fi fi-es`}></span>
                     </div>
                 </Link>
-                <Link href="/en">
+                <Link href={`/en${updatedPathname}`}>
                     <div className={`px-1 ${lang === "en" ? "text-lg" : "text-xs p-1 opacity-50"}`}>
                         <span className={`fi fi-gb`}></span>
                     </div>
