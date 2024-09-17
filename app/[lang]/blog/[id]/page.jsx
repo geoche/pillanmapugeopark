@@ -57,7 +57,7 @@ const BlogPostPage = async ({params}) => {
                     <div
                         className={`w-full transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'} overflow-x-hidden`}>
                         <HeaderOpacity/>
-                        <div className={`w-screen overflow-x-hidden flex flex-col flex-center bg-default p-4 xl:py-12`}>
+                        <div className={`w-screen overflow-x-hidden flex flex-col flex-center bg-default p-4`}>
                             <div className={`max-w-7xl`}>
                                 <h3 className={`text-h-secondary italic`}>{blogPost.title}</h3>
                                 <Image
