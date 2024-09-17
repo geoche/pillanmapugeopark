@@ -26,7 +26,7 @@ export const Footer = ({lang, dict}) => {
                             </div>
                         </Link>
                         <div className=" px-4">
-                            <p className="font-semibold mb-2 text-center">Social Media</p>
+                            <p className="font-semibold mb-2 text-center">{dict.footer.socialMedia}</p>
                             <div className="flex space-x-4 text-center">
                                 <Link href={"https://www.facebook.com/GeoparquePillanmapu"}
                                       passHref legacyBehavior>
@@ -56,11 +56,11 @@ export const Footer = ({lang, dict}) => {
                 <div
                     className="flex flex-col justify-between p-4 border-t border-deep-purple-accent-200 lg:flex-row ">
                     <p className="text-sm text-black">
-                        Copyright © 2024 Geoparque Pillanmapu Powered by Geoparque Pillanmapu
+                        {dict.footer.copyright}
                     </p>
                     <div className={`flex flex-row text-sm space-x-2 pt-4 lg:pt-0`}>
 
-                        <p>Developed by</p>
+                        <p>{dict.footer.developedBy}</p>
                         <Link href={`https://softwarehut.com/`}
                               passHref legacyBehavior>
                             <a target="_blank">
