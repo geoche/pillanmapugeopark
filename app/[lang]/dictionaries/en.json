@@ -65,6 +65,11 @@
       "title": "Blog"
     }
   },
+  "footer": {
+    "socialMedia": "Social Media",
+    "copyright": "Copyright © 2024 Geoparque Pillanmapu Powered by Geoparque Pillanmapu",
+    "developedBy": "Developed by"
+  },
   "home": {
     "bgVideo": {
       "title": "GEOPARK",

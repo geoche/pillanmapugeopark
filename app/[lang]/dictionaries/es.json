@@ -1,44 +1,446 @@
 {
   "navbar": {
     "geopark": {
-      "whatsAGeopark": "",
-      "territory": "",
-      "geoparkManagement": {
-        "publicSector": "",
-        "academy": ""
+      "title": "El Geoparque",
+      "whatsAGeopark": "¿Qué es un Geoparque?",
+      "territory": {
+        "title": "Territorio"
       },
-      "partnerships": "",
-      "events": "",
+      "geoparkManagement": {
+        "title": "Gestión del Geoparque",
+        "publicSector": "Sector público",
+        "academy": "Academia"
+      },
+      "partnerships": {
+        "title": "Alianzas"
+      },
+      "events": {
+        "title": "Eventos"
+      },
       "aboutUs": {
-        "whatWeAre": "",
-        "whatWeDo": "",
-        "whoWeAre": ""
+        "title": "Sobre nosotros",
+        "whatWeAre": "Qué somos",
+        "whatWeDo": "Qué hacemos",
+        "whoWeAre": "Quiénes somos"
       }
     },
     "exploreGeopark": {
-      "geosites": "",
-      "georoutes": "",
-      "archaeology": "",
+      "title": "Explora el Geoparque",
+      "geosites": {
+        "title": "Geositios"
+      },
+      "georoutes": {
+        "title": "Georutas"
+      },
+      "archaeology": {
+        "title": "Arqueología"
+      },
       "biodiversity": {
-        "flora": "",
-        "fauna": ""
+        "title": "Biodiversidad",
+        "flora": "Flora",
+        "fauna": "Fauna"
       },
       "culture": {
-        "muleteerCulture": "",
-        "traditionalCraftsmanship": ""
+        "title": "Cultura",
+        "muleteerCulture": "Cultura arriera",
+        "traditionalCraftsmanship": "Artesanía tradicional"
       }
     },
     "gallery": {
-      "videoGallery": "",
-      "imageGallery": ""
+      "title": "Galería",
+      "videoGallery": "Galería de videos",
+      "pictureGallery": "Galería de imágenes"
     },
-    "interactiveMap": "",
+    "interactiveMap": {
+      "title": "Mapa interactivo"
+    },
     "visitUs": {
-      "howToArrive": "",
-      "accommodations": "",
-      "guidesAndTours": "",
-      "experiences": ""
+      "title": "Visítanos",
+      "howToArrive": "Cómo llegar",
+      "accommodations": "Alojamiento",
+      "guidesAndTours": "Guías y operadores turísticos",
+      "experiences": "Experiencias"
     },
-    "blog": ""
+    "blog": {
+      "title": "Blog"
+    }
+  },
+  "footer": {
+    "socialMedia": "Redes Sociales",
+    "copyright": "Copyright © 2024 Geoparque Pillanmapu Powered by Geoparque Pillanmapu",
+    "developedBy": "Desarrollado por"
+  },
+  "home": {
+    "bgVideo": {
+      "title": "GEOPARQUE",
+      "logoText": "GESTIONANDO EL PATRIMONIO – SOSTENIENDO TERRITORIOS"
+    },
+    "schematicMap": {
+      "title": "Territorio",
+      "sectionText": {
+        "par1": "13.300 km² de territorio, equivalente al 1,4% de la superficie continental nacional, que estamos trabajando para certificar como Geoparque Mundial de la UNESCO y transformarlo en un ejemplo global de gestión territorial sostenible.",
+        "par2": "El proyecto Geoparque Pillanmapu abarca las zonas precordilleranas y cordilleranas de las comunas de Romeral, Curicó, Molina, San Clemente, Colbún y Linares.",
+        "par3": "Algunos de los lugares más emblemáticos son la Laguna del Maule, el Cajón del Achibueno, el Valle de los Cóndores, el Parque Nacional Siete Tazas o la Reserva Nacional Altos de Lircay."
+      }
+    },
+    "geosites": {
+      "title": "Geositios",
+      "buttonText": {
+        "seeMainGeosites": "Ver los principales geositios"
+      },
+      "sectionText": {
+        "par1": "Descubre los geositios únicos y asombrosos dentro del Geoparque Pillanmapu.",
+        "par2": "Desde majestuosas montañas hasta serenos lagos, nuestros geositios muestran la belleza natural y el patrimonio geológico de la región.",
+        "par3": "Explora nuestra galería para ver algunos de los lugares más notables e inspírate para tu próxima aventura."
+      }
+    },
+    "guidesAndTours": {
+      "title": "Guías y operadores turísticos",
+      "buttonText": {
+        "guidesAndTours": "Ver todos los guías y operadores turísticos"
+      },
+      "sectionText": {
+        "par1": "Explora lo mejor del Geoparque Pillanmapu con nuestros guías experimentados y operadores turísticos de confianza.",
+        "par2": "Ya sea que busques una caminata aventurera, un tour escénico o una experiencia cultural, nuestros guías están aquí para ofrecerte viajes inolvidables.",
+        "par3": "Explora nuestra galería para ver algunos de los profesionales dedicados listos para hacer de tu visita algo extraordinario."
+      }
+    },
+    "accommodations": {
+      "title": "Alojamientos",
+      "buttonText": {
+        "accommodations": "Ver todos los alojamientos"
+      },
+      "sectionText": {
+        "par1": "Descubre el encanto y la comodidad de nuestros alojamientos únicos.",
+        "par2": "Desde acogedoras cabañas hasta lujosas suites, cada alojamiento ofrece una combinación perfecta de naturaleza y relajación.",
+        "par3": "Recorre nuestra galería para encontrar la estadía ideal para tu visita."
+      }
+    },
+    "associatedInstitutions": {
+      "title": "Instituciones asociadas",
+      "buttonText": {
+        "knowMore": "Saber más"
+      },
+      "sectionText": {
+        "par1": "La Fundación Geoparque Pillanmapu busca establecer un modelo de gobernanza que integre a todos los actores relevantes en la gestión de los Andes del Maule.",
+        "par2": "El sector público y la academia son piezas clave de este sistema de engranajes que deben articularse para lograr el desarrollo sostenible que se espera de un Geoparque Mundial de la UNESCO."
+      }
+    }
+  },
+  "geopark": {
+    "whatIsGeopark": {
+      "header": "Sobre el Geoparque",
+      "documentary": {
+        "title": "DOCUMENTAL PILLANMAPU"
+      },
+      "geoparkInfo": {
+        "title": "EL GEOPARQUE",
+        "sectionText": {
+          "par1": "La Fundación Geoparque Pillanmapu fue creada con el objetivo de establecer un Geoparque Mundial de la UNESCO en la cordillera de los Andes del Maule.",
+          "par2": "Los geoparques son modelos de gestión territorial donde el patrimonio natural y cultural se gestiona de manera holística, involucrando a las comunidades locales a través de un enfoque de abajo hacia arriba.",
+          "par3": "Investigamos los Andes del Maule, generando información valiosa que nos permite proponer estrategias de conservación y gestión sostenible.",
+          "par4": "Diseñamos e implementamos actividades educativas para cambiar la forma en que nos relacionamos con nuestro territorio.",
+          "par5": "Promovemos el desarrollo económico sostenible a través del geoturismo y el apoyo a lo local."
+        }
+      },
+      "whatWeDo": {
+        "title": "¿QUÉ HACEMOS?",
+        "buttonText": {
+          "investigation": "investigación",
+          "conservation": "conservación",
+          "geotourism": "geoturismo",
+          "education": "educación"
+        }
+      },
+      "getToKnowGeopark": {
+        "title": "CONOCE EL GEOPARQUE"
+      },
+      "geoparkFriends": {
+        "title": "AMIGOS DEL GEOPARQUE",
+        "buttonText": {
+          "joinUs": "Únete a nosotros"
+        },
+        "sectionText": {
+          "par1": "Reunimos los esfuerzos de todos los actores que buscan el desarrollo sostenible en los Andes del Maule.",
+          "par2": "¿Eres parte de una organización, con o sin fines de lucro, que realiza actividades en la cordillera del Maule y te gustaría ser parte de esta red?",
+          "par3": "¡No dudes en unirte a nosotros!"
+        }
+      }
+    },
+    "territory": {
+      "header": "Territorio Geoparque Pillanmapu",
+      "documentary": {
+        "title": "DOCUMENTAL TERRITORIO"
+      }
+    },
+    "geoparkManagement": {
+      "publicSector": {
+        "header": "Sector Público",
+        "sectionText": {
+          "par1": "Las autoridades y el sector público en general son un actor clave en la gestión sostenible de los territorios.",
+          "par2": "En el Geoparque Pillanmapu trabajamos colaborativamente con diferentes miembros de este sector, buscando nutrir, a través de la investigación científica y la percepción de las comunidades locales, la toma de decisiones que afectan el futuro de la cordillera del Maule."
+        }
+      },
+      "academy": {
+        "header": "Academia",
+        "sectionText": {
+          "par1": "Gestionar y promover el desarrollo sostenible de los territorios es un proceso en el que es esencial contar con información científica y técnica actualizada que cumpla con los más altos estándares de calidad para que podamos tomar las mejores decisiones posibles. Es aquí donde la academia juega un papel clave, facilitando y llevando a cabo estudios que nos ayudan a comprender mejor nuestro territorio y su evolución en el tiempo.",
+          "par2": "Trabajamos colaborativamente con la Escuela de Geología de la Universidad Mayor, con la Facultad de Ciencias Básicas de la Universidad Católica del Maule, que recientemente abrió la carrera de geología, y con el Centro de Patrimonio Cultural de la Pontificia Universidad Católica de Chile."
+        }
+      },
+      "geoparks": {
+        "header": "Geoparques",
+        "sectionText": {
+          "par1": "El trabajo colaborativo es parte del espíritu de los Geoparques Mundiales de la UNESCO. Por esta razón, a mediados de 2020, se formó el grupo Geoparques de Chile, que integra los diferentes proyectos de Geoparques que existen en Chile.",
+          "par2": "Estos son, de norte a sur: Proyecto Geoparque Atacama, Proyecto Geoparque Valle de Petorca, Proyecto Geoparque Puchuncaví, Proyecto Geoparque Cajón del Maipo, Proyecto Geoparque Pillanmapu, Proyecto Geoparque Minero Costero del Biobío y, finalmente, el único Geoparque certificado por UNESCO en Chile, el Geoparque Mundial UNESCO Kütralkura."
+        }
+      }
+    },
+    "partnerships": {
+      "header": "Conoce a los miembros de nuestra red",
+      "collaborationInfo": {
+        "header": {
+          "h2": "Fortaleciendo el trabajo colaborativo en el Maule",
+          "h3": "Resuelve tus dudas aquí"
+        },
+        "accordion": {
+          "question1": {
+            "question": "¿Por qué el trabajo colaborativo?",
+            "answer": "Ante las problemáticas que enfrentamos actualmente, la necesidad de unir fuerzas y alinear los esfuerzos de los distintos actores es imperativa. La región del Maule no es la excepción. El déficit de precipitaciones aumenta cada año y los espacios silvestres pierden terreno de manera constante. Desde este punto de vista, los modelos colaborativos son más importantes que nunca. Desde el Geoparque Pillanmapu estamos dando un paso hacia el trabajo colaborativo al crear la Red de Amigos del Geoparque."
+          },
+          "question2": {
+            "question": "¿Por qué debería unirme?",
+            "answer": "Ser parte de la Red de Amigos del Geoparque es beneficioso para todos sus miembros: la red de contactos permite el trabajo conjunto, agilizando y aumentando la eficiencia de los proyectos. Los participantes están en estrecho contacto con el equipo del Geoparque y pueden beneficiarse de su experiencia en ciencia, patrimonio y geoturismo. A través del Geoparque, pueden trabajar junto con la academia, facilitando el desarrollo de proyectos que requieren investigación."
+          },
+          "question3": {
+            "question": "¿Quiénes pueden ser parte?",
+            "answer": "Todas las empresas, ONG, fundaciones o cualquier institución privada con operaciones en el Maule que tenga misiones y visiones institucionales similares al Geoparque pueden formar parte de la Red de Amigos del Geoparque. Algunos ejemplos son: operadores turísticos y guías, organizaciones sin fines de lucro que velan por la integridad del patrimonio o que trabajan en temas relacionados con la sostenibilidad, grupos o asociaciones vecinales, grupos de productores locales, entre otros."
+          }
+        }
+      }
+    },
+    "events": {
+      "header": "Calendario de Eventos",
+      "eventsCalendar": {
+        "title": "Ver nuestros últimos eventos"
+      }
+    },
+    "aboutUs": {
+      "whatWeAre": {
+        "header": "Qué somos",
+        "geoparkTerritory": {
+          "sectionText": {
+            "par1": "La Fundación Geoparque Pillanmapu fue creada con el único propósito de gestionar el territorio de los Andes del Maule para convertirlo en un ejemplo mundial de gestión territorial sostenible. Para lograr el objetivo establecido, nuestro principal objetivo es certificarlo como Geoparque Mundial de la UNESCO, tarea en la que hemos estado trabajando arduamente desde 2019 en colaboración con comunidades locales, autoridades y el sector productivo privado.",
+            "par2": "Ubicado en la cordillera de los Andes de la región del Maule, el territorio del Geoparque Pillanmapu cuenta con lugares de alto valor patrimonial geológico, llamados geositios, así como lugares que destacan por su valor biológico y cultural. Los procesos geológicos que dieron forma a esta sección de la cordillera están profundamente interrelacionados con sus ecosistemas, los cuales a su vez han permitido el desarrollo humano en sus valles y montañas durante al menos 8.000 años.",
+            "par3": "Los Geoparques Mundiales de la UNESCO son modelos de gestión territorial que buscan el desarrollo sostenible de sus territorios a través de un trabajo colaborativo continuo con las comunidades locales, autoridades, diferentes instituciones estatales, academia y el sector productivo privado.",
+            "par4": "Dentro de los Geoparques, el patrimonio, tanto natural como cultural, se estudia y gestiona para que las generaciones presentes y futuras puedan hacer un uso sostenible de él a través de actividades turísticas, educativas y científicas. Al concientizar sobre la importancia del patrimonio geológico del área en la historia y la sociedad actual, así como del patrimonio biológico y cultural, los Geoparques Mundiales de la UNESCO dan a las personas locales un sentido de orgullo por su región y fortalecen su identificación con el área."
+          }
+        },
+        "territoryMission": {
+          "mission": {
+            "title": "misión",
+            "text": "Promover el desarrollo sostenible de los habitantes de la cordillera del Maule a través de la conservación, el geoturismo y la educación."
+          },
+          "vision": {
+            "title": "visión",
+            "text": "Establecer un modelo de gestión y desarrollo territorial a través de la figura de Geoparque Mundial de la UNESCO en la cordillera del Maule."
+          },
+          "values": {
+            "title": "valores",
+            "text": "Colaboración Compromiso Solidaridad Excelencia"
+          }
+        },
+        "faq": {
+          "header": {
+            "h2": "Preguntas Frecuentes",
+            "h3": "Resuelve tus dudas aquí"
+          },
+          "accordion": {
+            "question1": {
+              "question": "¿Es un Geoparque lo mismo que un Parque/Reserva Nacional?",
+              "answer": "No. Un Geoparque es una figura reconocida por la UNESCO, mientras que los Parques y Reservas Nacionales son figuras reconocidas por el Estado de Chile. También existen diferencias sustanciales en términos de gestión. Los parques y reservas son áreas cerradas, donde se propone un modelo de conservación en el que la única actividad económica permitida es el turismo. En contraste, los Geoparques Mundiales de la UNESCO son territorios grandes y habitados donde se desarrollan diferentes actividades. Los Geoparques aplican una estrategia de gestión y conservación participativa, que involucra a las comunidades locales en el proceso, generando una redefinición del territorio, que consecuentemente trae cuidado y respeto por el medio ambiente."
+            },
+            "question2": {
+              "question": "¿Están reconocidos legalmente los Geoparques en Chile como figuras de conservación?",
+              "answer": "No. Los Geoparques no son designaciones legislativas. La estrategia de conservación empleada por un Geoparque es diferente a la empleada en Parques/Reservas Nacionales, que están bajo la protección de la ley chilena. Un Geoparque busca generar una redefinición del territorio por parte de las comunidades locales. Para ello, es fundamental valorar el patrimonio natural y cultural a través de la educación. Mediante este proceso, las comunidades locales entienden que pueden convivir con y del territorio, haciendo un uso sostenible de los elementos patrimoniales."
+            },
+            "question3": {
+              "question": "¿Hay que pagar entrada al Geoparque?",
+              "answer": "No. A diferencia de un parque o reserva, los Geoparques no tienen una tarifa de entrada. Los Geoparques suelen abarcar grandes porciones de territorio, por lo que es posible ingresar a ellos desde diferentes puntos."
+            },
+            "question4": {
+              "question": "¿La existencia de un Geoparque Mundial de la UNESCO impide actividades extractivas como la minería?",
+              "answer": "Los Geoparques suelen cubrir áreas mucho más grandes que las ocupadas por parques o reservas nacionales. Por lo tanto, dentro de un Geoparque es común encontrar actividades extractivas, así como pueblos, carreteras e incluso otras medidas de conservación. Un Geoparque es un modelo de gestión territorial que, a diferencia de parques o reservas, no suprime toda actividad extractiva, sino que trabaja con diferentes actores para salvaguardar el cuidado de los sitios patrimoniales y establecer planes de gestión que tengan el menor impacto posible."
+            },
+            "question5": {
+              "question": "¿Existen otros proyectos de Geoparque en Chile?",
+              "answer": "Sí. Hay varios proyectos de Geoparque en Chile. Sin embargo, obtener la certificación de la UNESCO requiere un trabajo arduo y se deben cumplir una serie de requisitos antes de considerar postular. Actualmente, en Chile solo hay un Geoparque admitido dentro de la Red de Geoparques Mundiales de la UNESCO: el Geoparque Kütralkura, ubicado en la Araucanía. El equipo del Geoparque Pillanmapu está trabajando incansablemente para postular a la UNESCO lo antes posible y así dar un paso importante hacia la gestión del patrimonio de los Andes del Maule."
+            }
+          }
+        }
+      },
+      "whatWeDo": {
+        "header": "Qué hacemos",
+        "section": {
+          "investigation": {
+            "title": "Investigación",
+            "text": {
+              "par1": "Recorremos la cordillera del Maule en busca de lugares únicos y asombrosos con alto valor patrimonial. Muchos de ellos no han sido descritos previamente y su integridad está en riesgo debido al desconocimiento. El estudio de estos lugares nos permite entender su historia, su valor y su riesgo de degradación. Estos lugares suelen ser útiles para la educación, así como para promover el geoturismo como herramienta de desarrollo local."
+            }
+          },
+          "conservation": {
+            "title": "Conservación",
+            "text": {
+              "par1": "Establecemos estrategias de conservación que se adaptan al riesgo de degradación de los sitios patrimoniales y ecosistemas en la cordillera del Maule. Preferimos utilizar solo sitios con un bajo riesgo de degradación para nuestras actividades educativas y de difusión, reservando todos los demás sitios que son más susceptibles al daño."
+            }
+          },
+          "geotourism": {
+            "title": "Geoturismo",
+            "text": {
+              "par1": "Promovemos el desarrollo sostenible y endógeno fomentando actividades económicas no extractivas. Para ello, nuestra principal herramienta es el geoturismo, que se entiende como “el turismo que sostiene y mejora la identidad de un territorio, considerando su geología, ambiente, cultura, valores estéticos, patrimonio y bienestar de sus residentes” (Declaración de Arouca, 2011)."
+            }
+          },
+          "education": {
+            "title": "Educación",
+            "text": {
+              "par1": "Buscamos cambiar la forma en que nos relacionamos con nuestro territorio y creemos que la mejor manera de lograrlo es enseñando y transmitiendo el valor que poseen estos lugares. Realizamos capacitaciones para operadores turísticos y/o miembros de organizaciones afines, actividades educativas y salidas pedagógicas para todas las edades."
+            }
+          }
+        }
+      },
+      "whoWeAre": {
+        "header": {
+          "main": "Quiénes somos",
+          "h2": "SOMOS UN EQUIPO",
+          "h3": "Que ama trabajar al servicio de la naturaleza, la cultura y las personas que habitan los mágicos territorios de la cordillera del Maule"
+        },
+        "permanentTeam": {
+          "title": "EQUIPO PERMANENTE",
+          "position": {
+            "coFounder": "Co-Fundador",
+            "directorOfOp": "Director de Operaciones",
+            "scientificDirector": "Director Científico",
+            "corpManagementExec": "Ejecutiva de Gestión Corporativa",
+            "administrator": "Administrador"
+          },
+          "description": {
+            "msc": "MSc",
+            "geologist": "Geólogo",
+            "historianAndAnthropologist": "Historiadora y Antropóloga",
+            "adminFin": "Administración y Finanzas"
+          }
+        },
+        "teamByProject": {
+          "title": "EQUIPO POR PROYECTO",
+          "investigation": {
+            "title": "INVESTIGACIÓN",
+            "position": {
+              "associateResArch": "Investigador Asociado en Ciencias Arqueológicas",
+              "associateResAnt": "Investigador Asociado en Ciencias Antropológicas",
+              "associateResGov": "Investigador Asociado en Gobernanza",
+              "associateResGoe": "Investigador Asociado en Ciencias Geológicas",
+              "associateResBio": "Investigador Asociado en Ciencias Biológicas"
+            },
+            "description": {
+              "msc": "MSc",
+              "MScCandidate": "MSc y candidato a PhD",
+              "MScPhdCandidate": "Candidato a MSc",
+              "archaeologist": "Arqueólogo",
+              "geologist": "Geólogo",
+              "biologist": "Biólogo",
+              "floraSpec": "Especialista en Flora",
+              "socialCompSci": "Cientista en Complejidad Social"
+            }
+          },
+          "infrastructure": {
+            "title": "INFRAESTRUCTURA",
+            "position": {
+              "infraMgr": "Gerente de Infraestructura",
+              "design": "Diseño",
+              "construction": "Construcción"
+            },
+            "description": {
+              "architect": "Arquitecto",
+              "march": "March"
+            }
+          },
+          "monitoring": {
+            "title": "MONITOREO",
+            "position": {
+              "monitor": "Monitor"
+            },
+            "description": {
+              "tourGuide": "Guía Turístico y de Montaña"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exploreGeopark": {
+    "georoutes": {
+      "header": "Georutas",
+      "sectionText": {
+        "par1": "El Geoparque Pillanmapu se ha organizado en 7 georutas estratégicas, cada una diseñada para que descubras de manera accesible los paisajes, la geología y la cultura de la cordillera maulina. Estas rutas te guiarán a través de los lugares más emblemáticos del territorio, conectándote profundamente con su patrimonio natural y cultural.",
+        "par2": "Algunas georutas permiten alcanzar la mayoría de los sitios en transporte particular o incluso bus, mientras que otras requieren caminatas y acampadas para llegar a los rincones más remotos. Dependiendo de tus intereses, podrás elegir la ruta que mejor se ajuste a tu búsqueda de aventura, conocimiento o conexión con la naturaleza.",
+        "par3": "Dado el carácter cordillerano del territorio, recomendamos encarecidamente contratar guías certificados para explorar los Andes maulinos de forma segura y responsable."
+      },
+      "georoute": {
+        "tenorRiverMountainValley": {
+          "title": "Cajón del Río Teno",
+          "sectionText": {
+            "par1": "Esta ruta, situada en el extremo norte del Geoparque, recorre el cajón del río Teno, desde Los Queñes hasta la frontera con Argentina, siendo parte del Paso Internacional Vergara. Incluye importantes geositios, como las Lagunas de Teno o el Volcán Planchón. En esta ruta se encuentran las rocas más antiguas del Geoparque, con 175 millones de años de antigüedad, que revelan una época en la que Chile era muy diferente a como lo conocemos hoy: no existía la cordillera de los Andes y gran parte del territorio chileno estaba sumergido bajo el mar.",
+            "par2": "La zona baja de la ruta es ideal para practicar senderismo, observar flora y fauna, o disfrutar de baños en pozones, mientras que la zona alta permite actividades como esquí de randonnée, escalada en hielo, montañismo o kayak. Para todas estas actividades, recomendamos contratar un guía debidamente capacitado y mantener una conducta de respeto hacia el entorno.",
+            "par3": "Es posible acceder a la totalidad de la georuta a través de caminos públicos, en su mayoría aptos para todo tipo de transporte. Sin embargo, para quienes deseen llegar a las Lagunas de Teno o al Volcán Planchón, es necesario tomar un camino de tierra que queda inhabilitado durante el invierno y requiere vehículos con tracción."
+          }
+        },
+        "radalSieteTazas": {
+          "title": "Radal Siete Tazas",
+          "sectionText": {
+            "par1": "Ubicada en el Parque Nacional Radal Siete Tazas, esta ruta se centra en la observación de espectaculares cascadas, pozones de agua cristalina y senderos que muestran cómo, en el pasado, el relieve fue modelado por la acción volcánica y glaciar, y actualmente es esculpido por procesos fluviales. Entre los geositios destacados se encuentran Las Siete Tazas, el Salto El Velo de la Novia y el Valle del Indio.",
+            "par2": "Muchos de los geositios de esta ruta son de fácil acceso y pueden ser alcanzados en cualquier tipo de transporte. Además, hay buses que salen constantemente desde Molina hacia la parte baja del parque. Los geositios más alejados pueden ser alcanzados a pie, recorriendo un sendero que atraviesa bosques nativos y conduce hasta el camping El Bolsón, donde es posible acampar a los pies del Colmillo del Diablo. Es importante tener en cuenta que la gran mayoría de los geositios requieren reserva previa con CONAF."
+          }
+        },
+        "altosDeLircay": {
+          "title": "Altos de Lircay",
+          "sectionText": {
+            "par1": "La georuta de Altos de Lircay se encuentra en la Reserva Nacional Altos de Lircay y ofrece una experiencia única de contacto con la naturaleza y el patrimonio geológico de la zona. Esta ruta destaca por su diversidad de paisajes, que van desde bosques nativos de robles, lengas y coigües hasta altas cumbres con vistas panorámicas de volcanes y formaciones rocosas. A lo largo del recorrido, los visitantes pueden observar la acción de antiguos glaciares que modelaron el relieve, además de los procesos erosivos y fluviales actuales.",
+            "par2": "Entre los puntos de interés de la georuta se encuentran El Enladrillado, una meseta de origen volcánico que ofrece vistas impresionantes de los volcanes Descabezado Grande, Quizapu y Azul, y el mirador Valle del Venado, desde donde se pueden apreciar, entre otras cosas, los remanentes de las gigantescas erupciones que ha protagonizado el volcán Quizapu. La ruta también permite explorar el geositio Laguna del Alto, una laguna de origen glaciar que evidencia las últimas glaciaciones.",
+            "par3": "El acceso a esta georuta implica caminatas de diversa dificultad, algunas de las cuales requieren buena condición física, pero ofrecen una oportunidad inigualable para disfrutar de la riqueza natural y geológica de la región. También es posible contratar cabalgatas para recorrer la reserva y acceder a sus puntos más alejados."
+          }
+        },
+        "pehuencheInternationalPass": {
+          "title": "Paso Pehuenche",
+          "sectionText": {
+            "par1": "El Paso Internacional Pehuenche abarca desde el lago Colbún hasta Argentina, sirviendo como el principal acceso al corazón de la cordillera maulina. Gracias a su camino pavimentado, permite un fácil acceso a algunos de los geositios más impresionantes de la región, como la Cascada Invertida, la Laguna del Maule, el volcán Campanario, los Monjes Blancos y el Valle de los Cóndores. Este paso es conocido internacionalmente por sus rutas de escalada deportiva y sus zonas para practicar deportes invernales como randoné, con algunas de las mejores condiciones de nieve en Chile.",
+            "par2": "El Paso Pehuenche también es un punto clave para las veranadas, la tradición en la que los arrieros conducen ganado —vacas y chivos— hacia las vegas (bofedales altoandinos) para pastar en verano. Por ello, es común encontrarse con arrieros y grandes cantidades de ganado recorriendo los valles de esta ruta.",
+            "par3": "Además, la ruta está salpicada de numerosos sitios arqueológicos, como aleros de pernoctación y pequeñas cuevas utilizadas por antiguos grupos humanos para refugiarse, así como canteras y talleres líticos, donde extraían y trabajaban la piedra para fabricar herramientas.",
+            "par4": "El Paso Pehuenche es también hogar de una rica biodiversidad, con numerosas especies nativas y endémicas. Entre ellas, destacan algunas de movilidad muy limitada, como la Ranita del Pehuenche (Alsodes pehuenche), en peligro crítico de extinción, y el Matuasto de Lobo (Phymaturus loboi), un reptil endémico."
+          }
+        },
+        "meladoMountainValley": {
+          "title": "Cajón del Melado ",
+          "sectionText": {
+            "par1": "La \"Ruta del Melado\" en el Cajón del Río Melado, en la región del Maule, Chile, destaca por su valioso patrimonio natural y cultural. Entre sus principales atractivos se encuentran los petroglifos del estilo \"Guaiquivilo,\" un conjunto de grabados rupestres que representan figuras geométricas, antropomorfas y zoomorfas, realizados por pueblos prehispánicos. Estos petroglifos, distribuidos en diversos sectores de la cordillera, como los cajones Calabozo y El Toro, reflejan la existencia de fuertes vínculos culturales entre los antiguos habitantes de la región.",
+            "par2": "Además, la ruta cuenta con numerosos sitios arqueológicos, como aleros de pernoctación y talleres líticos, y es hogar de una rica biodiversidad con especies nativas y endémicas. La Ruta del Melado es ideal para el turismo de naturaleza, ofreciendo una combinación única de paisajes, historia y biodiversidad."
+          }
+        },
+        "artisanTraditionOfRari": {
+          "title": "Tradición Artesanal de Rari",
+          "sectionText": {
+            "par1": "La ruta de la tradición artesanal de Rari se centra en el patrimonio cultural inmaterial asociado a la artesanía en crin, una tradición única de este poblado de la región del Maule, en Chile. Rari es conocido por sus artesanas que tejen figuras en miniatura utilizando crin de caballo, una práctica que tiene más de 200 años de historia. Estas artesanas han transmitido su conocimiento de generación en generación, y su trabajo ha sido reconocido como un \"Tesoro Humano Vivo\" por la UNESCO y el Consejo Nacional de las Culturas y las Artes en 2010.",
+            "par2": "La artesanía en crin de Rari incluye figuras de animales, flores, personajes y objetos religiosos, que representan la vida rural y la cultura local. Esta tradición se ha mantenido viva gracias a la habilidad y creatividad de las mujeres de Rari, quienes han desarrollado técnicas específicas para trabajar el crin, logrando piezas únicas por su colorido y detalles.",
+            "par3": "La ruta de Rari permite a los visitantes conocer de cerca esta tradición artesanal, visitar talleres locales, interactuar con las artesanas y apreciar cómo cada pieza refleja la historia, la identidad y la herencia cultural del lugar."
+          }
+        },
+        "archibuenoRiverMountainValley": {
+          "title": "Cajón del Río Achibueno",
+          "sectionText": {
+            "par1": "Esta ruta se ubica dentro del Santuario de la Naturaleza del Cajón del Río Achibueno. Es la más exigente desde el punto de vista físico, ya que para alcanzar sus geositios más alejados, como la Laguna Añintunes o la Laguna Achibueno, pueden ser necesarios varios días de senderismo. Incluso para acceder a los geositios más cercanos, como los saltos de Las Ánimas o La Mina, se requieren al menos dos días. Sin embargo, esta ruta recompensa a quienes se aventuran en ella con espectaculares paisajes y recorridos a través de bosques nativos dominados por especies del género Nothofagus, típicas del sur de Chile. No en vano, este sector ha sido popularmente llamado la \"Patagonia del Maule\". También es posible programar viajes a caballo para recorrer los valles de esta ruta.",
+            "par2": "La cultura arriera es un componente fundamental de la georuta, con la práctica de la transhumancia, en la que los arrieros llevan su ganado a través de la cordillera en busca de pastos de temporada. Esta tradición ha dejado su huella en la región, visible en grutas de adoración a San Sebastián, refugios de piedra y rutas históricas. Los visitantes pueden experimentar de cerca esta forma de vida, que es parte integral de la identidad local."
+          }
+        }
+      }
+    }
   }
 }
