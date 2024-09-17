@@ -464,6 +464,18 @@
         "allLocations": "Todas las ubicaciones",
         "allTypes": "Todos los tipos"
       }
+    },
+    "guidesAndTours": {
+      "header": {
+        "main": "Guías y operadores turísticos",
+        "h3": "Encuentra guías y tours a tu gusto"
+      },
+
+      "filter": {
+        "allLocations": "Todas las ubicaciones",
+        "allTypes": "Todos los tipos"
+      }
     }
+    
   }
 }

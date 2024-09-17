@@ -464,6 +464,16 @@
         "allLocations": "All locations",
         "allTypes": "All Types"
       }
+    },
+    "guidesAndTours": {
+      "header": {
+        "main": "Guides and tour operators",
+        "h3": "Find guides and tours to your taste"
+      },
+      "filter": {
+        "allLocations": "All locations",
+        "allTypes": "All Types"
+      }
     }
   }
 }

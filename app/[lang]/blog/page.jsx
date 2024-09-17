@@ -5,7 +5,7 @@ const Blog = async ({params}) => {
     const currentLanguage = params.lang;
     return (
         <section className={`component-section`}>
-            <HeaderOpacity title={`Blog`}/>
+            <HeaderOpacity/>
             <BlogGrid lang={currentLanguage}/>
         </section>
     );

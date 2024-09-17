@@ -4,10 +4,11 @@ import Spinner from "@components/Spinner";
 import Separator from "@components/Separator";
 import GuidesAndToursGridItem from "@components/visit-us/guides-and-tours/GuidesAndToursGridItem";
 
-const ALL_LOCATIONS = 'All locations';
-const ALL_TYPES = 'All types';
 
-const GuidesAndToursGrid = ({lang}) => {
+
+const GuidesAndToursGrid = ({lang, dict}) => {
+    const ALL_LOCATIONS = dict.visitUs.guidesAndTours.filter.allLocations;
+    const ALL_TYPES = dict.visitUs.guidesAndTours.filter.allTypes;
     const [guidesAndTours, setGuidesAndTours] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
@@ -69,7 +70,7 @@ const GuidesAndToursGrid = ({lang}) => {
 
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
-            <h2 className={`text-h-secondary`}>Find guides and tours to your taste</h2>
+            <h2 className={`text-h-secondary`}>{dict.visitUs.guidesAndTours.header.h3}</h2>
             <Separator/>
             <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
                 {loading ? (<Spinner/>) : (
