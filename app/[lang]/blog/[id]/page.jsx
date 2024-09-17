@@ -6,10 +6,15 @@ import HeaderOpacity from "@components/HeaderOpacity";
 import Separator from "@components/Separator";
 import BlogPostSection from "@components/blog/BlogPostSection";
 
-const BlogPostPage = ({params}) => {
+const BlogPostPage = async ({params}) => {
     const [blogPost, setBlogPost] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
+    const currentLanguage = params.lang;
+    const locale = currentLanguage === 'en' ? 'default' : 'es-ES';
+    
+    const blogpostBy = currentLanguage === 'en' ? 'By' : 'Por';
+
 
     useEffect(() => {
         const fetchBlogpostById = async () => {
@@ -51,9 +56,10 @@ const BlogPostPage = ({params}) => {
             ) : (showContent && blogPost ? (
                     <div
                         className={`w-full transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'} overflow-x-hidden`}>
-                        <HeaderOpacity title={blogPost.title}/>
+                        <HeaderOpacity/>
                         <div className={`w-screen overflow-x-hidden flex flex-col flex-center bg-default p-4 xl:py-12`}>
                             <div className={`max-w-7xl`}>
+                                <h3 className={`text-h-secondary italic`}>{blogPost.title}</h3>
                                 <Image
                                     src={blogPost.mainImgSrc}
                                     alt={`mainImg-${params.id}`}
@@ -62,8 +68,8 @@ const BlogPostPage = ({params}) => {
                                     height={720}/>
                                 <div className={`w-full flex flex-col flex-center p-4 space-y-2`}>
                                     <p className={`text-black w-full max-w-2xl text-justify italic`}>{blogPost.description}</p>
-                                    <p className={`text-black w-full max-w-2xl italic text-sm`}>{`By ${blogPost.blogpostBy}`}</p>
-                                    <p className={`text-black w-full max-w-2xl italic text-sm`}>{new Date(blogPost.createdAt).toLocaleDateString('default', {month: 'long', day: 'numeric', year:'numeric'})}</p>
+                                    <p className={`text-black w-full max-w-2xl italic text-sm`}>{`${blogpostBy} ${blogPost.blogpostBy}`}</p>
+                                    <p className={`text-black w-full max-w-2xl italic text-sm`}>{new Date(blogPost.createdAt).toLocaleDateString(locale, {month: 'long', day: 'numeric', year:'numeric'})}</p>
                                 </div>
                                 <div className={`py-12`}>
                                     <Separator/>
@@ -71,7 +77,7 @@ const BlogPostPage = ({params}) => {
                             </div>
                             <div>
                                 {blogPost.blogNode.map((node, index) => (
-                                    <BlogPostSection blogPostSection={node} index={index}/>
+                                    <BlogPostSection blogPostSection={node} index={index} lang={params.lang}/>
                                 ))}
                             </div>
                         </div>

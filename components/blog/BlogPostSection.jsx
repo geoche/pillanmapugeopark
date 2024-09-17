@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from "next/image";
 
-const BlogPostSection = ({blogPostSection, index}) => {
+const BlogPostSection = ({blogPostSection, index, lang}) => {
+    const photographyBy = lang === 'en' ? 'Photography by' : 'Fotografía de';
+
     return (
         <div key={index} className={`max-w-7xl py-8`}>
             {blogPostSection.nodeImage.nodeImageSrc && (
@@ -18,7 +20,7 @@ const BlogPostSection = ({blogPostSection, index}) => {
                             {blogPostSection.nodeImage.nodeImageDescription}
                         </p>
                         <p className="text-black w-full max-w-4xl italic text-xs">
-                            {`Photography by ${blogPostSection.nodeImage.nodeImageBy}`}
+                            {`${photographyBy} ${blogPostSection.nodeImage.nodeImageBy}`}
                         </p>
                     </div>
                     {blogPostSection.text && (
