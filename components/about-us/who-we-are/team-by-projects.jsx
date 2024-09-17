@@ -3,43 +3,43 @@
         {
             imageSource: "/assets/images/about-us/who-we-are/claudia-montero.jpg",
             name: "Claudia Montero",
-            position: ["Associate Researcher in Archaeological Sciences"],
-            description: ["Archaeologist", "MSc"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResArchF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.archaeologist", "geopark.aboutUs.whoWeAre.teamByProject.investigation.description.msc"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/renata-gutierrez.jpg",
             name: "Renata Gutiérrez",
-            position: ["Associate Researcher in Archaeological Sciences"],
-            description: ["Archaeologist", "MSc and PhD candidate"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResArchF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.archaeologist", "geopark.aboutUs.whoWeAre.teamByProject.investigation.description.MScPhdCandidate"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/michelle-covarrubias.jpg",
             name: "Michelle Covarrubias",
-            position: ["Research Associate in Anthropological Sciences"],
-            description: ["Archaeologist", "MSc candidate"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResAntF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.archaeologist", "geopark.aboutUs.whoWeAre.teamByProject.investigation.description.MScCandidate"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/carina-sturla.jpeg",
             name: "Carina Sturla",
-            position: ["Research Associate in Governance"],
-            description: ["Social Complexity Scientist", "MSc and PhD candidate"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResGovF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.socialCompSci", "geopark.aboutUs.whoWeAre.teamByProject.investigation.description.MScPhdCandidate"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/valentina-araya.png",
             name: "Valentina Araya",
-            position: ["Research Associate in Geological Science"],
-            description: ["Geologist", "MSc"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResGoeF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.geologist", "geopark.aboutUs.whoWeAre.teamByProject.investigation.description.msc"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/natalia-oliva.jpeg",
             name: "Natalia Oliva",
-            position: ["Research Associate in Biological Science"],
-            description: ["Biologist"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResBioF"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.biologist"]
         },
         {
             imageSource: "/assets/images/about-us/who-we-are/joao-de-la-cruz.jpg",
             name: "Joao de la Cruz",
-            position: ["Research Associate in Biological Science"],
-            description: ["Flora Specialist"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.position.associateResBioM"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.investigation.description.floraSpec"]
         }
     ]

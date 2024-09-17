@@ -8,7 +8,7 @@ const WhoWeAre = async ({params}) => {
     const dict = await getDictionary(params.lang);
     return (
         <section className={`component-section`}>
-            <HeaderOpacity title={`Who we are`}/>
+            <HeaderOpacity title={dict.geopark.aboutUs.whoWeAre.header.main}/>
             <div className={`flex flex-col bg-default py-12`}>
                 <div className={`text-center`}>
                     <h2 className={`text-h-secondary`}>{dict.geopark.aboutUs.whoWeAre.header.h2}</h2>

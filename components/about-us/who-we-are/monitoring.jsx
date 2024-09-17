@@ -3,7 +3,7 @@
         {
             imageSource: "/assets/images/about-us/who-we-are/barbara-meneses.jpg",
             name: "Barbara Meneses",
-            position: ["Monitor"],
-            description: ["Tourist and Mountaineering Guide"]
+            position: ["geopark.aboutUs.whoWeAre.teamByProject.monitoring.position.monitor"],
+            description: ["geopark.aboutUs.whoWeAre.teamByProject.monitoring.description.tourGuide"]
         },
     ]

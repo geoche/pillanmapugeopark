@@ -335,16 +335,18 @@
           "investigation": {
             "title": "INVESTIGATION",
             "position": {
-              "associateResArch": "Associate Researcher in Archaeological Sciences",
-              "associateResAnt": "Associate Researcher in Anthropological Sciences",
-              "associateResGov": "Associate Researcher in Governance",
-              "associateResGoe": "Associate Researcher in Geological Sciences",
-              "associateResBio": "Associate Researcher in Biological Sciences"
+              "associateResArchF": "Associate Researcher in Archaeological Sciences",
+              "associateResArchM": "Associate Researcher in Archaeological Sciences",
+              "associateResAntF": "Associate Researcher in Anthropological Sciences",
+              "associateResGovF": "Associate Researcher in Governance",
+              "associateResGoeF": "Associate Researcher in Geological Sciences",
+              "associateResBioF": "Associate Researcher in Biological Sciences",
+              "associateResBioM": "Associate Researcher in Biological Sciences"
             },
             "description": {
               "msc": "MSc",
-              "MScCandidate": "MSc and PhD candidate",
-              "MScPhdCandidate": "MSc candidate",
+              "MScCandidate": "MSc candidate",
+              "MScPhdCandidate": "MSc and PhD candidate",
               "archaeologist": "Archaeologist",
               "geologist": "Geologist",
               "biologist": "Biologist",
@@ -361,7 +363,7 @@
             },
             "description": {
               "architect": "Architect",
-              "march": "March"
+              "march": "MArch"
             }
           },
           "monitoring": {

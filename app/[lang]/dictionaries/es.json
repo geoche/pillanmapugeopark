@@ -310,23 +310,23 @@
       },
       "whoWeAre": {
         "header": {
-          "main": "Quiénes somos",
+          "main": "¿Quiénes somos?",
           "h2": "SOMOS UN EQUIPO",
-          "h3": "Que ama trabajar al servicio de la naturaleza, la cultura y las personas que habitan los mágicos territorios de la cordillera del Maule"
+          "h3": "Que ama trabajar al servicio de la naturaleza, la cultura y la gente que habita los mágicos territorios de la cordillera maulina."
         },
         "permanentTeam": {
           "title": "EQUIPO PERMANENTE",
           "position": {
-            "coFounder": "Co-Fundador",
-            "directorOfOp": "Director de Operaciones",
+            "coFounder": "Cofundador",
+            "directorOfOp": "Dir. de Operaciones",
             "scientificDirector": "Director Científico",
             "corpManagementExec": "Ejecutiva de Gestión Corporativa",
-            "administrator": "Administrador"
+            "administrator": "Administradora"
           },
           "description": {
             "msc": "MSc",
             "geologist": "Geólogo",
-            "historianAndAnthropologist": "Historiadora y Antropóloga",
+            "historianAndAnthropologist": "Historiadora & Antropóloga",
             "adminFin": "Administración y Finanzas"
           }
         },
@@ -335,19 +335,21 @@
           "investigation": {
             "title": "INVESTIGACIÓN",
             "position": {
-              "associateResArch": "Investigador Asociado en Ciencias Arqueológicas",
-              "associateResAnt": "Investigador Asociado en Ciencias Antropológicas",
-              "associateResGov": "Investigador Asociado en Gobernanza",
-              "associateResGoe": "Investigador Asociado en Ciencias Geológicas",
-              "associateResBio": "Investigador Asociado en Ciencias Biológicas"
+              "associateResArchF": "Investigadora Asociada en Ciencias Arqueológicas",
+              "associateResArchM": "Investigador Asociado en Ciencias Arqueológicas",
+              "associateResAntF": "Investigadora Asociada en Ciencias Antropológicas",
+              "associateResGovF": "Investigadora Asociada en Gobernanza",
+              "associateResGoeF": "Investigadora Asociada en Ciencias Geológicas",
+              "associateResBioF": "Investigadora Asociado en Ciencias Biológicas",
+              "associateResBioM": "Investigador Asociado en Ciencias Biológicas"
             },
             "description": {
               "msc": "MSc",
-              "MScCandidate": "MSc y candidato a PhD",
-              "MScPhdCandidate": "Candidato a MSc",
-              "archaeologist": "Arqueólogo",
-              "geologist": "Geólogo",
-              "biologist": "Biólogo",
+              "MScCandidate": "Candidata MSc",
+              "MScPhdCandidate": "MSc y candidata a PhD",
+              "archaeologist": "Arqueóloga",
+              "geologist": "Geóloga",
+              "biologist": "Bióloga",
               "floraSpec": "Especialista en Flora",
               "socialCompSci": "Cientista en Complejidad Social"
             }
@@ -355,13 +357,13 @@
           "infrastructure": {
             "title": "INFRAESTRUCTURA",
             "position": {
-              "infraMgr": "Gerente de Infraestructura",
+              "infraMgr": "Encargado de Infraestructura",
               "design": "Diseño",
               "construction": "Construcción"
             },
             "description": {
               "architect": "Arquitecto",
-              "march": "March"
+              "march": "MArch"
             }
           },
           "monitoring": {
@@ -370,7 +372,7 @@
               "monitor": "Monitor"
             },
             "description": {
-              "tourGuide": "Guía Turístico y de Montaña"
+              "tourGuide": "Guía de Turismo y Montañista"
             }
           }
         }
