@@ -395,6 +395,7 @@
         "par2": "Some georoutes allow you to reach most sites by private vehicle or even by bus, while others require hiking and camping to reach the more remote areas. Depending on your interests, you can choose the route that best suits your quest for adventure, knowledge, or a connection with nature.",
         "par3": "Given the mountainous nature of the territory, we strongly recommend hiring certified guides to explore the Maule Andes safely and responsibly."
       },
+      "videoOf": "Video of",
       "georoute": {
         "tenorRiverMountainValley": {
           "title": "Tenor River Mountain Valley",
@@ -450,6 +451,18 @@
             "par2": "The mountain herder culture (“cultura arriera”) is a fundamental component of the georoute, characterized by the practice of transhumance, where mountain herders drive their cattle across the mountains in search of seasonal pastures. This tradition has left its mark on the region, visible in grottoes dedicated to San Sebastián, stone shelters, and historic routes. Visitors can experience this way of life up close, which is an integral part of the local identity."
           }
         }
+      }
+    }
+  },
+  "visitUs": {
+    "accommodations": {
+      "header": {
+        "main": "Accommodations",
+        "h3": "Find an accommodation"
+      },
+      "filter": {
+        "allLocations": "All locations",
+        "allTypes": "All Types"
       }
     }
   }

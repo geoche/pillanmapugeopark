@@ -1,10 +1,10 @@
 import Separator from "@components/Separator";
 
-const GeorouteVideo = ({videoId, place}) => {
+const GeorouteVideo = ({videoId, place, dict}) => {
     return (
         <div className={`flex items-center justify-center bg-default w-full`}>
             <div className="text-center w-full">
-                <h3 className="text-h-secondary">{`Video of ${place}`}</h3>
+                <h3 className="text-h-secondary">{`${dict.exploreGeopark.georoutes.videoOf} ${place}`}</h3>
                 <Separator/>
                 <div className="max-w-2xl aspect-video mx-auto p-4">
                     <iframe

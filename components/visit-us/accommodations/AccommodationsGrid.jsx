@@ -4,10 +4,12 @@ import AccommodationsGridItem from "@components/visit-us/accommodations/Accommod
 import Spinner from "@components/Spinner";
 import Separator from "@components/Separator";
 
-const ALL_LOCATIONS = 'All locations';
-const ALL_FACILITY_TYPES = 'All types';
 
-const AccommodationsGrid = ({lang}) => {
+
+const AccommodationsGrid = ({lang, dict}) => {
+    const ALL_LOCATIONS = dict.visitUs.accommodations.filter.allLocations;
+    const ALL_FACILITY_TYPES = dict.visitUs.accommodations.filter.allTypes;
+    
     const [accommodations, setAccommodations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showContent, setShowContent] = useState(false);
@@ -69,7 +71,7 @@ const AccommodationsGrid = ({lang}) => {
 
     return (
         <div className="mx-auto p-4 bg-default w-full py-12">
-            <h2 className={`text-h-secondary`}>Find an accommodation</h2>
+            <h2 className={`text-h-secondary`}>{dict.visitUs.accommodations.header.h3}</h2>
             <Separator/>
             <div className={`max-w-7xl flex flex-col flex-center mx-auto py-4`}>
                 {loading ? (<Spinner/>) : (

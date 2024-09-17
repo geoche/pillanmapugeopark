@@ -50,7 +50,7 @@ const GeorouteDetails = async ({params}) => {
                         </div>
                     </div>
                 </div>
-                <GeorouteVideo videoId={georouteToShow.videoId} place={georouteToShow.title}/>
+                <GeorouteVideo videoId={georouteToShow.videoId} place={georouteToShow.title} dict={dict} />
             </div>
         </section>
     );

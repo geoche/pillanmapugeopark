@@ -395,6 +395,7 @@
         "par2": "Algunas georutas permiten alcanzar la mayoría de los sitios en transporte particular o incluso bus, mientras que otras requieren caminatas y acampadas para llegar a los rincones más remotos. Dependiendo de tus intereses, podrás elegir la ruta que mejor se ajuste a tu búsqueda de aventura, conocimiento o conexión con la naturaleza.",
         "par3": "Dado el carácter cordillerano del territorio, recomendamos encarecidamente contratar guías certificados para explorar los Andes maulinos de forma segura y responsable."
       },
+      "videoOf": "Video de",
       "georoute": {
         "tenorRiverMountainValley": {
           "title": "Cajón del Río Teno",
@@ -450,6 +451,18 @@
             "par2": "La cultura arriera es un componente fundamental de la georuta, con la práctica de la transhumancia, en la que los arrieros llevan su ganado a través de la cordillera en busca de pastos de temporada. Esta tradición ha dejado su huella en la región, visible en grutas de adoración a San Sebastián, refugios de piedra y rutas históricas. Los visitantes pueden experimentar de cerca esta forma de vida, que es parte integral de la identidad local."
           }
         }
+      }
+    }
+  },
+  "visitUs": {
+    "accommodations": {
+      "header": {
+        "main": "Alojamientos",
+        "h3": "Encuentra un alojamiento"
+      },
+      "filter": {
+        "allLocations": "Todas las ubicaciones",
+        "allTypes": "Todos los tipos"
       }
     }
   }
