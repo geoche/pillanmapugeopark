@@ -2,7 +2,6 @@
 import Spinner from "@components/Spinner";
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import Image from 'next/image';
-import '@styles/admin-panel.css'
 import 'photoswipe/dist/photoswipe.css';
 
 

@@ -3,7 +3,6 @@
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useState} from "react";
 import ReusableButton from "@components/ReusableButton";
-import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
 
 import VideoForm from "@components/admin-panel/forms/VideoForm";
 import ImageForm from "@components/admin-panel/forms/ImageForm";
@@ -11,6 +10,10 @@ import EventForm from "@components/admin-panel/forms/EventForm";
 import AccommodationForm from "@components/admin-panel/forms/AccommodationForm";
 import GuidesAndToursForm from "@components/admin-panel/forms/GuidesAndToursForm";
 import BlogForm from "@components/admin-panel/forms/BlogForm";
+import ExperiencesForm from "@components/admin-panel/forms/ExperiencesForm";
+
+import '@/styles/admin-panel.css'
+
 
 const forms = [
     {name: "AdminVideoForm", component: VideoForm},

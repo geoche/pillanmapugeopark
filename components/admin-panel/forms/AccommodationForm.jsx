@@ -433,7 +433,7 @@ const AccommodationForm = () => {
                             <div
                                 className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                 <div
-                                    className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                    className={`form-content-grid `}>
                                     {accommodations.map((item, index) => (
                                         <div key={index} className={`form-content-grid-items`}>
                                             <div>

@@ -3,9 +3,6 @@ import {useEffect, useState} from 'react';
 import Spinner from "@components/Spinner";
 import {getYoutubeVideoId} from "@components/gallery/video-gallery/YoutubeUrlHelper";
 
-import '@/styles/admin-panel.css'
-
-
 const VideoForm = () => {
     const [videoLink, setVideoLink] = useState('');
     const [description, setDescription] = useState('');

@@ -1,8 +1,7 @@
 "use client";
 import {useState, useRef, useEffect} from 'react';
 import Spinner from "@components/Spinner";
-import Link from "@node_modules/next/link";
-import Image from "@node_modules/next/image";
+import Image from "next/image";
 
 const BlogForm = () => {
     const [title, setTitle] = useState('');
@@ -436,30 +435,33 @@ const BlogForm = () => {
                         </form>
                         <div className={`form-content-container`}>
                             <div
-                                className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                                {blogPosts.map((post, index) => (
-                                    <div key={index}
-                                         className={`form-content-grid-items`}>
-                                        <div>
-                                            <Image
-                                                src={post.mainImgSrc}
-                                                alt={`blog-${index}`}
-                                                priority
-                                                width={1280}
-                                                height={720}
-                                                className={`aspect-video  rounded-t-2xl`}
-                                            />
+                                className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                <div className={`form-content-grid`}>
+                                    {blogPosts.map((post, index) => (
+                                        <div key={index}
+                                             className={`form-content-grid-items`}>
+                                            <div>
+                                                <Image
+                                                    src={post.mainImgSrc}
+                                                    alt={`blog-${index}`}
+                                                    priority
+                                                    width={1280}
+                                                    height={720}
+                                                    className={`aspect-video  rounded-t-2xl`}
+                                                />
+                                            </div>
+                                            <div
+                                                className="bottom-2 left-0 right-0 p-4 rounded-b-2xl shadow-xl">
+                                                <p className={`text-lg`}>{post.title}</p>
+                                                <p className={`text-sm`}>{new Date(post.createdAt).toLocaleString('default', {
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                    year: 'numeric'
+                                                })}</p>
+                                            </div>
                                         </div>
-                                        <div
-                                            className="bottom-2 left-0 right-0 p-4 rounded-b-2xl shadow-xl">
-                                            <p className={`text-lg`}>{post.title}</p>
-                                            <p className={`text-sm`}>{new Date(post.createdAt).toLocaleString('default', {
-                                                month: 'long',
-                                                day: 'numeric',
-                                                year: 'numeric'
-                                            })}</p>
-                                        </div>
-                                    </div>))}
+                                    ))}
+                                </div>
                             </div>
 
                         </div>

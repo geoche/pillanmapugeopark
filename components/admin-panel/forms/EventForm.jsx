@@ -1,11 +1,10 @@
-﻿import React, {useState, useRef, useEffect} from 'react';
+﻿import {useState, useRef, useEffect} from 'react';
 import DatePicker from 'react-datepicker';
 import Spinner from "@components/Spinner";
 import 'react-datepicker/dist/react-datepicker.css';
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import Image from 'next/image';
 import 'photoswipe/dist/photoswipe.css';
-import '@styles/admin-panel.css'
 
 const EventForm = () => {
     const [eventShortDesc, setEventShortDesc] = useState('');
