@@ -1,15 +1,16 @@
 ﻿"use client";
 
-import {signOut, useSession} from "next-auth/react";
+import {signIn, signOut, useSession} from "next-auth/react";
 import {useState} from "react";
-import ImageForm from "@components/admin-panel/login/ImageForm";
 import EventForm from "@components/admin-panel/login/EventForm";
 import ReusableButton from "@components/ReusableButton";
 import AccommodationForm from "@components/admin-panel/login/AccommodationForm";
 import GuidesAndToursForm from "@components/admin-panel/login/GuidesAndToursForm";
 import BlogForm from "@components/admin-panel/login/BlogForm";
 import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
+
 import VideoForm from "@components/admin-panel/forms/VideoForm";
+import ImageForm from "@components/admin-panel/forms/ImageForm";
 
 const forms = [
     {name: "AdminVideoForm", component: VideoForm},
@@ -67,7 +68,7 @@ const AdminPanelPage = () => {
                 <div
                     className={`max-h-screen h-screen flex justify-center items-center bg-default-opacity`}
                 >
-                    {/* You can add a message or redirect here */}
+                    <ReusableButton onClickAction={() => signIn()} buttonText={`LOG IN`}/>
                 </div>
             )}
         </section>

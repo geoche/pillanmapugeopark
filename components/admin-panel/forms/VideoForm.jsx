@@ -111,7 +111,7 @@ const VideoForm = () => {
                                 <div
                                     className={`w-full flex flex-wrap transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                     {videos.map((item, index) => (
-                                        <div className={` p-4 text-justify lg:w-1/3 xl:w-1/5`}>
+                                        <div key={index} className={` p-4 text-justify lg:w-1/2 xl:w-1/3`}>
                                             <iframe src={getYoutubeVideoId(item.videoLink)}
                                                     className="aspect-video w-full rounded-2xl"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

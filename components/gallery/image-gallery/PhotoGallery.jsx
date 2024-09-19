@@ -25,7 +25,7 @@ const PhotoGallery = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setShowContent(true);
-                }, 1); // Short delay to ensure smooth transition
+                }, 1);
             }
         };
 
