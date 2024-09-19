@@ -2,6 +2,8 @@
 
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useState} from "react";
+import { FaFileVideo, FaFileImage, FaCalendarCheck, FaHome, FaMapMarkedAlt, FaBlog, FaBinoculars, FaMountain  } from "react-icons/fa";
+
 import ReusableButton from "@components/ReusableButton";
 
 import VideoForm from "@components/admin-panel/forms/VideoForm";
@@ -16,18 +18,18 @@ import '@/styles/admin-panel.css'
 
 
 const forms = [
-    {name: "AdminVideoForm", component: VideoForm},
-    {name: "AdminImageForm", component: ImageForm},
-    {name: "AdminEventForm", component: EventForm},
-    {name: "AdminAccommodationsForm", component: AccommodationForm},
-    {name: "AdminGuidesAndToursForm", component: GuidesAndToursForm},
-    {name: "AdminBlogForm", component: BlogForm},
-    {name: "AdminExperiencesForm", component: ExperiencesForm},
+    {name: "Video gallery", component: VideoForm, icon: FaFileVideo},
+    {name: "Image gallery", component: ImageForm, icon: FaFileImage},
+    {name: "Events calendar", component: EventForm, icon: FaCalendarCheck},
+    {name: "Accommodations", component: AccommodationForm, icon: FaHome},
+    {name: "Guides and tours", component: GuidesAndToursForm, icon: FaMapMarkedAlt},
+    {name: "Blogposts", component: BlogForm, icon: FaBlog},
+    {name: "Experiences", component: ExperiencesForm, icon: FaMountain},
 ];
 
 const AdminPanelPage = () => {
     const {data: session} = useSession({required: true});
-    const [selectedForm, setSelectedForm] = useState("AdminVideoForm");
+    const [selectedForm, setSelectedForm] = useState("Video gallery");
 
     return (
         <section className={`component-section`}>
@@ -37,22 +39,27 @@ const AdminPanelPage = () => {
                 >
                     <div className={`w-full h-full`}>
                         {/* Buttons with icons */}
-                        <div className={`h-24 flex flex-center`}>
+                        <div className={`flex flex-center`}>
                             <div className="flex flex-wrap justify-center">
-                                {forms.map((form) => (
-                                    <button
-                                        key={form.name}
-                                        onClick={() => setSelectedForm(form.name)}
-                                        className="flex flex-col items-center m-2 p-2 border rounded hover:bg-gray-100"
-                                    >
-                                        {/*ICON SHOULD BE HERE*/}
-                                        <span>{form.name}</span>
-                                    </button>
-                                ))}
-                                <ReusableButton
-                                    onClickAction={() => signOut()}
-                                    buttonText={`LOG OUT`}
-                                />
+                                {forms.map((form) => {
+                                    const IconComponent = form.icon;
+                                    return (
+                                        <button
+                                            key={form.name}
+                                            onClick={() => setSelectedForm(form.name)}
+                                            className="flex flex-col items-center m-2 p-2 border rounded hover:bg-header-green"
+                                        >
+                                            <IconComponent size={36} color={`white`} />
+                                            <span className={`text-white pt-2`}>{form.name}</span>
+                                        </button>
+                                    );
+                                })}
+                                <div className={`flex flex-center border m-2 p-2 rounded hover:bg-header-green`}>
+                                    <ReusableButton
+                                        onClickAction={() => signOut()}
+                                        buttonText={`LOG OUT`}
+                                    />
+                                </div>
                             </div>
                             
                         </div>
