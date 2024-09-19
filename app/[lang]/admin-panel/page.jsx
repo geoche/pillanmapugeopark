@@ -3,7 +3,6 @@
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useState} from "react";
 import ReusableButton from "@components/ReusableButton";
-import AccommodationForm from "@components/admin-panel/login/AccommodationForm";
 import GuidesAndToursForm from "@components/admin-panel/login/GuidesAndToursForm";
 import BlogForm from "@components/admin-panel/login/BlogForm";
 import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
@@ -11,6 +10,7 @@ import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
 import VideoForm from "@components/admin-panel/forms/VideoForm";
 import ImageForm from "@components/admin-panel/forms/ImageForm";
 import EventForm from "@components/admin-panel/forms/EventForm";
+import AccommodationForm from "@components/admin-panel/forms/AccommodationForm";
 
 const forms = [
     {name: "AdminVideoForm", component: VideoForm},
@@ -34,7 +34,7 @@ const AdminPanelPage = () => {
                 >
                     <div className={`w-full h-full`}>
                         {/* Buttons with icons */}
-                        <div className={`h-48 flex flex-center`}>
+                        <div className={`h-24 flex flex-center`}>
                             <div className="flex flex-wrap justify-center">
                                 {forms.map((form) => (
                                     <button
