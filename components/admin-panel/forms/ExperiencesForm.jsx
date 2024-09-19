@@ -9,6 +9,7 @@ const ExperiencesForm = () => {
     const [description, setDescription] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [experiences, setExperiences] = useState([]);
 
@@ -48,7 +49,7 @@ const ExperiencesForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
         console.log('Submitting:', {mainImgSrc: mainImage, imagesSrc: images, title, description});
 
@@ -83,29 +84,31 @@ const ExperiencesForm = () => {
         } catch (error) {
             setMessage('An error occurred');
         } finally {
-            setLoading(false);
+            setSubmitLoading(false);
+            await fetchExperiences();
         }
     };
-    useEffect(() => {
-        const fetchExperiences = async () => {
-            try {
-                const res = await fetch('/api/experiences');
-                if (!res.ok) {
-                    console.error('Failed to fetch data');
-                    return;
-                }
-                const data = await res.json();
-                setExperiences(data);
-            } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
 
+    const fetchExperiences = async () => {
+        try {
+            const res = await fetch('/api/experiences');
+            if (!res.ok) {
+                console.error('Failed to fetch data');
+                return;
+            }
+            const data = await res.json();
+            setExperiences(data);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
+            setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
+        }
+    };
+
+    useEffect(() => {
         fetchExperiences().then(() => {
         });
     }, []);
@@ -133,7 +136,7 @@ const ExperiencesForm = () => {
                                     ref={mainImageInputRef}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             <div className="mb-4">
@@ -147,7 +150,7 @@ const ExperiencesForm = () => {
                                     ref={imagesInputRef}
                                     multiple
                                     className="w-full p-2 border border-gray-300 rounded"
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             <div className="mb-4">
@@ -159,7 +162,7 @@ const ExperiencesForm = () => {
                                     onChange={(e) => setTitle(e.target.value)}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             <div className="mb-4">
@@ -172,22 +175,22 @@ const ExperiencesForm = () => {
                                     className="w-full p-2 border border-gray-300 rounded"
                                     rows="4"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 ></textarea>
                             </div>
-                            {loading ?
+                            {submitLoading ?
                                 <div className="w-full flex justify-center">
                                     <Spinner/>
                                 </div> : (
                                     <button
                                         type="submit"
                                         className="bg-button text-white px-4 py-2 rounded hover:bg-button-hover"
-                                        disabled={loading}
+                                        disabled={submitLoading}
                                     >
                                         Submit
                                     </button>)}
 
-                            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                            {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
 
                         <div className={`form-content-container`}>

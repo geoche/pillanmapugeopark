@@ -11,6 +11,7 @@ const ImageForm = () => {
     const [caption, setCaption] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const fileInputRef = useRef(null);
     const [showContent, setShowContent] = useState(false);
 
@@ -32,7 +33,7 @@ const ImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
         console.log('Submitting:', {imageSrc: image, caption});
 
@@ -57,31 +58,34 @@ const ImageForm = () => {
                 setMessage('Failed to save image');
             }
         } catch (error) {
+            console.log(error);
             setMessage('An error occurred');
         } finally {
-            setLoading(false);
+            setSubmitLoading(false);
+            await fetchImages();
         }
     };
-    useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                const res = await fetch('/api/gallery/images', {
-                    method: 'GET', headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const data = await res.json();
-                setImages(data);
-            } catch (error) {
-                console.error('Error fetching images:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
 
+    const fetchImages = async () => {
+        try {
+            const res = await fetch('/api/gallery/images', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await res.json();
+            setImages(data);
+        } catch (error) {
+            console.error('Error fetching images:', error);
+        } finally {
+            setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
+        }
+    };
+
+    useEffect(() => {
         fetchImages().then(r => () => {
         });
     }, []);
@@ -108,7 +112,7 @@ const ImageForm = () => {
                                         ref={fileInputRef}
                                         className="w-full p-2 border border-gray-300 rounded"
                                         required
-                                        disabled={loading}
+                                        disabled={submitLoading}
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -121,22 +125,22 @@ const ImageForm = () => {
                                         className="w-full p-2 border border-gray-300 rounded"
                                         rows="4"
                                         required
-                                        disabled={loading}
+                                        disabled={submitLoading}
                                     ></textarea>
                                 </div>
-                                {loading ?
+                                {submitLoading ?
                                     <div className={`w-full flex flex-center`}>
                                         <Spinner/>
                                     </div> : (
                                         <button
                                             type="submit"
-                                            className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
-                                            disabled={loading}
+                                            className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}
+                                            disabled={submitLoading}
                                         >
                                             Submit
                                         </button>)}
 
-                                {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                                {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                             </form>
                             <div className={`form-content-container`}>
                                 <div
@@ -161,7 +165,7 @@ const ImageForm = () => {
                                                                     alt={`image`}
                                                                     width={250}
                                                                     height={200}
-                                                                    className={`m-2`}
+                                                                    className={`m-2 aspect-video object-cover`}
                                                                 />
                                                             </div>
                                                         )}

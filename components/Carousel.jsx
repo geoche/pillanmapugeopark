@@ -127,7 +127,7 @@ const Carousel = () => {
                                    alt={"logo"}
                                    width={300}
                                    height={300}
-                                   className="sm:p-4 p-2 max-h-44 w-auto"/>
+                                   className="sm:p-4 p-2 max-h-44 w-auto object-cover"/>
                         </div>
                        
                     </SwiperSlide>

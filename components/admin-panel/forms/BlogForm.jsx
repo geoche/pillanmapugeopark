@@ -19,6 +19,7 @@ const BlogForm = () => {
     const [expandedNodeIndex, setExpandedNodeIndex] = useState(0);
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const [blogPosts, setBlogPosts] = useState([]);
     const [showContent, setShowContent] = useState(false);
     const [activeSection, setActiveSection] = useState(null); // For main sections
@@ -101,7 +102,7 @@ const BlogForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
         try {
             const res = await fetch('/api/blog', {
@@ -148,31 +149,32 @@ const BlogForm = () => {
             console.log(error);
             setMessage('An error occurred');
         } finally {
+            setSubmitLoading(false);
+            await fetchBlogposts();
+        }
+    };
+    
+    const fetchBlogposts = async () => {
+        try {
+            const res = await fetch('/api/blog');
+            if (!res.ok) {
+                console.error('Failed to fetch data');
+                return;
+            }
+            const data = await res.json();
+            setBlogPosts(data);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
             setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
         }
     };
 
     useEffect(() => {
-        const fetchBlogposts = async () => {
-            try {
-                const res = await fetch('/api/blog');
-                if (!res.ok) {
-                    console.error('Failed to fetch data');
-                    return;
-                }
-                const data = await res.json();
-                setBlogPosts(data);
-            } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
-
-        fetchBlogposts();
+        fetchBlogposts().then();
     }, []);
 
     return (
@@ -209,7 +211,7 @@ const BlogForm = () => {
                                                 onChange={(e) => setTitle(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Main Image */}
@@ -224,7 +226,7 @@ const BlogForm = () => {
                                                 ref={mainImageInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Description */}
@@ -238,7 +240,7 @@ const BlogForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 rows="4"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             ></textarea>
                                         </div>
                                         {/* Blog Post By */}
@@ -252,7 +254,7 @@ const BlogForm = () => {
                                                 onChange={(e) => setBlogpostBy(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -283,7 +285,7 @@ const BlogForm = () => {
                                                             type="button"
                                                             onClick={() => handleRemoveBlogNode(index)}
                                                             className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-400"
-                                                            disabled={loading}
+                                                            disabled={submitLoading}
                                                         >
                                                             Remove
                                                         </button>
@@ -317,7 +319,7 @@ const BlogForm = () => {
                                                                                 handleBlogNodeChange(index, 'header', e.target.value)
                                                                             }
                                                                             className="w-full p-2 border border-gray-300 rounded"
-                                                                            disabled={loading}
+                                                                            disabled={submitLoading}
                                                                         />
                                                                     </div>
                                                                     {/* Text */}
@@ -331,7 +333,7 @@ const BlogForm = () => {
                                                                             }
                                                                             className="w-full p-2 border border-gray-300 rounded"
                                                                             rows="4"
-                                                                            disabled={loading}
+                                                                            disabled={submitLoading}
                                                                         ></textarea>
                                                                     </div>
                                                                 </>
@@ -362,7 +364,7 @@ const BlogForm = () => {
                                                                             onChange={(e) => handleNodeImageChange(index, e)}
                                                                             ref={(el) => (nodeImageInputRefs.current[index] = el)}
                                                                             className="w-full p-2 border border-gray-300 rounded"
-                                                                            disabled={loading}
+                                                                            disabled={submitLoading}
                                                                         />
                                                                     </div>
                                                                     {/* Image Description */}
@@ -380,7 +382,7 @@ const BlogForm = () => {
                                                                                 )
                                                                             }
                                                                             className="w-full p-2 border border-gray-300 rounded"
-                                                                            disabled={loading}
+                                                                            disabled={submitLoading}
                                                                         />
                                                                     </div>
                                                                     {/* Image By */}
@@ -394,7 +396,7 @@ const BlogForm = () => {
                                                                                 handleBlogNodeChange(index, 'nodeImageBy', e.target.value)
                                                                             }
                                                                             className="w-full p-2 border border-gray-300 rounded"
-                                                                            disabled={loading}
+                                                                            disabled={submitLoading}
                                                                         />
                                                                     </div>
                                                                 </>
@@ -408,7 +410,7 @@ const BlogForm = () => {
                                             type="button"
                                             onClick={handleAddBlogNode}
                                             className="bg-button text-white px-4 py-2 rounded hover:bg-button-hover mb-2"
-                                            disabled={loading}
+                                            disabled={submitLoading}
                                         >
                                             Add Section
                                         </button>
@@ -417,7 +419,7 @@ const BlogForm = () => {
                             </div>
 
                             {/* Submit Button */}
-                            {loading ? (
+                            {submitLoading ? (
                                 <div className="w-full flex flex-center">
                                     <Spinner/>
                                 </div>
@@ -425,13 +427,13 @@ const BlogForm = () => {
                                 <button
                                     type="submit"
                                     className="bg-button text-white px-4 py-2 rounded hover:bg-button-hover"
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 >
                                     Submit
                                 </button>
                             )}
 
-                            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                            {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
                         <div className={`form-content-container`}>
                             <div

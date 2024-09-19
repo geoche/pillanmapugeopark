@@ -2,6 +2,7 @@
 import {useEffect, useState} from 'react';
 import Spinner from "@components/Spinner";
 import {getYoutubeVideoId} from "@components/gallery/video-gallery/YoutubeUrlHelper";
+import React from "@node_modules/react";
 
 const VideoForm = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -9,36 +10,36 @@ const VideoForm = () => {
     const [message, setMessage] = useState('');
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const [showContent, setShowContent] = useState(false);
 
-
-    useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const response = await fetch('/api/gallery/videos');
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(data);
-                    setVideos(data);
-                } else {
-                    console.error('Failed to fetch videos');
-                }
-            } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
+    const fetchVideos = async () => {
+        try {
+            const response = await fetch('/api/gallery/videos');
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                setVideos(data);
+            } else {
+                console.error('Failed to fetch videos');
             }
-        };
-
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
+            setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
+        }
+    };
+    useEffect(() => {
         fetchVideos().then(r => () => {
         });
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSubmitLoading(true);
 
         try {
             const res = await fetch('/api/gallery/videos', {
@@ -61,6 +62,9 @@ const VideoForm = () => {
             setTimeout(() => {
                 setShowContent(true);
             }, 300);
+        } finally {
+            setSubmitLoading(false);
+            await fetchVideos();
         }
     };
 
@@ -89,6 +93,7 @@ const VideoForm = () => {
                                         onChange={(e) => setVideoLink(e.target.value)}
                                         className="w-full p-2 border border-gray-300 rounded"
                                         required
+                                        disabled={submitLoading}
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -101,13 +106,22 @@ const VideoForm = () => {
                                         className="w-full p-2 border border-gray-300 rounded"
                                         rows="4"
                                         required
+                                        disabled={submitLoading}
                                     ></textarea>
                                 </div>
-                                <button type="submit"
-                                        className="bg-button text-white px-4 py-2 rounded hover:bg-teal-500">
-                                    Submit
-                                </button>
-                                {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                                {submitLoading ?
+                                    <div className={`w-full flex flex-center`}>
+                                        <Spinner/>
+                                    </div> : (
+                                        <button
+                                            type="submit"
+                                            className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}
+                                            disabled={submitLoading}
+                                        >
+                                            Submit
+                                        </button>)}
+
+                                {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                             </form>
 
                             <div className={`form-content-container`}>

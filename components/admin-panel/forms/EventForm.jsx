@@ -13,6 +13,7 @@ const EventForm = () => {
     const [eventImgSrc, setEventImgSrc] = useState(null);
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const fileInputRef = useRef(null);
 
     const [events, setEvents] = useState([]);
@@ -35,7 +36,7 @@ const EventForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
         try {
             const res = await fetch('/api/events', {
@@ -64,27 +65,29 @@ const EventForm = () => {
         } catch (error) {
             setMessage('An error occurred');
         } finally {
+            setSubmitLoading(false);
+            await fetchEvents();
+        }
+    };
+    
+    const fetchEvents = async () => {
+        try {
+            const response = await fetch('/api/events');
+            const data = await response.json();
+            const sortedEvents = data.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
+            setEvents(sortedEvents);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        } finally {
             setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
         }
     };
 
-    useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const response = await fetch('/api/events');
-                const data = await response.json();
-                const sortedEvents = data.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-                setEvents(sortedEvents);
-            } catch (error) {
-                console.error('Error fetching events:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
 
+    useEffect(() => {
         fetchEvents().then(() => {
         });
     }, []);
@@ -112,7 +115,7 @@ const EventForm = () => {
                                     className="w-full p-2 border border-gray-300 rounded"
                                     rows="2"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 ></textarea>
                             </div>
                             <div className="mb-4">
@@ -125,7 +128,7 @@ const EventForm = () => {
                                     className="w-full p-2 border border-gray-300 rounded"
                                     rows="4"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 ></textarea>
                             </div>
                             <div className="mb-4">
@@ -135,7 +138,7 @@ const EventForm = () => {
                                     onChange={(date) => setEventDate(date)}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             <div className="mb-4">
@@ -148,22 +151,22 @@ const EventForm = () => {
                                     ref={fileInputRef}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 />
                             </div>
-                            {loading ?
+                            {submitLoading ?
                                 <div className={`w-full flex flex-center`}>
                                     <Spinner/>
                                 </div> : (
                                     <button
                                         type="submit"
-                                        className={`bg-teal-700 text-white px-4 py-2 rounded hover:bg-teal-500`}
-                                        disabled={loading}
+                                        className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}
+                                        disabled={submitLoading}
                                     >
                                         Submit
                                     </button>)}
 
-                            {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                            {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
                         <div className={`form-content-container`}>
                             <div
@@ -176,8 +179,8 @@ const EventForm = () => {
                                                     key={index}
                                                     original={event.eventImgSrc}
                                                     thumbnail={event.eventImgSrc}
-                                                    height={576}
-                                                    width={1024}
+                                                    width={1080}
+                                                    height={720}
                                                     alt={`image`}
                                                     caption={`<div class="flex flex-col flex-center mx-auto" ><h1 class="max-w-7xl  text-sm text-justify pb-10">${event.eventFullDesc}</h1></div>`}
                                                 >
@@ -188,7 +191,7 @@ const EventForm = () => {
                                                                 alt={`image`}
                                                                 width={250}
                                                                 height={200}
-                                                                className={`m-2`}
+                                                                className={`m-2 aspect-video object-cover`}
                                                             />
                                                             <div className={`p-2 text-xs `}>
                                                                 <p className={`text-justify`}>{event.eventShortDesc}</p>

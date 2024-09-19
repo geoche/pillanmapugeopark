@@ -22,6 +22,7 @@ const AccommodationForm = () => {
     });
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
 
     const [accommodations, setAccommodations] = useState([]);
@@ -71,7 +72,7 @@ const AccommodationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
         const facilitiesArray = facilityType.split(',').map(facility => facility.trim());
 
@@ -126,30 +127,30 @@ const AccommodationForm = () => {
         } catch (error) {
             setMessage('An error occurred');
         } finally {
+            setSubmitLoading(false);
+            await fetchAccommodations();
+        }
+    };
+    const fetchAccommodations = async () => {
+        try {
+            const res = await fetch('/api/accommodations');
+            if (!res.ok) {
+                console.error('Failed to fetch accommodations');
+                return;
+            }
+            const data = await res.json();
+            setAccommodations(data);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
             setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
         }
     };
 
     useEffect(() => {
-        const fetchAccommodations = async () => {
-            try {
-                const res = await fetch('/api/accommodations');
-                if (!res.ok) {
-                    console.error('Failed to fetch accommodations');
-                    return;
-                }
-                const data = await res.json();
-                setAccommodations(data);
-            } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
-
         fetchAccommodations().then(() => {
         });
     }, []);
@@ -188,7 +189,7 @@ const AccommodationForm = () => {
                                                 ref={mainImgInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Other Images */}
@@ -204,7 +205,7 @@ const AccommodationForm = () => {
                                                 ref={imagesInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -232,7 +233,7 @@ const AccommodationForm = () => {
                                                 onChange={(e) => setTitle(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* City */}
@@ -246,7 +247,7 @@ const AccommodationForm = () => {
                                                 onChange={(e) => setCity(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Description */}
@@ -260,7 +261,7 @@ const AccommodationForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 rows="3"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             ></textarea>
                                         </div>
                                     </div>
@@ -289,7 +290,7 @@ const AccommodationForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 placeholder="Enter facility types separated by commas"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -318,7 +319,7 @@ const AccommodationForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Phone */}
@@ -334,7 +335,7 @@ const AccommodationForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 placeholder="Enter phone numbers separated by commas"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Email */}
@@ -349,7 +350,7 @@ const AccommodationForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Link */}
@@ -364,7 +365,7 @@ const AccommodationForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -383,8 +384,7 @@ const AccommodationForm = () => {
                                     <div>
                                         {/* Location */}
                                         <div className="mb-4">
-                                            <label className="block text-gray-700 font-bold mb-2">Location
-                                                (Coordinates):</label>
+                                            <label className="block text-gray-700 font-bold mb-2">Coordinates:</label>
                                             <div className="flex space-x-2">
                                                 <input
                                                     type="number"
@@ -393,7 +393,7 @@ const AccommodationForm = () => {
                                                     className="w-full p-2 border border-gray-300 rounded"
                                                     placeholder="Longitude"
                                                     required
-                                                    disabled={loading}
+                                                    disabled={submitLoading}
                                                 />
                                                 <input
                                                     type="number"
@@ -402,7 +402,7 @@ const AccommodationForm = () => {
                                                     className="w-full p-2 border border-gray-300 rounded"
                                                     placeholder="Latitude"
                                                     required
-                                                    disabled={loading}
+                                                    disabled={submitLoading}
                                                 />
                                             </div>
                                         </div>
@@ -411,7 +411,7 @@ const AccommodationForm = () => {
                             </div>
 
                             {/* Submit Button */}
-                            {loading ? (
+                            {submitLoading ? (
                                 <div className="w-full flex justify-center">
                                     <Spinner/>
                                 </div>
@@ -419,13 +419,13 @@ const AccommodationForm = () => {
                                 <button
                                     type="submit"
                                     className="bg-button text-white px-4 py-2 rounded hover:bg-button-hover"
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 >
                                     Submit
                                 </button>
                             )}
 
-                            {!loading && message && (
+                            {!submitLoading && message && (
                                 <p className="mt-4 text-center text-green-500">{message}</p>
                             )}
                         </form>

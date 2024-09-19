@@ -2,6 +2,7 @@
 import {useState, useRef, useEffect} from 'react';
 import Spinner from "@components/Spinner";
 import Image from "next/image";
+import React from "@node_modules/react";
 
 const GuidesAndToursForm = () => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
@@ -22,6 +23,7 @@ const GuidesAndToursForm = () => {
     });
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
+    const [submitLoading, setSubmitLoading] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
     const [guidesAndTours, setGuidesAndTours] = useState([]);
     const [showContent, setShowContent] = useState(false);
@@ -70,9 +72,8 @@ const GuidesAndToursForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setSubmitLoading(true);
 
-        // Split the types by comma and trim spaces
         const typesArray = types.split(',').map(type => type.trim());
 
         const guidesAndToursData = {
@@ -127,30 +128,31 @@ const GuidesAndToursForm = () => {
         } catch (error) {
             setMessage('An error occurred');
         } finally {
+            setSubmitLoading(false);
+            await fetchGuidesAndTours();
+        }
+    };
+    const fetchGuidesAndTours = async () => {
+        try {
+            const res = await fetch('/api/guides-and-tours');
+            if (!res.ok) {
+                console.error('Failed to fetch data');
+                return;
+            }
+            const data = await res.json();
+            setGuidesAndTours(data);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
             setLoading(false);
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
         }
     };
 
-    useEffect(() => {
-        const fetchGuidesAndTours = async () => {
-            try {
-                const res = await fetch('/api/guides-and-tours');
-                if (!res.ok) {
-                    console.error('Failed to fetch data');
-                    return;
-                }
-                const data = await res.json();
-                setGuidesAndTours(data);
-            } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setLoading(false);
-                setTimeout(() => {
-                    setShowContent(true);
-                }, 300);
-            }
-        };
 
+    useEffect(() => {
         fetchGuidesAndTours().then(() => {
         });
     }, []);
@@ -187,7 +189,7 @@ const GuidesAndToursForm = () => {
                                                 ref={mainImgInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Other Images */}
@@ -203,7 +205,7 @@ const GuidesAndToursForm = () => {
                                                 ref={imagesInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -231,7 +233,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={(e) => setCity(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Title */}
@@ -245,7 +247,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={(e) => setTitle(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Description */}
@@ -259,7 +261,7 @@ const GuidesAndToursForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 rows="4"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             ></textarea>
                                         </div>
                                     </div>
@@ -287,7 +289,7 @@ const GuidesAndToursForm = () => {
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 placeholder="Enter types separated by commas"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -316,7 +318,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Phone */}
@@ -331,7 +333,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Email */}
@@ -346,7 +348,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                         {/* Link */}
@@ -361,7 +363,7 @@ const GuidesAndToursForm = () => {
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
                                                 required
-                                                disabled={loading}
+                                                disabled={submitLoading}
                                             />
                                         </div>
                                     </div>
@@ -389,7 +391,7 @@ const GuidesAndToursForm = () => {
                                                     className="w-full p-2 border border-gray-300 rounded"
                                                     placeholder="Longitude"
                                                     required
-                                                    disabled={loading}
+                                                    disabled={submitLoading}
                                                 />
                                                 <input
                                                     type="number"
@@ -398,7 +400,7 @@ const GuidesAndToursForm = () => {
                                                     className="w-full p-2 border border-gray-300 rounded"
                                                     placeholder="Latitude"
                                                     required
-                                                    disabled={loading}
+                                                    disabled={submitLoading}
                                                 />
                                             </div>
                                         </div>
@@ -407,7 +409,7 @@ const GuidesAndToursForm = () => {
                             </div>
 
                             {/* Submit Button */}
-                            {loading ? (
+                            {submitLoading ? (
                                 <div className="w-full flex justify-center">
                                     <Spinner/>
                                 </div>
@@ -415,12 +417,12 @@ const GuidesAndToursForm = () => {
                                 <button
                                     type="submit"
                                     className="bg-button text-white px-4 py-2 rounded hover:bg-button-hover"
-                                    disabled={loading}
+                                    disabled={submitLoading}
                                 >
                                     Submit
                                 </button>
                             )}
-                            {message && <p className="mt-4 text-center text-green-500">{message}</p>}
+                            {!submitLoading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
                         <div className={`form-content-container`}>
                             <div

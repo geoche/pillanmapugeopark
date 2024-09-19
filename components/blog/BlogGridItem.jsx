@@ -14,7 +14,7 @@ const BlogGridItem = ({lang, post, index}) => {
                         priority
                         width={1280}
                         height={720}
-                        className={`aspect-video  rounded-t-2xl`}
+                        className={`aspect-video rounded-t-2xl object-cover`}
                     />
                 </div>
                 <div

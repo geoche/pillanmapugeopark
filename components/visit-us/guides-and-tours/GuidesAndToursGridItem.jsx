@@ -14,7 +14,7 @@ const GuidesAndToursGridItem = ({lang, item = {}, index}) => {
                         priority
                         width={800}
                         height={600}
-                        className={`rounded-2xl aspect-video`}
+                        className={`rounded-2xl aspect-video object-cover`}
                     />
                 </div>
                 <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white p-2 rounded-tl-2xl rounded">

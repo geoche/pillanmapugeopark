@@ -24,7 +24,7 @@ const ImageGallery = ({images}) => {
                                         alt={`image`}
                                         width={369}
                                         height={247}
-                                        className={`m-2`}
+                                        className={`aspect-video object-cover m-2`}
                                     />
                                 </div>
                             )}

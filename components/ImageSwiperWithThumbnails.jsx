@@ -62,7 +62,7 @@ const ImageSwiperWithThumbnails = ({images = {}}) => {
                                     width={800}
                                     height={600}
                                     alt={`imageswp-${index}`}
-                                    className={`aspect-video `}
+                                    className={`aspect-video object-cover`}
                                 />
                             </button>
                         </SwiperSlide>
