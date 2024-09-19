@@ -71,7 +71,7 @@ const EventsCalendar = ({lang, dict}) => {
 
                                     <div id="IMAGE"
                                          className={`transition-all md:w-1/3 xl:w-[20%] duration-300 md:duration-300 ${openIndex === index ? 'max-w-0 max-h-0' : ''} px-4`}>
-                                        <Image src={event.eventImgSrc} alt="event image" width={500} height={300} className="transition-all duration-300 my-4 md:my-0 w-full h-full" />
+                                        <Image src={event.eventImgSrc} alt="event image" width={500} height={300} className="transition-all duration-300 my-4 md:my-0 w-full h-full aspect-video object-cover" />
 
                                     </div>
 
