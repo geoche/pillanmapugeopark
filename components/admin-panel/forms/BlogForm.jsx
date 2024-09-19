@@ -13,7 +13,7 @@ const BlogForm = () => {
         nodeImageSrc: null,
         nodeImageDescription: '',
         nodeImageBy: '',
-        activeSubSection: null, // New property to manage sub-sections
+        activeSubSection: null,
     }]);
     const [expandedNodeIndex, setExpandedNodeIndex] = useState(0);
     const [message, setMessage] = useState('');
@@ -66,7 +66,7 @@ const BlogForm = () => {
             nodeImageSrc: null,
             nodeImageDescription: '',
             nodeImageBy: '',
-            activeSubSection: null, // Initialize with null
+            activeSubSection: null,
         }]);
         setExpandedNodeIndex(blogNodes.length);
     };
@@ -185,7 +185,7 @@ const BlogForm = () => {
                     <div className={`form-container`}>
                         <form
                             onSubmit={handleSubmit}
-                            className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+                            className={`form-main max-h-[70%] overflow-y-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
                         >
                             {/* Main Info Section */}
                             <div>
