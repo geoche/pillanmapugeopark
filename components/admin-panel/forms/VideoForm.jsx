@@ -3,6 +3,8 @@ import {useEffect, useState} from 'react';
 import Spinner from "@components/Spinner";
 import {getYoutubeVideoId} from "@components/gallery/video-gallery/YoutubeUrlHelper";
 
+import '@/styles/admin-panel.css'
+
 
 const VideoForm = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -30,7 +32,7 @@ const VideoForm = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setShowContent(true);
-                }, 1); // Short delay to ensure smooth transition
+                }, 300);
             }
         };
 
@@ -59,22 +61,26 @@ const VideoForm = () => {
             }
         } catch (error) {
             setMessage('An error occurred');
+            setTimeout(() => {
+                setShowContent(true);
+            }, 300);
         }
     };
 
     return (
-        <section className="component-section">
-            <div className="form-container">
+        <section className={`component-section`}>
+            <div className={`admin-panel-module`}>
                 {loading ?
                     (
-                        <div className={`w-full h-screen flex flex-center`}>
+                        <div className={`form-loading`}>
                             <Spinner/>
-                        </div>)
+                        </div>
+                    )
                     :
                     (
-                        <div className="flex flex-row justify-end w-[95%]">
+                        <div className={`form-container`}>
                             <form onSubmit={handleSubmit}
-                                  className="w-[30%] p-4 my-4 bg-white rounded shadow-md fixed left-10 z-10">
+                                  className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                 <div className="mb-4">
                                     <label htmlFor="videoLink" className="block text-gray-700 font-bold mb-2">YouTube
                                         Video
@@ -107,9 +113,9 @@ const VideoForm = () => {
                                 {message && <p className="mt-4 text-center text-green-500">{message}</p>}
                             </form>
 
-                            <div className={`w-[65%] min-h-[44rem]`}>
+                            <div className={`form-content-container`}>
                                 <div
-                                    className={`w-full flex flex-wrap transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                    className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                     {videos.map((item, index) => (
                                         <div key={index} className={` p-4 text-justify lg:w-1/2 xl:w-1/3`}>
                                             <iframe src={getYoutubeVideoId(item.videoLink)}

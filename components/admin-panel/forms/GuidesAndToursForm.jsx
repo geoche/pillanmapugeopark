@@ -1,15 +1,15 @@
-"use client"
-import React, {useState, useEffect, useRef} from 'react';
+"use client";
+import {useState, useRef, useEffect} from 'react';
 import Spinner from "@components/Spinner";
 import Image from "next/image";
 
-const AccommodationForm = () => {
+const GuidesAndToursForm = () => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
     const [imagesSrc, setImagesSrc] = useState([]);
     const [city, setCity] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [facilityType, setFacilityType] = useState('');
+    const [types, setTypes] = useState('');
     const [contact, setContact] = useState({
         address: '',
         phone: '',
@@ -23,8 +23,7 @@ const AccommodationForm = () => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
     const [activeSection, setActiveSection] = useState(null);
-
-    const [accommodations, setAccommodations] = useState([]);
+    const [guidesAndTours, setGuidesAndTours] = useState([]);
     const [showContent, setShowContent] = useState(false);
 
     const mainImgInputRef = useRef(null);
@@ -73,41 +72,43 @@ const AccommodationForm = () => {
         e.preventDefault();
         setLoading(true);
 
-        const facilitiesArray = facilityType.split(',').map(facility => facility.trim());
+        // Split the types by comma and trim spaces
+        const typesArray = types.split(',').map(type => type.trim());
 
-        const accommodationData = {
+        const guidesAndToursData = {
             mainImgSrc,
             imagesSrc,
             city,
             title,
             description,
-            facilityType: facilitiesArray,
+            type: typesArray, // Submit the array of types
             contact,
             location,
         };
 
-        console.log('Submitting:', accommodationData);
+        console.log('Submitting:', guidesAndToursData);
 
         try {
-            const res = await fetch('/api/accommodations', {
+            const res = await fetch('/api/guides-and-tours', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(accommodationData),
+                body: JSON.stringify(guidesAndToursData),
             });
 
             const data = await res.json();
             console.log('Response:', data);
 
             if (res.ok) {
-                setMessage('Accommodation saved successfully');
+                setMessage('Data saved successfully');
+                // Reset form fields
                 setMainImgSrc(null);
                 setImagesSrc([]);
                 setCity('');
                 setTitle('');
                 setDescription('');
-                setFacilityType('');
+                setTypes(''); // Reset types
                 setContact({
                     address: '',
                     phone: '',
@@ -121,7 +122,7 @@ const AccommodationForm = () => {
                 mainImgInputRef.current.value = '';
                 imagesInputRef.current.value = '';
             } else {
-                setMessage('Failed to save accommodation');
+                setMessage('Failed to save data');
             }
         } catch (error) {
             setMessage('An error occurred');
@@ -131,15 +132,15 @@ const AccommodationForm = () => {
     };
 
     useEffect(() => {
-        const fetchAccommodations = async () => {
+        const fetchGuidesAndTours = async () => {
             try {
-                const res = await fetch('/api/accommodations');
+                const res = await fetch('/api/guides-and-tours');
                 if (!res.ok) {
-                    console.error('Failed to fetch accommodations');
+                    console.error('Failed to fetch data');
                     return;
                 }
                 const data = await res.json();
-                setAccommodations(data);
+                setGuidesAndTours(data);
             } catch (error) {
                 console.error('An error occurred:', error);
             } finally {
@@ -150,10 +151,9 @@ const AccommodationForm = () => {
             }
         };
 
-        fetchAccommodations().then(() => {
+        fetchGuidesAndTours().then(() => {
         });
     }, []);
-
 
     return (
         <section className={`component-section`}>
@@ -161,8 +161,7 @@ const AccommodationForm = () => {
                 {loading ? (
                     <div className={`form-loading`}>
                         <Spinner/>
-                    </div>
-                ) : (
+                    </div>) : (
                     <div className={`form-container`}>
                         <form onSubmit={handleSubmit}
                               className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
@@ -221,20 +220,6 @@ const AccommodationForm = () => {
                                 </h2>
                                 {activeSection === 'description' && (
                                     <div>
-                                        {/* Title */}
-                                        <div className="mb-4">
-                                            <label htmlFor="title"
-                                                   className="block text-gray-700 font-bold mb-2">Title:</label>
-                                            <input
-                                                type="text"
-                                                id="title"
-                                                value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
-                                                className="w-full p-2 border border-gray-300 rounded"
-                                                required
-                                                disabled={loading}
-                                            />
-                                        </div>
                                         {/* City */}
                                         <div className="mb-4">
                                             <label htmlFor="city"
@@ -249,6 +234,20 @@ const AccommodationForm = () => {
                                                 disabled={loading}
                                             />
                                         </div>
+                                        {/* Title */}
+                                        <div className="mb-4">
+                                            <label htmlFor="title"
+                                                   className="block text-gray-700 font-bold mb-2">Title:</label>
+                                            <input
+                                                type="text"
+                                                id="title"
+                                                value={title}
+                                                onChange={(e) => setTitle(e.target.value)}
+                                                className="w-full p-2 border border-gray-300 rounded"
+                                                required
+                                                disabled={loading}
+                                            />
+                                        </div>
                                         {/* Description */}
                                         <div className="mb-4">
                                             <label htmlFor="description"
@@ -258,7 +257,7 @@ const AccommodationForm = () => {
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
-                                                rows="3"
+                                                rows="4"
                                                 required
                                                 disabled={loading}
                                             ></textarea>
@@ -277,17 +276,16 @@ const AccommodationForm = () => {
                                 </h2>
                                 {activeSection === 'type' && (
                                     <div>
-                                        {/* Facilities */}
                                         <div className="mb-4">
-                                            <label htmlFor="facilities"
-                                                   className="block text-gray-700 font-bold mb-2">Facilities:</label>
+                                            <label htmlFor="types"
+                                                   className="block text-gray-700 font-bold mb-2">Type(s):</label>
                                             <input
                                                 type="text"
-                                                id="facilities"
-                                                value={facilityType}
-                                                onChange={(e) => setFacilityType(e.target.value)}
+                                                id="types"
+                                                value={types}
+                                                onChange={(e) => setTypes(e.target.value)}
                                                 className="w-full p-2 border border-gray-300 rounded"
-                                                placeholder="Enter facility types separated by commas"
+                                                placeholder="Enter types separated by commas"
                                                 required
                                                 disabled={loading}
                                             />
@@ -332,7 +330,6 @@ const AccommodationForm = () => {
                                                 value={contact.phone}
                                                 onChange={handleContactChange}
                                                 className="w-full p-2 border border-gray-300 rounded"
-                                                placeholder="Enter phone numbers separated by commas"
                                                 required
                                                 disabled={loading}
                                             />
@@ -381,7 +378,6 @@ const AccommodationForm = () => {
                                 </h2>
                                 {activeSection === 'location' && (
                                     <div>
-                                        {/* Location */}
                                         <div className="mb-4">
                                             <label className="block text-gray-700 font-bold mb-2">Location
                                                 (Coordinates):</label>
@@ -424,22 +420,19 @@ const AccommodationForm = () => {
                                     Submit
                                 </button>
                             )}
-
-                            {!loading && message && (
-                                <p className="mt-4 text-center text-green-500">{message}</p>
-                            )}
+                            {message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
                         <div className={`form-content-container`}>
                             <div
                                 className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                 <div
                                     className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                                    {accommodations.map((item, index) => (
+                                    {guidesAndTours.map((item, index) => (
                                         <div key={index} className={`form-content-grid-items`}>
                                             <div>
                                                 <Image
                                                     src={item.mainImgSrc}
-                                                    alt={`Accommodations ${index}`}
+                                                    alt={`Guides-and-tours-${index}`}
                                                     priority
                                                     width={800}
                                                     height={600}
@@ -457,7 +450,6 @@ const AccommodationForm = () => {
                                         </div>
                                     ))}
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -467,4 +459,4 @@ const AccommodationForm = () => {
     );
 };
 
-export default AccommodationForm;
+export default GuidesAndToursForm;

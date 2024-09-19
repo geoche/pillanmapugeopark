@@ -1,11 +1,11 @@
-﻿import {useState, useRef, useEffect} from 'react';
+﻿import React, {useState, useRef, useEffect} from 'react';
 import DatePicker from 'react-datepicker';
 import Spinner from "@components/Spinner";
 import 'react-datepicker/dist/react-datepicker.css';
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import Image from 'next/image';
 import 'photoswipe/dist/photoswipe.css';
-import {Error, Promise} from "mongoose";
+import '@styles/admin-panel.css'
 
 const EventForm = () => {
     const [eventShortDesc, setEventShortDesc] = useState('');
@@ -13,7 +13,7 @@ const EventForm = () => {
     const [eventDate, setEventDate] = useState(new Date());
     const [eventImgSrc, setEventImgSrc] = useState(null);
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const fileInputRef = useRef(null);
 
     const [events, setEvents] = useState([]);
@@ -93,11 +93,15 @@ const EventForm = () => {
 
     return (
         <section className={`component-section`}>
-            <div className={`form-container`}>
-                {loading ? (<div>Loading...</div>) : (
-                    <div className={`flex flex-row justify-end w-[95%]`}>
+            <div className={`admin-panel-module`}>
+                {loading ? (
+                    <div className={`form-loading`}>
+                        <Spinner/>
+                    </div>
+                ) : (
+                    <div className={`form-container`}>
                         <form onSubmit={handleSubmit}
-                              className="w-[30%] p-4 my-4 bg-white rounded shadow-md fixed left-10 z-10">
+                              className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
 
                             <div className="mb-4">
                                 <label htmlFor="shortDesc" className="block text-gray-700 font-bold mb-2">Short
@@ -162,12 +166,12 @@ const EventForm = () => {
 
                             {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
-                        <div className={`w-[65%] min-h-[44rem]`}>
+                        <div className={`form-content-container`}>
                             <div
                                 className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                                <div className="relative flex items-center max-w-screen-xl mx-auto py-4">
+                                <div className={`form-content-image-gallery-container`}>
                                     <Gallery withCaption>
-                                        <div className="flex flex-wrap justify-center items-center">
+                                        <div className={`form-content-image-gallery-content`}>
                                             {events.map((event, index) => (
                                                 <Item
                                                     key={index}
@@ -176,7 +180,7 @@ const EventForm = () => {
                                                     height={576}
                                                     width={1024}
                                                     alt={`image`}
-                                                    caption={` <div class="flex flex-col flex-center mx-auto" ><h1 class="max-w-7xl  text-sm text-justify pb-10">${event.eventFullDesc}</h1></div>`}
+                                                    caption={`<div class="flex flex-col flex-center mx-auto" ><h1 class="max-w-7xl  text-sm text-justify pb-10">${event.eventFullDesc}</h1></div>`}
                                                 >
                                                     {({ref, open}) => (
                                                         <div ref={ref} onClick={open}>
@@ -203,9 +207,7 @@ const EventForm = () => {
                                         </div>
                                     </Gallery>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 )}

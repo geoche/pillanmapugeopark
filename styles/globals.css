@@ -57,9 +57,7 @@ body {
 .text-default {
     @apply text-[#6a9a8d]
 }
-.form-container{
-    @apply bg-white flex flex-center
-}
+
 
 .flex-between {
     @apply justify-between items-center;
@@ -76,5 +74,4 @@ body {
 .flex-end {
     @apply justify-end items-center;
 }
-
 

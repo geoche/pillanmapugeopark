@@ -1,7 +1,8 @@
-﻿import {useState, useEffect, useRef} from 'react';
+﻿import React, {useState, useEffect, useRef} from 'react';
 import Spinner from "@components/Spinner";
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import Image from 'next/image';
+import '@styles/admin-panel.css'
 import 'photoswipe/dist/photoswipe.css';
 
 
@@ -10,7 +11,7 @@ const ImageForm = () => {
     const [images, setImages] = useState([]);
     const [caption, setCaption] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const fileInputRef = useRef(null);
     const [showContent, setShowContent] = useState(false);
 
@@ -78,7 +79,7 @@ const ImageForm = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setShowContent(true);
-                }, 1);
+                }, 300);
             }
         };
 
@@ -88,13 +89,16 @@ const ImageForm = () => {
 
     return (
         <section className={`component-section`}>
-            <div className={`form-container`}>
+            <div className={`admin-panel-module`}>
                 {loading ? (
-                        <div>Loading...</div>) :
+                        <div className={`form-loading`}>
+                            <Spinner/>
+                        </div>    
+                    ) :
                     (
-                        <div className="flex flex-row justify-end w-[95%]">
+                        <div className={`form-container`}>
                             <form onSubmit={handleSubmit}
-                                  className="w-[30%] p-4 my-4 bg-white rounded shadow-md fixed left-10 z-10">
+                                  className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                 <div className="mb-4">
                                     <label htmlFor="image" className="block text-gray-700 font-bold mb-2">Image:</label>
                                     <input
@@ -135,12 +139,12 @@ const ImageForm = () => {
 
                                 {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                             </form>
-                            <div className={`w-[65%] min-h-[44rem]`}>
+                            <div className={`form-content-container`}>
                                 <div
                                     className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-                                    <div className="relative flex items-center max-w-screen-xl mx-auto py-4">
+                                    <div className={`form-content-image-gallery-container`}>
                                         <Gallery withCaption>
-                                            <div className="flex flex-wrap justify-center items-center">
+                                            <div className={`form-content-image-gallery-content`}>
                                                 {images.map((image, index) => (
                                                     <Item
                                                         key={index}
