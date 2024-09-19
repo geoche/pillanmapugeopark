@@ -135,7 +135,7 @@ const ImageForm = () => {
 
                                 {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                             </form>
-                            <div className={`w-[65%] min-h-[24rem]`}>
+                            <div className={`w-[65%] min-h-[44rem]`}>
                                 <div
                                     className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                     <div className="relative flex items-center max-w-screen-xl mx-auto py-4">

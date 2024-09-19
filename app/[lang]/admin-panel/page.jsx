@@ -2,7 +2,6 @@
 
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useState} from "react";
-import EventForm from "@components/admin-panel/login/EventForm";
 import ReusableButton from "@components/ReusableButton";
 import AccommodationForm from "@components/admin-panel/login/AccommodationForm";
 import GuidesAndToursForm from "@components/admin-panel/login/GuidesAndToursForm";
@@ -11,6 +10,7 @@ import ExperiencesForm from "@components/admin-panel/login/ExperiencesForm";
 
 import VideoForm from "@components/admin-panel/forms/VideoForm";
 import ImageForm from "@components/admin-panel/forms/ImageForm";
+import EventForm from "@components/admin-panel/forms/EventForm";
 
 const forms = [
     {name: "AdminVideoForm", component: VideoForm},
@@ -46,7 +46,6 @@ const AdminPanelPage = () => {
                                         <span>{form.name}</span>
                                     </button>
                                 ))}
-                                {/* LOG OUT button */}
                                 <ReusableButton
                                     onClickAction={() => signOut()}
                                     buttonText={`LOG OUT`}
