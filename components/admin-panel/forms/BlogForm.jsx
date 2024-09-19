@@ -1,6 +1,8 @@
 "use client";
-import { useState, useRef, useEffect } from 'react';
+import {useState, useRef, useEffect} from 'react';
 import Spinner from "@components/Spinner";
+import Link from "@node_modules/next/link";
+import Image from "@node_modules/next/image";
 
 const BlogForm = () => {
     const [title, setTitle] = useState('');
@@ -179,7 +181,7 @@ const BlogForm = () => {
             <div className={`admin-panel-module`}>
                 {loading ? (
                     <div className={`form-loading`}>
-                        <Spinner />
+                        <Spinner/>
                     </div>
                 ) : (
                     <div className={`form-container`}>
@@ -199,7 +201,8 @@ const BlogForm = () => {
                                     <div>
                                         {/* Title */}
                                         <div className="mb-4">
-                                            <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title:</label>
+                                            <label htmlFor="title"
+                                                   className="block text-gray-700 font-bold mb-2">Title:</label>
                                             <input
                                                 type="text"
                                                 id="title"
@@ -212,7 +215,8 @@ const BlogForm = () => {
                                         </div>
                                         {/* Main Image */}
                                         <div className="mb-4">
-                                            <label htmlFor="mainImage" className="block text-gray-700 font-bold mb-2">Main Image:</label>
+                                            <label htmlFor="mainImage" className="block text-gray-700 font-bold mb-2">Main
+                                                Image:</label>
                                             <input
                                                 type="file"
                                                 id="mainImage"
@@ -226,7 +230,8 @@ const BlogForm = () => {
                                         </div>
                                         {/* Description */}
                                         <div className="mb-4">
-                                            <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description:</label>
+                                            <label htmlFor="description"
+                                                   className="block text-gray-700 font-bold mb-2">Description:</label>
                                             <textarea
                                                 id="description"
                                                 value={description}
@@ -239,7 +244,8 @@ const BlogForm = () => {
                                         </div>
                                         {/* Blog Post By */}
                                         <div className="mb-4">
-                                            <label htmlFor="blogpostBy" className="block text-gray-700 font-bold mb-2">Blog Post By:</label>
+                                            <label htmlFor="blogpostBy" className="block text-gray-700 font-bold mb-2">Blog
+                                                Post By:</label>
                                             <input
                                                 type="text"
                                                 id="blogpostBy"
@@ -303,7 +309,8 @@ const BlogForm = () => {
                                                                 <>
                                                                     {/* Header */}
                                                                     <div className="my-4">
-                                                                        <label className="block text-gray-700 mb-2">Header:</label>
+                                                                        <label
+                                                                            className="block text-gray-700 mb-2">Header:</label>
                                                                         <input
                                                                             type="text"
                                                                             value={node.header}
@@ -316,7 +323,8 @@ const BlogForm = () => {
                                                                     </div>
                                                                     {/* Text */}
                                                                     <div className="mb-4">
-                                                                        <label className="block text-gray-700 mb-2">Text:</label>
+                                                                        <label
+                                                                            className="block text-gray-700 mb-2">Text:</label>
                                                                         <textarea
                                                                             value={node.text}
                                                                             onChange={(e) =>
@@ -347,7 +355,8 @@ const BlogForm = () => {
                                                                 <>
                                                                     {/* Section Image */}
                                                                     <div className="mb-4">
-                                                                        <label className="block text-gray-700 mb-2">Section Image:</label>
+                                                                        <label className="block text-gray-700 mb-2">Section
+                                                                            Image:</label>
                                                                         <input
                                                                             type="file"
                                                                             accept="image/*"
@@ -359,7 +368,8 @@ const BlogForm = () => {
                                                                     </div>
                                                                     {/* Image Description */}
                                                                     <div className="mb-4">
-                                                                        <label className="block text-gray-700 mb-2">Image Description:</label>
+                                                                        <label className="block text-gray-700 mb-2">Image
+                                                                            Description:</label>
                                                                         <input
                                                                             type="text"
                                                                             value={node.nodeImageDescription}
@@ -376,7 +386,8 @@ const BlogForm = () => {
                                                                     </div>
                                                                     {/* Image By */}
                                                                     <div className="mb-4">
-                                                                        <label className="block text-gray-700 mb-2">Image By:</label>
+                                                                        <label className="block text-gray-700 mb-2">Image
+                                                                            By:</label>
                                                                         <input
                                                                             type="text"
                                                                             value={node.nodeImageBy}
@@ -409,7 +420,7 @@ const BlogForm = () => {
                             {/* Submit Button */}
                             {loading ? (
                                 <div className="w-full flex flex-center">
-                                    <Spinner />
+                                    <Spinner/>
                                 </div>
                             ) : (
                                 <button
@@ -423,7 +434,35 @@ const BlogForm = () => {
 
                             {!loading && message && <p className="mt-4 text-center text-green-500">{message}</p>}
                         </form>
-                        <div className={`form-content-container`}></div>
+                        <div className={`form-content-container`}>
+                            <div
+                                className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                {blogPosts.map((post, index) => (
+                                    <div key={index}
+                                         className={`form-content-grid-items`}>
+                                        <div>
+                                            <Image
+                                                src={post.mainImgSrc}
+                                                alt={`blog-${index}`}
+                                                priority
+                                                width={1280}
+                                                height={720}
+                                                className={`aspect-video  rounded-t-2xl`}
+                                            />
+                                        </div>
+                                        <div
+                                            className="bottom-2 left-0 right-0 p-4 rounded-b-2xl shadow-xl">
+                                            <p className={`text-lg`}>{post.title}</p>
+                                            <p className={`text-sm`}>{new Date(post.createdAt).toLocaleString('default', {
+                                                month: 'long',
+                                                day: 'numeric',
+                                                year: 'numeric'
+                                            })}</p>
+                                        </div>
+                                    </div>))}
+                            </div>
+
+                        </div>
                     </div>
                 )}
             </div>
