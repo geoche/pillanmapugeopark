@@ -39,7 +39,7 @@ const Navbar = ({lang, dict = {}}) => {
 
     return (
         <nav
-            className={`sticky justify-between space-x-14 lg:justify-center items-center w-full flex top-0 z-10 bg-white`}>
+            className={`sticky justify-between space-x-14 lg:justify-center items-center w-full flex top-0 z-20 bg-white`}>
             <NavbarHomeLogo lang={lang}/>
             <div className={`hidden lg:flex`}>
                 <NavbarItemsList lang={lang} updatedNavbarLinks={updatedNavbarLinks}/>
