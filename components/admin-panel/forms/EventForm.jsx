@@ -22,6 +22,8 @@ const EventForm = () => {
     // State variables for edit mode
     const [isEditMode, setIsEditMode] = useState(false);
     const [editEventId, setEditEventId] = useState(null);
+    // New state to track if the image has been changed during edit
+    const [imageChanged, setImageChanged] = useState(false);
 
     // State variable for delete confirmation
     const [eventToDelete, setEventToDelete] = useState(null);
@@ -32,12 +34,14 @@ const EventForm = () => {
 
         reader.onloadend = () => {
             setEventImgSrc(reader.result);
+            setImageChanged(true); // Mark that the image has been changed
         };
 
         if (file) {
             reader.readAsDataURL(file);
         } else {
             setEventImgSrc(null);
+            setImageChanged(false);
         }
     };
 
@@ -48,8 +52,16 @@ const EventForm = () => {
         try {
             const method = isEditMode ? 'PATCH' : 'POST';
             const apiUrl = '/api/events';
+
             const body = isEditMode
-                ? { id: editEventId, eventShortDesc, eventFullDesc, eventDate }
+                ? {
+                    id: editEventId,
+                    eventShortDesc,
+                    eventFullDesc,
+                    eventDate,
+                    imageChanged, // Indicate if the image has been changed
+                    eventImgSrc: imageChanged ? eventImgSrc : null, // Include new image if changed
+                }
                 : { eventShortDesc, eventFullDesc, eventImgSrc, eventDate };
 
             const res = await fetch(apiUrl, {
@@ -71,6 +83,7 @@ const EventForm = () => {
                 }
                 setIsEditMode(false);
                 setEditEventId(null);
+                setImageChanged(false);
             } else {
                 setMessage('Failed to save event');
             }
@@ -111,6 +124,7 @@ const EventForm = () => {
         setEventImgSrc(event.eventImgSrc);
         setEditEventId(event._id);
         setIsEditMode(true);
+        setImageChanged(false);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -122,6 +136,7 @@ const EventForm = () => {
         setEventFullDesc('');
         setEventDate(new Date());
         setEventImgSrc(null);
+        setImageChanged(false);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -219,8 +234,8 @@ const EventForm = () => {
                                 <label htmlFor="image" className="block text-gray-700 font-bold mb-2">
                                     Image:
                                 </label>
-                                {isEditMode && eventImgSrc && (
-                                    <img src={eventImgSrc} alt="Current Event Image" className="w-full h-auto rounded mb-2" />
+                                {eventImgSrc && (
+                                    <img src={eventImgSrc} alt="Event Image" className="w-full h-auto rounded mb-2" />
                                 )}
                                 <input
                                     type="file"
@@ -230,7 +245,7 @@ const EventForm = () => {
                                     ref={fileInputRef}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required={!isEditMode}
-                                    disabled={isEditMode || submitLoading}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             {submitLoading ? (
@@ -270,7 +285,7 @@ const EventForm = () => {
                                         <div className={`form-content-image-gallery-content`}>
                                             {events.map((event, index) => (
                                                 <div key={index} className="relative m-2">
-                                                    <div className="absolute top-0 right-0 flex space-x-2 p-2">
+                                                    <div className={`flex flex-row justify-end space-x-2 py-2`}>
                                                         <FaEdit
                                                             size={24}
                                                             onClick={() => handleEdit(event)}

@@ -56,7 +56,7 @@ const EventsCalendar = ({lang, dict}) => {
                                 <div
                                     className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center">
                                     <div id="DATE" className="w-full md:w-1/3 lg:w-[22%] xl:w-[30%] flex flex-row items-center px-4">
-                                        <p className=" text-8xl min-w-[5rem] text-end">{new Date(event.eventDate).getDate()}</p>
+                                        <p className=" text-8xl min-w-[7rem] text-end">{new Date(event.eventDate).getDate()}</p>
                                         <div className="flex flex-col items-start  text-lg pl-4">
                                             <p>{new Date(event.eventDate).toLocaleString(locale, {month: 'long'})}</p>
                                             <p>{new Date(event.eventDate).toLocaleString(locale, {weekday: 'long'})}</p>
