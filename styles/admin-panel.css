@@ -19,7 +19,7 @@
 }
 
 .form-content-grid {
-    @apply w-full flex flex-wrap justify-center items-center max-w-7xl mx-auto
+    @apply w-full flex flex-wrap justify-center items-baseline max-w-7xl mx-auto
 }
 
 .form-content-grid-items {
