@@ -15,7 +15,6 @@ const VideoGallery = () => {
                 const response = await fetch('/api/gallery/videos');
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data);
                     setVideos(data);
                 } else {
                     console.error('Failed to fetch videos');

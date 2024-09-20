@@ -22,9 +22,7 @@ const TerritoryMission = ({dict}) => {
             <div className="text-center text-white w-screen  max-w-7xl">
                 <div className="flex flex-wrap">
                     {updatedMissionVisionValues.map((item, index) => {
-                        console.log(`Title: ${item.title} Index: ${index}`);
                         return (
-              
                             <div key={index} className="w-full md:w-1/3 p-4">
                                 <div className="py-4 px-8">
                                     <p className="font-bold text-2xl pb-4">{item.title}</p>
