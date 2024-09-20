@@ -420,7 +420,7 @@ const BlogForm = () => {
 
                             {/* Submit Button */}
                             {submitLoading ? (
-                                <div className="w-full flex flex-center">
+                                <div className={`submit-loading`}>
                                     <Spinner/>
                                 </div>
                             ) : (

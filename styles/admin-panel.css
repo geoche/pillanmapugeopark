@@ -33,3 +33,8 @@
 .form-content-image-gallery-content {
     @apply flex flex-wrap justify-center items-center
 }
+
+.submit-loading {
+    @apply w-full flex justify-center items-center
+
+}

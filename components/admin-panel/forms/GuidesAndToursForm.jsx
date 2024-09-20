@@ -410,7 +410,7 @@ const GuidesAndToursForm = () => {
 
                             {/* Submit Button */}
                             {submitLoading ? (
-                                <div className="w-full flex justify-center">
+                                <div className={`submit-loading`}>
                                     <Spinner/>
                                 </div>
                             ) : (

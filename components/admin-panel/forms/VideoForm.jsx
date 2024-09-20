@@ -18,7 +18,6 @@ const VideoForm = () => {
             const response = await fetch('/api/gallery/videos');
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
                 setVideos(data);
             } else {
                 console.error('Failed to fetch videos');
@@ -110,7 +109,7 @@ const VideoForm = () => {
                                     ></textarea>
                                 </div>
                                 {submitLoading ?
-                                    <div className={`w-full flex flex-center`}>
+                                    <div className={`submit-loading`}>
                                         <Spinner/>
                                     </div> : (
                                         <button
