@@ -8,7 +8,7 @@ export const POST = async (request) => {
 
         const {
             mainImgSrc,
-            imagesSrc,
+            imagesSrc, // Now an array of image objects with src and isNew
             city,
             title,
             description,
@@ -22,15 +22,16 @@ export const POST = async (request) => {
         const { url: mainImgUrl } = await put(`accommodations/main-${Date.now()}.png`, mainImageBuffer, { access: 'public' });
 
         // Upload additional images
-        const imageUrls = await Promise.all(imagesSrc.map(async (imgSrc, index) => {
-            const imageBuffer = Buffer.from(imgSrc.split(",")[1], "base64");
+        const newImages = imagesSrc.filter((img) => img.isNew);
+        const imageUrls = await Promise.all(newImages.map(async (imgObj, index) => {
+            const imageBuffer = Buffer.from(imgObj.src.split(",")[1], "base64");
             const { url } = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
             return url;
         }));
 
         const newAccommodation = new Accommodation({
             mainImgSrc: mainImgUrl,
-            imagesSrc: imageUrls,
+            imagesSrc: imageUrls, // Only new images
             city,
             title,
             description,
@@ -48,6 +49,7 @@ export const POST = async (request) => {
     }
 };
 
+
 export const GET = async () => {
     try {
         await connectToDatabase();
@@ -61,7 +63,34 @@ export const GET = async () => {
     }
 };
 
-// PATCH method to update accommodation
+
+// DELETE method to delete accommodation and images
+export const DELETE = async (request) => {
+    try {
+        await connectToDatabase();
+
+        const { id } = await request.json();
+
+        const accommodation = await Accommodation.findById(id);
+
+        if (!accommodation) {
+            return new Response("Accommodation not found", { status: 404 });
+        }
+
+        // Delete main image from Blob storage
+        await del(accommodation.mainImgSrc);
+        await del(accommodation.imagesSrc);
+        
+        // Delete the accommodation from the database
+        await Accommodation.findByIdAndDelete(id);
+
+        return new Response("Accommodation deleted successfully", { status: 200 });
+    } catch (error) {
+        console.error(error);
+        return new Response("Failed to delete the accommodation", { status: 500 });
+    }
+};
+
 export const PATCH = async (request) => {
     try {
         await connectToDatabase();
@@ -69,7 +98,7 @@ export const PATCH = async (request) => {
         const {
             id,
             mainImgSrc,
-            imagesSrc,
+            imagesSrc, // Now an array of image objects with src and isNew
             city,
             title,
             description,
@@ -112,16 +141,32 @@ export const PATCH = async (request) => {
 
         // Handle additional images update
         if (imagesChanged && imagesSrc) {
-            // Delete old additional images from Blob storage
-            await del(accommodation.imagesSrc);
+            const existingImages = accommodation.imagesSrc; // URLs of existing images in the database
+
+            // Extract URLs of existing images that are still present
+            const updatedExistingImages = imagesSrc
+                .filter((img) => !img.isNew)
+                .map((img) => img.src);
+
+            // Images to delete (existing images that are no longer in imagesSrc)
+            const imagesToDelete = existingImages.filter(
+                (imgUrl) => !updatedExistingImages.includes(imgUrl)
+            );
+
+            // Delete removed images from Blob storage
+            await del(imagesToDelete);
 
 
-            // Upload new additional images
-            accommodation.imagesSrc = await Promise.all(imagesSrc.map(async (imgSrc, index) => {
-                const imageBuffer = Buffer.from(imgSrc.split(",")[1], "base64");
-                const {url} = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
+            // Upload new images
+            const newImages = imagesSrc.filter((img) => img.isNew);
+            const newImageUrls = await Promise.all(newImages.map(async (imgObj, index) => {
+                const imageBuffer = Buffer.from(imgObj.src.split(",")[1], "base64");
+                const { url } = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
                 return url;
             }));
+
+            // Update imagesSrc in the accommodation document
+            accommodation.imagesSrc = [...updatedExistingImages, ...newImageUrls];
         }
 
         await accommodation.save();
@@ -133,29 +178,3 @@ export const PATCH = async (request) => {
     }
 };
 
-// DELETE method to delete accommodation and images
-export const DELETE = async (request) => {
-    try {
-        await connectToDatabase();
-
-        const { id } = await request.json();
-
-        const accommodation = await Accommodation.findById(id);
-
-        if (!accommodation) {
-            return new Response("Accommodation not found", { status: 404 });
-        }
-
-        // Delete main image from Blob storage
-        await del(accommodation.mainImgSrc);
-        await del(accommodation.imagesSrc);
-        
-        // Delete the accommodation from the database
-        await Accommodation.findByIdAndDelete(id);
-
-        return new Response("Accommodation deleted successfully", { status: 200 });
-    } catch (error) {
-        console.error(error);
-        return new Response("Failed to delete the accommodation", { status: 500 });
-    }
-};

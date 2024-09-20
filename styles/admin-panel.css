@@ -7,7 +7,7 @@
 }
 
 .form-main {
-    @apply w-[30%] p-4 my-4 bg-white rounded shadow-md fixed left-10 z-10
+    @apply w-[30%] p-4 my-4 bg-white rounded shadow-md fixed left-10 z-10 max-h-[70%] overflow-y-auto
 }
 
 .form-loading {

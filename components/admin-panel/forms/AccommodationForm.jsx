@@ -6,6 +6,7 @@ import { FaEdit, FaTrashAlt, FaUndo } from "react-icons/fa";
 
 const AccommodationForm = () => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
+    // imagesSrc is now an array of objects with src and isNew properties
     const [imagesSrc, setImagesSrc] = useState([]);
     const [city, setCity] = useState('');
     const [title, setTitle] = useState('');
@@ -72,7 +73,11 @@ const AccommodationForm = () => {
         });
 
         Promise.all(promises).then((images) => {
-            setImagesSrc(images);
+            const newImages = images.map((imgSrc) => ({
+                src: imgSrc,
+                isNew: true,
+            }));
+            setImagesSrc((prevImages) => [...prevImages, ...newImages]);
             setImagesChanged(true); // Mark that the additional images have been changed
         });
     };
@@ -91,11 +96,11 @@ const AccommodationForm = () => {
         e.preventDefault();
         setSubmitLoading(true);
 
-        const facilitiesArray = facilityType.split(',').map(facility => facility.trim());
+        const facilitiesArray = facilityType.split(',').map((facility) => facility.trim());
 
         const accommodationData = {
             mainImgSrc,
-            imagesSrc,
+            imagesSrc, // Now an array of image objects with src and isNew
             city,
             title,
             description,
@@ -182,7 +187,12 @@ const AccommodationForm = () => {
     // Handle edit functionality
     const handleEdit = (accommodation) => {
         setMainImgSrc(accommodation.mainImgSrc);
-        setImagesSrc(accommodation.imagesSrc);
+        setImagesSrc(
+            accommodation.imagesSrc.map((imgSrc) => ({
+                src: imgSrc,
+                isNew: false,
+            }))
+        );
         setCity(accommodation.city);
         setTitle(accommodation.title);
         setDescription(accommodation.description);
@@ -235,6 +245,12 @@ const AccommodationForm = () => {
         }
     };
 
+    // Handle image deletion
+    const handleImageDelete = (index) => {
+        setImagesSrc((prevImages) => prevImages.filter((_, i) => i !== index));
+        setImagesChanged(true);
+    };
+
     // Handle delete functionality
     const handleDelete = (accommodation) => {
         setAccommodationToDelete(accommodation);
@@ -279,7 +295,7 @@ const AccommodationForm = () => {
                     <div className={`form-container`}>
                         <form
                             onSubmit={handleSubmit}
-                            className={`form-main max-h-[70%] overflow-y-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+                            className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
                         >
                             {/* Images Section */}
                             <div>
@@ -321,13 +337,21 @@ const AccommodationForm = () => {
                                             </label>
                                             {imagesSrc && imagesSrc.length > 0 && (
                                                 <div className="grid grid-cols-3 gap-2 mb-2">
-                                                    {imagesSrc.map((src, index) => (
-                                                        <img
-                                                            key={index}
-                                                            src={src}
-                                                            alt={`Image ${index}`}
-                                                            className="w-full h-auto rounded"
-                                                        />
+                                                    {imagesSrc.map((imageObj, index) => (
+                                                        <div key={index} className="relative">
+                                                            <img
+                                                                src={imageObj.src}
+                                                                alt={`Image ${index}`}
+                                                                className="w-full h-auto rounded"
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleImageDelete(index)}
+                                                                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+                                                            >
+                                                                ✕
+                                                            </button>
+                                                        </div>
                                                     ))}
                                                 </div>
                                             )}
@@ -339,7 +363,6 @@ const AccommodationForm = () => {
                                                 onChange={handleImagesChange}
                                                 ref={imagesInputRef}
                                                 className="w-full p-2 border border-gray-300 rounded"
-                                                required={!isEditMode || imagesChanged}
                                                 disabled={submitLoading}
                                             />
                                         </div>
