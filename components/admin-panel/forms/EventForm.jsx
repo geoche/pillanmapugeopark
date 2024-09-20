@@ -285,7 +285,7 @@ const EventForm = () => {
                                         <div className={`form-content-image-gallery-content`}>
                                             {events.map((event, index) => (
                                                 <div key={index} className="relative m-2">
-                                                    <div className={`flex flex-row justify-end space-x-2 py-2`}>
+                                                    <div className={`edit-delete-buttons edit-delete-buttons-right rounded`}>
                                                         <FaEdit
                                                             size={24}
                                                             onClick={() => handleEdit(event)}
@@ -323,7 +323,7 @@ const EventForm = () => {
                                                                     alt={`Event Image`}
                                                                     width={250}
                                                                     height={200}
-                                                                    className={`aspect-video object-cover rounded`}
+                                                                    className={`aspect-video object-cover w-full rounded`}
                                                                 />
                                                                 <div className={`p-2 text-xs`}>
                                                                     <p className={`text-justify`}>{event.eventShortDesc}</p>

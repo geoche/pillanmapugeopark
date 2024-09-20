@@ -640,7 +640,7 @@ const GuidesAndToursForm = () => {
                                             <div className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
                                                 <p>{item.title}</p>
                                             </div>
-                                            <div className={`edit-delete-buttons`}>
+                                            <div className={`edit-delete-buttons edit-delete-buttons-right rounded rounded-tr-2xl m-2`}>
                                                 <FaEdit
                                                     size={24}
                                                     onClick={() => handleEdit(item)}
