@@ -15,12 +15,14 @@ const ImageForm = () => {
     const fileInputRef = useRef(null);
     const [showContent, setShowContent] = useState(false);
 
-    // New state variables for edit mode
+    // State variables for edit mode
     const [isEditMode, setIsEditMode] = useState(false);
     const [editImageId, setEditImageId] = useState(null);
     const [imageSrc, setImageSrc] = useState(null);
+    // New state to track if the image has been changed during edit
+    const [imageChanged, setImageChanged] = useState(false);
 
-    // New state variable for delete confirmation
+    // State variable for delete confirmation
     const [imageToDelete, setImageToDelete] = useState(null);
 
     const handleImageChange = (e) => {
@@ -30,6 +32,7 @@ const ImageForm = () => {
         reader.onloadend = () => {
             setImage(reader.result);
             setImageSrc(reader.result);
+            setImageChanged(true); // Mark that the image has been changed
         };
 
         if (file) {
@@ -37,6 +40,7 @@ const ImageForm = () => {
         } else {
             setImage(null);
             setImageSrc(null);
+            setImageChanged(false);
         }
     };
 
@@ -48,7 +52,12 @@ const ImageForm = () => {
             const apiUrl = '/api/gallery/images';
             const method = isEditMode ? 'PATCH' : 'POST';
             const body = isEditMode
-                ? { id: editImageId, caption }
+                ? {
+                    id: editImageId,
+                    caption,
+                    imageChanged,
+                    imageSrc: imageChanged ? image : null, // Include new image if changed
+                }
                 : { imageSrc: image, caption };
 
             const res = await fetch(apiUrl, {
@@ -64,9 +73,12 @@ const ImageForm = () => {
                 setCaption('');
                 setImage(null);
                 setImageSrc(null);
-                fileInputRef.current.value = '';
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = '';
+                }
                 setIsEditMode(false);
                 setEditImageId(null);
+                setImageChanged(false);
             } else {
                 setMessage('Failed to save image');
             }
@@ -78,7 +90,6 @@ const ImageForm = () => {
             await fetchImages();
         }
     };
-
 
     const fetchImages = async () => {
         try {
@@ -104,7 +115,8 @@ const ImageForm = () => {
         setCaption(image.caption);
         setImageSrc(image.imageSrc);
         setEditImageId(image._id);
-        // Clear the file input
+        setImage(null); // Reset the image state
+        setImageChanged(false); // Reset imageChanged state
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -116,6 +128,7 @@ const ImageForm = () => {
         setCaption('');
         setImage(null);
         setImageSrc(null);
+        setImageChanged(false);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -152,7 +165,6 @@ const ImageForm = () => {
         }
     };
 
-
     const cancelDelete = () => {
         setImageToDelete(null);
     };
@@ -168,12 +180,12 @@ const ImageForm = () => {
                     <div className={`form-container`}>
                         <form
                             onSubmit={handleSubmit}
-                            className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+                            className={`form-main max-h-[70%] overflow-y-auto transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
                         >
                             <div className="mb-4">
                                 <label htmlFor="image" className="block text-gray-700 font-bold mb-2">Image:</label>
-                                {isEditMode && imageSrc && (
-                                    <img src={imageSrc} alt="Current Image" className="w-[50%] h-auto rounded mb-2" />
+                                {imageSrc && (
+                                    <img src={imageSrc} alt="Current Image" className="w-full h-auto rounded mb-2" />
                                 )}
                                 <input
                                     type="file"
@@ -182,8 +194,8 @@ const ImageForm = () => {
                                     onChange={handleImageChange}
                                     ref={fileInputRef}
                                     className="w-full p-2 border border-gray-300 rounded"
-                                    required={!isEditMode}
-                                    disabled={isEditMode || submitLoading}
+                                    required={!isEditMode || imageChanged}
+                                    disabled={submitLoading}
                                 />
                             </div>
                             <div className="mb-4">

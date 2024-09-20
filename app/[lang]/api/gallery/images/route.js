@@ -34,20 +34,39 @@ export const GET = async () => {
 
         return new Response(JSON.stringify(images), { status: 200 });
     } catch (error) {
+        console.error(error);
         return new Response("Failed to fetch images from the gallery", { status: 500 });
     }
 };
 
-// PATCH method to update image caption
+// PATCH method to update image caption and imageSrc
 export const PATCH = async (request) => {
-    const { id, caption } = await request.json();
+    const { id, caption, imageChanged, imageSrc } = await request.json();
 
     try {
         await connectToDatabase();
 
+        let updatedFields = { caption };
+
+        if (imageChanged && imageSrc) {
+            // Upload new image
+            const imageBuffer = Buffer.from(imageSrc.split(",")[1], "base64");
+            const { url } = await put(`images/${Date.now()}.png`, imageBuffer, { access: 'public' });
+
+            // Find the existing image to get the old image URL
+            const existingImage = await Image.findById(id);
+
+            if (!existingImage) {
+                return new Response("Image not found", { status: 404 });
+            }
+            
+            await del(existingImage.imageSrc);
+            updatedFields.imageSrc = url;
+        }
+
         const updatedImage = await Image.findByIdAndUpdate(
             id,
-            { caption },
+            updatedFields,
             { new: true }
         );
 
@@ -56,7 +75,6 @@ export const PATCH = async (request) => {
         }
 
         return new Response(JSON.stringify(updatedImage), { status: 200 });
-
     } catch (error) {
         console.error(error);
         return new Response("Failed to update image", { status: 500 });
@@ -76,13 +94,11 @@ export const DELETE = async (request) => {
         if (!imageToDelete) {
             return new Response("Image not found", { status: 404 });
         }
-
+        
         await del(imageToDelete.imageSrc);
-
         await Image.findByIdAndDelete(id);
 
         return new Response("Image deleted successfully", { status: 200 });
-
     } catch (error) {
         console.error(error);
         return new Response("Failed to delete image", { status: 500 });
