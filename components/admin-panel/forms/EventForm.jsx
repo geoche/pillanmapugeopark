@@ -188,7 +188,7 @@ const EventForm = () => {
                     <div className={`form-container`}>
                         <form
                             onSubmit={handleSubmit}
-                            className={`form-main overflow-y-auto max-h-[70%] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+                            className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
                         >
                             <div className="mb-4">
                                 <label htmlFor="shortDesc" className="block text-gray-700 font-bold mb-2">
