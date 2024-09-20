@@ -1,7 +1,7 @@
 ﻿"use client";
 import { useEffect, useState } from 'react';
 import Spinner from "@components/Spinner";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt, FaUndo } from "react-icons/fa";
 import { getYoutubeVideoId } from "@components/gallery/video-gallery/YoutubeUrlHelper";
 
 const VideoForm = () => {
@@ -44,7 +44,7 @@ const VideoForm = () => {
 
         try {
             const method = isEditMode ? 'PATCH' : 'POST';
-            const apiUrl = isEditMode ? `/api/gallery/videos` : `/api/gallery/videos`;
+            const apiUrl = `/api/gallery/videos`;
 
             const res = await fetch(apiUrl, {
                 method,
@@ -102,6 +102,14 @@ const VideoForm = () => {
         }
     };
 
+    // Function to cancel edit mode
+    const handleCancelEdit = () => {
+        setVideoLink('');
+        setDescription('');
+        setIsEditMode(false);
+        setEditVideoId(null);
+    };
+
     return (
         <section className={`component-section`}>
             <div className={`admin-panel-module`}>
@@ -114,9 +122,7 @@ const VideoForm = () => {
                         <form onSubmit={handleSubmit}
                               className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                             <div className="mb-4">
-                                <label htmlFor="videoLink" className="block text-gray-700 font-bold mb-2">YouTube
-                                    Video
-                                    Link:</label>
+                                <label htmlFor="videoLink" className="block text-gray-700 font-bold mb-2">YouTube Video Link:</label>
                                 <input
                                     type="url"
                                     id="videoLink"
@@ -145,13 +151,24 @@ const VideoForm = () => {
                                     <Spinner />
                                 </div>
                             ) : (
-                                <button
-                                    type="submit"
-                                    className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover`}
-                                    disabled={submitLoading}
-                                >
-                                    {isEditMode ? 'Edit' : 'Submit'}
-                                </button>
+                                <div className="flex items-center">
+                                    <button
+                                        type="submit"
+                                        className={`bg-button text-white px-4 py-2 rounded hover:bg-button-hover cursor-pointer`}
+                                        disabled={submitLoading}
+                                    >
+                                        {isEditMode ? 'Edit' : 'Submit'}
+                                    </button>
+                                    {isEditMode && (
+                                        <button
+                                            type="button"
+                                            onClick={handleCancelEdit}
+                                            className="ml-2 cursor-pointer"
+                                        >
+                                            <FaUndo size={24} style={{ color: '#6a9a8d' }} />
+                                        </button>
+                                    )}
+                                </div>
                             )}
 
                             {!submitLoading && message &&
@@ -162,10 +179,18 @@ const VideoForm = () => {
                             <div
                                 className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
                                 {videos.map((item, index) => (
-                                    <div key={index} className={` p-4 text-justify lg:w-1/2 xl:w-1/3`}>
+                                    <div key={index} className={`p-4 text-justify lg:w-1/2 xl:w-1/3`}>
                                         <div className={`flex justify-end space-x-2 p-2`}>
-                                            <FaEdit size={24} onClick={() => handleEdit(item)} />
-                                            <FaTrashAlt size={24} onClick={() => handleDelete(item._id)} />
+                                            <FaEdit
+                                                size={24}
+                                                onClick={() => handleEdit(item)}
+                                                className="cursor-pointer hover:text-green-500"
+                                            />
+                                            <FaTrashAlt
+                                                size={24}
+                                                onClick={() => handleDelete(item._id)}
+                                                className="cursor-pointer hover:text-red-500"
+                                            />
                                         </div>
                                         <iframe src={getYoutubeVideoId(item.videoLink)}
                                                 className="aspect-video w-full rounded-2xl"
