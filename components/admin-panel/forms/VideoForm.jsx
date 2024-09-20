@@ -15,7 +15,6 @@ const VideoForm = () => {
     const [isEditMode, setIsEditMode] = useState(false);
     const [editVideoId, setEditVideoId] = useState(null);
 
-    // New state to track the video being considered for deletion
     const [videoToDelete, setVideoToDelete] = useState(null);
 
     const fetchVideos = async () => {
@@ -81,13 +80,10 @@ const VideoForm = () => {
         setIsEditMode(true);
     };
 
-    // Updated handleDelete to use custom confirmation dialog
     const handleDelete = (video) => {
-        // Set the video being considered for deletion
         setVideoToDelete(video);
     };
 
-    // Function to confirm deletion
     const confirmDelete = async () => {
         try {
             const res = await fetch('/api/gallery/videos', {
@@ -107,17 +103,14 @@ const VideoForm = () => {
         } catch (error) {
             setMessage('An error occurred');
         } finally {
-            // Clear the videoToDelete state
             setVideoToDelete(null);
         }
     };
 
-    // Function to cancel deletion
     const cancelDelete = () => {
         setVideoToDelete(null);
     };
 
-    // Function to cancel edit mode
     const handleCancelEdit = () => {
         setVideoLink('');
         setDescription('');
@@ -219,7 +212,11 @@ const VideoForm = () => {
                                             <FaEdit
                                                 size={24}
                                                 onClick={() => handleEdit(item)}
-                                                className="cursor-pointer hover:text-green-500"
+                                                className={`cursor-pointer ${
+                                                    isEditMode && editVideoId === item._id
+                                                        ? 'text-green-500'
+                                                        : 'hover:text-green-500'
+                                                }`}
                                             />
                                             <FaTrashAlt
                                                 size={24}
