@@ -231,7 +231,7 @@ const ImageForm = () => {
                                         <div className={`form-content-image-gallery-content`}>
                                             {images.map((image, index) => (
                                                 <div key={index} className="relative m-2">
-                                                    <div className="absolute top-0 right-0 flex space-x-2 p-2">
+                                                    <div className={`flex flex-row justify-end space-x-2 py-2`}>
                                                         <FaEdit
                                                             size={24}
                                                             onClick={() => handleEdit(image)}
