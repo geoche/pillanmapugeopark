@@ -357,9 +357,9 @@ const GuidesAndToursForm = () => {
                                                             <button
                                                                 type="button"
                                                                 onClick={() => handleImageDelete(index)}
-                                                                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+                                                                className="absolute top-1 right-1 text-white rounded-full p-1"
                                                             >
-                                                                ✕
+                                                                <FaTrashAlt className={`image-management-delete-button`}/>
                                                             </button>
                                                         </div>
                                                     ))}

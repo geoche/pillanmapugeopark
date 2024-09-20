@@ -45,3 +45,7 @@
 .edit-delete-buttons-right {
     @apply top-0 right-0 
 }
+
+.image-management-delete-button {
+    @apply text-white hover:text-red-500
+}
