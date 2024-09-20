@@ -15,6 +15,9 @@ const VideoForm = () => {
     const [isEditMode, setIsEditMode] = useState(false);
     const [editVideoId, setEditVideoId] = useState(null);
 
+    // New state to track the video being considered for deletion
+    const [videoToDelete, setVideoToDelete] = useState(null);
+
     const fetchVideos = async () => {
         try {
             const response = await fetch('/api/gallery/videos');
@@ -78,28 +81,40 @@ const VideoForm = () => {
         setIsEditMode(true);
     };
 
-    const handleDelete = async (id) => {
-        const confirmDelete = confirm("Do you really want to delete this video?");
-        if (confirmDelete) {
-            try {
-                const res = await fetch('/api/gallery/videos', {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ id }),
-                });
+    // Updated handleDelete to use custom confirmation dialog
+    const handleDelete = (video) => {
+        // Set the video being considered for deletion
+        setVideoToDelete(video);
+    };
 
-                if (res.ok) {
-                    setMessage('Video deleted successfully');
-                    await fetchVideos();
-                } else {
-                    setMessage('Failed to delete video');
-                }
-            } catch (error) {
-                setMessage('An error occurred');
+    // Function to confirm deletion
+    const confirmDelete = async () => {
+        try {
+            const res = await fetch('/api/gallery/videos', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: videoToDelete._id }),
+            });
+
+            if (res.ok) {
+                setMessage('Video deleted successfully');
+                await fetchVideos();
+            } else {
+                setMessage('Failed to delete video');
             }
+        } catch (error) {
+            setMessage('An error occurred');
+        } finally {
+            // Clear the videoToDelete state
+            setVideoToDelete(null);
         }
+    };
+
+    // Function to cancel deletion
+    const cancelDelete = () => {
+        setVideoToDelete(null);
     };
 
     // Function to cancel edit mode
@@ -119,10 +134,19 @@ const VideoForm = () => {
                     </div>
                 ) : (
                     <div className={`form-container`}>
-                        <form onSubmit={handleSubmit}
-                              className={`form-main transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                        <form
+                            onSubmit={handleSubmit}
+                            className={`form-main transition-opacity duration-1000 ${
+                                showContent ? 'opacity-100' : 'opacity-0'
+                            }`}
+                        >
                             <div className="mb-4">
-                                <label htmlFor="videoLink" className="block text-gray-700 font-bold mb-2">YouTube Video Link:</label>
+                                <label
+                                    htmlFor="videoLink"
+                                    className="block text-gray-700 font-bold mb-2"
+                                >
+                                    YouTube Video Link:
+                                </label>
                                 <input
                                     type="url"
                                     id="videoLink"
@@ -134,8 +158,12 @@ const VideoForm = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="description"
-                                       className="block text-gray-700 font-bold mb-2">Description:</label>
+                                <label
+                                    htmlFor="description"
+                                    className="block text-gray-700 font-bold mb-2"
+                                >
+                                    Description:
+                                </label>
                                 <textarea
                                     id="description"
                                     value={description}
@@ -171,15 +199,22 @@ const VideoForm = () => {
                                 </div>
                             )}
 
-                            {!submitLoading && message &&
-                                <p className="mt-4 text-center text-green-500">{message}</p>}
+                            {!submitLoading && message && (
+                                <p className="mt-4 text-center text-green-500">{message}</p>
+                            )}
                         </form>
 
                         <div className={`form-content-container`}>
                             <div
-                                className={`form-content-grid transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+                                className={`form-content-grid transition-opacity duration-1000 ${
+                                    showContent ? 'opacity-100' : 'opacity-0'
+                                }`}
+                            >
                                 {videos.map((item, index) => (
-                                    <div key={index} className={`p-4 text-justify lg:w-1/2 xl:w-1/3`}>
+                                    <div
+                                        key={index}
+                                        className={`relative p-4 text-justify lg:w-1/2 xl:w-1/3`}
+                                    >
                                         <div className={`flex justify-end space-x-2 p-2`}>
                                             <FaEdit
                                                 size={24}
@@ -188,17 +223,29 @@ const VideoForm = () => {
                                             />
                                             <FaTrashAlt
                                                 size={24}
-                                                onClick={() => handleDelete(item._id)}
+                                                onClick={() => handleDelete(item)}
                                                 className="cursor-pointer hover:text-red-500"
                                             />
                                         </div>
-                                        <iframe src={getYoutubeVideoId(item.videoLink)}
-                                                className="aspect-video w-full rounded-2xl"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                referrerPolicy="strict-origin-when-cross-origin"
-                                                allowFullScreen>
-                                        </iframe>
-                                        <p className={`text-sm py-4 h-auto lg:min-h-48 xl:min-h-52`}>{item.description}</p>
+                                        <iframe
+                                            src={getYoutubeVideoId(item.videoLink)}
+                                            className="aspect-video w-full rounded-2xl"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            allowFullScreen
+                                        ></iframe>
+                                        <p
+                                            className={`text-sm py-4 h-auto lg:min-h-48 xl:min-h-52`}
+                                        >
+                                            {item.description}
+                                        </p>
+                                        {/* Red veil overlay when video is being considered for deletion */}
+                                        {videoToDelete && videoToDelete._id === item._id && (
+                                            <div
+                                                className="absolute top-0 left-0 w-full h-full bg-red-500 opacity-50 rounded-2xl pointer-events-none"
+                                                style={{ zIndex: 10 }}
+                                            ></div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -206,6 +253,33 @@ const VideoForm = () => {
                     </div>
                 )}
             </div>
+            {/* Custom confirmation modal */}
+            {videoToDelete && (
+                <div
+                    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+                    style={{ zIndex: 1000 }}
+                >
+                    <div className="bg-white p-6 rounded-lg">
+                        <p className="mb-4 text-lg">
+                            Do you want to delete selected video?
+                        </p>
+                        <div className="flex justify-end space-x-4">
+                            <button
+                                onClick={cancelDelete}
+                                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer"
+                            >
+                                No
+                            </button>
+                            <button
+                                onClick={confirmDelete}
+                                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
+                            >
+                                Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
