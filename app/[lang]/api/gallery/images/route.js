@@ -77,19 +77,9 @@ export const DELETE = async (request) => {
             return new Response("Image not found", { status: 404 });
         }
 
-        // Delete the image from the database
+        await del(imageToDelete.imageSrc);
+
         await Image.findByIdAndDelete(id);
-
-        // Extract the blob path from the imageSrc URL
-        const imageSrc = imageToDelete.imageSrc;
-        const url = new URL(imageSrc);
-        const pathname = url.pathname; // e.g., /_vercel/blob/path/to/image.png
-
-        // Remove the leading '/_vercel/blob/' part to get the blob path
-        const blobPath = pathname.replace('/_vercel/blob/', '');
-
-        // Delete the image from Vercel Blob storage
-        await del(blobPath);
 
         return new Response("Image deleted successfully", { status: 200 });
 
