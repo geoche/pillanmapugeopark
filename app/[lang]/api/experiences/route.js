@@ -1,6 +1,6 @@
 import { connectToDatabase } from '@utils/database';
 import Experiences from '@models/experiences';
-import { put } from '@vercel/blob';
+import { put, del } from '@vercel/blob';
 
 export const POST = async (request) => {
     try {
@@ -68,7 +68,13 @@ export const DELETE = async (request) => {
     try {
         await connectToDatabase();
 
-        const { id } = request.params;
+        const { id } = await request.json();
+        
+        const experience = await Experiences.findById(id);
+        
+        await del(experience.mainImgSrc);
+        await del(experience.imagesSrc);
+        
 
         const deletedExperience = await Experiences.findByIdAndDelete(id);
 
