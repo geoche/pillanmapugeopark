@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Spinner from "@components/Spinner";
 import Image from "next/image";
-import { FaEdit, FaTrashAlt, FaUndo } from "react-icons/fa";
+import {FaEdit, FaTrashAlt, FaUndo} from "react-icons/fa";
+import Link from "next/link";
 
-const AccommodationForm = () => {
+const AccommodationForm = ({lang}) => {
     const [mainImgSrc, setMainImgSrc] = useState(null);
     // imagesSrc is now an array of objects with src and isNew properties
     const [imagesSrc, setImagesSrc] = useState([]);
@@ -83,13 +84,13 @@ const AccommodationForm = () => {
     };
 
     const handleContactChange = (e) => {
-        setContact({ ...contact, [e.target.name]: e.target.value });
+        setContact({...contact, [e.target.name]: e.target.value});
     };
 
     const handleLocationChange = (e, index) => {
         const newCoordinates = [...location.coordinates];
         newCoordinates[index] = parseFloat(e.target.value);
-        setLocation({ ...location, coordinates: newCoordinates });
+        setLocation({...location, coordinates: newCoordinates});
     };
 
     const handleSubmit = async (e) => {
@@ -263,7 +264,7 @@ const AccommodationForm = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: accommodationToDelete._id }),
+                body: JSON.stringify({id: accommodationToDelete._id}),
             });
 
             if (res.ok) {
@@ -289,7 +290,7 @@ const AccommodationForm = () => {
             <div className={`admin-panel-module`}>
                 {loading ? (
                     <div className={`form-loading`}>
-                        <Spinner />
+                        <Spinner/>
                     </div>
                 ) : (
                     <div className={`form-container`}>
@@ -349,7 +350,8 @@ const AccommodationForm = () => {
                                                                 onClick={() => handleImageDelete(index)}
                                                                 className="absolute top-1 right-1 text-white rounded-full p-1"
                                                             >
-                                                                <FaTrashAlt className={`image-management-delete-button`}/>
+                                                                <FaTrashAlt
+                                                                    className={`image-management-delete-button`}/>
                                                             </button>
                                                         </div>
                                                     ))}
@@ -579,7 +581,7 @@ const AccommodationForm = () => {
                             {/* Submit and Cancel Buttons */}
                             {submitLoading ? (
                                 <div className={`submit-loading`}>
-                                    <Spinner />
+                                    <Spinner/>
                                 </div>
                             ) : (
                                 <div className="flex items-center">
@@ -596,7 +598,7 @@ const AccommodationForm = () => {
                                             onClick={handleCancelEdit}
                                             className="ml-2 cursor-pointer"
                                         >
-                                            <FaUndo size={24} style={{ color: '#6a9a8d' }} />
+                                            <FaUndo size={24} style={{color: '#6a9a8d'}}/>
                                         </button>
                                     )}
                                 </div>
@@ -612,47 +614,60 @@ const AccommodationForm = () => {
                             >
                                 <div className={`form-content-grid`}>
                                     {accommodations.map((item, index) => (
+                 
+
                                         <div key={index} className={`form-content-grid-items relative`}>
-                                            <div>
-                                                <Image
-                                                    src={item.mainImgSrc}
-                                                    alt={`Accommodation ${index}`}
-                                                    priority
-                                                    width={800}
-                                                    height={600}
-                                                    className={`rounded-2xl aspect-video`}
-                                                />
-                                            </div>
-                                            <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white p-2 rounded-tl-2xl rounded">
-                                                <p>{item.city}</p>
-                                            </div>
-                                            <div className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
-                                                <p>{item.title}</p>
-                                            </div>
-                                            <div className={`edit-delete-buttons edit-delete-buttons-right m-2 rounded rounded-tr-2xl `}>
-                                                <FaEdit
-                                                    size={24}
-                                                    onClick={() => handleEdit(item)}
-                                                    className={`cursor-pointer ${
-                                                        isEditMode && editAccommodationId === item._id
-                                                            ? 'text-green-500'
-                                                            : 'hover:text-green-500'
-                                                    }`}
-                                                />
-                                                <FaTrashAlt
-                                                    size={24}
-                                                    onClick={() => handleDelete(item)}
-                                                    className="cursor-pointer hover:text-red-500"
-                                                />
-                                            </div>
+                                            <Link href={`/${lang}/visit-us/accommodations/${item._id}`}
+                                                  passHref legacyBehavior>
+                                                <a target="_blank">
+                                                    <div>
+                                                        <Image
+                                                            src={item.mainImgSrc}
+                                                            alt={`Accommodation ${index}`}
+                                                            priority
+                                                            width={800}
+                                                            height={600}
+                                                            className={`rounded-2xl aspect-video`}
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        className="absolute top-2 left-2 bg-black bg-opacity-50 text-white p-2 rounded-tl-2xl rounded">
+                                                        <p>{item.city}</p>
+                                                    </div>
+                                                    <div
+                                                        className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
+                                                        <p>{item.title}</p>
+                                                    </div>
+                                                    <div
+                                                        className={`edit-delete-buttons edit-delete-buttons-right m-2 rounded rounded-tr-2xl `}>
+                                                        <FaEdit
+                                                            size={24}
+                                                            onClick={() => handleEdit(item)}
+                                                            className={`cursor-pointer ${
+                                                                isEditMode && editAccommodationId === item._id
+                                                                    ? 'text-green-500'
+                                                                    : 'hover:text-green-500'
+                                                            }`}
+                                                        />
+                                                        <FaTrashAlt
+                                                            size={24}
+                                                            onClick={() => handleDelete(item)}
+                                                            className="cursor-pointer hover:text-red-500"
+                                                        />
+                                                    </div>
+                                                </a>
+                                            </Link>
+
                                             {/* Red veil overlay when accommodation is being considered for deletion */}
                                             {accommodationToDelete && accommodationToDelete._id === item._id && (
                                                 <div
                                                     className="absolute top-0 left-0 w-full h-full bg-red-500 opacity-50 rounded pointer-events-none"
-                                                    style={{ zIndex: 10 }}
+                                                    style={{zIndex: 10}}
                                                 ></div>
                                             )}
+
                                         </div>
+
                                     ))}
                                 </div>
                             </div>
@@ -664,7 +679,7 @@ const AccommodationForm = () => {
             {accommodationToDelete && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-                    style={{ zIndex: 1000 }}
+                    style={{zIndex: 1000}}
                 >
                     <div className="bg-white p-6 rounded-lg">
                         <p className="mb-4 text-lg">Do you want to delete the selected accommodation?</p>

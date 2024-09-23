@@ -27,7 +27,9 @@ const forms = [
     {name: "Blogposts", component: BlogForm, icon: FaBlog},
 ];
 
-const AdminPanelPage = () => {
+const AdminPanelPage = async({params}) => {
+    const currentLanguage = params.lang;
+    
     const {data: session} = useSession({required: true});
     const [selectedForm, setSelectedForm] = useState("Video gallery");
 
@@ -67,7 +69,7 @@ const AdminPanelPage = () => {
                         {forms.map((form) => {
                             if (form.name === selectedForm) {
                                 const FormComponent = form.component;
-                                return <FormComponent key={form.name}/>;
+                                return <FormComponent key={form.name} lang={currentLanguage}/>;
                             }
                             return null;
                         })}

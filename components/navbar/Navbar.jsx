@@ -35,7 +35,6 @@ const Navbar = ({lang, dict = {}}) => {
     }, []);
     
     let updatedPathname = removeLangFromPathname(usePathname());
-    console.log(`This is pathname: ${updatedPathname}`);
     
     if(updatedPathname.includes(georoutesUri)){
         updatedPathname = georoutesUri;
