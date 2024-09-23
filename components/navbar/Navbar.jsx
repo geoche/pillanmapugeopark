@@ -13,6 +13,7 @@ import "flag-icons/css/flag-icons.min.css";
 import {navbarLinks} from "@components/navbar/navbarLinks/navbarLinks";
 import {replaceConfigStrings} from "@utils/utils";
 
+const georoutesUri = "/explore/georoutes"
 function removeLangFromPathname(pathname) {
     const supportedLangs = ['en', 'es'];
     const segments = pathname.split('/');
@@ -33,7 +34,13 @@ const Navbar = ({lang, dict = {}}) => {
         setIsClient(true);
     }, []);
     
-    const updatedPathname = removeLangFromPathname(usePathname());
+    let updatedPathname = removeLangFromPathname(usePathname());
+    console.log(`This is pathname: ${updatedPathname}`);
+    
+    if(updatedPathname.includes(georoutesUri)){
+        updatedPathname = georoutesUri;
+    }
+    
 
     const updatedNavbarLinks = replaceConfigStrings(navbarLinks, dict);
 
