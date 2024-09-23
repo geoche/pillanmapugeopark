@@ -49,7 +49,6 @@ export const POST = async (request) => {
     }
 };
 
-
 export const GET = async () => {
     try {
         await connectToDatabase();
@@ -62,7 +61,6 @@ export const GET = async () => {
         return new Response("Failed to fetch accommodations", { status: 500 });
     }
 };
-
 
 // DELETE method to delete accommodation and images
 export const DELETE = async (request) => {

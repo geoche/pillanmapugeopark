@@ -6,8 +6,8 @@ import {FaEdit, FaTrashAlt, FaUndo} from "react-icons/fa";
 
 const ExperiencesForm = () => {
     // State variables for form fields
-    const [mainImage, setMainImage] = useState(null); // { src: string, isNew: boolean }
-    const [images, setImages] = useState([]); // Array of { src: string, isNew: boolean }
+    const [mainImgSrc, setMainImgSrc] = useState(null); // { src: string, isNew: boolean }
+    const [imagesSrc, setImagesSrc] = useState([]); // Array of { src: string, isNew: boolean }
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
@@ -36,15 +36,17 @@ const ExperiencesForm = () => {
     // Handle main image change
     const handleMainImageChange = (e) => {
         const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setMainImgSrc(reader.result);
+            setImageChanged(true);
+        };
+
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setMainImage({src: reader.result, isNew: true});
-                setImageChanged(true);
-            };
             reader.readAsDataURL(file);
         } else {
-            setMainImage(null);
+            setMainImgSrc(null);
             setImageChanged(false);
         }
     };
@@ -52,29 +54,29 @@ const ExperiencesForm = () => {
     // Handle additional images change
     const handleImagesChange = (e) => {
         const files = Array.from(e.target.files);
-        const newImages = files.map(file => {
+        
+        const promises = files.map(file => {
             const reader = new FileReader();
             return new Promise((resolve, reject) => {
-                reader.onloadend = () => resolve({src: reader.result, isNew: true});
+                reader.onloadend = () => resolve(reader.result);
                 reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
         });
 
-        Promise.all(newImages)
-            .then(images => {
-                setImages(prevImages => [...prevImages, ...images]);
+        Promise.all(promises).then(images => {
+                const newImages = images.map((imgSrc) => ({
+                    src: imgSrc,
+                    isNew: true,
+                }));               
+                setImagesSrc(prevImages => [...prevImages, ...newImages]);
                 setImagesChanged(true);
             })
-            .catch(() => {
-                setImages([]);
-                setImagesChanged(false);
-            });
     };
 
     // Handle additional image deletion
     const handleImageDelete = (index) => {
-        setImages(prevImages => prevImages.filter((_, i) => i !== index));
+        setImagesSrc(prevImages => prevImages.filter((_, i) => i !== index));
         setImagesChanged(true);
     };
 
@@ -84,11 +86,11 @@ const ExperiencesForm = () => {
         setSubmitLoading(true);
 
         const experienceData = {
-            mainImgSrc: mainImage ? mainImage.src : null,
-            imagesSrc: images.map(img => img.src),
+            id: isEditMode ? editExperienceId : undefined,
+            mainImgSrc,
+            imagesSrc,
             title,
             description,
-            id: isEditMode ? editExperienceId : undefined,
             imageChanged,
             imagesChanged,
         };
@@ -122,8 +124,8 @@ const ExperiencesForm = () => {
 
     // Reset form fields and states
     const resetForm = () => {
-        setMainImage(null);
-        setImages([]);
+        setMainImgSrc(null);
+        setImagesSrc([]);
         setTitle('');
         setDescription('');
         setIsEditMode(false);
@@ -164,8 +166,8 @@ const ExperiencesForm = () => {
 
     // Handle edit functionality
     const handleEdit = (experience) => {
-        setMainImage({src: experience.mainImgSrc, isNew: false});
-        setImages(experience.imagesSrc.map(src => ({src, isNew: false})));
+        setMainImgSrc({src: experience.mainImgSrc, isNew: false});
+        setImagesSrc(experience.imagesSrc.map(src => ({src, isNew: false})));
         setTitle(experience.title);
         setDescription(experience.description);
         setEditExperienceId(experience._id);
@@ -235,9 +237,9 @@ const ExperiencesForm = () => {
                                 <label htmlFor="mainImage" className="block text-gray-700 font-bold mb-2">
                                     Main Image:
                                 </label>
-                                {mainImage && (
+                                {mainImgSrc && (
                                     <img
-                                        src={mainImage.src}
+                                        src={mainImgSrc.src}
                                         alt="Main"
                                         className="w-full h-auto rounded mb-2"
                                     />
@@ -259,9 +261,9 @@ const ExperiencesForm = () => {
                                 <label htmlFor="images" className="block text-gray-700 font-bold mb-2">
                                     Additional Images:
                                 </label>
-                                {images.length > 0 && (
+                                {imagesSrc.length > 0 && (
                                     <div className="grid grid-cols-3 gap-2 mb-2">
-                                        {images.map((imageObj, index) => (
+                                        {imagesSrc.map((imageObj, index) => (
                                             <div key={index} className="relative">
                                                 <img
                                                     src={imageObj.src}
