@@ -614,7 +614,7 @@ const AccommodationForm = ({lang}) => {
                             >
                                 <div className={`form-content-grid`}>
                                     {accommodations.map((item, index) => (
-                 
+
 
                                         <div key={index} className={`form-content-grid-items relative`}>
                                             <Link href={`/${lang}/visit-us/accommodations/${item._id}`}
@@ -638,25 +638,26 @@ const AccommodationForm = ({lang}) => {
                                                         className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
                                                         <p>{item.title}</p>
                                                     </div>
-                                                    <div
-                                                        className={`edit-delete-buttons edit-delete-buttons-right m-2 rounded rounded-tr-2xl `}>
-                                                        <FaEdit
-                                                            size={24}
-                                                            onClick={() => handleEdit(item)}
-                                                            className={`cursor-pointer ${
-                                                                isEditMode && editAccommodationId === item._id
-                                                                    ? 'text-green-500'
-                                                                    : 'hover:text-green-500'
-                                                            }`}
-                                                        />
-                                                        <FaTrashAlt
-                                                            size={24}
-                                                            onClick={() => handleDelete(item)}
-                                                            className="cursor-pointer hover:text-red-500"
-                                                        />
-                                                    </div>
+
                                                 </a>
                                             </Link>
+                                            <div
+                                                className={`edit-delete-buttons edit-delete-buttons-right m-2 rounded rounded-tr-2xl `}>
+                                                <FaEdit
+                                                    size={24}
+                                                    onClick={() => handleEdit(item)}
+                                                    className={`cursor-pointer ${
+                                                        isEditMode && editAccommodationId === item._id
+                                                            ? 'text-green-500'
+                                                            : 'hover:text-green-500'
+                                                    }`}
+                                                />
+                                                <FaTrashAlt
+                                                    size={24}
+                                                    onClick={() => handleDelete(item)}
+                                                    className="cursor-pointer hover:text-red-500"
+                                                />
+                                            </div>
 
                                             {/* Red veil overlay when accommodation is being considered for deletion */}
                                             {accommodationToDelete && accommodationToDelete._id === item._id && (
