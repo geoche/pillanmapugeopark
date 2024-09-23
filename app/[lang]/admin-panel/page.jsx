@@ -23,8 +23,8 @@ const forms = [
     {name: "Events calendar", component: EventForm, icon: FaCalendarCheck},
     {name: "Accommodations", component: AccommodationForm, icon: FaHome},
     {name: "Guides and tours", component: GuidesAndToursForm, icon: FaMapMarkedAlt},
-    {name: "Blogposts", component: BlogForm, icon: FaBlog},
     {name: "Experiences", component: ExperiencesForm, icon: FaMountain},
+    {name: "Blogposts", component: BlogForm, icon: FaBlog},
 ];
 
 const AdminPanelPage = () => {

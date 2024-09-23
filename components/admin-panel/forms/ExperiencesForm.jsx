@@ -83,6 +83,8 @@ const ExperiencesForm = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setShowContent(false)
         setSubmitLoading(true);
 
         const experienceData = {
@@ -117,7 +119,6 @@ const ExperiencesForm = () => {
             console.error(error);
             setMessage('An error occurred');
         } finally {
-            setSubmitLoading(false);
             await fetchExperiences();
         }
     };
@@ -149,6 +150,7 @@ const ExperiencesForm = () => {
         } catch (error) {
             console.error('An error occurred:', error);
         } finally {
+            setSubmitLoading(false);
             setLoading(false);
             setTimeout(() => {
                 setShowContent(true);
