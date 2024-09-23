@@ -1,8 +1,8 @@
 // @/api/guides-and-tours/route.js
 
-import { connectToDatabase } from '@utils/database';
+import {connectToDatabase} from '@utils/database';
 import GuidesAndTours from "@models/guidesAndTours";
-import { put, del } from '@vercel/blob';
+import {put, del} from '@vercel/blob';
 
 export const POST = async (request) => {
     try {
@@ -21,17 +21,17 @@ export const POST = async (request) => {
 
         // Validate required fields
         if (!mainImgSrc || !imagesSrc || !city || !title || !description || !type || !contact || !location) {
-            return new Response("Missing required fields", { status: 400 });
+            return new Response("Missing required fields", {status: 400});
         }
 
         // Upload main image to Blob storage
         const mainImageBuffer = Buffer.from(mainImgSrc.split(",")[1], "base64");
-        const { url: mainImgUrl } = await put(`guides-and-tours/main-${Date.now()}.png`, mainImageBuffer, { access: 'public' });
+        const {url: mainImgUrl} = await put(`guides-and-tours/main-${Date.now()}.png`, mainImageBuffer, {access: 'public'});
 
         // Upload additional images to Blob storage
         const imageUrls = await Promise.all(imagesSrc.map(async (imgSrc, index) => {
             const imageBuffer = Buffer.from(imgSrc.split(",")[1], "base64");
-            const { url } = await put(`guides-and-tours/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
+            const {url} = await put(`guides-and-tours/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
             return url;
         }));
 
@@ -49,10 +49,10 @@ export const POST = async (request) => {
 
         await newGuidesAndTours.save();
 
-        return new Response(JSON.stringify(newGuidesAndTours), { status: 201 });
+        return new Response(JSON.stringify(newGuidesAndTours), {status: 201});
     } catch (error) {
         console.error('POST /api/guides-and-tours error:', error);
-        return new Response("Failed to create new GuidesAndTours", { status: 500 });
+        return new Response("Failed to create new GuidesAndTours", {status: 500});
     }
 };
 
@@ -66,10 +66,10 @@ export const GET = async () => {
 
         const guidesAndTours = await GuidesAndTours.find({});
 
-        return new Response(JSON.stringify(guidesAndTours), { status: 200 });
+        return new Response(JSON.stringify(guidesAndTours), {status: 200});
     } catch (error) {
         console.error('GET /api/guides-and-tours error:', error);
-        return new Response("Failed to fetch GuidesAndTours", { status: 500 });
+        return new Response("Failed to fetch GuidesAndTours", {status: 500});
     }
 };
 
@@ -97,13 +97,13 @@ export const PATCH = async (request) => {
 
         // Validate required fields
         if (!id || !city || !title || !description || !type || !contact || !location) {
-            return new Response("Missing required fields", { status: 400 });
+            return new Response("Missing required fields", {status: 400});
         }
 
         const guide = await GuidesAndTours.findById(id);
 
         if (!guide) {
-            return new Response("GuidesAndTours not found", { status: 404 });
+            return new Response("GuidesAndTours not found", {status: 404});
         }
 
         // Update basic fields
@@ -117,10 +117,9 @@ export const PATCH = async (request) => {
         // Handle main image update
         if (imageChanged && mainImgSrc) {
             await del(guide.mainImgSrc);
-
             // Upload new main image
             const mainImageBuffer = Buffer.from(mainImgSrc.split(",")[1], "base64");
-            const { url: newMainImgUrl } = await put(`guides-and-tours/main-${Date.now()}.png`, mainImageBuffer, { access: 'public' });
+            const {url: newMainImgUrl} = await put(`guides-and-tours/main-${Date.now()}.png`, mainImageBuffer, {access: 'public'});
 
             guide.mainImgSrc = newMainImgUrl;
         }
@@ -138,14 +137,15 @@ export const PATCH = async (request) => {
             const imagesToDelete = existingImages.filter(imgUrl => !updatedExistingImages.includes(imgUrl));
 
             // Delete removed images from Blob storage
-            await del(imagesToDelete);
-
-
+            if (imagesToDelete.length > 0) {
+                await del(imagesToDelete);
+            }
+            
             // Upload new images
             const newImages = imagesSrc.filter(img => img.isNew);
             const newImageUrls = await Promise.all(newImages.map(async (imgObj, index) => {
                 const imageBuffer = Buffer.from(imgObj.src.split(",")[1], "base64");
-                const { url } = await put(`guides-and-tours/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
+                const {url} = await put(`guides-and-tours/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
                 return url;
             }));
 
@@ -155,10 +155,10 @@ export const PATCH = async (request) => {
 
         await guide.save();
 
-        return new Response(JSON.stringify(guide), { status: 200 });
+        return new Response(JSON.stringify(guide), {status: 200});
     } catch (error) {
         console.error('PATCH /api/guides-and-tours error:', error);
-        return new Response("Failed to update the GuidesAndTours", { status: 500 });
+        return new Response("Failed to update the GuidesAndTours", {status: 500});
     }
 };
 
@@ -170,30 +170,30 @@ export const DELETE = async (request) => {
     try {
         await connectToDatabase();
 
-        const { id } = await request.json();
+        const {id} = await request.json();
 
         if (!id) {
-            return new Response("Missing guide/tour ID", { status: 400 });
+            return new Response("Missing guide/tour ID", {status: 400});
         }
 
         const guide = await GuidesAndTours.findById(id);
 
         if (!guide) {
-            return new Response("GuidesAndTours not found", { status: 404 });
+            return new Response("GuidesAndTours not found", {status: 404});
         }
 
         // Delete main image from Blob storage
         await del(guide.mainImgSrc);
-        
+
         // Delete additional images from Blob storage
         await del(guide.imagesSrc);
-        
+
         // Delete the guide/tour from the database
         await GuidesAndTours.findByIdAndDelete(id);
 
-        return new Response("GuidesAndTours deleted successfully", { status: 200 });
+        return new Response("GuidesAndTours deleted successfully", {status: 200});
     } catch (error) {
         console.error('DELETE /api/guides-and-tours error:', error);
-        return new Response("Failed to delete the GuidesAndTours", { status: 500 });
+        return new Response("Failed to delete the GuidesAndTours", {status: 500});
     }
 };

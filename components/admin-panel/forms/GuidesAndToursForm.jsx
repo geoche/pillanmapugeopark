@@ -99,9 +99,10 @@ const GuidesAndToursForm = () => {
 
     // Handle form submission (create or edit)
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        setLoading(true);
         setSubmitLoading(true);
         setMessage('');
+        e.preventDefault();
 
         const typesArray = types.split(',').map((type) => type.trim());
 
@@ -164,7 +165,6 @@ const GuidesAndToursForm = () => {
             console.error(error);
             setMessage('An error occurred while saving the data');
         } finally {
-            setSubmitLoading(false);
             await fetchGuidesAndTours();
         }
     };
@@ -183,6 +183,7 @@ const GuidesAndToursForm = () => {
             console.error('An error occurred:', error);
         } finally {
             setLoading(false);
+            setSubmitLoading(false);
             setTimeout(() => {
                 setShowContent(true);
             }, 300);

@@ -19,13 +19,13 @@ export const POST = async (request) => {
 
         // Upload main image
         const mainImageBuffer = Buffer.from(mainImgSrc.split(",")[1], "base64");
-        const { url: mainImgUrl } = await put(`accommodations/main-${Date.now()}.png`, mainImageBuffer, { access: 'public' });
+        const {url: mainImgUrl} = await put(`accommodations/main-${Date.now()}.png`, mainImageBuffer, {access: 'public'});
 
         // Upload additional images
         const newImages = imagesSrc.filter((img) => img.isNew);
         const imageUrls = await Promise.all(newImages.map(async (imgObj, index) => {
             const imageBuffer = Buffer.from(imgObj.src.split(",")[1], "base64");
-            const { url } = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
+            const {url} = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
             return url;
         }));
 
@@ -42,10 +42,10 @@ export const POST = async (request) => {
 
         await newAccommodation.save();
 
-        return new Response(JSON.stringify(newAccommodation), { status: 201 });
+        return new Response(JSON.stringify(newAccommodation), {status: 201});
     } catch (error) {
         console.error(error);
-        return new Response("Failed to create new accommodation", { status: 500 });
+        return new Response("Failed to create new accommodation", {status: 500});
     }
 };
 
@@ -55,10 +55,10 @@ export const GET = async () => {
 
         const accommodations = await Accommodation.find({});
 
-        return new Response(JSON.stringify(accommodations), { status: 200 });
+        return new Response(JSON.stringify(accommodations), {status: 200});
     } catch (error) {
         console.error(error);
-        return new Response("Failed to fetch accommodations", { status: 500 });
+        return new Response("Failed to fetch accommodations", {status: 500});
     }
 };
 
@@ -67,25 +67,25 @@ export const DELETE = async (request) => {
     try {
         await connectToDatabase();
 
-        const { id } = await request.json();
+        const {id} = await request.json();
 
         const accommodation = await Accommodation.findById(id);
 
         if (!accommodation) {
-            return new Response("Accommodation not found", { status: 404 });
+            return new Response("Accommodation not found", {status: 404});
         }
 
         // Delete main image from Blob storage
         await del(accommodation.mainImgSrc);
         await del(accommodation.imagesSrc);
-        
+
         // Delete the accommodation from the database
         await Accommodation.findByIdAndDelete(id);
 
-        return new Response("Accommodation deleted successfully", { status: 200 });
+        return new Response("Accommodation deleted successfully", {status: 200});
     } catch (error) {
         console.error(error);
-        return new Response("Failed to delete the accommodation", { status: 500 });
+        return new Response("Failed to delete the accommodation", {status: 500});
     }
 };
 
@@ -110,7 +110,7 @@ export const PATCH = async (request) => {
         const accommodation = await Accommodation.findById(id);
 
         if (!accommodation) {
-            return new Response("Accommodation not found", { status: 404 });
+            return new Response("Accommodation not found", {status: 404});
         }
 
         // Update fields
@@ -123,16 +123,11 @@ export const PATCH = async (request) => {
 
         // Handle main image update
         if (imageChanged && mainImgSrc) {
-            // Delete old main image from Blob storage
-            const oldMainImgUrl = accommodation.mainImgSrc;
-            const urlObj = new URL(oldMainImgUrl);
-            const pathname = urlObj.pathname;
-            const blobPath = pathname.replace('/_vercel/blob/', '');
-            await del(blobPath);
+            await del(accommodation.mainImgSrc);
 
             // Upload new main image
             const mainImageBuffer = Buffer.from(mainImgSrc.split(",")[1], "base64");
-            const { url: mainImgUrl } = await put(`accommodations/main-${Date.now()}.png`, mainImageBuffer, { access: 'public' });
+            const {url: mainImgUrl} = await put(`accommodations/main-${Date.now()}.png`, mainImageBuffer, {access: 'public'});
 
             accommodation.mainImgSrc = mainImgUrl;
         }
@@ -152,14 +147,15 @@ export const PATCH = async (request) => {
             );
 
             // Delete removed images from Blob storage
-            await del(imagesToDelete);
-
+            if (imagesToDelete.length > 0) {
+                await del(imagesToDelete);
+            }
 
             // Upload new images
             const newImages = imagesSrc.filter((img) => img.isNew);
             const newImageUrls = await Promise.all(newImages.map(async (imgObj, index) => {
                 const imageBuffer = Buffer.from(imgObj.src.split(",")[1], "base64");
-                const { url } = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, { access: 'public' });
+                const {url} = await put(`accommodations/image-${Date.now()}-${index}.png`, imageBuffer, {access: 'public'});
                 return url;
             }));
 
@@ -169,10 +165,10 @@ export const PATCH = async (request) => {
 
         await accommodation.save();
 
-        return new Response(JSON.stringify(accommodation), { status: 200 });
+        return new Response(JSON.stringify(accommodation), {status: 200});
     } catch (error) {
         console.error(error);
-        return new Response("Failed to update the accommodation", { status: 500 });
+        return new Response("Failed to update the accommodation", {status: 500});
     }
 };
 
