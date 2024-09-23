@@ -2,9 +2,10 @@
 import Spinner from "@components/Spinner";
 import Image from "next/image";
 import {FaEdit, FaTrashAlt, FaUndo} from "react-icons/fa";
+import Link from "next/link";
 
 
-const ExperiencesForm = () => {
+const ExperiencesForm = ({lang}) => {
     // State variables for form fields
     const [mainImgSrc, setMainImgSrc] = useState(null); // { src: string, isNew: boolean }
     const [imagesSrc, setImagesSrc] = useState([]); // Array of { src: string, isNew: boolean }
@@ -368,20 +369,25 @@ const ExperiencesForm = () => {
                                 <div className={`form-content-grid`}>
                                     {experiences.map((expItem, index) => (
                                         <div key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3 relative`}>
-                                            <div>
-                                                <Image
-                                                    src={expItem.mainImgSrc}
-                                                    alt={`Experience ${index + 1}`}
-                                                    priority
-                                                    width={800}
-                                                    height={600}
-                                                    className={`rounded-2xl aspect-video`}
-                                                />
-                                            </div>
-                                            <div
-                                                className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
-                                                <p>{expItem.title}</p>
-                                            </div>
+                                            <Link href={`/${lang}/visit-us/experiences/${expItem._id}`}
+                                                  passHref legacyBehavior>
+                                                <a target="_blank">
+                                                   <div>
+                                                       <Image
+                                                           src={expItem.mainImgSrc}
+                                                           alt={`Experience ${index + 1}`}
+                                                           priority
+                                                           width={800}
+                                                           height={600}
+                                                           className={`rounded-2xl aspect-video`}
+                                                       />
+                                                   </div>
+                                                   <div
+                                                       className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
+                                                       <p>{expItem.title}</p>
+                                                   </div>
+                                               </a>
+                                           </Link>
                                             <div
                                                 className={`edit-delete-buttons edit-delete-buttons-right m-2 rounded rounded-tr-2xl`}>
                                                 <FaEdit
