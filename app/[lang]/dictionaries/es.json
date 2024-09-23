@@ -398,6 +398,7 @@
       "videoOf": "Video de",
       "georoute": {
         "tenorRiverMountainValley": {
+          "uri": "cajon-del-rio-teno",
           "title": "Cajón del Río Teno",
           "sectionText": {
             "par1": "Esta ruta, situada en el extremo norte del Geoparque, recorre el cajón del río Teno, desde Los Queñes hasta la frontera con Argentina, siendo parte del Paso Internacional Vergara. Incluye importantes geositios, como las Lagunas de Teno o el Volcán Planchón. En esta ruta se encuentran las rocas más antiguas del Geoparque, con 175 millones de años de antigüedad, que revelan una época en la que Chile era muy diferente a como lo conocemos hoy: no existía la cordillera de los Andes y gran parte del territorio chileno estaba sumergido bajo el mar.",
@@ -406,6 +407,7 @@
           }
         },
         "radalSieteTazas": {
+          "uri": "radal-siete-tazas",
           "title": "Radal Siete Tazas",
           "sectionText": {
             "par1": "Ubicada en el Parque Nacional Radal Siete Tazas, esta ruta se centra en la observación de espectaculares cascadas, pozones de agua cristalina y senderos que muestran cómo, en el pasado, el relieve fue modelado por la acción volcánica y glaciar, y actualmente es esculpido por procesos fluviales. Entre los geositios destacados se encuentran Las Siete Tazas, el Salto El Velo de la Novia y el Valle del Indio.",
@@ -413,6 +415,7 @@
           }
         },
         "altosDeLircay": {
+          "uri": "altos-de-lircay",
           "title": "Altos de Lircay",
           "sectionText": {
             "par1": "La georuta de Altos de Lircay se encuentra en la Reserva Nacional Altos de Lircay y ofrece una experiencia única de contacto con la naturaleza y el patrimonio geológico de la zona. Esta ruta destaca por su diversidad de paisajes, que van desde bosques nativos de robles, lengas y coigües hasta altas cumbres con vistas panorámicas de volcanes y formaciones rocosas. A lo largo del recorrido, los visitantes pueden observar la acción de antiguos glaciares que modelaron el relieve, además de los procesos erosivos y fluviales actuales.",
@@ -421,6 +424,7 @@
           }
         },
         "pehuencheInternationalPass": {
+          "uri": "paso-pehuenche",
           "title": "Paso Pehuenche",
           "sectionText": {
             "par1": "El Paso Internacional Pehuenche abarca desde el lago Colbún hasta Argentina, sirviendo como el principal acceso al corazón de la cordillera maulina. Gracias a su camino pavimentado, permite un fácil acceso a algunos de los geositios más impresionantes de la región, como la Cascada Invertida, la Laguna del Maule, el volcán Campanario, los Monjes Blancos y el Valle de los Cóndores. Este paso es conocido internacionalmente por sus rutas de escalada deportiva y sus zonas para practicar deportes invernales como randoné, con algunas de las mejores condiciones de nieve en Chile.",
@@ -430,6 +434,7 @@
           }
         },
         "meladoMountainValley": {
+          "uri": "cajon-del-melado",
           "title": "Cajón del Melado ",
           "sectionText": {
             "par1": "La \"Ruta del Melado\" en el Cajón del Río Melado, en la región del Maule, Chile, destaca por su valioso patrimonio natural y cultural. Entre sus principales atractivos se encuentran los petroglifos del estilo \"Guaiquivilo,\" un conjunto de grabados rupestres que representan figuras geométricas, antropomorfas y zoomorfas, realizados por pueblos prehispánicos. Estos petroglifos, distribuidos en diversos sectores de la cordillera, como los cajones Calabozo y El Toro, reflejan la existencia de fuertes vínculos culturales entre los antiguos habitantes de la región.",
@@ -437,6 +442,7 @@
           }
         },
         "artisanTraditionOfRari": {
+          "uri": "tradicion-artesanal-de-rari",
           "title": "Tradición Artesanal de Rari",
           "sectionText": {
             "par1": "La ruta de la tradición artesanal de Rari se centra en el patrimonio cultural inmaterial asociado a la artesanía en crin, una tradición única de este poblado de la región del Maule, en Chile. Rari es conocido por sus artesanas que tejen figuras en miniatura utilizando crin de caballo, una práctica que tiene más de 200 años de historia. Estas artesanas han transmitido su conocimiento de generación en generación, y su trabajo ha sido reconocido como un \"Tesoro Humano Vivo\" por la UNESCO y el Consejo Nacional de las Culturas y las Artes en 2010.",
@@ -445,6 +451,7 @@
           }
         },
         "archibuenoRiverMountainValley": {
+          "uri": "cajon-del-rio-archibueno",
           "title": "Cajón del Río Achibueno",
           "sectionText": {
             "par1": "Esta ruta se ubica dentro del Santuario de la Naturaleza del Cajón del Río Achibueno. Es la más exigente desde el punto de vista físico, ya que para alcanzar sus geositios más alejados, como la Laguna Añintunes o la Laguna Achibueno, pueden ser necesarios varios días de senderismo. Incluso para acceder a los geositios más cercanos, como los saltos de Las Ánimas o La Mina, se requieren al menos dos días. Sin embargo, esta ruta recompensa a quienes se aventuran en ella con espectaculares paisajes y recorridos a través de bosques nativos dominados por especies del género Nothofagus, típicas del sur de Chile. No en vano, este sector ha sido popularmente llamado la \"Patagonia del Maule\". También es posible programar viajes a caballo para recorrer los valles de esta ruta.",

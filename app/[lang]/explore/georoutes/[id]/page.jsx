@@ -2,23 +2,19 @@
 import {getDictionary} from "@app/[lang]/dictionaries";
 import {georoutes} from "@components/explore/georoutes/georoutes";
 import {replaceConfigStrings} from "@utils/utils";
-import Image from "@node_modules/next/image";
+import Image from "next/image";
 import GeorouteVideo from "@components/explore/georoutes/details/GeorouteVideo";
-
-const georouteMap = georoutes.reduce((map, georoute) => {
-    map[georoute.id] = georoute;
-    return map;
-}, {});
-
-function getGeorouteById(id) {
-    return georouteMap[id];
-}
 
 const GeorouteDetails = async ({params}) => {
     const {lang, id} = params;
     const dict = await getDictionary(lang);
 
-    const currentGeorouteRaw = getGeorouteById(id);
+    const georouteMap = replaceConfigStrings(georoutes, dict).reduce((map, georoute) => {
+        map[georoute.id] = georoute;
+        return map;
+    }, {});
+
+    const currentGeorouteRaw = georouteMap[id];
 
     if (!currentGeorouteRaw) {
         return (
@@ -28,29 +24,27 @@ const GeorouteDetails = async ({params}) => {
             </section>
         );
     }
-
-    const georouteToShow = replaceConfigStrings(currentGeorouteRaw, dict);
-
+    
     return (
         <section className="component-section">
-            <HeaderOpacity title={georouteToShow.title}/>
+            <HeaderOpacity title={currentGeorouteRaw.title}/>
             <div className={`w-full`}>
                 <div className={`w-screen overflow-x-hidden flex flex-col flex-center bg-default p-4 py-12`}>
                     <div className={`max-w-7xl flex flex-col flex-center`}>
                         <Image
-                            src={georouteToShow.mainImgSrc}
+                            src={currentGeorouteRaw.mainImgSrc}
                             alt={`grt-img-${params.id}`}
                             className={`w-full max-w-4xl`}
                             width={1280}
                             height={720}/>
                         <div className={`text-justify`}>
-                            {Object.values(georouteToShow.sectionText).map((paragraph, index) => (
+                            {Object.values(currentGeorouteRaw.sectionText).map((paragraph, index) => (
                                 <p className={`py-2`} key={index}>{paragraph}</p>
                             ))}
                         </div>
                     </div>
                 </div>
-                <GeorouteVideo videoId={georouteToShow.videoId} place={georouteToShow.title} dict={dict} />
+                <GeorouteVideo videoId={currentGeorouteRaw.videoId} place={currentGeorouteRaw.title} dict={dict}/>
             </div>
         </section>
     );

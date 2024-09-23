@@ -398,6 +398,7 @@
       "videoOf": "Video of",
       "georoute": {
         "tenorRiverMountainValley": {
+          "uri": "tenor-river-mountain-valley",
           "title": "Tenor River Mountain Valley",
           "sectionText": {
             "par1": "This route, located in the northernmost part of the Geopark, follows the Teno River mountain valley from Los Queñes to the Argentine border, forming part of the Vergara International Pass. It includes significant geosites, such as the Teno Lakes or the Planchón Volcano. Along this route, you will find the oldest rocks in the Geopark, dating back 175 million years, which reveal a time when Chile was very different from today: the Andes Mountains did not exist, and much of Chile was submerged under the sea.",
@@ -406,6 +407,7 @@
           }
         },
         "radalSieteTazas": {
+          "uri": "radal-siete-tazas",
           "title": "Radal Siete Tazas",
           "sectionText": {
             "par1": "Located in Radal Siete Tazas National Park, this route focuses on the observation of spectacular waterfalls, crystal-clear water pools, and trails that reveal how, in the past, the landscape was shaped by volcanic and glacial activity, and is currently sculpted by fluvial processes. Notable geosites along the route include Las Siete Tazas, Salto El Velo de la Novia, and Valle del Indio.",
@@ -413,6 +415,7 @@
           }
         },
         "altosDeLircay": {
+          "uri": "altos-de-lircay",
           "title": "Altos de Lircay",
           "sectionText": {
             "par1": "The Altos de Lircay georoute is located in the Altos de Lircay National Reserve and offers a unique experience of connecting with the area's natural and geological heritage. This route is notable for its diverse landscapes, ranging from native forests of oaks, lengas and coigües to high summits with panoramic views of volcanoes and rock formations. Along the way, visitors can observe the effects of ancient glaciers that shaped the terrain, as well as current erosive and fluvial processes.",
@@ -421,6 +424,7 @@
           }
         },
         "pehuencheInternationalPass": {
+          "uri": "pehuenche-international-pass",
           "title": "Pehuenche international pass",
           "sectionText": {
             "par1": "The Paso Internacional Pehuenche extends from Lake Colbún to Argentina, serving as the main access point to the heart of the Maule mountain range. Thanks to its paved road, it offers easy access to some of the region's most impressive geosites, such as the Cascada Invertida (Upside-Down Waterfall), Laguna del Maule, the Campanario Volcano, Los Monjes Blancos, and the Valle de los Cóndores. This pass is internationally renowned for its sport climbing routes and winter sports areas, such as backcountry skiing (randonnée), boasting some of the best snow conditions in Chile.",
@@ -430,6 +434,7 @@
           }
         },
         "meladoMountainValley": {
+          "uri": "melado-mountain-valley",
           "title": "Melado Mountain Valley",
           "sectionText": {
             "par1": "The \"Melado Route\" in the Cajón del Río Melado, located in the Maule region of Chile, is renowned for its valuable natural and cultural heritage. Among its main attractions are the \"Guaiquivilo\" style petroglyphs, a collection of rock carvings featuring geometric, anthropomorphic, and zoomorphic figures created by pre-Hispanic peoples. These petroglyphs, found in various areas of the mountain range, such as the Calabozo and El Toro canyons, reflect strong cultural ties among the region's ancient inhabitants.",
@@ -437,6 +442,7 @@
           }
         },
         "artisanTraditionOfRari": {
+          "uri": "artisan-tradition-of-rari",
           "title": "Artisan Tradition of Rari",
           "sectionText": {
             "par1": "The Rari georoute focuses on the intangible cultural heritage associated with crin (horsehair) craftsmanship, a unique tradition in this village in the Maule region of Chile. Rari is known for its women artisans who create miniature figures from horsehair, a practice with over 200 years of history. This knowledge has been passed down from generation to generation, and the work of these women was recognized as a \"Living Human Treasure\" by UNESCO and the National Council for Culture and the Arts in 2010.",
@@ -445,6 +451,7 @@
           }
         },
         "archibuenoRiverMountainValley": {
+          "uri": "archibueno-river-mountain-valley",
           "title": "Achibueno River Mountain Valley",
           "sectionText": {
             "par1": "This route is located within the Santuario de la Naturaleza of the Cajón del Río Achibueno. It is the most physically demanding, as reaching its more remote geosites, such as Laguna Añintunes or Laguna Achibueno, may require several days of trekking. Even accessing the closer geosites, like the waterfalls of Las Ánimas or La Mina, takes at least two days. However, this route rewards those who venture on it with spectacular landscapes and trails through native forests dominated by species of the Nothofagus genus, typical of southern Chile. It is not without reason that this area is popularly known as the \"Patagonia of Maule.\" It is also possible to arrange horseback trips to explore the valleys along this route.",
