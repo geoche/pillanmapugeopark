@@ -89,7 +89,9 @@ export const PATCH = async (request) => {
             );
 
             // Delete removed images from Blob storage
-            await del(imagesToDelete);
+            if (imagesToDelete.length > 0) {
+                await del(imagesToDelete);
+            }
 
 
             // Upload new images
@@ -106,7 +108,7 @@ export const PATCH = async (request) => {
 
         await experience.save();
 
-        return new Response(JSON.stringify(experience), { status: 200 });
+        return new Response(JSON.stringify(experience), {status: 200});
 
 
     } catch (error) {
