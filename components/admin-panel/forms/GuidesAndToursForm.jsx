@@ -3,8 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import Spinner from "@components/Spinner";
 import Image from "next/image";
 import { FaEdit, FaTrashAlt, FaUndo } from "react-icons/fa";
+import Link from "next/link";
 
-const GuidesAndToursForm = () => {
+const GuidesAndToursForm = ({lang}) => {
     // State variables
     const [mainImgSrc, setMainImgSrc] = useState(null);
     // imagesSrc is now an array of objects with src and isNew properties
@@ -625,23 +626,31 @@ const GuidesAndToursForm = () => {
                                 <div className={`form-content-grid`}>
                                     {guidesAndTours.map((item, index) => (
                                         <div key={index} className={`form-content-grid-items relative`}>
-                                            <div>
-                                                <Image
-                                                    src={item.mainImgSrc}
-                                                    alt={`Guides-and-tours-${index}`}
-                                                    priority
-                                                    width={800}
-                                                    height={600}
-                                                    className={`rounded-2xl aspect-video`}
-                                                />
-                                            </div>
-                                            <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white p-2 rounded-tl-2xl rounded">
-                                                <p>{item.city}</p>
-                                            </div>
-                                            <div className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
-                                                <p>{item.title}</p>
-                                            </div>
-                                            <div className={`edit-delete-buttons edit-delete-buttons-right rounded rounded-tr-2xl m-2`}>
+                                            <Link href={`/${lang}/visit-us/guides-and-tours/${item._id}`}
+                                                  passHref legacyBehavior>
+                                                <a target="_blank">
+                                                    <div>
+                                                        <Image
+                                                            src={item.mainImgSrc}
+                                                            alt={`Guides-and-tours-${index}`}
+                                                            priority
+                                                            width={800}
+                                                            height={600}
+                                                            className={`rounded-2xl aspect-video`}
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        className="absolute top-2 left-2 bg-black bg-opacity-50 text-white p-2 rounded-tl-2xl rounded">
+                                                        <p>{item.city}</p>
+                                                    </div>
+                                                    <div
+                                                        className="absolute bottom-2 left-0 right-0 text-white py-4 px-2 rounded-tl-2xl rounded text-center">
+                                                        <p>{item.title}</p>
+                                                    </div>
+                                                </a>
+                                            </Link>
+                                            <div
+                                                className={`edit-delete-buttons edit-delete-buttons-right rounded rounded-tr-2xl m-2`}>
                                                 <FaEdit
                                                     size={24}
                                                     onClick={() => handleEdit(item)}
