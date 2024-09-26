@@ -100,7 +100,6 @@ const GuidesAndToursForm = ({lang}) => {
 
     // Handle form submission (create or edit)
     const handleSubmit = async (e) => {
-        setLoading(true);
         setSubmitLoading(true);
         setMessage('');
         e.preventDefault();
@@ -166,6 +165,7 @@ const GuidesAndToursForm = ({lang}) => {
             console.error(error);
             setMessage('An error occurred while saving the data');
         } finally {
+            setSubmitLoading(false);
             await fetchGuidesAndTours();
         }
     };
@@ -184,7 +184,6 @@ const GuidesAndToursForm = ({lang}) => {
             console.error('An error occurred:', error);
         } finally {
             setLoading(false);
-            setSubmitLoading(false);
             setTimeout(() => {
                 setShowContent(true);
             }, 300);
