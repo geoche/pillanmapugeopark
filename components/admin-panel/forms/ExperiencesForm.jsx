@@ -83,9 +83,9 @@ const ExperiencesForm = ({lang}) => {
 
     // Handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setShowContent(false)
         setSubmitLoading(true);
+        setMessage('');
+        e.preventDefault();
 
         const experienceData = {
             id: isEditMode ? editExperienceId : undefined,
