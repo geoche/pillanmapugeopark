@@ -459,6 +459,70 @@
           }
         }
       }
+    },
+    "geosites": {
+      "header": "Geosites",
+      "sectionText": {
+        "par1": "The geological heritage of the Andes mountain range in the Maule region is a unique treasure, shaped over 175 million years of intense volcanic activity, tectonic, and erosive processes. Notable volcanic complexes such as Descabezado Grande-Quizapu-Cerro Azul and Laguna del Maule not only offer stunning landscapes but also provide a valuable window into Earth's geological past. The enhancement and conservation of this heritage not only ensure that future generations can enjoy and learn from it but also have a direct impact on scientific research and the economic and social development of the region.",
+        "par2": "The geosites of the Andes mountain range in the Maule region serve as open-air classrooms, allowing students, researchers, and scientists to study geological processes in their natural environment, enriching the understanding of Earth’s dynamics and contributing to global science. Additionally, these sites hold great potential for the development of geotourism, attracting visitors interested in nature, education, and adventure. This promotes a sustainable economic development model for local communities, generating employment, improving infrastructure, and enhancing the value of natural and cultural heritage, all while preserving the environment and maintaining the integrity of the landscape.",
+        "par3": "Here you can see unique photographs of some of the most emblematic geosites of the Geopark."
+      },
+      "geosite": {
+        "cascadaInvertida": {
+          "title": "Inverted Waterfall"
+        },
+        "colmilloDelDiablo": {
+          "title": "Devil's Fang"
+        },
+        "elEnladrillado": {
+          "title": "The Bricked"
+        },
+        "lagunaAnintunes": {
+          "title": "Añintunes Lagoon"
+        },
+        "lagunaDelAlto": {
+          "title": "Lagoon of the Heights"
+        },
+        "lagunaDelMaule": {
+          "title": "Maule Lagoon"
+        },
+        "lagunasDeTeno": {
+          "title": "Teno Lagoons"
+        },
+        "monjesBlanco": {
+          "title": "White Monks"
+        },
+        "muelaDelDiablo": {
+          "title": "Devil's Molar"
+        },
+        "peteroaNorthernGlacier": {
+          "title": "Planchón-Peteroa Northern Glacier"
+        },
+        "saltoDelMaule": {
+          "title": "Maule Falls"
+        },
+        "saltoLasAnimas": {
+          "title": "Las Ánimas Falls and La Mina Falls"
+        },
+        "saltoVeloDeLaNovia": {
+          "title": "Bridal Veil Falls"
+        },
+        "sieteTazas": {
+          "title": "Seven Cups"
+        },
+        "valleDelIndio": {
+          "title": "Indian Valley"
+        },
+        "valleDeLosCondores": {
+          "title": "Valley of the Condors"
+        },
+        "volcanCampanario": {
+          "title": "Campanario Volcano"
+        },
+        "volcanPlachon": {
+          "title": "Planchón Volcano"
+        }
+      }
     }
   },
   "visitUs": {

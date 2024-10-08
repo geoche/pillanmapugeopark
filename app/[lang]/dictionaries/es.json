@@ -459,6 +459,70 @@
           }
         }
       }
+    },
+    "geosites": {
+      "header": "Geositios",
+      "sectionText": {
+        "par1": "El patrimonio geológico de la cordillera de los Andes de la Región del Maule es un tesoro único, forjado a lo largo de 175 millones de años de intensa actividad volcánica, procesos tectónicos y erosivos. Destacan complejos volcánicos como el Descabezado Grande-Quizapu-Cerro Azul y la Laguna del Maule, que no solo ofrecen un paisaje impresionante, sino también una valiosa ventana al pasado geológico de la Tierra. La puesta en valor y conservación de este patrimonio no solo asegura que futuras generaciones puedan disfrutarlo y aprender de él, sino que también tiene un impacto directo en la investigación científica y el desarrollo económico y social de la región.",
+        "par2": "Los geositios de la cordillera maulina sirven como aulas al aire libre, permitiendo a estudiantes, investigadores y científicos estudiar procesos geológicos en su entorno natural, lo que enriquece la comprensión de la dinámica terrestre y contribuye a la ciencia global. Además, estos sitios poseen un gran potencial para el desarrollo del geoturismo, atrayendo a visitantes interesados en la naturaleza, la educación y la aventura. Esto fomenta un modelo de desarrollo económico sostenible para las comunidades locales, generando empleo, mejorando la infraestructura y promoviendo el valor del patrimonio natural y cultural, todo mientras se conserva el medio ambiente y se mantiene la integridad del paisaje.",
+        "par3": "A continuación podrás ver fotografías únicas de algunos de los geositios más emblemáticos del Geoparque."
+      },
+      "geosite": {
+        "cascadaInvertida": {
+          "title": "Cascada Invertida"
+        },
+        "colmilloDelDiablo": {
+          "title": "Colmillo del Diablo"
+        },
+        "elEnladrillado": {
+          "title": "El Enladrillado"
+        },
+        "lagunaAnintunes": {
+          "title": "Laguna Añintunes"
+        },
+        "lagunaDelAlto": {
+          "title": "Laguna Del Alto"
+        },
+        "lagunaDelMaule": {
+          "title": "Laguna Del Maule"
+        },
+        "lagunasDeTeno": {
+          "title": "Lagunas De Teno"
+        },
+        "monjesBlanco": {
+          "title": "Monjes Blanco"
+        },
+        "muelaDelDiablo": {
+          "title": "Maula Del Diablo"
+        },
+        "peteroaNorthernGlacier": {
+          "title": "Planchón-Peteroa Northern Glacier"
+        },
+        "saltoDelMaule": {
+          "title": "Salto Del Maule"
+        },
+        "saltoLasAnimas": {
+          "title": "Salto Las Ánimas y Salto La Mina"
+        },
+        "saltoVeloDeLaNovia": {
+          "title": "Salto Velo de la Novia"
+        },
+        "sieteTazas": {
+          "title": "Siete Tazas"
+        },
+        "valleDelIndio": {
+          "title": "Valle del Indio"
+        },
+        "valleDeLosCondores": {
+          "title": "Valle de los Cóndores"
+        },
+        "volcanCampanario": {
+          "title": "Volcán Campanario"
+        },
+        "volcanPlachon": {
+          "title": "Volcán Planchón"
+        }
+      }
     }
   },
   "visitUs": {
@@ -477,12 +541,10 @@
         "main": "Guías y operadores turísticos",
         "h3": "Encuentra guías y tours a tu gusto"
       },
-
       "filter": {
         "allLocations": "Todas las ubicaciones",
         "allTypes": "Todos los tipos"
       }
     }
-    
   }
 }
