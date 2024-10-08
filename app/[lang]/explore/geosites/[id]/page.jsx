@@ -1,4 +1,3 @@
-import React from 'react';
 import {getDictionary} from "@app/[lang]/dictionaries";
 
 const GeositeDetails = async ({params}) => {

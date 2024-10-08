@@ -4,10 +4,10 @@ import Image from "next/image";
 const GeositesGridItem = ({lang, item, index}) => {
     return (
         <div key={index} className={`p-2 w-full sm:w-1/2 lg:w-1/3 relative`}>
-            <Link className={`w-full`} href={`/${lang}/explore/geosites/${item.id}`}>
+            <Link className={`w-full`} href={`/${lang}/explore/geosites/${item.title}`}>
                 <div>
                     <Image
-                        src={item.mainImgSrc}
+                        src={item.images[0]}
                         alt={`grt-img-${index}`}
                         priority
                         width={800}

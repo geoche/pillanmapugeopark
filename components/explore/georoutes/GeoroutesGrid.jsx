@@ -1,4 +1,3 @@
-import React from 'react';
 import {georoutes} from "@components/explore/georoutes/georoutes";
 import GeoroutesGridItem from "@components/explore/georoutes/GeoroutesGridItem";
 import {replaceConfigStrings} from "@utils/utils";

@@ -1,6 +1,7 @@
 ﻿import HeaderOpacity from "@components/HeaderOpacity";
 import {getDictionary} from "@app/[lang]/dictionaries";
 import Separator from "@components/Separator";
+import GeositesGrid from "@components/explore/geosites/GeositesGrid";
 
 const Geosites = async ({params}) => {
     const currentLang = params.lang;
@@ -21,6 +22,9 @@ const Geosites = async ({params}) => {
                     ))}
                 </div>
                 <Separator/>
+                <div className={`max-w-7xl py-4`}>
+                    <GeositesGrid dict={dict} lang={currentLang}/>
+                </div>
             </div>
         </section>
     );
