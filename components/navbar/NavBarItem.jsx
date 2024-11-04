@@ -18,7 +18,7 @@ const NavbarItem = ({lang, navItemsList = {}}) => {
                                     className="outline-none focus:outline-none px-3 rounded-xl flex items-center">
                                 <span className="pr-1 text-lg">{`${item.title}`}</span>
                                 <MdKeyboardArrowDown
-                                    className={`fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-300 ease-in-out`}/>
+                                    className={`fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-100 ease-in-out`}/>
                             </button>
                             <ul id="menu"
                                 className="bg-white border rounded-xl transform scale-0 group-hover:scale-100 absolute transition duration-300 ease-in-out origin-top min-w-32">
